@@ -147,6 +147,7 @@ export default function Home() {
       name: "Scissors",
       stack: [
         "TypeScript",
+        "Vue.js",
         "Tailwind CSS",
         "Node.js",
         "Express.js",
@@ -159,14 +160,27 @@ export default function Home() {
       github: "https://github.com/Modred14/Scissors",
       img: "./scissors.png",
     },
+    {
+      name: "Valentine Web Generator",
+      stack: [
+        "Next.js",
+        "React",
+        "JavaScript",
+        "Node.js",
+        "Firebase",
+        "Cloudinary",
+        "Tailwind CSS",
+        "Lucide React",
+        "Resend",
+      ],
+
+      about:
+        "Valentine Web Generator is a web platform for generating personalized Valentine pages with music, memories, and heartfelt messages — designed to help you surprise someone special.",
+      link: "https://hehe-hmm.netlify.app/",
+      github: "https://github.com/Modred14/val-app",
+      img: "/val-app.png",
+    },
     // {
-    //   name: "",
-    //   stack: ["", ""],
-    //   about: "",
-    //   link: "",
-    //   github: "",
-    //   img: "",
-    // },    {
     //   name: "",
     //   stack: ["", ""],
     //   about: "",
@@ -254,7 +268,7 @@ export default function Home() {
     //   about:
     //     "",
     //          skills: [
-       
+
     //   ],
     //   link: "",
     // },
@@ -408,19 +422,19 @@ export default function Home() {
               style={{ height: "0.5px" }}
             ></div>
           </div>{" "}
-          <div className="pt-12 grid md:grid-cols-2 gap-8 flex-4">
+          <div className="pt-12 grid md:grid-cols-2 gap-8 items-stretch">
             {projects.map((project) => {
               return (
                 <div>
-                  <div className="hover:scale-102 transition-all duration-500 bg-blue-950/20 rounded-2xl border border-blue-400/10">
-                    <div className="w-fit">
+                  <div className="h-full flex flex-col hover:scale-102 transition-all duration-500 bg-blue-950/20 rounded-2xl border border-blue-400/10">
+                    <div className="w-full overflow-hidden">
                       <img
                         src={project.img}
                         alt={project.name}
-                        className="rounded-t-2xl"
+                        className="w-full h-full object-cover rounded-t-2xl"
                       />
                     </div>
-                    <div className="p-5">
+                    <div className="p-5 flex flex-col flex-1">
                       <p className="text-2xl font-bold pb-3">{project.name}</p>
                       <div className="flex flex-wrap gap-2 w-full">
                         {project.stack.map((stacks) => {
@@ -431,12 +445,12 @@ export default function Home() {
                           );
                         })}
                         <div className="py-3">{project.about}</div>
-                        <div className="flex w-full justify-between">
+                        <div className="mt-auto  items-end flex w-full justify-between">
                           <a
                             href={project.link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-blue-400/90 text-sm flex gap-2 items-center"
+                            className="text-blue-400/90  text-sm flex gap-2 items-center"
                           >
                             <div className="duration-500 animate-bounce">
                               <Share size="15" />
@@ -514,11 +528,11 @@ export default function Home() {
               style={{ height: "0.5px" }}
             ></div>
           </div>
-          <div className="pt-12 grid md:grid-cols-2 gap-8 flex-4">
+          <div className="pt-12 grid md:grid-cols-2 gap-8 items-stretch">
             {educations.map((education) => {
               return (
                 <div>
-                  <div className="hover:scale-102 transition-all duration-500 bg-blue-950/20 rounded-2xl border border-blue-400/10">
+                  <div className="h-full flex flex-col hover:scale-102 transition-all duration-500 bg-blue-950/20 rounded-2xl border border-blue-400/10">
                     {" "}
                     <div className="p-5 pt-7">
                       <div className="flex flex-2 gap-3 items-center">
@@ -587,11 +601,11 @@ export default function Home() {
               style={{ height: "1.0px" }}
             ></div>
           </div>
-          <div className="pt-12 grid md:grid-cols-2 gap-8 flex-4">
+          <div className="pt-12 grid md:grid-cols-2 gap-8 items-stretch">
             {compliments.map((compliment) => {
               return (
                 <div>
-                  <div className="hover:scale-102 transition-all duration-500 bg-blue-950/20 rounded-2xl border border-blue-400/10">
+                  <div className="h-full flex flex-col hover:scale-102 transition-all duration-500 bg-blue-950/20 rounded-2xl border border-blue-400/10">
                     {" "}
                     <div className="p-5 pt-7">
                       <div className="flex flex-2 gap-5 items-center">
