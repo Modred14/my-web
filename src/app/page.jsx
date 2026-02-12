@@ -10,6 +10,7 @@ import {
   TerminalSquare,
   Rocket,
 } from "lucide-react";
+import Reveal from "./reavel";
 
 export default function Home() {
   const [currentTime, setCurrentTime] = useState("");
@@ -26,17 +27,37 @@ export default function Home() {
     const interval = setInterval(timer, 1000);
     return () => clearInterval(interval);
   }, []);
+  const codeFirstYear = 2023;
+  const currentYear = new Date().getFullYear();
+  const experienceYear = currentYear - codeFirstYear;
   const userPic = "./Favour-Omirin.jpg";
   const journey = [
     {
       workplace: "2Thirty Integrated Services",
       position: "Frontend Engineer (Internship)",
-      duration: "January 2024 - June 2024",
+      duration: "January 2024 – June 2024",
       impact: [
-        "Led frontend development initiatives by designing and implementing highly responsive, user-friendly interfaces that improved usability and ensured consistent performance across multiple screen sizes and devices.",
-        "Developed, tested, and maintained scalable web applications using JavaScript, React, and TailwindCSS, focusing on clean component architecture, reusable UI patterns, and maintainable codebases.",
-        "Converted design mockups and UI/UX specifications into fully functional web pages, ensuring pixel-perfect implementation, cross-browser compatibility, and adherence to modern web standards.",
-        "Collaborated closely with backend developers to integrate APIs, optimize application performance, reduce load times, and deliver seamless end-to-end functionality across the platform.",
+        "Designed and implemented responsive, user-friendly interfaces that improved usability across desktop and mobile devices",
+        "Developed and maintained scalable web applications using JavaScript, React, and Tailwind CSS",
+        "Built reusable components and UI patterns to improve code maintainability and development efficiency",
+        "Converted UI/UX designs and mockups into fully functional, pixel-accurate web pages",
+        "Ensured cross-browser compatibility and compliance with modern web standards",
+        "Integrated frontend components with backend APIs to deliver seamless application functionality",
+        "Collaborated with designers and backend engineers to optimize performance and user experience",
+      ],
+    },
+    {
+      workplace: "Cowrywise",
+      position: "Campus Ambassador (Obafemi Awolowo University)",
+      duration: "January 2026 – Present",
+      impact: [
+        "Promoted Cowrywise investment and savings products to students through campus outreach",
+        "Onboarded new users and increased platform adoption among undergraduates",
+        "Organized and coordinated financial literacy sessions and awareness campaigns",
+        "Represented Cowrywise at campus events and student programs",
+        "Created and shared digital content to educate students on smart money habits",
+        "Collected user feedback and reported insights to the Cowrywise team",
+        "Built partnerships with student groups to expand brand reach",
       ],
     },
     // {
@@ -136,6 +157,15 @@ export default function Home() {
       name: "Figma",
       img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
     },
+    {
+      name: "Resend",
+      img: "https://cdn.simpleicons.org/resend/FFFFFF",
+    },
+    {
+      name: "Cloudinary",
+      img: "https://cdn.simpleicons.org/cloudinary/3448C5",
+    },
+
     // {
     //   name: "",
     //   img: "",
@@ -235,7 +265,7 @@ export default function Home() {
       img: "./oaul.png",
       name: "Obafemi Awolowo University",
       course: "BSc. Software Engineering",
-      duration: "Oct 2024 - Jul 2029",
+      duration: "Oct 2024 – Jul 2029",
       about:
         "Studying core software engineering principles including programming, data structures, algorithms, databases, and software design. Actively building real-world projects with modern web technologies and focusing on practical problem-solving.",
       skills: ["Python", "Version Control", "API"],
@@ -245,7 +275,7 @@ export default function Home() {
       img: "./altschool.png",
       name: "AltSchool Africa",
       course: "Frontend Engineering",
-      duration: "Sep 2023 - Aug 2024",
+      duration: "Sep 2023 – Aug 2024",
       about:
         "Graduated from AltSchool Africa with a perfect 4.0/4.0 CGPA, reflecting strong technical discipline, consistency, and a commitment to high-quality software engineering.",
       skills: [
@@ -288,36 +318,390 @@ export default function Home() {
   return (
     <div className="flex justify-center bg-black text-gray-100">
       <div className="w-full bg-black/50 backdrop-blur-2xl fixed z-100">
-        <div className="grid grid-cols-2 items-center py-3 px-6 w-full ">
-          <a href="#">
-            <div className="flex gap-2 items-center">
-              {" "}
-              <img
-                src={userPic}
-                alt="Favour Omirin Image"
-                loading="lazy"
-                className="w-8 rounded-full"
-              />
-              <div>
-                <p className="text-xl">Modred.dev</p>
+        <Reveal>
+          <div className="grid grid-cols-2 items-center py-3 px-6 w-full ">
+            <a href="#">
+              <div className="flex items-center gap-2">
+                <img
+                  src="./logo.png"
+                  alt="Favour Omirin Image"
+                  loading="lazy"
+                  className="w-8 h-8 object-contain"
+                />
+
+                <p className="text-md leading-none">modred.dev</p>
               </div>
-            </div>
-          </a>
-          <div className="flex justify-end font-serif">{currentTime}</div>
-        </div>
+            </a>
+            <div className="flex justify-end font-serif">{currentTime}</div>
+          </div>
+        </Reveal>
       </div>
 
       <div className="md:max-w-250 sm:px-10 px-5 p-20">
-        <div className="grid place-items-center">
-          <div className="flex flex-col lg:gap-1 lg:flex-row ">
-            <div className="grid lg:block place-items-center">
-              <img
-                src={userPic}
-                alt="Favour Omirin Image"
-                loading="lazy"
-                className="lg:w-56.5 w-42 pb-4 rounded-full"
-              />
-              <div className="flex gap-10 pb-8 pt-4">
+        <Reveal>
+          {" "}
+          <div className="grid place-items-center">
+            <div className="flex flex-col lg:gap-1 lg:flex-row ">
+              <div className="grid lg:block place-items-center">
+                <img
+                  src={userPic}
+                  alt="Favour Omirin Image"
+                  loading="lazy"
+                  className="lg:w-56.5 w-42 pb-4 rounded-full"
+                />
+                <div className="flex gap-10 pb-8 pt-4">
+                  {socials.map((social) => {
+                    return (
+                      <div className="">
+                        <a href={social.link} target="_blank">
+                          <img
+                            src={social.icon}
+                            alt={social.name}
+                            className="w-8 hover:scale-120 transition-all duration-300"
+                          />
+                          {"  "}
+                        </a>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+              <div className="w-full grid place-items-center lg:place-items-start lg:pl-7 ">
+                <p className="justify-center text-4xl lg:text-6xl font-extrabold pb-3">
+                  I am {getName()}
+                </p>
+                <p className="justify-center text-center text-xl font-medium text-gray-400 pb-5">
+                  Software Engineer | Full Stack Developer
+                </p>
+                <p className="text-xl">
+                  Solution-driven software engineer with over {experienceYear}{" "}
+                  years of experience building scalable web, backend, and
+                  blockchain-powered applications. I primarily work with the
+                  MERN stack, turning ideas into real products, from full-stack
+                  platforms to automation tools, by solving practical problems
+                  and engineering systems that work in the real world.
+                  Passionate about tackling complex challenges and delivering
+                  impactful, production-ready solutions.
+                </p>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+        <Reveal>
+          <section id="journey">
+            <div className="pt-14">
+              <div className="flex">
+                <div className="flex gap-4 mb-4 flex-2 items-center">
+                  <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
+                    <Briefcase />
+                  </p>
+                  <p className="text-3xl font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
+                    Professional Experience
+                  </p>
+                </div>
+              </div>
+              <div
+                className="bg-gradient-to-r from-black via-blue-400 to-black border-0"
+                style={{ height: "1px" }}
+              ></div>
+            </div>{" "}
+            <div className="pt-8">
+              {journey.map((journeys) => {
+                return (
+                  <>
+                    <div className="pb-5">
+                      <div className="lg:flex lg:justify-between">
+                        <div>
+                          <p className="font-bold text-2xl">
+                            {journeys.workplace}
+                          </p>
+                          <p className="text-blue-400 lg:pb-5 pb-0 text-lg font-semibold">
+                            {journeys.position}
+                          </p>
+                        </div>
+                        <p className="text-gray-400 pt-2 pb-5">
+                          {journeys.duration}
+                        </p>
+                      </div>
+                      <div>
+                        {journeys.impact.map((impacts) => {
+                          return (
+                            <div className="flex gap-3 text-lg">
+                              <div className="text-blue-300">●</div>
+                              {impacts}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </>
+                );
+              })}
+            </div>
+          </section>
+        </Reveal>
+        <Reveal>
+          <section id="projects">
+            <div className="pt-14">
+              <div className="flex">
+                <div className="flex gap-4 mb-4 flex-2 items-center">
+                  <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
+                    <Code />
+                  </p>
+                  <p className="text-3xl font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
+                    Featured Projects
+                  </p>
+                </div>
+              </div>
+              <div
+                className="bg-gradient-to-r from-black via-blue-400 to-black border-0"
+                style={{ height: "0.5px" }}
+              ></div>
+            </div>{" "}
+            <div className="pt-12 grid md:grid-cols-2 gap-8 items-stretch">
+              {projects.map((project) => {
+                return (
+                  <div>
+                    <div className="h-full flex flex-col hover:scale-102 transition-all duration-500 bg-blue-950/20 rounded-2xl border border-blue-400/10">
+                      <div className="w-full overflow-hidden">
+                        <img
+                          src={project.img}
+                          alt={project.name}
+                          className="w-full h-full object-cover rounded-t-2xl"
+                        />
+                      </div>
+                      <div className="p-5 flex flex-col flex-1">
+                        <p className="text-2xl font-bold pb-3">
+                          {project.name}
+                        </p>
+                        <div className="flex flex-wrap gap-2 w-full">
+                          {project.stack.map((stacks) => {
+                            return (
+                              <div className="border p-1 px-1.5 rounded-md text-sm text-teal-300 bg-teal-400/20 border-teal-400/30">
+                                {stacks}
+                              </div>
+                            );
+                          })}
+                          <div className="py-3">{project.about}</div>
+                          <div className="mt-auto  items-end flex w-full justify-between">
+                            <a
+                              href={project.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-blue-400/90  text-sm flex gap-2 items-center"
+                            >
+                              <div className="duration-500 animate-bounce">
+                                <Share size="15" />
+                              </div>
+                              <div>Live Demo</div>
+                            </a>
+                            <a
+                              href={project.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-gray-400/90 text-sm flex gap-1 items-center"
+                            >
+                              <div className="duration-500 animate-pulse">
+                                <Github size="15" />
+                              </div>
+                              <div>GitHub</div>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>{" "}
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+        </Reveal>
+        <Reveal>
+          <section id="technologies">
+            <div className="pt-14">
+              <div className="flex">
+                <div className="flex gap-4 mb-4 flex-2 items-center">
+                  <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
+                    <TerminalSquare />
+                  </p>
+                  <p className="text-3xl font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
+                    Technologies
+                  </p>
+                </div>
+              </div>
+              <div
+                className="bg-gradient-to-r from-black via-blue-400 to-black border-0"
+                style={{ height: "1.5px" }}
+              ></div>
+              <div className="grid pt-12 grid-cols-2 w-full md:grid-cols-6 gap-6">
+                {languages.map((language) => {
+                  return (
+                    <>
+                      <div className="grid border border-blue-400/10 rounded-2xl bg-blue-950/20 p-7 justify-items-center hover:bg-blue-950/40 transition-all duration-250">
+                        <img
+                          src={language.img}
+                          className="w-10"
+                          alt={language.name}
+                        />
+                        <p className="text-xs pt-3">{language.name}</p>
+                      </div>
+                    </>
+                  );
+                })}
+              </div>{" "}
+            </div>{" "}
+          </section>
+        </Reveal>
+        <Reveal>
+          <section id="education">
+            <div className="pt-14">
+              <div className="flex">
+                <div className="flex gap-4 mb-4 flex-2 items-center">
+                  <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
+                    <School />
+                  </p>
+                  <p className="text-3xl font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
+                    Education
+                  </p>
+                </div>
+              </div>
+              <div
+                className="bg-gradient-to-r from-black via-blue-400 to-black border-0"
+                style={{ height: "0.5px" }}
+              ></div>
+            </div>
+            <div className="pt-12 grid md:grid-cols-2 gap-8 items-stretch">
+              {educations.map((education) => {
+                return (
+                  <div>
+                    <div className="h-full flex flex-col hover:scale-102 transition-all duration-500 bg-blue-950/20 rounded-2xl border border-blue-400/10">
+                      {" "}
+                      <div className="p-5 pt-7">
+                        <div className="flex flex-2 gap-3 items-center">
+                          <div>
+                            <img
+                              src={education.img}
+                              className="w-12 rounded-xl"
+                              alt={education.name}
+                            />
+                          </div>
+                          <div>
+                            <p className="text-2xl font-semibold">
+                              {education.name}
+                            </p>
+                            <p className="text-blue-400 pb-1 text-lg font-semibold">
+                              {education.course}
+                            </p>
+                          </div>
+                        </div>
+                        <p className="text-gray-400 text-sm">
+                          {education.duration}
+                        </p>
+                        <div className="py-5">{education.about}</div>
+                        <div className="flex">
+                          <div className="flex flex-wrap gap-2 w-full">
+                            {education.skills.map((skill) => {
+                              return (
+                                <div className="border p-1 px-1.5 rounded-md text-sm text-teal-300 bg-teal-400/20 border-teal-400/30">
+                                  {skill}
+                                </div>
+                              );
+                            })}
+                          </div>
+                          <a
+                            href={education.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-blue-400/90 items-end text-sm flex gap-2"
+                          >
+                            <div className="duration-500 animate-pulse">
+                              <Share size="15" />
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+        </Reveal>
+        <Reveal>
+          <section id="reviews">
+            <div className="pt-14">
+              <div className="flex">
+                <div className="flex gap-4 mb-4 flex-2 items-center">
+                  <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
+                    <NotepadText />
+                  </p>
+                  <p className="text-3xl font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
+                    Testimonials
+                  </p>
+                </div>
+              </div>
+              <div
+                className="bg-gradient-to-r from-black via-blue-400 to-black border-0"
+                style={{ height: "1.0px" }}
+              ></div>
+            </div>
+            <div className="pt-12 grid md:grid-cols-2 gap-8 items-stretch">
+              {compliments.map((compliment) => {
+                return (
+                  <div>
+                    <div className="h-full flex flex-col hover:scale-102 transition-all duration-500 bg-blue-950/20 rounded-2xl border border-blue-400/10">
+                      {" "}
+                      <div className="p-5 pt-7">
+                        <div className="flex flex-2 gap-5 items-center">
+                          <div>
+                            <img
+                              src={compliment.img}
+                              className="w-10 rounded-full"
+                              alt={compliment.name}
+                            />
+                          </div>
+                          <div>
+                            {" "}
+                            <p className="text-xl font-semibold pb-0.5">
+                              {compliment.name}
+                            </p>
+                            <p className="text-sm">{compliment.work}</p>
+                          </div>
+                        </div>{" "}
+                        <div className="pt-4">{compliment.message}</div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+        </Reveal>
+        <div className="pt-14">
+          <Reveal>
+            <section className=" transition-all duration-500 bg-blue-950/20 border border-blue-400/10">
+              <div className="pt-14">
+                <div className="flex">
+                  <div className="flex gap-4 px-4 mb-4 flex-2 items-center justify-center">
+                    <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
+                      <Rocket />
+                    </p>
+                    <p className="text-3xl font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
+                      Open to collaboration
+                    </p>
+                  </div>
+                </div>
+                <div
+                  className="bg-gradient-to-r from-black via-blue-400 to-black border-0"
+                  style={{ height: "1.0px" }}
+                ></div>
+              </div>
+              <div className="pt-8 px-10 lg:px-20 flex text-center text-xl">
+                Ready to bring your ideas to life? I'm always excited to
+                collaborate on innovative projects and help transform your
+                vision into reality.
+              </div>
+              <div className="flex gap-10 justify-center pb-18 pt-7">
                 {socials.map((social) => {
                   return (
                     <div className="">
@@ -333,345 +717,8 @@ export default function Home() {
                   );
                 })}
               </div>
-            </div>
-            <div className="w-full grid place-items-center lg:place-items-start lg:pl-7 ">
-              <p className="justify-center text-4xl lg:text-6xl font-extrabold pb-3">
-                I am {getName()}
-              </p>
-              <p className="justify-center text-center text-xl font-medium text-gray-400 pb-5">
-                Software Engineer | Full Stack Developer
-              </p>
-              <p className="text-xl">
-                Solution-driven software engineer with over 3 years of
-                experience building scalable web, backend, and
-                blockchain-powered applications. I primarily work with the MERN
-                stack, turning ideas into real products, from full-stack
-                platforms to automation tools, by solving practical problems and
-                engineering systems that work in the real world. Passionate
-                about tackling complex challenges and delivering impactful,
-                production-ready solutions.
-              </p>
-            </div>
-          </div>
-        </div>
-        <section id="journey">
-          <div className="pt-14">
-            <div className="flex">
-              <div className="flex gap-4 mb-4 flex-2 items-center">
-                <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
-                  <Briefcase />
-                </p>
-                <p className="text-3xl font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
-                  Professional Experience
-                </p>
-              </div>
-            </div>
-            <div
-              className="bg-gradient-to-r from-black via-blue-400 to-black border-0"
-              style={{ height: "1px" }}
-            ></div>
-          </div>{" "}
-          <div className="pt-8">
-            {journey.map((journeys) => {
-              return (
-                <>
-                  <div className="pb-5">
-                    <div className="lg:flex lg:justify-between">
-                      <div>
-                        <p className="font-bold text-2xl">
-                          {journeys.workplace}
-                        </p>
-                        <p className="text-blue-400 lg:pb-5 pb-0 text-lg font-semibold">
-                          {journeys.position}
-                        </p>
-                      </div>
-                      <p className="text-gray-400 pt-2 pb-5">
-                        {journeys.duration}
-                      </p>
-                    </div>
-                    <div>
-                      {journeys.impact.map((impacts) => {
-                        return (
-                          <div className="flex gap-3 text-lg">
-                            <div className="text-blue-300">●</div>
-                            {impacts}
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                </>
-              );
-            })}
-          </div>
-        </section>
-        <section id="projects">
-          <div className="pt-14">
-            <div className="flex">
-              <div className="flex gap-4 mb-4 flex-2 items-center">
-                <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
-                  <Code />
-                </p>
-                <p className="text-3xl font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
-                  Featured Projects
-                </p>
-              </div>
-            </div>
-            <div
-              className="bg-gradient-to-r from-black via-blue-400 to-black border-0"
-              style={{ height: "0.5px" }}
-            ></div>
-          </div>{" "}
-          <div className="pt-12 grid md:grid-cols-2 gap-8 items-stretch">
-            {projects.map((project) => {
-              return (
-                <div>
-                  <div className="h-full flex flex-col hover:scale-102 transition-all duration-500 bg-blue-950/20 rounded-2xl border border-blue-400/10">
-                    <div className="w-full overflow-hidden">
-                      <img
-                        src={project.img}
-                        alt={project.name}
-                        className="w-full h-full object-cover rounded-t-2xl"
-                      />
-                    </div>
-                    <div className="p-5 flex flex-col flex-1">
-                      <p className="text-2xl font-bold pb-3">{project.name}</p>
-                      <div className="flex flex-wrap gap-2 w-full">
-                        {project.stack.map((stacks) => {
-                          return (
-                            <div className="border p-1 px-1.5 rounded-md text-sm text-teal-300 bg-teal-400/20 border-teal-400/30">
-                              {stacks}
-                            </div>
-                          );
-                        })}
-                        <div className="py-3">{project.about}</div>
-                        <div className="mt-auto  items-end flex w-full justify-between">
-                          <a
-                            href={project.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-blue-400/90  text-sm flex gap-2 items-center"
-                          >
-                            <div className="duration-500 animate-bounce">
-                              <Share size="15" />
-                            </div>
-                            <div>Live Demo</div>
-                          </a>
-                          <a
-                            href={project.github}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-gray-400/90 text-sm flex gap-1 items-center"
-                          >
-                            <div className="duration-500 animate-pulse">
-                              <Github size="15" />
-                            </div>
-                            <div>GitHub</div>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>{" "}
-                </div>
-              );
-            })}
-          </div>
-        </section>
-        <section id="technologies">
-          <div className="pt-14">
-            <div className="flex">
-              <div className="flex gap-4 mb-4 flex-2 items-center">
-                <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
-                  <TerminalSquare />
-                </p>
-                <p className="text-3xl font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
-                  Technologies
-                </p>
-              </div>
-            </div>
-            <div
-              className="bg-gradient-to-r from-black via-blue-400 to-black border-0"
-              style={{ height: "1.5px" }}
-            ></div>
-            <div className="grid pt-12 grid-cols-2 w-full md:grid-cols-6 gap-6">
-              {languages.map((language) => {
-                return (
-                  <>
-                    <div className="grid border border-blue-400/10 rounded-2xl bg-blue-950/20 p-7 justify-items-center hover:bg-blue-950/40 transition-all duration-250">
-                      <img
-                        src={language.img}
-                        className="w-10"
-                        alt={language.name}
-                      />
-                      <p className="text-xs pt-3">{language.name}</p>
-                    </div>
-                  </>
-                );
-              })}
-            </div>{" "}
-          </div>{" "}
-        </section>
-        <section id="education">
-          <div className="pt-14">
-            <div className="flex">
-              <div className="flex gap-4 mb-4 flex-2 items-center">
-                <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
-                  <School />
-                </p>
-                <p className="text-3xl font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
-                  Education
-                </p>
-              </div>
-            </div>
-            <div
-              className="bg-gradient-to-r from-black via-blue-400 to-black border-0"
-              style={{ height: "0.5px" }}
-            ></div>
-          </div>
-          <div className="pt-12 grid md:grid-cols-2 gap-8 items-stretch">
-            {educations.map((education) => {
-              return (
-                <div>
-                  <div className="h-full flex flex-col hover:scale-102 transition-all duration-500 bg-blue-950/20 rounded-2xl border border-blue-400/10">
-                    {" "}
-                    <div className="p-5 pt-7">
-                      <div className="flex flex-2 gap-3 items-center">
-                        <div>
-                          <img
-                            src={education.img}
-                            className="w-12 rounded-xl"
-                            alt={education.name}
-                          />
-                        </div>
-                        <div>
-                          <p className="text-2xl font-semibold">
-                            {education.name}
-                          </p>
-                          <p className="text-blue-400 pb-1 text-lg font-semibold">
-                            {education.course}
-                          </p>
-                        </div>
-                      </div>
-                      <p className="text-gray-400 text-sm">
-                        {education.duration}
-                      </p>
-                      <div className="py-5">{education.about}</div>
-                      <div className="flex">
-                        <div className="flex flex-wrap gap-2 w-full">
-                          {education.skills.map((skill) => {
-                            return (
-                              <div className="border p-1 px-1.5 rounded-md text-sm text-teal-300 bg-teal-400/20 border-teal-400/30">
-                                {skill}
-                              </div>
-                            );
-                          })}
-                        </div>
-                        <a
-                          href={education.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-blue-400/90 items-end text-sm flex gap-2"
-                        >
-                          <div className="duration-500 animate-pulse">
-                            <Share size="15" />
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </section>
-        <section id="reviews">
-          <div className="pt-14">
-            <div className="flex">
-              <div className="flex gap-4 mb-4 flex-2 items-center">
-                <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
-                  <NotepadText />
-                </p>
-                <p className="text-3xl font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
-                  Testimonials
-                </p>
-              </div>
-            </div>
-            <div
-              className="bg-gradient-to-r from-black via-blue-400 to-black border-0"
-              style={{ height: "1.0px" }}
-            ></div>
-          </div>
-          <div className="pt-12 grid md:grid-cols-2 gap-8 items-stretch">
-            {compliments.map((compliment) => {
-              return (
-                <div>
-                  <div className="h-full flex flex-col hover:scale-102 transition-all duration-500 bg-blue-950/20 rounded-2xl border border-blue-400/10">
-                    {" "}
-                    <div className="p-5 pt-7">
-                      <div className="flex flex-2 gap-5 items-center">
-                        <div>
-                          <img
-                            src={compliment.img}
-                            className="w-10 rounded-full"
-                            alt={compliment.name}
-                          />
-                        </div>
-                        <div>
-                          {" "}
-                          <p className="text-xl font-semibold pb-0.5">
-                            {compliment.name}
-                          </p>
-                          <p className="text-sm">{compliment.work}</p>
-                        </div>
-                      </div>{" "}
-                      <div className="pt-4">{compliment.message}</div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </section>
-        <div className="pt-14">
-          <section className=" transition-all duration-500 bg-blue-950/20 border border-blue-400/10">
-            <div className="pt-14">
-              <div className="flex">
-                <div className="flex gap-4 px-4 mb-4 flex-2 items-center justify-center">
-                  <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
-                    <Rocket />
-                  </p>
-                  <p className="text-3xl font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
-                    Open to collaboration
-                  </p>
-                </div>
-              </div>
-              <div
-                className="bg-gradient-to-r from-black via-blue-400 to-black border-0"
-                style={{ height: "1.0px" }}
-              ></div>
-            </div>
-            <div className="pt-8 px-10 lg:px-20 flex text-center text-xl">
-              Ready to bring your ideas to life? I'm always excited to
-              collaborate on innovative projects and help transform your vision
-              into reality.
-            </div>
-            <div className="flex gap-10 justify-center pb-18 pt-7">
-              {socials.map((social) => {
-                return (
-                  <div className="">
-                    <a href={social.link} target="_blank">
-                      <img
-                        src={social.icon}
-                        alt={social.name}
-                        className="w-8 hover:scale-120 transition-all duration-300"
-                      />
-                      {"  "}
-                    </a>
-                  </div>
-                );
-              })}
-            </div>
-          </section>
+            </section>
+          </Reveal>
         </div>
       </div>
     </div>
