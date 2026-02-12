@@ -26,7 +26,7 @@ export const metadata = {
     siteName: "Modred Portfolio",
     images: [
       {
-        url: "/logo.png",
+        url: "/logow.png",
         width: 512,
         height: 512,
         alt: "Favour Omirin Logo",
@@ -40,7 +40,7 @@ export const metadata = {
     title: "Favour Omirin | Software Engineer",
     description:
       "Full-stack software engineer building modern web apps.",
-    images: ["/logo.png"],
+    images: ["/logow.png"],
   },
 };
 
