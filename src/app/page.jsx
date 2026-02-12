@@ -33,7 +33,7 @@ export default function Home() {
   const userPic = "./Favour-Omirin.jpg";
   const journey = [
     {
-      workplace: "2Thirty Integrated Services",
+      workplace: "2Thirty Integrated Services Ltd",
       position: "Frontend Engineer (Internship)",
       duration: "January 2024 – June 2024",
       impact: [
