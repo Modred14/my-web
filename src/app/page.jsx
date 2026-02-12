@@ -240,7 +240,7 @@ export default function Home() {
     {
       img: "./user.jpg",
       name: "Emmanuel",
-      work: "CEO, 2ThirtyIX Integrated Services",
+      work: "CEO, 2ThirtyIX Integrated Services Ltd",
       message:
         '"He’s a fast learner and strong problem solver, thriving in a high-velocity team. I’d gladly work with him again and recommend him to any employer seeking quick, effective contributors."',
     },
