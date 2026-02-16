@@ -719,7 +719,11 @@ export default function Home() {
               </div>
             </section>
           </Reveal>
+        
         </div>
+           <p className="mt-6 text-center text-xs text-gray-500">
+          © {new Date().getFullYear()} Modred
+        </p>
       </div>
     </div>
   );
