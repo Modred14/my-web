@@ -283,7 +283,7 @@ export default function Page() {
                     <div className="text-right hidden sm:block">
                       <p className="text-xs text-gray-400">Followers</p>
 
-                      <p className="text-sm font-semibold">
+                      <p className="text-sm font-semibold flex justify-center">
                         {s.id === "github"
                           ? loading
                             ? "…"
