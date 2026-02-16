@@ -51,7 +51,7 @@ export default function Page() {
       {
         id: "linkedin",
         name: "LinkedIn",
-        handle: "Favour Omirin",
+        handle: "omirin-favour",
         link: "https://ng.linkedin.com/in/omirin-favour",
         showCount: true,
       },
