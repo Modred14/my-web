@@ -38,8 +38,7 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Favour Omirin | Software Engineer",
-    description:
-      "Full-stack software engineer building modern web apps.",
+    description: "Full-stack software engineer building modern web apps.",
     images: ["/logow.png"],
   },
 };
@@ -50,6 +49,64 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+
+              name: "Favour Omirin",
+              alternateName: "Modred",
+
+              url: "https://modred.dev",
+
+              jobTitle: "Software Engineer",
+
+              image: "https://modred.dev/Favour-Omirin.JPG",
+
+              description:
+                "Software engineer specializing in building modern web applications with React, Next.js, and Node.js.",
+
+              email: "mailto:favourdomirin@gmail.com",
+
+              sameAs: [
+                "https://github.com/Modred14",
+                "https://www.instagram.com/_m.o.d.r.e.d",
+                "https://x.com/modred_dev",
+                "https://www.tiktok.com/@_modred",
+                "https://ng.linkedin.com/in/omirin-favour",
+                "https://web.facebook.com/favour.omirin7",
+                "https://www.snapchat.com/add/real_modred",
+                "https://about.me/favouromirin",
+                "https://leetcode.com/Modred14",
+              ],
+
+              knowsAbout: [
+                "Software Engineering",
+                "Frontend Development",
+                "Backend Development",
+                "React",
+                "Next.js",
+                "JavaScript",
+                "TypeScript",
+                "Node.js",
+                "Web Development",
+                "UI/UX",
+              ],
+              alumniOf: {
+                "@type": "EducationalOrganization",
+                name: "AltSchool Africa",
+              },
+
+              nationality: {
+                "@type": "Country",
+                name: "Nigeria",
+              },
+            }),
+          }}
+        />
+
         {children}
       </body>
     </html>
