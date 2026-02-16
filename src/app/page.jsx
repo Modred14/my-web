@@ -5,6 +5,7 @@ import {
   Code,
   Github,
   Share,
+  Linkedin,
   NotepadText,
   School,
   TerminalSquare,
@@ -231,9 +232,9 @@ export default function Home() {
       name: "Email",
     },
     {
-      link: "mailto:favourdomirin@gmail.com",
-      icon: "https://cdn.simpleicons.org/whatsapp/FFFFFF",
-      name: "WhatsApp",
+      link: "https://ng.linkedin.com/in/omirin-favour",
+      icon: "/linkdein.png",
+      name: "Linkedin",
     },
   ];
   const compliments = [
@@ -702,26 +703,30 @@ export default function Home() {
                 vision into reality.
               </div>
               <div className="flex gap-10 justify-center pb-18 pt-7">
-                {socials.map((social) => {
-                  return (
-                    <div className="">
-                      <a href={social.link} target="_blank">
-                        <img
-                          src={social.icon}
-                          alt={social.name}
-                          className="w-8 hover:scale-120 transition-all duration-300"
-                        />
-                        {"  "}
-                      </a>
-                    </div>
-                  );
-                })}
+                <a
+                  href="/socials"
+                  className="
+    inline-flex items-center justify-center gap-2
+    px-3.5 py-2
+    rounded-2xl
+    border border-white/10
+    bg-white/5 backdrop-blur
+    text-sm font-semibold text-gray-100
+    shadow-[0_12px_30px_rgba(0,0,0,0.35)]
+    transition-all duration-300
+    hover:bg-white/10 hover:border-white/20 hover:-translate-y-0.5
+    active:translate-y-0
+    focus:outline-none focus:ring-2 focus:ring-white/20
+  "
+                >
+                  Socials
+                  <span className="opacity-70">↗</span>
+                </a>
               </div>
             </section>
           </Reveal>
-        
         </div>
-           <p className="mt-6 text-center text-xs text-gray-500">
+        <p className="mt-6 text-center text-xs text-gray-500">
           © {new Date().getFullYear()} Modred
         </p>
       </div>

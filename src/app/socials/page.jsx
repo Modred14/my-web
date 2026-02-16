@@ -119,6 +119,7 @@ export default function Page() {
       facebook: 3500,
       snapchat: 1800,
       x: 99,
+      github: null,
       portfolio: null,
       email: null,
       aboutme: null,
@@ -131,9 +132,9 @@ export default function Page() {
   }, [manualCounts, counts]);
 
   function formatFollowers(id) {
-    if (id === "x") return "<100";
     const n = mergedCounts[id];
     if (typeof n !== "number") return "N/A";
+    if (n < 100) return "<100";
     return `${k(n)}+`;
   }
   const totalFollowers = useMemo(() => {
@@ -284,10 +285,8 @@ export default function Page() {
                       <p className="text-xs text-gray-400">Followers</p>
 
                       <p className="text-sm font-semibold flex justify-center">
-                        {s.id === "github"
-                          ? loading
-                            ? "…"
-                            : `${k(mergedCounts.github)}+`
+                        {loading && s.id === "github"
+                          ? "…"
                           : formatFollowers(s.id)}
                       </p>
                     </div>
