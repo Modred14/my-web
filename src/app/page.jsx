@@ -332,7 +332,7 @@ export default function Home() {
                     className="w-8 h-8 object-contain"
                   />
 
-                  <p className=" leading-none">MODRED.DEV</p>
+                  <p className="font-bold leading-none">MODRED.DEV</p>
                 </div>
               </a>
               <div className="flex justify-end font-serif">{currentTime}</div>
