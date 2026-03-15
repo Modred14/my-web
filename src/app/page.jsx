@@ -415,10 +415,10 @@ export default function Home() {
                       <div className="pb-5">
                         <div className="lg:flex lg:justify-between">
                           <div>
-                            <p className="font-bold text-xl">
+                            <p className="font-bold text-[22px]">
                               {journeys.workplace}
                             </p>
-                            <p className="text-blue-400 lg:pb-5 pb-0 text-base font-semibold">
+                            <p className="text-blue-400 lg:pb-5 pb-0 text-lg font-semibold">
                               {journeys.position}
                             </p>
                           </div>
