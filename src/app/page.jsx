@@ -474,7 +474,7 @@ export default function Home() {
                           />
                         </div>
                         <div className="p-5 flex flex-col flex-1">
-                          <p className="text-xl font-bold pb-3">
+                          <p className="text-[22px] font-bold pb-3">
                             {project.name}
                           </p>
                           <div className="flex flex-wrap gap-2 w-full">
