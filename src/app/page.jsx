@@ -443,7 +443,7 @@ export default function Home() {
           </Reveal>
           <Reveal>
             <section id="projects">
-              <div className="pt-8">
+              <div className="pt-6">
                 <div className="flex">
                   <div className="flex gap-4 mb-4 flex-2 items-center">
                     <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
