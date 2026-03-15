@@ -8,6 +8,7 @@ import {
   Linkedin,
   NotepadText,
   School,
+  Mail,
   TerminalSquare,
   Rocket,
 } from "lucide-react";
@@ -224,17 +225,17 @@ export default function Home() {
   const socials = [
     {
       link: "https://github.com/Modred14",
-      icon: "https://cdn.simpleicons.org/github/FFFFFF",
+      icon: Github,
       name: "GitHub",
     },
     {
       link: "mailto:favourdomirin@gmail.com",
-      icon: "https://cdn.simpleicons.org/gmail/FFFFFF",
+      icon: Mail,
       name: "Email",
     },
     {
       link: "https://ng.linkedin.com/in/omirin-favour",
-      icon: "/linkdein.png",
+      icon: Linkedin,
       name: "Linkedin",
     },
   ];
@@ -350,19 +351,20 @@ export default function Home() {
                     alt="Favour Omirin Image"
                     className="lg:w-56.5 w-42 pb-4 rounded-full"
                   />
-                  <div className="hidden lg:flex gap-10 pb-4 pt-4">
+                  <div className="hidden lg:flex gap-4 pb-4 pt-4">
                     {socials.map((social) => {
+                      const Icon = social.icon;
+
                       return (
-                        <div className="">
-                          <a href={social.link} target="_blank">
-                            <img
-                              src={social.icon}
-                              alt={social.name}
-                              className="w-8 hover:scale-120 transition-all duration-300"
-                            />
-                            {"  "}
-                          </a>
-                        </div>
+                        <a
+                          key={social.name}
+                          href={social.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-10 h-10 flex items-center justify-center rounded-xl bg-gray-950/10 backdrop-blur-md border border-white/20 hover:bg-gray-900/60 hover:scale-110 transition-all duration-300"
+                        >
+                          <Icon size={18} className="text-white" />
+                        </a>
                       );
                     })}
                   </div>
@@ -374,19 +376,20 @@ export default function Home() {
                   <p className="justify-center text-center text-lg font-medium text-gray-400 pb-5">
                     Software Engineer | Full Stack Developer
                   </p>
-                   <div className="flex lg:hidden gap-10 mb-7">
+                  <div className="flex lg:hidden gap-4 mb-7">
                     {socials.map((social) => {
+                      const Icon = social.icon;
+
                       return (
-                        <div className="">
-                          <a href={social.link} target="_blank">
-                            <img
-                              src={social.icon}
-                              alt={social.name}
-                              className="w-8 hover:scale-120 transition-all duration-300"
-                            />
-                            {"  "}
-                          </a>
-                        </div>
+                        <a
+                          key={social.name}
+                          href={social.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-10 h-10 flex items-center justify-center rounded-xl bg-gray-950/10 backdrop-blur-md border border-white/20 hover:bg-gray-900/60 hover:scale-110 transition-all duration-300"
+                        >
+                          <Icon size={18} className="text-white" />
+                        </a>
                       );
                     })}
                   </div>
