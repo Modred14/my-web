@@ -350,7 +350,7 @@ export default function Home() {
                     alt="Favour Omirin Image"
                     className="lg:w-56.5 w-42 pb-4 rounded-full"
                   />
-                  <div className="flex gap-10 pb-8 pt-4">
+                  <div className="hidden lg:flex gap-10 pb-4 pt-4">
                     {socials.map((social) => {
                       return (
                         <div className="">
@@ -374,6 +374,22 @@ export default function Home() {
                   <p className="justify-center text-center text-lg font-medium text-gray-400 pb-5">
                     Software Engineer | Full Stack Developer
                   </p>
+                   <div className="flex lg:hidden gap-10 mb-7">
+                    {socials.map((social) => {
+                      return (
+                        <div className="">
+                          <a href={social.link} target="_blank">
+                            <img
+                              src={social.icon}
+                              alt={social.name}
+                              className="w-8 hover:scale-120 transition-all duration-300"
+                            />
+                            {"  "}
+                          </a>
+                        </div>
+                      );
+                    })}
+                  </div>
                   <p className="text-base">
                     Solution-driven software engineer with over {experienceYear}{" "}
                     years of experience building scalable web, backend, and
