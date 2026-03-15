@@ -412,7 +412,7 @@ export default function Home() {
                 {journey.map((journeys) => {
                   return (
                     <>
-                      <div className="pb-5">
+                      <div className="pb-8">
                         <div className="lg:flex lg:justify-between">
                           <div>
                             <p className="font-bold text-[22px]">
