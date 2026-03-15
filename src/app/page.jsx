@@ -328,7 +328,6 @@ export default function Home() {
                   <img
                     src="./logo.png"
                     alt="Favour Omirin Image"
-                    loading="lazy"
                     className="w-8 h-8 object-contain"
                   />
 
@@ -349,7 +348,6 @@ export default function Home() {
                   <img
                     src={userPic}
                     alt="Favour Omirin Image"
-                    loading="lazy"
                     className="lg:w-56.5 w-42 pb-4 rounded-full"
                   />
                   <div className="flex gap-10 pb-8 pt-4">
@@ -671,7 +669,9 @@ export default function Home() {
                               <p className="text-xs">{compliment.work}</p>
                             </div>
                           </div>{" "}
-                          <div className="pt-4 text-sm">{compliment.message}</div>
+                          <div className="pt-4 text-sm">
+                            {compliment.message}
+                          </div>
                         </div>
                       </div>
                     </div>
