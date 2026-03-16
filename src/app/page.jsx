@@ -718,7 +718,7 @@ export default function Home() {
                     style={{ height: "1.0px" }}
                   ></div>
                 </div>
-                <div className="pt-8 px-10 lg:px-20 flex text-center text-lg">
+                <div className="pt-8 px-10 lg:px-20 flex text-center text-base">
                   Ready to bring your ideas to life? I'm always excited to
                   collaborate on innovative projects and help transform your
                   vision into reality.
