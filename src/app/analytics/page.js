@@ -182,7 +182,7 @@ export default function AnalyticsPage() {
 
       {/* Date Pickers */}
       <div className="sm:flex gap-4 text-sm items-center">
-        <div className="mb-2">
+        <div className="sm:mb-0 mb-2">
           <label className=" mb-1 text-white">Start Date:</label>
           <DatePicker
             selected={startDate}
