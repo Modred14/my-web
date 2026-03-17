@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import Reveal from "./reavel";
 import PageLoader from "@/components/PageLoader";
+import AnalyticsTracker from "@/components/AnalyticsTracker";
 
 export default function Home() {
   const [currentTime, setCurrentTime] = useState("");
@@ -320,6 +321,7 @@ export default function Home() {
 
   return (
     <PageLoader>
+      <AnalyticsTracker />
       <div className="flex justify-center bg-black text-gray-200 text-base">
         <div className="w-full bg-black/50 backdrop-blur-2xl fixed z-100">
           <Reveal>

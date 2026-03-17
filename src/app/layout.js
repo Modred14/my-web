@@ -49,6 +49,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
