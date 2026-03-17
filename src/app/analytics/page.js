@@ -16,6 +16,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import axios from "axios";
+import ErrorModal from "@/components/ErrorModal";
 
 const COLORS = [
   "#0088FE",
@@ -28,6 +29,11 @@ const COLORS = [
 
 export default function AnalyticsPage() {
   const today = new Date();
+  const [step, setStep] = useState(1);
+  const [message, setMessage] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorOpen, setErrorOpen] = useState(false);
+  const [errorTrigger, setErrorTrigger] = useState(0);
   const [startDate, setStartDate] = useState(
     new Date(today.setDate(today.getDate() - 6)),
   ); // 7-day default
@@ -102,6 +108,16 @@ export default function AnalyticsPage() {
     return result;
   })();
 
+  const checkPass = () => {
+    const passcode = process.env.NEXT_PUBLIC_PASSWORD;
+    if (password === passcode) {
+      setStep(2);
+    } else {
+      setMessage("Invalid passcode");
+      setErrorOpen(true);
+      setErrorTrigger((prev) => prev + 1);
+    }
+  };
   // Devices
   const devicesData = data.devices?.length
     ? data.devices.map((d) => ({
@@ -175,210 +191,246 @@ export default function AnalyticsPage() {
     ) : null;
 
   return (
-    <div className="min-h-screen pb-20 bg-black text-white px-4 sm:px-6 lg:px-12 py-6 space-y-8">
-      <h1 className="text-2xl pt-10 sm:text-3xl font-extrabold">
-        Website Analytics
-      </h1>
-
-      {/* Date Pickers */}
-      <div className="sm:flex gap-4 text-sm items-center">
-        <div className="sm:mb-0 mb-2">
-          <label className=" mb-1 text-white">Start Date:</label>
-          <DatePicker
-            selected={startDate}
-            onChange={(date) => {
-              if (!date) return;
-              const diff =
-                (endDate.getTime() - date.getTime()) / (1000 * 60 * 60 * 24) +
-                1;
-              if (diff < 2 || diff > 30) return;
-              setStartDate(date);
-            }}
-            selectsStart
-            startDate={startDate}
-            endDate={endDate}
-            dateFormat="yyyy-MM-dd"
-            maxDate={endDate}
-            className="rounded p-1 px-2 ml-1 w-25 border border-blue-600/50"
-          />
+    <div className="min-h-screen bg-black text-white ">
+      {step === 1 && (
+        <div className="flex flex-col items-center justify-center min-h-screen  bg-black text-green-400 font-mono space-y-4">
+          <h2 className="text-xl sm:text-2xl font-bold">ACCESS TERMINAL</h2>
+          <p className="text-sm text-green-300">
+            Enter passcode to continue...
+          </p>
+     <div className="relative w-60">
+  <input
+    type="password"
+    value={password}
+    onChange={(e) => setPassword(e.target.value)}
+    placeholder="••••••"
+    onKeyDown={(e) => e.key === "Enter" && checkPass()}
+    className="w-full bg-black border border-green-400 text-green-300 placeholder-green-600 px-3 py-2 pr-16 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+  />
+  <button
+    onClick={checkPass}
+    className="absolute top-0 right-0 h-full bg-green-500 text-black px-3 rounded-r hover:bg-green-600 transition font-bold"
+  >
+    Enter
+  </button>
+</div>
+          <ErrorModal
+            isOpen={errorOpen}
+            message={message}
+            triggerId={errorTrigger}
+            onClose={() => setErrorOpen(false)}
+            autoClose
+          />{" "}
         </div>
+      )}{" "}
+      {step === 2 && (
+        <div className="px-4 sm:px-6 lg:px-12 py-6 space-y-8 pb-20">
+          {/* Date Pickers */}
+          <h1 className="text-2xl pt-10 sm:text-3xl font-extrabold">
+            Website Analytics
+          </h1>
+          <div className="sm:flex gap-4 text-sm items-center">
+            <div className="sm:mb-0 mb-2">
+              <label className=" mb-1 text-white">Start Date:</label>
+              <DatePicker
+                selected={startDate}
+                onChange={(date) => {
+                  if (!date) return;
+                  const diff =
+                    (endDate.getTime() - date.getTime()) /
+                      (1000 * 60 * 60 * 24) +
+                    1;
+                  if (diff < 2 || diff > 30) return;
+                  setStartDate(date);
+                }}
+                selectsStart
+                startDate={startDate}
+                endDate={endDate}
+                dateFormat="yyyy-MM-dd"
+                maxDate={endDate}
+                className="rounded p-1 px-2 ml-1 w-25 border border-blue-600/50"
+              />
+            </div>
 
-        <div>
-          <label className=" mb-1 text-white">End Date:</label>
-          <DatePicker
-            selected={endDate}
-            onChange={(date) => {
-              if (!date) return;
-              const diff =
-                (date.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24) +
-                1;
-              if (diff < 2 || diff > 30 || date > new Date()) return;
-              setEndDate(date);
-            }}
-            selectsEnd
-            startDate={startDate}
-            endDate={endDate}
-            minDate={startDate}
-            maxDate={new Date()}
-            dateFormat="yyyy-MM-dd"
-            className="rounded p-1 px-2 ml-1 w-25 border border-blue-600/50"
-          />
-        </div>
-      </div>
-
-      {/* Visits Over Time */}
-      <div className="bg-gray-950 p-4 sm:p-6 rounded-xl shadow">
-        <h2 className="text-lg sm:text-xl mb-4">Visits Over Time</h2>
-        {renderNoRecord(visitsData) || (
-          <div className="w-full h-60">
-            <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={visitsData}>
-                <XAxis dataKey="day" />
-                <YAxis />
-                <Tooltip />
-                <Line
-                  type="monotone"
-                  dataKey="visits"
-                  stroke="#0088FE"
-                  strokeWidth={2}
-                />
-              </LineChart>
-            </ResponsiveContainer>
+            <div>
+              <label className=" mb-1 text-white">End Date:</label>
+              <DatePicker
+                selected={endDate}
+                onChange={(date) => {
+                  if (!date) return;
+                  const diff =
+                    (date.getTime() - startDate.getTime()) /
+                      (1000 * 60 * 60 * 24) +
+                    1;
+                  if (diff < 2 || diff > 30 || date > new Date()) return;
+                  setEndDate(date);
+                }}
+                selectsEnd
+                startDate={startDate}
+                endDate={endDate}
+                minDate={startDate}
+                maxDate={new Date()}
+                dateFormat="yyyy-MM-dd"
+                className="rounded p-1 px-2 ml-1 w-25 border border-blue-600/50"
+              />
+            </div>
           </div>
-        )}
-      </div>
 
-      {/* Device & Browser PieCharts */}
-
-      {/* Referrers & Countries */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="bg-gray-950 p-4 sm:p-6 rounded-xl shadow">
-          <h2 className="text-lg sm:text-xl mb-4">Top Referrers</h2>
-          {renderNoRecord(referrersData) || (
-            <ul className="space-y-2 text-sm sm:text-base">
-              {referrersData
-                .sort((a, b) => b.count - a.count)
-                .slice(0, 10)
-                .map((ref, idx) => (
-                  <li
-                    key={idx}
-                    className="flex justify-between border-b border-gray-700 pb-1"
-                  >
-                    <span>{ref.referrer || "Unknown"}</span>
-                    <span className="text-gray-400">{ref.count || 0}</span>
-                  </li>
-                ))}
-            </ul>
-          )}
-        </div>
-
-        <div className="bg-gray-950 p-4 sm:p-6 rounded-xl shadow">
-          <h2 className="text-lg sm:text-xl mb-4">Top Countries</h2>
-          {renderNoRecord(countriesData) || (
-            <ul className="space-y-2 text-sm sm:text-base">
-              {countriesData
-                .sort((a, b) => b.count - a.count)
-                .slice(0, 10)
-                .map((c, idx) => (
-                  <li
-                    key={idx}
-                    className="flex justify-between border-b border-gray-700 pb-1"
-                  >
-                    <span>{c.country || "Unknown"}</span>
-                    <span className="text-gray-400">{c.count || 0}</span>
-                  </li>
-                ))}
-            </ul>
-          )}
-        </div>
-      </div>
-
-      {/* Average Session Duration */}
-      <div className="bg-gray-950 p-4 sm:p-6 rounded-xl shadow">
-        <h2 className="text-lg sm:text-xl mb-4">
-          Average Session Duration (Per Day)
-        </h2>
-        {renderNoRecord(averageSessionData) || (
-          <div className="w-full h-60">
-            <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={averageSessionData}>
-                <XAxis dataKey="day" />
-                <YAxis />
-                <Tooltip
-                  formatter={(_, name, props) => props.payload.timeLabel}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="duration"
-                  stroke="#FF8042"
-                  strokeWidth={2}
-                  dot={{ r: 4 }}
-                />
-              </LineChart>
-            </ResponsiveContainer>
+          {/* Visits Over Time */}
+          <div className="bg-gray-950 p-4 sm:p-6 rounded-xl shadow">
+            <h2 className="text-lg sm:text-xl mb-4">Visits Over Time</h2>
+            {renderNoRecord(visitsData) || (
+              <div className="w-full h-60">
+                <ResponsiveContainer width="100%" height="100%">
+                  <LineChart data={visitsData}>
+                    <XAxis dataKey="day" />
+                    <YAxis />
+                    <Tooltip />
+                    <Line
+                      type="monotone"
+                      dataKey="visits"
+                      stroke="#0088FE"
+                      strokeWidth={2}
+                    />
+                  </LineChart>
+                </ResponsiveContainer>
+              </div>
+            )}
           </div>
-        )}
-      </div>
-      <p className="text-xl sm:text-2xl font-extrabold pt-10">
-        All-Time Totals (Not Limited by Date Range)
-      </p>
-      <p className="text-base sm:text-lg font-bold -mt-5">
-        Total Visits ({devicesData.reduce((sum, d) => sum + d.count, 0)})
-      </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="bg-gray-950 p-4 sm:p-6 rounded-xl shadow">
-          <h2 className="text-lg sm:text-xl mb-4">Device Breakdown </h2>
-          {renderNoRecord(devicesData) || (
-            <ResponsiveContainer width="100%" height={240}>
-              <PieChart>
-                <Pie
-                  data={devicesData}
-                  dataKey="count"
-                  nameKey="device"
-                  outerRadius={100}
-                  label
-                >
-                  {devicesData.map((entry, index) => (
-                    <Cell
-                      key={`device-${index}`}
-                      fill={COLORS[index % COLORS.length]}
-                    />
-                  ))}
-                </Pie>
-                <Tooltip />
-                <Legend />
-              </PieChart>
-            </ResponsiveContainer>
-          )}
-        </div>
+          {/* Device & Browser PieCharts */}
 
-        <div className="bg-gray-950 p-4 sm:p-6 rounded-xl shadow">
-          <h2 className="text-lg sm:text-xl mb-4">Browser Breakdown</h2>
-          {renderNoRecord(browsersData) || (
-            <ResponsiveContainer width="100%" height={240}>
-              <PieChart>
-                <Pie
-                  data={browsersData}
-                  dataKey="count"
-                  nameKey="browser"
-                  outerRadius={100}
-                  label
-                >
-                  {browsersData.map((entry, index) => (
-                    <Cell
-                      key={`browser-${index}`}
-                      fill={COLORS[index % COLORS.length]}
+          {/* Referrers & Countries */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-gray-950 p-4 sm:p-6 rounded-xl shadow">
+              <h2 className="text-lg sm:text-xl mb-4">Top Referrers</h2>
+              {renderNoRecord(referrersData) || (
+                <ul className="space-y-2 text-sm sm:text-base">
+                  {referrersData
+                    .sort((a, b) => b.count - a.count)
+                    .slice(0, 10)
+                    .map((ref, idx) => (
+                      <li
+                        key={idx}
+                        className="flex justify-between border-b border-gray-700 pb-1"
+                      >
+                        <span>{ref.referrer || "Unknown"}</span>
+                        <span className="text-gray-400">{ref.count || 0}</span>
+                      </li>
+                    ))}
+                </ul>
+              )}
+            </div>
+
+            <div className="bg-gray-950 p-4 sm:p-6 rounded-xl shadow">
+              <h2 className="text-lg sm:text-xl mb-4">Top Countries</h2>
+              {renderNoRecord(countriesData) || (
+                <ul className="space-y-2 text-sm sm:text-base">
+                  {countriesData
+                    .sort((a, b) => b.count - a.count)
+                    .slice(0, 10)
+                    .map((c, idx) => (
+                      <li
+                        key={idx}
+                        className="flex justify-between border-b border-gray-700 pb-1"
+                      >
+                        <span>{c.country || "Unknown"}</span>
+                        <span className="text-gray-400">{c.count || 0}</span>
+                      </li>
+                    ))}
+                </ul>
+              )}
+            </div>
+          </div>
+
+          {/* Average Session Duration */}
+          <div className="bg-gray-950 p-4 sm:p-6 rounded-xl shadow">
+            <h2 className="text-lg sm:text-xl mb-4">
+              Average Session Duration (Per Day)
+            </h2>
+            {renderNoRecord(averageSessionData) || (
+              <div className="w-full h-60">
+                <ResponsiveContainer width="100%" height="100%">
+                  <LineChart data={averageSessionData}>
+                    <XAxis dataKey="day" />
+                    <YAxis />
+                    <Tooltip
+                      formatter={(_, name, props) => props.payload.timeLabel}
                     />
-                  ))}
-                </Pie>
-                <Tooltip />
-                <Legend />
-              </PieChart>
-            </ResponsiveContainer>
-          )}
+                    <Line
+                      type="monotone"
+                      dataKey="duration"
+                      stroke="#FF8042"
+                      strokeWidth={2}
+                      dot={{ r: 4 }}
+                    />
+                  </LineChart>
+                </ResponsiveContainer>
+              </div>
+            )}
+          </div>
+          <p className="text-xl sm:text-2xl font-extrabold pt-10">
+            All-Time Totals (Not Limited by Date Range)
+          </p>
+          <p className="text-base sm:text-lg font-bold -mt-5">
+            Total Visits ({devicesData.reduce((sum, d) => sum + d.count, 0)})
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-gray-950 p-4 sm:p-6 rounded-xl shadow">
+              <h2 className="text-lg sm:text-xl mb-4">Device Breakdown </h2>
+              {renderNoRecord(devicesData) || (
+                <ResponsiveContainer width="100%" height={240}>
+                  <PieChart>
+                    <Pie
+                      data={devicesData}
+                      dataKey="count"
+                      nameKey="device"
+                      outerRadius={100}
+                      label
+                    >
+                      {devicesData.map((entry, index) => (
+                        <Cell
+                          key={`device-${index}`}
+                          fill={COLORS[index % COLORS.length]}
+                        />
+                      ))}
+                    </Pie>
+                    <Tooltip />
+                    <Legend />
+                  </PieChart>
+                </ResponsiveContainer>
+              )}
+            </div>
+
+            <div className="bg-gray-950 p-4 sm:p-6 rounded-xl shadow">
+              <h2 className="text-lg sm:text-xl mb-4">Browser Breakdown</h2>
+              {renderNoRecord(browsersData) || (
+                <ResponsiveContainer width="100%" height={240}>
+                  <PieChart>
+                    <Pie
+                      data={browsersData}
+                      dataKey="count"
+                      nameKey="browser"
+                      outerRadius={100}
+                      label
+                    >
+                      {browsersData.map((entry, index) => (
+                        <Cell
+                          key={`browser-${index}`}
+                          fill={COLORS[index % COLORS.length]}
+                        />
+                      ))}
+                    </Pie>
+                    <Tooltip />
+                    <Legend />
+                  </PieChart>
+                </ResponsiveContainer>
+              )}
+            </div>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

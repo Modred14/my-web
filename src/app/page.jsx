@@ -725,25 +725,47 @@ export default function Home() {
                   collaborate on innovative projects and help transform your
                   vision into reality.
                 </div>
-                <div className="flex gap-10 justify-center pb-18 pt-7">
+                <div className="flex gap-6 justify-center pb-18 pt-7 flex-wrap">
                   <a
                     href="/socials"
                     className="
-    inline-flex items-center justify-center gap-2
-    px-3.5 py-2
-    rounded-2xl
-    border border-white/10
-    bg-white/5 backdrop-blur
-    text-sm font-semibold text-gray-100
-    shadow-[0_12px_30px_rgba(0,0,0,0.35)]
-    transition-all duration-300
-    hover:bg-white/10 hover:border-white/20 hover:-translate-y-0.5
-    active:translate-y-0
-    focus:outline-none focus:ring-2 focus:ring-white/20
-  "
+      inline-flex items-center justify-center gap-2
+      px-6 py-3
+      rounded-full
+      bg-gradient-to-r from-blue-500/20 via-blue-400/10 to-blue-500/20
+      backdrop-blur-md
+      border border-blue-400/30
+      text-sm font-semibold text-white
+      shadow-lg shadow-blue-500/20
+      transition-all duration-300
+      hover:scale-105 hover:shadow-xl hover:shadow-blue-400/40
+      active:translate-y-0.5 active:scale-100
+      focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:ring-offset-1
+    "
                   >
                     Socials
-                    <span className="opacity-70">↗</span>
+                    <span className="opacity-80 text-blue-300">↗</span>
+                  </a>
+
+                  <a
+                    href="/analytics"
+                    className="
+      inline-flex items-center justify-center gap-2
+      px-6 py-3
+      rounded-full
+      bg-gradient-to-r from-blue-500/20 via-blue-400/10 to-blue-500/20
+      backdrop-blur-md
+      border border-blue-400/30
+      text-sm font-semibold text-white
+      shadow-lg shadow-blue-500/20
+      transition-all duration-300
+      hover:scale-105 hover:shadow-xl hover:shadow-blue-400/40
+      active:translate-y-0.5 active:scale-100
+      focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:ring-offset-1
+    "
+                  >
+                    Analytics
+                    <span className="opacity-80 text-blue-300">↗</span>
                   </a>
                 </div>
               </section>
