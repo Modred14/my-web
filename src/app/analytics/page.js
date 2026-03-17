@@ -73,32 +73,35 @@ export default function AnalyticsPage() {
   };
 
   // --- Process analytics ---
-// --- Generate visits data with 0s for missing dates ---
-const visitsData = (() => {
-  const dayMap = new Map(
-    data.visitsPerDay?.map(d => [new Date(d.day).toDateString(), d.visits || 0])
-  );
+  // --- Generate visits data with 0s for missing dates ---
+  const visitsData = (() => {
+    const dayMap = new Map(
+      data.visitsPerDay?.map((d) => [
+        new Date(d.day).toDateString(),
+        d.visits || 0,
+      ]),
+    );
 
-  const result = [];
-  const curr = new Date(startDate);
-  const end = new Date(endDate);
+    const result = [];
+    const curr = new Date(startDate);
+    const end = new Date(endDate);
 
-  while (curr <= end) {
-    const dateStr = curr.toDateString();
-    result.push({
-      day: curr.toLocaleDateString("en-US", {
-        weekday: "short",
-        day: "numeric",
-        month: "short",
-      }),
-      visits: dayMap.get(dateStr) || 0,
-    });
-    curr.setDate(curr.getDate() + 1);
-  }
+    while (curr <= end) {
+      const dateStr = curr.toDateString();
+      result.push({
+        day: curr.toLocaleDateString("en-US", {
+          weekday: "short",
+          day: "numeric",
+          month: "short",
+        }),
+        visits: dayMap.get(dateStr) || 0,
+      });
+      curr.setDate(curr.getDate() + 1);
+    }
 
-  return result;
-})();
-  
+    return result;
+  })();
+
   // Devices
   const devicesData = data.devices?.length
     ? data.devices.map((d) => ({
@@ -117,36 +120,39 @@ const visitsData = (() => {
   const countriesData = filterByDate(data.countries, "day");
 
   // --- Generate average session data with 0s for missing dates ---
-const averageSessionData = (() => {
-  const durationMap = new Map(
-    data.averageSessionDuration?.map(d => [new Date(d.day).toDateString(), d.seconds || 0])
-  );
+  const averageSessionData = (() => {
+    const durationMap = new Map(
+      data.averageSessionDuration?.map((d) => [
+        new Date(d.day).toDateString(),
+        d.seconds || 0,
+      ]),
+    );
 
-  const result = [];
-  const curr = new Date(startDate);
-  const end = new Date(endDate);
+    const result = [];
+    const curr = new Date(startDate);
+    const end = new Date(endDate);
 
-  while (curr <= end) {
-    const dateStr = curr.toDateString();
-    const totalSeconds = durationMap.get(dateStr) || 0;
-    const hours = Math.floor(totalSeconds / 3600);
-    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    while (curr <= end) {
+      const dateStr = curr.toDateString();
+      const totalSeconds = durationMap.get(dateStr) || 0;
+      const hours = Math.floor(totalSeconds / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
 
-    result.push({
-      day: curr.toLocaleDateString("en-US", {
-        weekday: "short",
-        day: "numeric",
-        month: "short",
-      }),
-      duration: parseFloat((hours + minutes / 60).toFixed(2)),
-      timeLabel: `${hours}hrs ${minutes}mins`,
-    });
+      result.push({
+        day: curr.toLocaleDateString("en-US", {
+          weekday: "short",
+          day: "numeric",
+          month: "short",
+        }),
+        duration: parseFloat((hours + minutes / 60).toFixed(2)),
+        timeLabel: `${hours}hrs ${minutes}mins`,
+      });
 
-    curr.setDate(curr.getDate() + 1);
-  }
+      curr.setDate(curr.getDate() + 1);
+    }
 
-  return result;
-})();
+    return result;
+  })();
 
   if (loading) {
     return (
@@ -170,13 +176,13 @@ const averageSessionData = (() => {
 
   return (
     <div className="min-h-screen pb-20 bg-black text-white px-4 sm:px-6 lg:px-12 py-6 space-y-8">
-      <h1 className="text-2xl pt-10 sm:text-3xl font-bold">
+      <h1 className="text-2xl pt-10 sm:text-3xl font-extrabold">
         Website Analytics
       </h1>
 
       {/* Date Pickers */}
-      <div className="sm:flex gap-4 items-center">
-        <div>
+      <div className="sm:flex gap-4 text-sm items-center">
+        <div className="mb-2">
           <label className=" mb-1 text-white">Start Date:</label>
           <DatePicker
             selected={startDate}
@@ -185,7 +191,7 @@ const averageSessionData = (() => {
               const diff =
                 (endDate.getTime() - date.getTime()) / (1000 * 60 * 60 * 24) +
                 1;
-              if (diff < 2 || diff > 30) return; // enforce min 2, max 30 days
+              if (diff < 2 || diff > 30) return;
               setStartDate(date);
             }}
             selectsStart
@@ -193,7 +199,7 @@ const averageSessionData = (() => {
             endDate={endDate}
             dateFormat="yyyy-MM-dd"
             maxDate={endDate}
-            className="rounded p-2 "
+            className="rounded p-1 px-2 ml-1 w-25 border border-blue-600/50"
           />
         </div>
 
@@ -215,7 +221,7 @@ const averageSessionData = (() => {
             minDate={startDate}
             maxDate={new Date()}
             dateFormat="yyyy-MM-dd"
-            className="rounded p-2"
+            className="rounded p-1 px-2 ml-1 w-25 border border-blue-600/50"
           />
         </div>
       </div>
@@ -243,59 +249,6 @@ const averageSessionData = (() => {
       </div>
 
       {/* Device & Browser PieCharts */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="bg-gray-950 p-4 sm:p-6 rounded-xl shadow">
-          <h2 className="text-lg sm:text-xl mb-4">Device Breakdown</h2>
-          {renderNoRecord(devicesData) || (
-            <ResponsiveContainer width="100%" height={240}>
-              <PieChart>
-                <Pie
-                  data={devicesData}
-                  dataKey="count"
-                  nameKey="device"
-                  outerRadius={100}
-                  label
-                >
-                  {devicesData.map((entry, index) => (
-                    <Cell
-                      key={`device-${index}`}
-                      fill={COLORS[index % COLORS.length]}
-                    />
-                  ))}
-                </Pie>
-                <Tooltip />
-                <Legend />
-              </PieChart>
-            </ResponsiveContainer>
-          )}
-        </div>
-
-        <div className="bg-gray-950 p-4 sm:p-6 rounded-xl shadow">
-          <h2 className="text-lg sm:text-xl mb-4">Browser Breakdown</h2>
-          {renderNoRecord(browsersData) || (
-            <ResponsiveContainer width="100%" height={240}>
-              <PieChart>
-                <Pie
-                  data={browsersData}
-                  dataKey="count"
-                  nameKey="browser"
-                  outerRadius={100}
-                  label
-                >
-                  {browsersData.map((entry, index) => (
-                    <Cell
-                      key={`browser-${index}`}
-                      fill={COLORS[index % COLORS.length]}
-                    />
-                  ))}
-                </Pie>
-                <Tooltip />
-                <Legend />
-              </PieChart>
-            </ResponsiveContainer>
-          )}
-        </div>
-      </div>
 
       {/* Referrers & Countries */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -365,6 +318,66 @@ const averageSessionData = (() => {
             </ResponsiveContainer>
           </div>
         )}
+      </div>
+      <p className="text-xl sm:text-2xl font-extrabold pt-10">
+        All-Time Totals (Not Limited by Date Range)
+      </p>
+      <p className="text-base sm:text-lg font-bold -mt-5">
+        Total Visits ({devicesData.reduce((sum, d) => sum + d.count, 0)})
+      </p>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="bg-gray-950 p-4 sm:p-6 rounded-xl shadow">
+          <h2 className="text-lg sm:text-xl mb-4">Device Breakdown </h2>
+          {renderNoRecord(devicesData) || (
+            <ResponsiveContainer width="100%" height={240}>
+              <PieChart>
+                <Pie
+                  data={devicesData}
+                  dataKey="count"
+                  nameKey="device"
+                  outerRadius={100}
+                  label
+                >
+                  {devicesData.map((entry, index) => (
+                    <Cell
+                      key={`device-${index}`}
+                      fill={COLORS[index % COLORS.length]}
+                    />
+                  ))}
+                </Pie>
+                <Tooltip />
+                <Legend />
+              </PieChart>
+            </ResponsiveContainer>
+          )}
+        </div>
+
+        <div className="bg-gray-950 p-4 sm:p-6 rounded-xl shadow">
+          <h2 className="text-lg sm:text-xl mb-4">Browser Breakdown</h2>
+          {renderNoRecord(browsersData) || (
+            <ResponsiveContainer width="100%" height={240}>
+              <PieChart>
+                <Pie
+                  data={browsersData}
+                  dataKey="count"
+                  nameKey="browser"
+                  outerRadius={100}
+                  label
+                >
+                  {browsersData.map((entry, index) => (
+                    <Cell
+                      key={`browser-${index}`}
+                      fill={COLORS[index % COLORS.length]}
+                    />
+                  ))}
+                </Pie>
+                <Tooltip />
+                <Legend />
+              </PieChart>
+            </ResponsiveContainer>
+          )}
+        </div>
       </div>
     </div>
   );
