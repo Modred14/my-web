@@ -73,18 +73,31 @@ export default function AnalyticsPage() {
   };
 
   // --- Process analytics ---
-  const visitsData = filterByDate(data.visitsPerDay, "day").map((d) => {
-    const date = new Date(d.day);
-    return {
-      ...d,
-      day: date.toLocaleDateString("en-US", {
+// --- Generate visits data with 0s for missing dates ---
+const visitsData = (() => {
+  const dayMap = new Map(
+    data.visitsPerDay?.map(d => [new Date(d.day).toDateString(), d.visits || 0])
+  );
+
+  const result = [];
+  const curr = new Date(startDate);
+  const end = new Date(endDate);
+
+  while (curr <= end) {
+    const dateStr = curr.toDateString();
+    result.push({
+      day: curr.toLocaleDateString("en-US", {
         weekday: "short",
         day: "numeric",
         month: "short",
       }),
-    };
-  });
+      visits: dayMap.get(dateStr) || 0,
+    });
+    curr.setDate(curr.getDate() + 1);
+  }
 
+  return result;
+})();
   
   // Devices
   const devicesData = data.devices?.length
@@ -103,24 +116,37 @@ export default function AnalyticsPage() {
   const referrersData = filterByDate(data.referrers, "day");
   const countriesData = filterByDate(data.countries, "day");
 
-  const averageSessionData = filterByDate(
-    data.averageSessionDuration,
-    "day",
-  ).map((d) => {
-    const totalSeconds = d.seconds;
+  // --- Generate average session data with 0s for missing dates ---
+const averageSessionData = (() => {
+  const durationMap = new Map(
+    data.averageSessionDuration?.map(d => [new Date(d.day).toDateString(), d.seconds || 0])
+  );
+
+  const result = [];
+  const curr = new Date(startDate);
+  const end = new Date(endDate);
+
+  while (curr <= end) {
+    const dateStr = curr.toDateString();
+    const totalSeconds = durationMap.get(dateStr) || 0;
     const hours = Math.floor(totalSeconds / 3600);
     const minutes = Math.floor((totalSeconds % 3600) / 60);
-    const date = new Date(d.day);
-    return {
-      day: date.toLocaleDateString("en-US", {
+
+    result.push({
+      day: curr.toLocaleDateString("en-US", {
         weekday: "short",
         day: "numeric",
         month: "short",
       }),
       duration: parseFloat((hours + minutes / 60).toFixed(2)),
       timeLabel: `${hours}hrs ${minutes}mins`,
-    };
-  });
+    });
+
+    curr.setDate(curr.getDate() + 1);
+  }
+
+  return result;
+})();
 
   if (loading) {
     return (
