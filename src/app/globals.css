@@ -64,6 +64,35 @@ html {
     0 0 8px 2px #3b82f6cc,
     0 0 18px 4px #3b82f666;
 }
+@keyframes revealFloat {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0);
+  }
+
+  40% {
+    opacity: 1;
+    transform: translate3d(0, 18px, 0);
+  }
+
+  65% {
+    transform: translate3d(0, 18px, 0);
+  }
+
+  80% {
+    transform: translate3d(0, -6px, 0); /* soft overshoot */
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0px, 0);
+  }
+}
+
+.reveal-float {
+  animation: revealFloat 850ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  will-change: transform, opacity;
+}
 
 body {
   background: var(--background);

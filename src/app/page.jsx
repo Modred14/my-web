@@ -21,6 +21,7 @@ import GradientDivider from "@/components/GradientDivider";
 import RevealLeft from "./revealfrleft";
 import RevealRight from "./revealfright";
 import RevealChill from "./revealchill";
+import RevealChillDown from "./revealchillDown";
 
 export default function Home() {
   const [currentTime, setCurrentTime] = useState("");
@@ -43,17 +44,15 @@ export default function Home() {
   const userPic = "/Favour-Omirin.jpg";
   const journey = [
     {
-      workplace: "2Thirty Integrated Services Ltd",
-      position: "Frontend Engineer (Internship)",
-      duration: "January 2024 – June 2024",
+      workplace: "Techfest 5.0 Hackathon",
+      position: "First Place Winner (Contributor)",
+      duration: "May 2026",
       impact: [
-        "Designed and implemented responsive, user-friendly interfaces that improved usability across desktop and mobile devices",
-        "Developed and maintained scalable web applications using JavaScript, React, and Tailwind CSS",
-        "Built reusable components and UI patterns to improve code maintainability and development efficiency",
-        "Converted UI/UX designs and mockups into fully functional, pixel-accurate web pages",
-        "Ensured cross-browser compatibility and compliance with modern web standards",
-        "Integrated frontend components with backend APIs to deliver seamless application functionality",
-        "Collaborated with designers and backend engineers to optimize performance and user experience",
+        "Won first place at Techfest 5.0 (Cred, Code & Culture) as part of a 5-member team for building Tappay",
+        "Built Tappay, a payment app integrating Payaza API for wallet funding and transactions",
+        "Implemented NFC tap-to-pay, QR scanning, and phone number-based transfers",
+        "My team and I designed and shipped mobile and web versions of the product in 32 hours",
+        "Delivered a working MVP enabling fast and flexible digital payments for real-world use cases",
       ],
     },
     {
@@ -61,15 +60,26 @@ export default function Home() {
       position: "Campus Ambassador (Obafemi Awolowo University)",
       duration: "January 2026 – Present",
       impact: [
-        "Promoted Cowrywise investment and savings products to students through campus outreach",
-        "Onboarded new users and increased platform adoption among undergraduates",
-        "Organized and coordinated financial literacy sessions and awareness campaigns",
-        "Represented Cowrywise at campus events and student programs",
-        "Created and shared digital content to educate students on smart money habits",
-        "Collected user feedback and reported insights to the Cowrywise team",
-        "Built partnerships with student groups to expand brand reach",
+        "Increased Cowrywise adoption among students by onboarding new users and improving campus engagement",
+        "Planned and executed financial literacy campaigns and outreach programs for undergraduates",
+        "Represented Cowrywise at campus events, strengthening brand visibility and student trust",
+        "Built and managed partnerships with student organizations to expand campus reach and engagement",
+        "Collected and analyzed user feedback to inform product improvements and engagement strategy",
       ],
     },
+    {
+      workplace: "2Thirty Integrated Services Ltd",
+      position: "Frontend Engineer (Internship)",
+      duration: "January 2024 – June 2024",
+      impact: [
+        "Built and maintained scalable web applications using React, JavaScript, and Tailwind CSS",
+        "Integrated frontend components with backend APIs to deliver seamless full-stack functionality",
+        "Designed responsive, user-focused interfaces optimized for desktop and mobile",
+        "Built reusable UI components and patterns to improve maintainability and development speed",
+        "Converted UI/UX designs into pixel-accurate pages while ensuring cross-browser compatibility and modern web standards",
+      ],
+    },
+
     // {
     //   workplace: "",
     //   position: "",
@@ -295,7 +305,7 @@ export default function Home() {
     <PageLoader>
       <AnalyticsTracker />
 
-      <div className="flex justify-center bg-[#01050f] text-gray-200 text-base relative overflow-x-hidden">
+      <div className="flex justify-center bg-[#01050f] text-gray-200 text-base relative overflow-hidden">
         {" "}
         <div className="w-full bg-[#01050f]/50 backdrop-blur-2xl fixed z-100">
           <div className="fixed top-[-20vh] left-[-10vw] w-[600px] h-[600px] bg-blue-600/2 rounded-full blur-[120px] pointer-events-none z-0" />
@@ -691,7 +701,7 @@ export default function Home() {
 
               <div className="pt-12 grid md:grid-cols-2 gap-6 items-stretch">
                 {educations.map((education, index) => (
-                  <RevealChill key={index} delay={index * 70}>
+                  <RevealChill key={index} delay={index * 50}>
                     <div
                       key={index}
                       className="group relative h-full flex flex-col rounded-2xl overflow-hidden
@@ -800,7 +810,7 @@ export default function Home() {
 
               <div className="pt-12 grid md:grid-cols-2 gap-6 items-stretch">
                 {compliments.map((compliment, index) => (
-                  <RevealChill key={index} delay={index * 70}>
+                  <RevealChill key={index} delay={index * 50}>
                     <div
                       key={index}
                       className="group relative h-full flex flex-col rounded-2xl overflow-hidden
@@ -921,80 +931,82 @@ export default function Home() {
           </div>
 
           <footer className="mt-16 -mb-20 border-t border-white/10 ">
-            <div className="max-w-5xl mx-auto px-6 py-12">
-              {/* Top row: Brand + Nav */}
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 mb-10">
-                {/* Brand */}
-                <div className="flex items-center gap-3">
-                  <Image
-                    src="/logo.png"
-                    alt="Modred"
-                    width={32}
-                    height={32}
-                    className="w-8 h-8 object-contain"
-                  />
-                  <div>
-                    <p className="font-bold text-sm text-white tracking-widest uppercase">
-                      Modred.dev
-                    </p>
-                    <p className="text-[11px] text-gray-500 mt-0.5">
-                      Favour Omirin · Software Engineer
-                    </p>
+            <Reveal>
+              <div className="max-w-5xl mx-auto px-6 py-12">
+                {/* Top row: Brand + Nav */}
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 mb-10">
+                  {/* Brand */}
+                  <div className="flex items-center gap-3">
+                    <Image
+                      src="/logo.png"
+                      alt="Modred"
+                      width={32}
+                      height={32}
+                      className="w-8 h-8 object-contain"
+                    />
+                    <div>
+                      <p className="font-bold text-sm text-white tracking-widest uppercase">
+                        Modred.dev
+                      </p>
+                      <p className="text-[11px] text-gray-500 mt-0.5">
+                        Favour Omirin · Software Engineer
+                      </p>
+                    </div>
                   </div>
+
+                  {/* Nav */}
+                  <nav className="flex flex-wrap gap-x-8 gap-y-2">
+                    {[
+                      { label: "Experience", href: "#journey" },
+                      { label: "Projects", href: "#projects" },
+                      { label: "Education", href: "#education" },
+                      { label: "Testimonials", href: "#reviews" },
+                    ].map((item) => (
+                      <a
+                        key={item.label}
+                        href={item.href}
+                        className="text-xs text-gray-400 hover:text-white transition-colors duration-200 tracking-wide"
+                      >
+                        {item.label}
+                      </a>
+                    ))}
+                  </nav>
                 </div>
 
-                {/* Nav */}
-                <nav className="flex flex-wrap gap-x-8 gap-y-2">
-                  {[
-                    { label: "Experience", href: "#journey" },
-                    { label: "Projects", href: "#projects" },
-                    { label: "Education", href: "#education" },
-                    { label: "Testimonials", href: "#reviews" },
-                  ].map((item) => (
-                    <a
-                      key={item.label}
-                      href={item.href}
-                      className="text-xs text-gray-400 hover:text-white transition-colors duration-200 tracking-wide"
-                    >
-                      {item.label}
-                    </a>
-                  ))}
-                </nav>
-              </div>
+                {/* Divider */}
+                <div className="h-px bg-white/5 mb-8" />
 
-              {/* Divider */}
-              <div className="h-px bg-white/5 mb-8" />
+                {/* Bottom row: Copyright + Socials */}
+                <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+                  <p className="text-xs text-gray-600 order-2 md:order-1">
+                    © {new Date().getFullYear()} Favour Omirin. All rights
+                    reserved.
+                  </p>
 
-              {/* Bottom row: Copyright + Socials */}
-              <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-                <p className="text-xs text-gray-600 order-2 md:order-1">
-                  © {new Date().getFullYear()} Favour Omirin. All rights
-                  reserved.
-                </p>
-
-                {/* Socials */}
-                <div className="flex items-center gap-2 order-1 md:order-2">
-                  {socials.map((social) => {
-                    const Icon = social.icon;
-                    return (
-                      <a
-                        key={social.name}
-                        href={social.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        title={social.name}
-                        className="w-8 h-8 flex items-center justify-center rounded-md
+                  {/* Socials */}
+                  <div className="flex items-center gap-2 order-1 md:order-2">
+                    {socials.map((social) => {
+                      const Icon = social.icon;
+                      return (
+                        <a
+                          key={social.name}
+                          href={social.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          title={social.name}
+                          className="w-8 h-8 flex items-center justify-center rounded-md
                 border border-white/10 text-gray-500
                 hover:border-white/25 hover:text-white hover:bg-white/5
                 transition-all duration-200"
-                      >
-                        <Icon size={14} />
-                      </a>
-                    );
-                  })}
+                        >
+                          <Icon size={14} />
+                        </a>
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
-            </div>
+            </Reveal>
           </footer>
         </div>
       </div>
