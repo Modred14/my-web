@@ -18,6 +18,9 @@ import PageLoader from "@/components/PageLoader";
 import AnalyticsTracker from "@/components/AnalyticsTracker";
 import Image from "next/image";
 import GradientDivider from "@/components/GradientDivider";
+import RevealLeft from "./revealfrleft";
+import RevealRight from "./revealfright";
+import RevealChill from "./revealchill";
 
 export default function Home() {
   const [currentTime, setCurrentTime] = useState("");
@@ -291,8 +294,27 @@ export default function Home() {
   return (
     <PageLoader>
       <AnalyticsTracker />
-      <div className="flex justify-center bg-black text-gray-200 text-base">
-        <div className="w-full bg-black/50 backdrop-blur-2xl fixed z-100">
+
+      <div className="flex justify-center bg-[#01050f] text-gray-200 text-base relative overflow-x-hidden">
+        {" "}
+        <div className="w-full bg-[#01050f]/50 backdrop-blur-2xl fixed z-100">
+          <div className="fixed top-[-20vh] left-[-10vw] w-[600px] h-[600px] bg-blue-600/2 rounded-full blur-[120px] pointer-events-none z-0" />
+          <div className="fixed bottom-[-10vh] right-[-10vw] w-[500px] h-[500px] bg-cyan-500/1 rounded-full blur-[100px] pointer-events-none z-0" />
+          <div
+            className="fixed inset-0 pointer-events-none opacity-[0.18] z-0"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle, rgba(148,163,184,0.6) 1px, transparent 1px)",
+              backgroundSize: "32px 32px",
+            }}
+          />
+          <div
+            className="fixed inset-0 pointer-events-none z-0"
+            style={{
+              background:
+                "radial-gradient(ellipse 80% 80% at 50% 50%, transparent 40%, #030712 100%)",
+            }}
+          />
           <Reveal>
             <div className="grid text-sm grid-cols-2 items-center py-3 px-6 w-full ">
               <a href="#">
@@ -312,7 +334,6 @@ export default function Home() {
             </div>
           </Reveal>
         </div>
-
         <div className="md:max-w-250 sm:px-10 px-5 p-20">
           <Reveal>
             <div className="grid place-items-center">
@@ -321,14 +342,22 @@ export default function Home() {
                 <div className="grid lg:block place-items-center shrink-0">
                   <div className="relative w-fit">
                     {/* Glow ring behind avatar */}
-                    <div className="absolute inset-0 rounded-full bg-blue-500/20 blur-2xl scale-110 pointer-events-none" />
-                    <Image
-                      src={userPic}
-                      alt="Favour Omirin"
-                      width={226}
-                      height={226}
-                      className="relative lg:w-56 w-40 rounded-full ring-2 ring-white/10"
-                    />
+                    <div className="relative w-40 lg:w-56">
+                      {/* Glow layer (outside halo) */}
+                      <div className="absolute inset-0 rounded-full bg-blue-500/30 blur-2xl scale-102" />
+
+                      {/* Border glow ring */}
+                      <div className="absolute inset-0 rounded-full ring-2 ring-blue-500/40 shadow-[0_0_25px_rgba(59,130,246,0.6)]" />
+
+                      {/* Image (dimmed slightly) */}
+                      <Image
+                        src={userPic}
+                        alt="Favour Omirin"
+                        width={226}
+                        height={226}
+                        className="relative rounded-full brightness-90 contrast-110"
+                      />
+                    </div>
                     {/* Status badge */}
                     <span
                       className="absolute -bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap
@@ -512,90 +541,97 @@ export default function Home() {
               </div>
 
               <div className="pt-12 flex flex-col gap-16">
-                {projects.map((project, index) => (
-                  <div
-                    key={index}
-                    className={`group flex flex-col ${
-                      index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-                    } gap-8 items-center`}
-                  >
-                    {/* Image — takes 55% */}
-                    <div className="w-full lg:w-[55%] shrink-0 relative">
+                {projects.map((project, index) => {
+                  const Wrapper = index % 2 === 0 ? RevealLeft : RevealRight;
+                  return (
+                    <Wrapper>
                       <div
-                        className="relative overflow-hidden rounded-2xl border border-blue-400/15 
+                        key={index}
+                        className={`group flex flex-col ${
+                          index % 2 === 0
+                            ? "lg:flex-row"
+                            : "lg:flex-row-reverse"
+                        } gap-8 items-center`}
+                      >
+                        {/* Image — takes 55% */}
+                        <div className="w-full lg:w-[55%] shrink-0 relative">
+                          <div
+                            className="relative overflow-hidden rounded-2xl border border-blue-400/15 
                             group-hover:border-blue-400/40 transition-all duration-500
                             shadow-[0_0_0_1px_rgba(96,165,250,0.05)]
                             group-hover:shadow-[0_20px_60px_rgba(96,165,250,0.1)]"
-                      >
-                        <Image
-                          src={project.img}
-                          alt={project.name}
-                          width={800}
-                          height={450}
-                          className="w-full h-56 lg:h-72 object-cover transition-transform duration-700 group-hover:scale-105"
-                        />
-                        {/* overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                      </div>
-                      {/* floating index number */}
-                      <span className="absolute -top-4 -left-3 text-[80px] font-black text-white/[0.04] leading-none select-none pointer-events-none">
-                        0{index + 1}
-                      </span>
-                    </div>
-
-                    {/* Content */}
-                    <div className="flex-1 flex flex-col gap-4">
-                      <p className="text-2xl font-bold text-white">
-                        {project.name}
-                      </p>
-
-                      <p className="text-gray-400 text-sm leading-relaxed">
-                        {project.about}
-                      </p>
-
-                      <div className="flex flex-wrap gap-1.5">
-                        {project.stack.map((s, i) => (
-                          <span
-                            key={i}
-                            className="text-[11px] font-medium px-2 py-0.5 rounded-md
-                             text-teal-300 bg-teal-400/10 border border-teal-400/20"
                           >
-                            {s}
+                            <Image
+                              src={project.img}
+                              alt={project.name}
+                              width={800}
+                              height={450}
+                              className="w-full h-56 lg:h-72 object-cover transition-transform duration-700 group-hover:scale-105"
+                            />
+                            {/* overlay */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                          </div>
+                          {/* floating index number */}
+                          <span className="absolute -top-4 -left-3 text-[80px] font-black text-white/[0.04] leading-none select-none pointer-events-none">
+                            0{index + 1}
                           </span>
-                        ))}
-                      </div>
+                        </div>
 
-                      <div className="h-px bg-gradient-to-r from-blue-400/20 to-transparent mt-1" />
+                        {/* Content */}
+                        <div className="flex-1 flex flex-col gap-4">
+                          <p className="text-2xl font-bold text-white">
+                            {project.name}
+                          </p>
 
-                      <div className="flex gap-4">
-                        <a
-                          href={project.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl
+                          <p className="text-gray-400 text-sm leading-relaxed">
+                            {project.about}
+                          </p>
+
+                          <div className="flex flex-wrap gap-1.5">
+                            {project.stack.map((s, i) => (
+                              <span
+                                key={i}
+                                className="text-[11px] font-medium px-2 py-0.5 rounded-md
+                             text-teal-300 bg-teal-400/10 border border-teal-400/20"
+                              >
+                                {s}
+                              </span>
+                            ))}
+                          </div>
+
+                          <div className="h-px bg-gradient-to-r from-blue-400/20 to-transparent mt-1" />
+
+                          <div className="flex gap-4">
+                            <a
+                              href={project.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl
                            bg-blue-500/15 border border-blue-400/25 text-blue-400
                            hover:bg-blue-500/25 hover:border-blue-400/50
                            text-xs font-semibold transition-all duration-300"
-                        >
-                          <Share size={12} />
-                          Live Demo
-                        </a>
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl
+                            >
+                              <Share size={12} />
+                              Live Demo
+                            </a>
+                            <a
+                              href={project.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl
                            bg-white/5 border border-white/10 text-gray-300
                            hover:bg-white/10 hover:border-white/20
                            text-xs font-semibold transition-all duration-300"
-                        >
-                          <Github size={12} />
-                          GitHub
-                        </a>
+                            >
+                              <Github size={12} />
+                              GitHub
+                            </a>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                ))}
+                    </Wrapper>
+                  );
+                })}
               </div>
             </section>
           </Reveal>
@@ -615,23 +651,26 @@ export default function Home() {
 
               <div className="pt-10 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">
                 {languages.map((language, i) => (
-                  <div
-                    key={i}
-                    className="group flex flex-col items-center gap-3 p-4 rounded-2xl
+                  <RevealChill key={i} delay={i * 50}>
+                    {" "}
+                    <div
+                      key={i}
+                      className="group flex flex-col items-center gap-3 p-4 rounded-2xl
                      bg-white/[0.03] border border-white/8
                      hover:bg-blue-500/10 hover:border-blue-400/30
                      hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(96,165,250,0.08)]
                      transition-all duration-300 cursor-default"
-                  >
-                    <img
-                      src={language.img}
-                      className="w-8 h-8 object-contain"
-                      alt={language.name}
-                    />
-                    <span className="text-[11px] text-center text-gray-400 group-hover:text-gray-200 transition-colors duration-300 leading-tight">
-                      {language.name}
-                    </span>
-                  </div>
+                    >
+                      <img
+                        src={language.img}
+                        className="w-8 h-8 object-contain"
+                        alt={language.name}
+                      />
+                      <span className="text-[11px] text-center text-gray-400 group-hover:text-gray-200 transition-colors duration-300 leading-tight">
+                        {language.name}
+                      </span>
+                    </div>
+                  </RevealChill>
                 ))}
               </div>
             </section>
@@ -652,93 +691,95 @@ export default function Home() {
 
               <div className="pt-12 grid md:grid-cols-2 gap-6 items-stretch">
                 {educations.map((education, index) => (
-                  <div
-                    key={index}
-                    className="group relative h-full flex flex-col rounded-2xl overflow-hidden
+                  <RevealChill key={index} delay={index * 120}>
+                    <div
+                      key={index}
+                      className="group relative h-full flex flex-col rounded-2xl overflow-hidden
                      bg-gradient-to-br from-blue-950/40 via-slate-900/60 to-blue-950/20
                      border border-blue-400/15 hover:border-blue-400/40
                      transition-all duration-500 hover:shadow-[0_0_40px_rgba(96,165,250,0.08)]
                      hover:-translate-y-1"
-                  >
-                    {/* Top accent bar */}
-                    <div
-                      className="h-[2px] w-full bg-gradient-to-r from-transparent via-blue-400/60 to-transparent 
+                    >
+                      {/* Top accent bar */}
+                      <div
+                        className="h-[2px] w-full bg-gradient-to-r from-transparent via-blue-400/60 to-transparent 
                           opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                    />
+                      />
 
-                    {/* Subtle background glow */}
-                    <div
-                      className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.03] to-transparent 
+                      {/* Subtle background glow */}
+                      <div
+                        className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.03] to-transparent 
                           opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                    />
+                      />
 
-                    <div className="relative p-6 flex flex-col h-full gap-4">
-                      {/* Header */}
-                      <div className="flex items-start gap-4">
-                        <div
-                          className="shrink-0 p-[3px] rounded-xl bg-gradient-to-br from-blue-400/30 to-blue-600/10 
+                      <div className="relative p-6 flex flex-col h-full gap-4">
+                        {/* Header */}
+                        <div className="flex items-start gap-4">
+                          <div
+                            className="shrink-0 p-[3px] rounded-xl bg-gradient-to-br from-blue-400/30 to-blue-600/10 
                               border border-blue-400/20"
-                        >
-                          <Image
-                            src={education.img}
-                            width={48}
-                            height={48}
-                            className="w-11 h-11 rounded-[10px] object-cover"
-                            alt={education.name}
-                          />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-base font-semibold text-white leading-snug truncate">
-                            {education.name}
-                          </p>
-                          <p className="text-blue-400 text-sm font-medium mt-0.5 leading-snug">
-                            {education.course}
-                          </p>
-                          <div className="flex items-center gap-1.5 mt-1.5">
-                            <span className="w-1.5 h-1.5 rounded-full bg-blue-400/50" />
-                            <p className="text-gray-500 text-xs">
-                              {education.duration}
+                          >
+                            <Image
+                              src={education.img}
+                              width={48}
+                              height={48}
+                              className="w-11 h-11 rounded-[10px] object-cover"
+                              alt={education.name}
+                            />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p className="text-base font-semibold text-white leading-snug truncate">
+                              {education.name}
                             </p>
+                            <p className="text-blue-400 text-sm font-medium mt-0.5 leading-snug">
+                              {education.course}
+                            </p>
+                            <div className="flex items-center gap-1.5 mt-1.5">
+                              <span className="w-1.5 h-1.5 rounded-full bg-blue-400/50" />
+                              <p className="text-gray-500 text-xs">
+                                {education.duration}
+                              </p>
+                            </div>
                           </div>
                         </div>
-                      </div>
 
-                      {/* Divider */}
-                      <div className="h-px bg-gradient-to-r from-transparent via-blue-400/10 to-transparent" />
+                        {/* Divider */}
+                        <div className="h-px bg-gradient-to-r from-transparent via-blue-400/10 to-transparent" />
 
-                      {/* About */}
-                      <p className="text-gray-400 text-sm leading-relaxed flex-1">
-                        {education.about}
-                      </p>
+                        {/* About */}
+                        <p className="text-gray-400 text-sm leading-relaxed flex-1">
+                          {education.about}
+                        </p>
 
-                      {/* Footer: skills + link */}
-                      <div className="flex items-end justify-between gap-3 pt-1">
-                        <div className="flex flex-wrap gap-1.5">
-                          {education.skills.map((skill, i) => (
-                            <span
-                              key={i}
-                              className="text-[11px] font-medium px-2 py-0.5 rounded-md
+                        {/* Footer: skills + link */}
+                        <div className="flex items-end justify-between gap-3 pt-1">
+                          <div className="flex flex-wrap gap-1.5">
+                            {education.skills.map((skill, i) => (
+                              <span
+                                key={i}
+                                className="text-[11px] font-medium px-2 py-0.5 rounded-md
                                text-teal-300 bg-teal-400/10 border border-teal-400/20
                                group-hover:border-teal-400/35 transition-colors duration-300"
-                            >
-                              {skill}
-                            </span>
-                          ))}
-                        </div>
-                        <a
-                          href={education.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="shrink-0 p-1.5 rounded-lg border border-blue-400/20 text-blue-400/60
+                              >
+                                {skill}
+                              </span>
+                            ))}
+                          </div>
+                          <a
+                            href={education.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="shrink-0 p-1.5 rounded-lg border border-blue-400/20 text-blue-400/60
                            hover:text-blue-400 hover:border-blue-400/50 hover:bg-blue-400/10
                            transition-all duration-300"
-                          aria-label="View credential"
-                        >
-                          <Share size={12} />
-                        </a>
+                            aria-label="View credential"
+                          >
+                            <Share size={12} />
+                          </a>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </RevealChill>
                 ))}
               </div>
             </section>
@@ -759,69 +800,71 @@ export default function Home() {
 
               <div className="pt-12 grid md:grid-cols-2 gap-6 items-stretch">
                 {compliments.map((compliment, index) => (
-                  <div
-                    key={index}
-                    className="group relative h-full flex flex-col rounded-2xl overflow-hidden
+                  <RevealChill key={index} delay={index * 120}>
+                    <div
+                      key={index}
+                      className="group relative h-full flex flex-col rounded-2xl overflow-hidden
                      bg-gradient-to-br from-blue-950/40 via-slate-900/60 to-blue-950/20
                      border border-blue-400/15 hover:border-blue-400/40
                      transition-all duration-500 hover:shadow-[0_0_40px_rgba(96,165,250,0.08)]
                      hover:-translate-y-1"
-                  >
-                    {/* Top accent bar */}
-                    <div
-                      className="h-[2px] w-full bg-gradient-to-r from-transparent via-blue-400/60 to-transparent
+                    >
+                      {/* Top accent bar */}
+                      <div
+                        className="h-[2px] w-full bg-gradient-to-r from-transparent via-blue-400/60 to-transparent
                           opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                    />
+                      />
 
-                    {/* Inner glow */}
-                    <div
-                      className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.03] to-transparent
+                      {/* Inner glow */}
+                      <div
+                        className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.03] to-transparent
                           opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                    />
+                      />
 
-                    <div className="relative p-6 flex flex-col h-full gap-5">
-                      {/* Quote icon */}
-                      <div className="text-blue-400/20 group-hover:text-blue-400/35 transition-colors duration-500">
-                        <svg
-                          width="32"
-                          height="32"
-                          viewBox="0 0 32 32"
-                          fill="currentColor"
-                        >
-                          <path d="M10 8C6.686 8 4 10.686 4 14v10h10V14H7.5c0-1.38 1.12-2.5 2.5-2.5V8zm14 0c-3.314 0-6 2.686-6 6v10h10V14h-6.5c0-1.38 1.12-2.5 2.5-2.5V8z" />
-                        </svg>
-                      </div>
-
-                      {/* Message */}
-                      <p className="text-gray-300 text-sm leading-relaxed flex-1 italic">
-                        {compliment.message}
-                      </p>
-
-                      {/* Divider */}
-                      <div className="h-px bg-gradient-to-r from-transparent via-blue-400/10 to-transparent" />
-
-                      {/* Author */}
-                      <div className="flex items-center gap-3">
-                        <div className="p-[2px] rounded-full bg-gradient-to-br from-blue-400/40 to-blue-600/10 border border-blue-400/20 shrink-0">
-                          <Image
-                            src={compliment.img}
-                            width={40}
-                            height={40}
-                            className="w-9 h-9 rounded-full object-cover"
-                            alt={compliment.name}
-                          />
+                      <div className="relative p-6 flex flex-col h-full gap-5">
+                        {/* Quote icon */}
+                        <div className="text-blue-400/20 group-hover:text-blue-400/35 transition-colors duration-500">
+                          <svg
+                            width="32"
+                            height="32"
+                            viewBox="0 0 32 32"
+                            fill="currentColor"
+                          >
+                            <path d="M10 8C6.686 8 4 10.686 4 14v10h10V14H7.5c0-1.38 1.12-2.5 2.5-2.5V8zm14 0c-3.314 0-6 2.686-6 6v10h10V14h-6.5c0-1.38 1.12-2.5 2.5-2.5V8z" />
+                          </svg>
                         </div>
-                        <div>
-                          <p className="text-sm font-semibold text-white leading-snug">
-                            {compliment.name}
-                          </p>
-                          <p className="text-blue-400/70 text-xs mt-0.5">
-                            {compliment.work}
-                          </p>
+
+                        {/* Message */}
+                        <p className="text-gray-300 text-sm leading-relaxed flex-1 italic">
+                          {compliment.message}
+                        </p>
+
+                        {/* Divider */}
+                        <div className="h-px bg-gradient-to-r from-transparent via-blue-400/10 to-transparent" />
+
+                        {/* Author */}
+                        <div className="flex items-center gap-3">
+                          <div className="p-[2px] rounded-full bg-gradient-to-br from-blue-400/40 to-blue-600/10 border border-blue-400/20 shrink-0">
+                            <Image
+                              src={compliment.img}
+                              width={40}
+                              height={40}
+                              className="w-9 h-9 rounded-full object-cover"
+                              alt={compliment.name}
+                            />
+                          </div>
+                          <div>
+                            <p className="text-sm font-semibold text-white leading-snug">
+                              {compliment.name}
+                            </p>
+                            <p className="text-blue-400/70 text-xs mt-0.5">
+                              {compliment.work}
+                            </p>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </RevealChill>
                 ))}
               </div>
             </section>
