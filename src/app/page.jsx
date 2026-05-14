@@ -49,7 +49,7 @@ export default function Home() {
       duration: "May 2026",
       impact: [
         "Won first place at Techfest 5.0 (Cred, Code & Culture) as part of a 5-member team for building Tappay",
-        "Built Tappay, a payment app integrating Payaza API for wallet funding and transactions",
+        "Built TapPay, a payment app integrating PayAza API for wallet funding and transactions",
         "Implemented NFC tap-to-pay, QR scanning, and phone number-based transfers",
         "My team and I designed and shipped mobile and web versions of the product in 32 hours",
         "Delivered a working MVP enabling fast and flexible digital payments for real-world use cases",
