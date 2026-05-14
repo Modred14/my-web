@@ -691,7 +691,7 @@ export default function Home() {
 
               <div className="pt-12 grid md:grid-cols-2 gap-6 items-stretch">
                 {educations.map((education, index) => (
-                  <RevealChill key={index} delay={index * 120}>
+                  <RevealChill key={index} delay={index * 70}>
                     <div
                       key={index}
                       className="group relative h-full flex flex-col rounded-2xl overflow-hidden
@@ -800,7 +800,7 @@ export default function Home() {
 
               <div className="pt-12 grid md:grid-cols-2 gap-6 items-stretch">
                 {compliments.map((compliment, index) => (
-                  <RevealChill key={index} delay={index * 120}>
+                  <RevealChill key={index} delay={index * 70}>
                     <div
                       key={index}
                       className="group relative h-full flex flex-col rounded-2xl overflow-hidden
@@ -938,7 +938,7 @@ export default function Home() {
                       Modred.dev
                     </p>
                     <p className="text-[11px] text-gray-500 mt-0.5">
-                      Favour Omirin · Full-Stack Developer
+                      Favour Omirin · Software Engineer
                     </p>
                   </div>
                 </div>
