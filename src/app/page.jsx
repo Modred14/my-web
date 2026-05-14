@@ -11,10 +11,13 @@ import {
   Mail,
   TerminalSquare,
   Rocket,
+  CalendarDays,
 } from "lucide-react";
 import Reveal from "./reavel";
 import PageLoader from "@/components/PageLoader";
 import AnalyticsTracker from "@/components/AnalyticsTracker";
+import Image from "next/image";
+import GradientDivider from "@/components/GradientDivider";
 
 export default function Home() {
   const [currentTime, setCurrentTime] = useState("");
@@ -34,7 +37,7 @@ export default function Home() {
   const codeFirstYear = 2023;
   const currentYear = new Date().getFullYear();
   const experienceYear = currentYear - codeFirstYear;
-  const userPic = "./Favour-Omirin.jpg";
+  const userPic = "/Favour-Omirin.jpg";
   const journey = [
     {
       workplace: "2Thirty Integrated Services Ltd",
@@ -73,6 +76,7 @@ export default function Home() {
   ];
 
   const languages = [
+    // Core Languages
     {
       name: "JavaScript",
       img: "https://cdn.simpleicons.org/javascript/F7DF1E",
@@ -82,28 +86,22 @@ export default function Home() {
       img: "https://cdn.simpleicons.org/typescript/3178C6",
     },
     {
-      name: "GitHub",
-      img: "https://cdn.simpleicons.org/github/FFFFFF",
-    },
-    {
       name: "Python",
       img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
     },
+
+    // Frontend
     {
       name: "React",
       img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
     },
     {
-      name: "HTML5",
-      img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
-    },
-    {
-      name: "Vue.js",
-      img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg",
-    },
-    {
       name: "Next.js",
       img: "https://cdn.simpleicons.org/nextdotjs/FFFFFF",
+    },
+    {
+      name: "HTML5",
+      img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
     },
     {
       name: "CSS3",
@@ -113,18 +111,8 @@ export default function Home() {
       name: "Tailwind CSS",
       img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
     },
-    {
-      name: "Chakra UI",
-      img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/chakraui/chakraui-original.svg",
-    },
-    {
-      name: "Bootstrap",
-      img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg",
-    },
-    {
-      name: "Vite",
-      img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vite/vite-original.svg",
-    },
+
+    // Backend
     {
       name: "Node.js",
       img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
@@ -134,46 +122,19 @@ export default function Home() {
       img: "https://cdn.simpleicons.org/express/FFFFFF",
     },
     {
-      name: "REST API",
-      img: "https://cdn-icons-png.flaticon.com/512/2165/2165004.png",
+      name: "PostgreSQL",
+      img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
     },
     {
       name: "MongoDB",
       img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
     },
-    {
-      name: "Firebase",
-      img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg",
-    },
-    {
-      name: "Heroku",
-      img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/heroku/heroku-original.svg",
-    },
-    {
-      name: "Render",
-      img: "https://cdn.simpleicons.org/render/46E3B7",
-    },
-    {
-      name: "Supabase",
-      img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg",
-    },
-    {
-      name: "Figma",
-      img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
-    },
-    {
-      name: "Resend",
-      img: "https://cdn.simpleicons.org/resend/FFFFFF",
-    },
-    {
-      name: "Cloudinary",
-      img: "https://cdn.simpleicons.org/cloudinary/3448C5",
-    },
 
-    // {
-    //   name: "",
-    //   img: "",
-    // },
+    // Tools (keep minimal)
+    {
+      name: "Git",
+      img: "https://cdn.simpleicons.org/git/F05032",
+    },
   ];
 
   const projects = [
@@ -182,34 +143,34 @@ export default function Home() {
       stack: [
         "TypeScript",
         "Vue.js",
-        "Tailwind CSS",
         "Node.js",
+        "Firebase",
+        "Tailwind CSS",
         "Express.js",
         "REST API",
-        "Firebase",
       ],
       about:
-        "Scissors is a URL-shortening platform that allows users to generate short, custom URLs and corresponding QR codes. The platform is designed for simplicity and efficiency, making it easy to share shortened links on social media or other channels.",
+        "Scissors is a URL-shortening platform that allows users to generate short, custom URLs and corresponding QR codes. ",
       link: "https://app-scissors.netlify.app/",
       github: "https://github.com/Modred14/Scissors",
-      img: "./scissors.png",
+      img: "/scissors.png",
     },
     {
       name: "Valentine Web Generator",
       stack: [
         "Next.js",
         "React",
-        "JavaScript",
-        "Node.js",
         "Firebase",
+        "Node.js",
+        "JavaScript",
         "Cloudinary",
+        "Resend",
         "Tailwind CSS",
         "Lucide React",
-        "Resend",
       ],
 
       about:
-        "Valentine Web Generator is a web platform for generating personalized Valentine pages with music, memories, and heartfelt messages — designed to help you surprise someone special.",
+        "Valentine Web Generator is a web platform for generating personalized Valentine pages with music, memories, and heartfelt messages.",
       link: "https://hehe-hmm.netlify.app/",
       github: "https://github.com/Modred14/val-app",
       img: "/val-app.png",
@@ -242,21 +203,21 @@ export default function Home() {
   ];
   const compliments = [
     {
-      img: "./user.jpg",
+      img: "/user.jpg",
       name: "Emmanuel",
       work: "CEO, 2ThirtyIX Integrated Services Ltd",
       message:
         '"He’s a fast learner and strong problem solver, thriving in a high-velocity team. I’d gladly work with him again and recommend him to any employer seeking quick, effective contributors."',
     },
     {
-      img: "./avater-client.png",
-      name: "David",
-      work: "Client",
+      img: "/avater-client.png",
+      name: "Faiq",
+      work: "CFO, Nepo Games",
       message:
         '"Working with him was smooth and professional from start to finish. He understood my requirements quickly, communicated clearly, and delivered exactly what was promised on time."',
     },
     {
-      img: "./avat.jpg",
+      img: "/avat.jpg",
       name: "John",
       work: "Backend Engineer, 2ThirtyIX Integrated Services",
       message:
@@ -266,17 +227,25 @@ export default function Home() {
 
   const educations = [
     {
-      img: "./oaul.png",
+      img: "/oaul.png",
       name: "Obafemi Awolowo University",
-      course: "BSc. Software Engineering",
-      duration: "Oct 2024 – Jul 2029",
+      course: "BSc. Software Engineering (In Progress)",
+      duration: "Oct 2024 – Present",
       about:
-        "Studying core software engineering principles including programming, data structures, algorithms, databases, and software design. Actively building real-world projects with modern web technologies and focusing on practical problem-solving.",
-      skills: ["Python", "Version Control", "API"],
+        "Studying core software engineering principles including data structures, algorithms, databases, and system design.",
+      skills: [
+        "Python",
+        "Version Control",
+        "API",
+        "Software Development",
+        "Web Technologies",
+        "Algorithms",
+        "Data Structures",
+      ],
       link: "https://oauife.edu.ng/",
     },
     {
-      img: "./altschool.png",
+      img: "/altschool.png",
       name: "AltSchool Africa",
       course: "Frontend Engineering",
       duration: "Sep 2023 – Aug 2024",
@@ -328,9 +297,11 @@ export default function Home() {
             <div className="grid text-sm grid-cols-2 items-center py-3 px-6 w-full ">
               <a href="#">
                 <div className="flex items-center gap-2">
-                  <img
-                    src="./logo.png"
+                  <Image
+                    src="/logo.png"
                     alt="Favour Omirin Image"
+                    width={32}
+                    height={32}
                     className="w-8 h-8 object-contain"
                   />
 
@@ -344,67 +315,123 @@ export default function Home() {
 
         <div className="md:max-w-250 sm:px-10 px-5 p-20">
           <Reveal>
-            {" "}
             <div className="grid place-items-center">
-              <div className="flex flex-col lg:gap-1 lg:flex-row ">
-                <div className="grid lg:block place-items-center">
-                  <img
-                    src={userPic}
-                    alt="Favour Omirin Image"
-                    className="lg:w-56.5 w-42 pb-4 rounded-full"
-                  />
-                  <div className="hidden lg:flex gap-4 pb-4 pt-4">
+              <div className="flex flex-col lg:gap-10 lg:flex-row lg:items-center w-full">
+                {/* ── Avatar column ── */}
+                <div className="grid lg:block place-items-center shrink-0">
+                  <div className="relative w-fit">
+                    {/* Glow ring behind avatar */}
+                    <div className="absolute inset-0 rounded-full bg-blue-500/20 blur-2xl scale-110 pointer-events-none" />
+                    <Image
+                      src={userPic}
+                      alt="Favour Omirin"
+                      width={226}
+                      height={226}
+                      className="relative lg:w-56 w-40 rounded-full ring-2 ring-white/10"
+                    />
+                    {/* Status badge */}
+                    <span
+                      className="absolute -bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap
+    flex items-center gap-1.5 bg-[#0f0f0f] border border-white/10
+    text-[10px] font-semibold text-green-400 px-2.5 py-1 rounded-full shadow-lg"
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                      Open to work
+                    </span>
+                  </div>
+
+                  {/* Socials — desktop */}
+                  <div className="hidden lg:flex gap-3 pt-8 -mb-5 justify-center">
                     {socials.map((social) => {
                       const Icon = social.icon;
-
                       return (
                         <a
                           key={social.name}
                           href={social.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="w-10 h-10 flex items-center justify-center rounded-xl bg-gray-950/10 backdrop-blur-md border border-white/20 hover:bg-gray-900/60 hover:scale-110 transition-all duration-300"
+                          className="w-9 h-9 flex items-center justify-center rounded-lg
+                  border border-white/10 text-gray-500
+                  hover:border-blue-400/40 hover:text-blue-400
+                  transition-all duration-200"
                         >
-                          <Icon size={18} className="text-white" />
+                          <Icon size={15} />
                         </a>
                       );
                     })}
                   </div>
                 </div>
-                <div className="w-full grid place-items-center lg:place-items-start lg:pl-7 ">
-                  <p className="justify-center text-center text-[32px] lg:text-5xl font-extrabold pb-3">
-                    I am {getName()}
-                  </p>
-                  <p className="justify-center text-center text-lg font-medium text-gray-400 pb-5">
-                    Software Engineer | Full Stack Developer
-                  </p>
-                  <div className="flex lg:hidden gap-4 mb-7">
+
+                {/* ── Content column ── */}
+                <div className="w-full flex flex-col items-center lg:items-start gap-4 text-center lg:text-left pt-6 lg:pt-0">
+                  {/* Role pill */}
+                  <span className="inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.12em] uppercase text-blue-400/80 border border-blue-400/20 px-3 py-1 rounded-full bg-blue-500/5">
+                    Software Engineer · Full-Stack Developer
+                  </span>
+
+                  {/* Name */}
+                  <h1 className="text-[2rem] lg:text-5xl font-extrabold text-white leading-tight">
+                    I'm {getName()}
+                  </h1>
+
+                  {/* Socials — mobile */}
+                  <div className="flex lg:hidden gap-3 py-1">
                     {socials.map((social) => {
                       const Icon = social.icon;
-
                       return (
                         <a
                           key={social.name}
                           href={social.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="w-10 h-10 flex items-center justify-center rounded-xl bg-gray-950/10 backdrop-blur-md border border-white/20 hover:bg-gray-900/60 hover:scale-110 transition-all duration-300"
+                          className="w-9 h-9 flex items-center justify-center rounded-lg
+                  border border-white/10 text-gray-500
+                  hover:border-blue-400/40 hover:text-blue-400
+                  transition-all duration-200"
                         >
-                          <Icon size={18} className="text-white" />
+                          <Icon size={15} />
                         </a>
                       );
                     })}
                   </div>
-                  <p className="text-base">
-                    Solution-driven software engineer with over {experienceYear}{" "}
-                    years of experience building scalable web, backend, and
-                    blockchain-powered applications. I primarily work with the
-                    MERN stack, turning ideas into real products, from
-                    full-stack platforms to automation tools, by solving
-                    practical problems and engineering systems that work in the
-                    real world. Passionate about tackling complex challenges and
-                    delivering impactful, production-ready solutions.
-                  </p>
+
+                  {/* ── Bio block ── */}
+                  <div className="flex flex-col gap-3 max-w-xl">
+                    {/* Lead sentence — highlighted */}
+                    <p className="text-base lg:text-lg font-medium text-white/90 leading-relaxed">
+                      {experienceYear}+ years building full-stack web apps and
+                      backend systems.
+                    </p>
+
+                    {/* Detail — muted */}
+                    <p className="text-sm text-gray-500 leading-relaxed">
+                      I work primarily with the{" "}
+                      <span className="text-gray-300 font-medium">
+                        Next.js, JavaScript and PostgreSQL (Neon)
+                      </span>{" "}
+                      — turning ideas into real products, from full-stack
+                      platforms to automation tools. I engineer systems that
+                      work in the real world, not just in theory.
+                    </p>
+
+                    {/* Tags row */}
+                    <div className="flex flex-wrap gap-2 justify-center lg:justify-start pt-1">
+                      {[
+                        "MERN Stack",
+                        "Version Control",
+                        "System Design",
+                        "Automation",
+                        "Production Apps",
+                      ].map((tag) => (
+                        <span
+                          key={tag}
+                          className="text-[11px] font-medium text-gray-400 bg-white/5 border border-white/8 px-3 py-1 rounded-md"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -412,368 +439,520 @@ export default function Home() {
           <Reveal>
             <section id="journey">
               <div className="pt-14">
-                <div className="flex">
-                  <div className="flex gap-4 mb-4 flex-2 items-center">
-                    <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
-                      <Briefcase />
-                    </p>
-                    <p className="text-[28px] font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
-                      Professional Experience
-                    </p>
-                  </div>
+                <div className="flex gap-4 mb-4 items-center">
+                  <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
+                    <Briefcase />
+                  </p>
+                  <p className="text-[28px] font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
+                    Professional Experience
+                  </p>
                 </div>
-                <div
-                  className="bg-gradient-to-r from-black via-blue-400 to-black border-0"
-                  style={{ height: "1px" }}
-                ></div>
-              </div>{" "}
-              <div className="pt-8">
-                {journey.map((journeys) => {
-                  return (
-                    <>
-                      <div className="pb-8">
-                        <div className="lg:flex lg:justify-between">
-                          <div>
-                            <p className="font-bold text-[22px]">
-                              {journeys.workplace}
-                            </p>
-                            <p className="text-blue-400 lg:pb-5 pb-0 text-lg font-semibold">
-                              {journeys.position}
-                            </p>
-                          </div>
-                          <p className="text-gray-400 pt-2 text-sm pb-5">
-                            {journeys.duration}
+                <GradientDivider />
+              </div>
+
+              <div className="pt-8 flex flex-col gap-5">
+                {journey.map((journeys, index) => (
+                  <Reveal>
+                    <div
+                      key={index}
+                      className="relative bg-white/5 border border-white/10 rounded-2xl p-6 overflow-hidden"
+                    >
+                      {/* left accent bar */}
+                      <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-blue-400 rounded-l-2xl" />
+
+                      {/* header */}
+                      <div className="flex flex-wrap justify-between items-start gap-3 mb-4">
+                        <div>
+                          <p className="font-semibold text-[17px] text-white">
+                            {journeys.workplace}
+                          </p>
+                          <p className="text-blue-400 text-sm font-medium mt-0.5">
+                            {journeys.position}
                           </p>
                         </div>
-                        <div>
-                          {journeys.impact.map((impacts) => {
-                            return (
-                              <div className="flex gap-3 text-base">
-                                <div className="text-blue-300">●</div>
-                                {impacts}
-                              </div>
-                            );
-                          })}
-                        </div>
+                        <span className="inline-flex items-center gap-1.5 text-xs text-gray-400 bg-white/5 border border-white/10 rounded-lg px-3 py-1.5 whitespace-nowrap">
+                          <CalendarDays size={12} />
+                          {journeys.duration}
+                        </span>
                       </div>
-                    </>
-                  );
-                })}
+
+                      {/* divider */}
+                      <div className="h-px bg-white/10 mb-4" />
+
+                      {/* impact bullets */}
+                      <ul className="flex flex-col gap-2">
+                        {journeys.impact.map((impact, i) => (
+                          <li
+                            key={i}
+                            className="flex gap-3 text-sm text-gray-300 leading-relaxed"
+                          >
+                            <span className="mt-[7px] w-1.5 h-1.5 rounded-full bg-blue-400 flex-shrink-0" />
+                            {impact}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </Reveal>
+                ))}
               </div>
             </section>
           </Reveal>
           <Reveal>
             <section id="projects">
-              <div className="pt-6">
-                <div className="flex">
-                  <div className="flex gap-4 mb-4 flex-2 items-center">
-                    <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
-                      <Code />
-                    </p>
-                    <p className="text-[28px] font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
-                      Featured Projects
-                    </p>
-                  </div>
+              <div className="pt-14">
+                <div className="flex gap-4 mb-4 items-center">
+                  <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
+                    <Code />
+                  </p>
+                  <p className="text-[28px] font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
+                    Featured Projects
+                  </p>
                 </div>
-                <div
-                  className="bg-gradient-to-r from-black via-blue-400 to-black border-0"
-                  style={{ height: "0.5px" }}
-                ></div>
-              </div>{" "}
-              <div className="pt-12 grid md:grid-cols-2 gap-8 items-stretch">
-                {projects.map((project) => {
-                  return (
-                    <div>
-                      <div className="h-full flex flex-col hover:scale-102 transition-all duration-500 bg-blue-950/20 rounded-2xl border border-blue-400/10">
-                        <div className="w-full overflow-hidden">
-                          <img
-                            src={project.img}
-                            alt={project.name}
-                            className="w-full h-full object-cover rounded-t-2xl"
-                          />
-                        </div>
-                        <div className="p-5 flex flex-col flex-1">
-                          <p className="text-[22px] font-bold pb-3">
-                            {project.name}
-                          </p>
-                          <div className="flex flex-wrap gap-2 w-full">
-                            {project.stack.map((stacks) => {
-                              return (
-                                <div className="border p-1 px-1.5 rounded-md text-xs text-teal-300 bg-teal-400/20 border-teal-400/30">
-                                  {stacks}
-                                </div>
-                              );
-                            })}
-                            <div className="py-3 text-sm">{project.about}</div>
-                            <div className="mt-auto  items-end flex w-full justify-between">
-                              <a
-                                href={project.link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-blue-400/90  text-xs flex gap-2 items-center"
-                              >
-                                <div className="duration-500 animate-bounce">
-                                  <Share size="12" />
-                                </div>
-                                <div>Live Demo</div>
-                              </a>
-                              <a
-                                href={project.github}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-gray-400/90 text-xs flex gap-1 items-center"
-                              >
-                                <div className="duration-500 animate-pulse">
-                                  <Github size="12" />
-                                </div>
-                                <div>GitHub</div>
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>{" "}
+                <GradientDivider />
+              </div>
+
+              <div className="pt-12 flex flex-col gap-16">
+                {projects.map((project, index) => (
+                  <div
+                    key={index}
+                    className={`group flex flex-col ${
+                      index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
+                    } gap-8 items-center`}
+                  >
+                    {/* Image — takes 55% */}
+                    <div className="w-full lg:w-[55%] shrink-0 relative">
+                      <div
+                        className="relative overflow-hidden rounded-2xl border border-blue-400/15 
+                            group-hover:border-blue-400/40 transition-all duration-500
+                            shadow-[0_0_0_1px_rgba(96,165,250,0.05)]
+                            group-hover:shadow-[0_20px_60px_rgba(96,165,250,0.1)]"
+                      >
+                        <Image
+                          src={project.img}
+                          alt={project.name}
+                          width={800}
+                          height={450}
+                          className="w-full h-56 lg:h-72 object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                        {/* overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                      </div>
+                      {/* floating index number */}
+                      <span className="absolute -top-4 -left-3 text-[80px] font-black text-white/[0.04] leading-none select-none pointer-events-none">
+                        0{index + 1}
+                      </span>
                     </div>
-                  );
-                })}
+
+                    {/* Content */}
+                    <div className="flex-1 flex flex-col gap-4">
+                      <p className="text-2xl font-bold text-white">
+                        {project.name}
+                      </p>
+
+                      <p className="text-gray-400 text-sm leading-relaxed">
+                        {project.about}
+                      </p>
+
+                      <div className="flex flex-wrap gap-1.5">
+                        {project.stack.map((s, i) => (
+                          <span
+                            key={i}
+                            className="text-[11px] font-medium px-2 py-0.5 rounded-md
+                             text-teal-300 bg-teal-400/10 border border-teal-400/20"
+                          >
+                            {s}
+                          </span>
+                        ))}
+                      </div>
+
+                      <div className="h-px bg-gradient-to-r from-blue-400/20 to-transparent mt-1" />
+
+                      <div className="flex gap-4">
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl
+                           bg-blue-500/15 border border-blue-400/25 text-blue-400
+                           hover:bg-blue-500/25 hover:border-blue-400/50
+                           text-xs font-semibold transition-all duration-300"
+                        >
+                          <Share size={12} />
+                          Live Demo
+                        </a>
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl
+                           bg-white/5 border border-white/10 text-gray-300
+                           hover:bg-white/10 hover:border-white/20
+                           text-xs font-semibold transition-all duration-300"
+                        >
+                          <Github size={12} />
+                          GitHub
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </section>
           </Reveal>
           <Reveal>
             <section id="technologies">
               <div className="pt-14">
-                <div className="flex">
-                  <div className="flex gap-4 mb-4 flex-2 items-center">
-                    <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
-                      <TerminalSquare />
-                    </p>
-                    <p className="text-[28px] font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
-                      Technologies
-                    </p>
-                  </div>
+                <div className="flex gap-4 mb-4 items-center">
+                  <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
+                    <TerminalSquare />
+                  </p>
+                  <p className="text-[28px] font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
+                    Technologies
+                  </p>
                 </div>
-                <div
-                  className="bg-gradient-to-r from-black via-blue-400 to-black border-0"
-                  style={{ height: "1.5px" }}
-                ></div>
-                <div className="grid pt-12 grid-cols-2 w-full md:grid-cols-6 gap-6">
-                  {languages.map((language) => {
-                    return (
-                      <>
-                        <div className="grid border border-blue-400/10 rounded-2xl bg-blue-950/20 p-7 justify-items-center hover:bg-blue-950/40 transition-all duration-250">
-                          <img
-                            src={language.img}
-                            className="w-10"
-                            alt={language.name}
-                          />
-                          <p className="text-[10px] pt-3">{language.name}</p>
-                        </div>
-                      </>
-                    );
-                  })}
-                </div>{" "}
-              </div>{" "}
+                <GradientDivider />
+              </div>
+
+              <div className="pt-10 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">
+                {languages.map((language, i) => (
+                  <div
+                    key={i}
+                    className="group flex flex-col items-center gap-3 p-4 rounded-2xl
+                     bg-white/[0.03] border border-white/8
+                     hover:bg-blue-500/10 hover:border-blue-400/30
+                     hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(96,165,250,0.08)]
+                     transition-all duration-300 cursor-default"
+                  >
+                    <img
+                      src={language.img}
+                      className="w-8 h-8 object-contain"
+                      alt={language.name}
+                    />
+                    <span className="text-[11px] text-center text-gray-400 group-hover:text-gray-200 transition-colors duration-300 leading-tight">
+                      {language.name}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </section>
           </Reveal>
           <Reveal>
             <section id="education">
               <div className="pt-14">
-                <div className="flex">
-                  <div className="flex gap-4 mb-4 flex-2 items-center">
-                    <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
-                      <School />
-                    </p>
-                    <p className="text-[28px] font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
-                      Education
-                    </p>
-                  </div>
+                <div className="flex items-center gap-4 mb-4">
+                  <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
+                    <School />
+                  </p>
+                  <p className="text-[28px] font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
+                    Education
+                  </p>
                 </div>
-                <div
-                  className="bg-gradient-to-r from-black via-blue-400 to-black border-0"
-                  style={{ height: "0.5px" }}
-                ></div>
+                <GradientDivider />
               </div>
-              <div className="pt-12 grid md:grid-cols-2 gap-8 items-stretch">
-                {educations.map((education) => {
-                  return (
-                    <div>
-                      <div className="h-full flex flex-col hover:scale-102 transition-all duration-500 bg-blue-950/20 rounded-2xl border border-blue-400/10">
-                        {" "}
-                        <div className="p-5 pt-7">
-                          <div className="flex flex-2 gap-3 items-center">
-                            <div>
-                              <img
-                                src={education.img}
-                                className="w-12 rounded-xl"
-                                alt={education.name}
-                              />
-                            </div>
-                            <div>
-                              <p className="text-xl font-semibold">
-                                {education.name}
-                              </p>
-                              <p className="text-blue-400 pb-1 text-base font-semibold">
-                                {education.course}
-                              </p>
-                            </div>
-                          </div>
-                          <p className="text-gray-400 text-xs">
-                            {education.duration}
+
+              <div className="pt-12 grid md:grid-cols-2 gap-6 items-stretch">
+                {educations.map((education, index) => (
+                  <div
+                    key={index}
+                    className="group relative h-full flex flex-col rounded-2xl overflow-hidden
+                     bg-gradient-to-br from-blue-950/40 via-slate-900/60 to-blue-950/20
+                     border border-blue-400/15 hover:border-blue-400/40
+                     transition-all duration-500 hover:shadow-[0_0_40px_rgba(96,165,250,0.08)]
+                     hover:-translate-y-1"
+                  >
+                    {/* Top accent bar */}
+                    <div
+                      className="h-[2px] w-full bg-gradient-to-r from-transparent via-blue-400/60 to-transparent 
+                          opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    />
+
+                    {/* Subtle background glow */}
+                    <div
+                      className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.03] to-transparent 
+                          opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                    />
+
+                    <div className="relative p-6 flex flex-col h-full gap-4">
+                      {/* Header */}
+                      <div className="flex items-start gap-4">
+                        <div
+                          className="shrink-0 p-[3px] rounded-xl bg-gradient-to-br from-blue-400/30 to-blue-600/10 
+                              border border-blue-400/20"
+                        >
+                          <Image
+                            src={education.img}
+                            width={48}
+                            height={48}
+                            className="w-11 h-11 rounded-[10px] object-cover"
+                            alt={education.name}
+                          />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-base font-semibold text-white leading-snug truncate">
+                            {education.name}
                           </p>
-                          <div className="py-5 text-sm">{education.about}</div>
-                          <div className="flex">
-                            <div className="flex flex-wrap gap-2 w-full">
-                              {education.skills.map((skill) => {
-                                return (
-                                  <div className="border p-1 px-1.5 rounded-md text-xs text-teal-300 bg-teal-400/20 border-teal-400/30">
-                                    {skill}
-                                  </div>
-                                );
-                              })}
-                            </div>
-                            <a
-                              href={education.link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-blue-400/90 items-end text-xs flex gap-2"
-                            >
-                              <div className="duration-500 animate-pulse">
-                                <Share size="12" />
-                              </div>
-                            </a>
+                          <p className="text-blue-400 text-sm font-medium mt-0.5 leading-snug">
+                            {education.course}
+                          </p>
+                          <div className="flex items-center gap-1.5 mt-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-blue-400/50" />
+                            <p className="text-gray-500 text-xs">
+                              {education.duration}
+                            </p>
                           </div>
                         </div>
                       </div>
+
+                      {/* Divider */}
+                      <div className="h-px bg-gradient-to-r from-transparent via-blue-400/10 to-transparent" />
+
+                      {/* About */}
+                      <p className="text-gray-400 text-sm leading-relaxed flex-1">
+                        {education.about}
+                      </p>
+
+                      {/* Footer: skills + link */}
+                      <div className="flex items-end justify-between gap-3 pt-1">
+                        <div className="flex flex-wrap gap-1.5">
+                          {education.skills.map((skill, i) => (
+                            <span
+                              key={i}
+                              className="text-[11px] font-medium px-2 py-0.5 rounded-md
+                               text-teal-300 bg-teal-400/10 border border-teal-400/20
+                               group-hover:border-teal-400/35 transition-colors duration-300"
+                            >
+                              {skill}
+                            </span>
+                          ))}
+                        </div>
+                        <a
+                          href={education.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="shrink-0 p-1.5 rounded-lg border border-blue-400/20 text-blue-400/60
+                           hover:text-blue-400 hover:border-blue-400/50 hover:bg-blue-400/10
+                           transition-all duration-300"
+                          aria-label="View credential"
+                        >
+                          <Share size={12} />
+                        </a>
+                      </div>
                     </div>
-                  );
-                })}
+                  </div>
+                ))}
               </div>
             </section>
           </Reveal>
           <Reveal>
             <section id="reviews">
               <div className="pt-14">
-                <div className="flex">
-                  <div className="flex gap-4 mb-4 flex-2 items-center">
-                    <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
-                      <NotepadText />
-                    </p>
-                    <p className="text-[28px] font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
-                      Testimonials
-                    </p>
-                  </div>
+                <div className="flex items-center gap-4 mb-4">
+                  <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
+                    <NotepadText />
+                  </p>
+                  <p className="text-[28px] font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
+                    Testimonials
+                  </p>
                 </div>
-                <div
-                  className="bg-gradient-to-r from-black via-blue-400 to-black border-0"
-                  style={{ height: "1.0px" }}
-                ></div>
+                <GradientDivider />
               </div>
-              <div className="pt-12 grid md:grid-cols-2 gap-8 items-stretch">
-                {compliments.map((compliment) => {
-                  return (
-                    <div>
-                      <div className="h-full flex flex-col hover:scale-102 transition-all duration-500 bg-blue-950/20 rounded-2xl border border-blue-400/10">
-                        {" "}
-                        <div className="p-5 pt-7">
-                          <div className="flex flex-2 gap-5 items-center">
-                            <div>
-                              <img
-                                src={compliment.img}
-                                className="w-10 rounded-full"
-                                alt={compliment.name}
-                              />
-                            </div>
-                            <div>
-                              {" "}
-                              <p className="text-lg font-semibold pb-0.5">
-                                {compliment.name}
-                              </p>
-                              <p className="text-xs">{compliment.work}</p>
-                            </div>
-                          </div>{" "}
-                          <div className="pt-4 text-sm">
-                            {compliment.message}
-                          </div>
+
+              <div className="pt-12 grid md:grid-cols-2 gap-6 items-stretch">
+                {compliments.map((compliment, index) => (
+                  <div
+                    key={index}
+                    className="group relative h-full flex flex-col rounded-2xl overflow-hidden
+                     bg-gradient-to-br from-blue-950/40 via-slate-900/60 to-blue-950/20
+                     border border-blue-400/15 hover:border-blue-400/40
+                     transition-all duration-500 hover:shadow-[0_0_40px_rgba(96,165,250,0.08)]
+                     hover:-translate-y-1"
+                  >
+                    {/* Top accent bar */}
+                    <div
+                      className="h-[2px] w-full bg-gradient-to-r from-transparent via-blue-400/60 to-transparent
+                          opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    />
+
+                    {/* Inner glow */}
+                    <div
+                      className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.03] to-transparent
+                          opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                    />
+
+                    <div className="relative p-6 flex flex-col h-full gap-5">
+                      {/* Quote icon */}
+                      <div className="text-blue-400/20 group-hover:text-blue-400/35 transition-colors duration-500">
+                        <svg
+                          width="32"
+                          height="32"
+                          viewBox="0 0 32 32"
+                          fill="currentColor"
+                        >
+                          <path d="M10 8C6.686 8 4 10.686 4 14v10h10V14H7.5c0-1.38 1.12-2.5 2.5-2.5V8zm14 0c-3.314 0-6 2.686-6 6v10h10V14h-6.5c0-1.38 1.12-2.5 2.5-2.5V8z" />
+                        </svg>
+                      </div>
+
+                      {/* Message */}
+                      <p className="text-gray-300 text-sm leading-relaxed flex-1 italic">
+                        {compliment.message}
+                      </p>
+
+                      {/* Divider */}
+                      <div className="h-px bg-gradient-to-r from-transparent via-blue-400/10 to-transparent" />
+
+                      {/* Author */}
+                      <div className="flex items-center gap-3">
+                        <div className="p-[2px] rounded-full bg-gradient-to-br from-blue-400/40 to-blue-600/10 border border-blue-400/20 shrink-0">
+                          <Image
+                            src={compliment.img}
+                            width={40}
+                            height={40}
+                            className="w-9 h-9 rounded-full object-cover"
+                            alt={compliment.name}
+                          />
+                        </div>
+                        <div>
+                          <p className="text-sm font-semibold text-white leading-snug">
+                            {compliment.name}
+                          </p>
+                          <p className="text-blue-400/70 text-xs mt-0.5">
+                            {compliment.work}
+                          </p>
                         </div>
                       </div>
                     </div>
-                  );
-                })}
+                  </div>
+                ))}
               </div>
             </section>
           </Reveal>
           <div className="pt-14">
             <Reveal>
-              <section className=" transition-all duration-500 bg-blue-950/20 border border-blue-400/10">
-                <div className="pt-14">
-                  <div className="flex">
-                    <div className="flex gap-4 px-4 mb-4 flex-2 items-center justify-center">
-                      <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
-                        <Rocket />
-                      </p>
-                      <p className="text-[28px] font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
-                        Open to collaboration
-                      </p>
-                    </div>
-                  </div>
-                  <div
-                    className="bg-gradient-to-r from-black via-blue-400 to-black border-0"
-                    style={{ height: "1.0px" }}
-                  ></div>
-                </div>
-                <div className="pt-8 px-10 lg:px-20 flex text-center text-base">
-                  Ready to bring your ideas to life? I'm always excited to
-                  collaborate on innovative projects and help transform your
-                  vision into reality.
-                </div>
-                <div className="flex gap-6 justify-center pb-18 pt-7 flex-wrap">
-                  <a
-                    href="/socials"
-                    className="
-      inline-flex items-center justify-center gap-2
-      px-6 py-3
-      rounded-full
-      bg-gradient-to-r from-blue-500/20 via-blue-400/10 to-blue-500/20
-      backdrop-blur-md
-      border border-blue-400/30
-      text-sm font-semibold text-white
-      shadow-lg shadow-blue-500/20
-      transition-all duration-300
-      hover:scale-105 hover:shadow-xl hover:shadow-blue-400/40
-      active:translate-y-0.5 active:scale-100
-      focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:ring-offset-1
-    "
-                  >
-                    Socials
-                    <span className="opacity-80 text-blue-300">↗</span>
-                  </a>
+              <section className="relative overflow-hidden rounded-2xl border border-white/8 bg-[#0a0a0a]">
+                {/* Subtle grid texture */}
+                <div
+                  className="absolute inset-0 opacity-[0.03] pointer-events-none"
+                  style={{
+                    backgroundImage:
+                      "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
+                    backgroundSize: "40px 40px",
+                  }}
+                />
 
+                {/* Single centered glow */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-80 h-40 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+
+                <div className="relative px-8 py-14 flex flex-col items-center text-center gap-5">
+                  {/* Eyebrow label */}
+                  <span className="inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.15em] uppercase text-blue-400/80">
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
+                    Available for work
+                  </span>
+
+                  {/* Heading */}
+                  <h2 className="text-2xl lg:text-3xl font-bold text-white leading-snug max-w-md">
+                    Got a project in mind?{" "}
+                    <span className="text-blue-400">Let's build it.</span>
+                  </h2>
+
+                  {/* Subtext */}
+                  <p className="text-sm text-gray-500 max-w-sm leading-relaxed">
+                    I'm open to freelance work, full-time roles, and interesting
+                    collaborations.
+                  </p>
+
+                  {/* CTA Button */}
                   <a
-                    href="/analytics"
-                    className="
-      inline-flex items-center justify-center gap-2
-      px-6 py-3
-      rounded-full
-      bg-gradient-to-r from-blue-500/20 via-blue-400/10 to-blue-500/20
-      backdrop-blur-md
-      border border-blue-400/30
-      text-sm font-semibold text-white
-      shadow-lg shadow-blue-500/20
-      transition-all duration-300
-      hover:scale-105 hover:shadow-xl hover:shadow-blue-400/40
-      active:translate-y-0.5 active:scale-100
-      focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:ring-offset-1
-    "
+                    href="mailto:favourdomirin@gmail.com"
+                    className="mt-1 inline-flex items-center gap-2 px-6 py-2.5 rounded-lg
+            bg-blue-800 text-white text-sm font-semibold
+            hover:bg-blue-700 hover:-translate-y-0.5
+            transition-all duration-200 shadow-[0_0_24px_rgba(59,130,246,0.3)]"
                   >
-                    Analytics
-                    <span className="opacity-80 text-blue-300">↗</span>
+                    <Mail size={14} />
+                    Send me an email
                   </a>
                 </div>
               </section>
             </Reveal>
           </div>
-          <p className="mt-6 text-center text-xs text-gray-500">
-            © {new Date().getFullYear()} Modred
-          </p>
+
+          <footer className="mt-16 -mb-20 border-t border-white/10 ">
+            <div className="max-w-5xl mx-auto px-6 py-12">
+              {/* Top row: Brand + Nav */}
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 mb-10">
+                {/* Brand */}
+                <div className="flex items-center gap-3">
+                  <Image
+                    src="/logo.png"
+                    alt="Modred"
+                    width={32}
+                    height={32}
+                    className="w-8 h-8 object-contain"
+                  />
+                  <div>
+                    <p className="font-bold text-sm text-white tracking-widest uppercase">
+                      Modred.dev
+                    </p>
+                    <p className="text-[11px] text-gray-500 mt-0.5">
+                      Favour Omirin · Full-Stack Developer
+                    </p>
+                  </div>
+                </div>
+
+                {/* Nav */}
+                <nav className="flex flex-wrap gap-x-8 gap-y-2">
+                  {[
+                    { label: "Experience", href: "#journey" },
+                    { label: "Projects", href: "#projects" },
+                    { label: "Education", href: "#education" },
+                    { label: "Testimonials", href: "#reviews" },
+                  ].map((item) => (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      className="text-xs text-gray-400 hover:text-white transition-colors duration-200 tracking-wide"
+                    >
+                      {item.label}
+                    </a>
+                  ))}
+                </nav>
+              </div>
+
+              {/* Divider */}
+              <div className="h-px bg-white/5 mb-8" />
+
+              {/* Bottom row: Copyright + Socials */}
+              <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+                <p className="text-xs text-gray-600 order-2 md:order-1">
+                  © {new Date().getFullYear()} Favour Omirin. All rights
+                  reserved.
+                </p>
+
+                {/* Socials */}
+                <div className="flex items-center gap-2 order-1 md:order-2">
+                  {socials.map((social) => {
+                    const Icon = social.icon;
+                    return (
+                      <a
+                        key={social.name}
+                        href={social.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title={social.name}
+                        className="w-8 h-8 flex items-center justify-center rounded-md
+                border border-white/10 text-gray-500
+                hover:border-white/25 hover:text-white hover:bg-white/5
+                transition-all duration-200"
+                      >
+                        <Icon size={14} />
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </footer>
         </div>
       </div>
     </PageLoader>
