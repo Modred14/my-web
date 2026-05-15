@@ -2,7 +2,7 @@
 const nextConfig = {
   /* config options here */
   reactCompiler: true,
-   images: {
+  images: {
     remotePatterns: [
       {
         protocol: "https",
@@ -15,6 +15,10 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "cdn-icons-png.flaticon.com",
+      },
+      {
+        protocol: "https",
+        hostname: "api.microlink.io",
       },
     ],
   },

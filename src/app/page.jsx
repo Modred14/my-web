@@ -12,6 +12,7 @@ import {
   TerminalSquare,
   Rocket,
   CalendarDays,
+  ArrowUpRight,
 } from "lucide-react";
 import Reveal from "./reavel";
 import PageLoader from "@/components/PageLoader";
@@ -21,23 +22,11 @@ import GradientDivider from "@/components/GradientDivider";
 import RevealLeft from "./revealfrleft";
 import RevealRight from "./revealfright";
 import RevealChill from "./revealchill";
-import RevealChillDown from "./revealchillDown";
+import Header from "./header";
+import Link from "next/link";
+import { projects } from "@/lib/project";
 
 export default function Home() {
-  const [currentTime, setCurrentTime] = useState("");
-  useEffect(() => {
-    const timer = () => {
-      const time = new Intl.DateTimeFormat(undefined, {
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: true,
-      }).format(new Date());
-      setCurrentTime(time);
-    };
-    timer();
-    const interval = setInterval(timer, 1000);
-    return () => clearInterval(interval);
-  }, []);
   const codeFirstYear = 2023;
   const currentYear = new Date().getFullYear();
   const experienceYear = currentYear - codeFirstYear;
@@ -150,53 +139,6 @@ export default function Home() {
     },
   ];
 
-  const projects = [
-    {
-      name: "Scissors",
-      stack: [
-        "TypeScript",
-        "Vue.js",
-        "Node.js",
-        "Firebase",
-        "Tailwind CSS",
-        "Express.js",
-        "REST API",
-      ],
-      about:
-        "Scissors is a URL-shortening platform that allows users to generate short, custom URLs and corresponding QR codes. ",
-      link: "https://app-scissors.netlify.app/",
-      github: "https://github.com/Modred14/Scissors",
-      img: "/scissors.png",
-    },
-    {
-      name: "Valentine Web Generator",
-      stack: [
-        "Next.js",
-        "React",
-        "Firebase",
-        "Node.js",
-        "JavaScript",
-        "Cloudinary",
-        "Resend",
-        "Tailwind CSS",
-        "Lucide React",
-      ],
-
-      about:
-        "Valentine Web Generator is a web platform for generating personalized Valentine pages with music, memories, and heartfelt messages.",
-      link: "https://hehe-hmm.netlify.app/",
-      github: "https://github.com/Modred14/val-app",
-      img: "/val-app.png",
-    },
-    // {
-    //   name: "",
-    //   stack: ["", ""],
-    //   about: "",
-    //   link: "",
-    //   github: "",
-    //   img: "",
-    // },
-  ];
   const socials = [
     {
       link: "https://github.com/Modred14",
@@ -325,24 +267,7 @@ export default function Home() {
                 "radial-gradient(ellipse 80% 80% at 50% 50%, transparent 40%, #030712 100%)",
             }}
           />
-          <Reveal>
-            <div className="grid text-sm grid-cols-2 items-center py-3 px-6 w-full ">
-              <a href="#">
-                <div className="flex items-center gap-2">
-                  <Image
-                    src="/logo.png"
-                    alt="Favour Omirin Image"
-                    width={32}
-                    height={32}
-                    className="w-8 h-8 object-contain"
-                  />
-
-                  <p className="font-bold leading-none">MODRED.DEV</p>
-                </div>
-              </a>
-              <div className="flex justify-end font-serif">{currentTime}</div>
-            </div>
-          </Reveal>
+          <Header />
         </div>
         <div className="md:max-w-250 sm:px-10 px-5 p-20">
           <Reveal>
@@ -384,7 +309,7 @@ export default function Home() {
                     {socials.map((social) => {
                       const Icon = social.icon;
                       return (
-                        <a
+                        <Link
                           key={social.name}
                           href={social.link}
                           target="_blank"
@@ -395,7 +320,7 @@ export default function Home() {
                   transition-all duration-200"
                         >
                           <Icon size={15} />
-                        </a>
+                        </Link>
                       );
                     })}
                   </div>
@@ -418,7 +343,7 @@ export default function Home() {
                     {socials.map((social) => {
                       const Icon = social.icon;
                       return (
-                        <a
+                        <Link
                           key={social.name}
                           href={social.link}
                           target="_blank"
@@ -429,7 +354,7 @@ export default function Home() {
                   transition-all duration-200"
                         >
                           <Icon size={15} />
-                        </a>
+                        </Link>
                       );
                     })}
                   </div>
@@ -538,103 +463,190 @@ export default function Home() {
           </Reveal>
           <Reveal>
             <section id="projects">
+              {/* ── Section header ── */}
               <div className="pt-14">
-                <div className="flex gap-4 mb-4 items-center">
-                  <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
-                    <Code />
-                  </p>
-                  <p className="text-[28px] font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
-                    Featured Projects
-                  </p>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex gap-4 items-center">
+                    <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
+                      <Code />
+                    </p>
+                    <p className="text-[28px] font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
+                      Featured Projects
+                    </p>
+                  </div>
+
+                  {/* View all — desktop */}
+                  <Link
+                    href="/projects"
+                    className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl
+                      text-xs font-bold tracking-wide text-blue-400/80 border border-blue-400/20
+                      bg-blue-500/5 hover:bg-blue-500/15 hover:border-blue-400/40 hover:text-blue-300
+                      transition-all duration-300 group"
+                  >
+                    View all projects
+                    <ArrowUpRight
+                      size={13}
+                      className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    />
+                  </Link>
                 </div>
                 <GradientDivider />
               </div>
 
-              <div className="pt-12 flex flex-col gap-16">
-                {projects.map((project, index) => {
+              {/* ── Project rows — capped at 2 ── */}
+              <div className="pt-10 flex flex-col gap-0">
+                {projects.slice(0, 2).map((project, index) => {
                   const Wrapper = index % 2 === 0 ? RevealLeft : RevealRight;
+                  const isEven = index % 2 === 0;
                   return (
-                    <Wrapper>
+                    <Wrapper key={project.slug}>
                       <div
-                        key={index}
-                        className={`group flex flex-col ${
-                          index % 2 === 0
-                            ? "lg:flex-row"
-                            : "lg:flex-row-reverse"
-                        } gap-8 items-center`}
+                        className={`group relative flex flex-col ${
+                          isEven ? "md:flex-row" : "md:flex-row-reverse"
+                        } gap-0 md:gap-14 pb-7 md:pb-10
+                        border-b border-white/[0.06] last:border-b-0 items-center`}
                       >
-                        {/* Image — takes 55% */}
-                        <div className="w-full lg:w-[55%] shrink-0 relative">
+                        {/* Ghost number */}
+                        <span
+                          className={`absolute top-8 ${
+                            isEven ? "-left-2" : "-right-2"
+                          } text-[110px] z-99 md:text-[140px] font-black leading-none select-none
+                          pointer-events-none text-blue-500/[0.1]
+                          group-hover:text-blue-400/[0.11] transition-colors duration-700`}
+                        >
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
+
+                        {/* ── Image ── */}
+                        <div className="w-full md:w-[54%] shrink-0">
                           <div
-                            className="relative overflow-hidden rounded-2xl border border-blue-400/15 
-                            group-hover:border-blue-400/40 transition-all duration-500
-                            shadow-[0_0_0_1px_rgba(96,165,250,0.05)]
-                            group-hover:shadow-[0_20px_60px_rgba(96,165,250,0.1)]"
+                            className="relative overflow-hidden rounded-2xl border border-white/8
+                              group-hover:border-blue-400/30 transition-all duration-700
+                              shadow-[0_4px_40px_rgba(0,0,0,0.4)]
+                              group-hover:shadow-[0_20px_80px_rgba(96,165,250,0.1)]"
                           >
                             <Image
-                              src={project.img}
+                              src={`https://api.microlink.io/?url=${encodeURIComponent(
+                                project.link,
+                              )}&screenshot=true&meta=false&embed=screenshot.url`}
                               alt={project.name}
-                              width={800}
-                              height={450}
-                              className="w-full h-56 lg:h-72 object-cover transition-transform duration-700 group-hover:scale-105"
+                              width={900}
+                              height={520}
+                              className="w-full h-65 sm:h-[340px] object-cover object-top
+                                transition-transform duration-[1.2s] ease-out
+                                group-hover:scale-[1.04]"
                             />
-                            {/* overlay */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                            {/* gradient overlay */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-[#01050f]/70 via-[#01050f]/10 to-transparent" />
+
+                            {/* live badge */}
+                            <a
+                              href={project.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="absolute top-3 right-3 flex items-center gap-1.5
+                                text-[10px] font-bold tracking-wider uppercase
+                                bg-[#01050f]/80 backdrop-blur-sm border border-white/10
+                                text-green-400 px-2.5 py-1.5 rounded-lg
+                                hover:border-green-400/40 transition-colors duration-200"
+                            >
+                              <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                              Live
+                            </a>
                           </div>
-                          {/* floating index number */}
-                          <span className="absolute -top-4 -left-3 text-[80px] font-black text-white/[0.04] leading-none select-none pointer-events-none">
-                            0{index + 1}
-                          </span>
                         </div>
 
-                        {/* Content */}
-                        <div className="flex-1 flex flex-col gap-4">
-                          <p className="text-2xl font-bold text-white">
-                            {project.name}
-                          </p>
+                        {/* ── Content ── */}
+                        <div className="flex-1 flex flex-col justify-center gap-5 pt-8 md:pt-0">
+                          {/* index + category line */}
+                          <div className="flex items-center gap-3">
+                            <span className="text-[11px] font-bold text-blue-400/50 tracking-[0.15em] uppercase tabular-nums">
+                              {String(index + 1).padStart(2, "0")} /
+                            </span>
+                            <div className="h-px w-8 bg-blue-400/20" />
+                            <span className="text-[10px] font-semibold tracking-[0.18em] uppercase text-gray-600">
+                              Web App
+                            </span>
+                          </div>
 
-                          <p className="text-gray-400 text-sm leading-relaxed">
+                          {/* title + tagline */}
+                          <div>
+                            <h3 className="text-3xl md:text-[2rem] font-black text-white leading-tight tracking-tight group-hover:text-blue-50 transition-colors duration-300">
+                              {project.name}
+                            </h3>
+                            {project.tagline && (
+                              <p className="text-blue-400/60 text-sm font-medium mt-1 italic">
+                                {project.tagline}
+                              </p>
+                            )}
+                          </div>
+
+                          {/* about */}
+                          <p className="text-gray-400 text-sm leading-relaxed ">
                             {project.about}
                           </p>
 
+                          {/* stack */}
                           <div className="flex flex-wrap gap-1.5">
-                            {project.stack.map((s, i) => (
+                            {project.stack.slice(0, 4).map((s, i) => (
                               <span
                                 key={i}
                                 className="text-[11px] font-medium px-2 py-0.5 rounded-md
-                             text-teal-300 bg-teal-400/10 border border-teal-400/20"
+        text-teal-300/80 bg-teal-400/8 border border-teal-400/15
+        group-hover:border-teal-400/25 transition-colors duration-300"
                               >
                                 {s}
                               </span>
                             ))}
                           </div>
 
-                          <div className="h-px bg-gradient-to-r from-blue-400/20 to-transparent mt-1" />
+                          {/* divider */}
+                          <div className="h-px bg-gradient-to-r from-blue-400/15 via-blue-400/5 to-transparent" />
 
-                          <div className="flex gap-4">
+                          {/* CTAs */}
+                          <div className="flex items-center gap-3 flex-wrap">
+                            <Link
+                              href={`/projects/${project.slug}`}
+                              className="group/btn inline-flex items-center gap-2 px-3 py-1.5 w-fit rounded-xl
+                                bg-blue-500/15 border border-blue-400/25 text-blue-300
+                                hover:bg-blue-500/25 hover:border-blue-400/50 hover:text-blue-200
+                                text-xs font-bold tracking-wide transition-all duration-300
+                                hover:shadow-[0_0_20px_rgba(96,165,250,0.12)]"
+                            >
+                              <Rocket size={12} />
+                              Details
+                              <ArrowUpRight
+                                size={11}
+                                className="opacity-0 hidden -translate-y-0.5 translate-x-0.5
+                                  group-hover/btn:opacity-100 group-hover/btn:block group-hover/btn:translate-y-0 group-hover/btn:translate-x-0
+                                  transition-all duration-500"
+                              />
+                            </Link>
+
                             <a
                               href={project.link}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl
-                           bg-blue-500/15 border border-blue-400/25 text-blue-400
-                           hover:bg-blue-500/25 hover:border-blue-400/50
-                           text-xs font-semibold transition-all duration-300"
+                              className="inline-flex items-center gap-2 px-3 py-1.5 w-fit rounded-xl
+                                bg-white/4 border border-white/10 text-gray-300
+                                hover:bg-white/8 hover:border-white/20 hover:text-white
+                                text-xs font-bold tracking-wide transition-all duration-300"
                             >
                               <Share size={12} />
-                              Live Demo
+                              Demo
                             </a>
+
                             <a
                               href={project.github}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl
-                           bg-white/5 border border-white/10 text-gray-300
-                           hover:bg-white/10 hover:border-white/20
-                           text-xs font-semibold transition-all duration-300"
+                              className="inline-flex items-center gap-2 px-3 py-1.5 w-fit rounded-xl
+                                bg-white/4 border border-white/10 text-gray-400
+                                hover:bg-white/8 hover:border-white/20 hover:text-gray-200
+                                text-xs font-bold tracking-wide transition-all duration-300"
                             >
                               <Github size={12} />
-                              GitHub
+                              Source
                             </a>
                           </div>
                         </div>
@@ -642,6 +654,27 @@ export default function Home() {
                     </Wrapper>
                   );
                 })}
+              </div>
+
+              {/* ── View all — mobile + bottom CTA ── */}
+              <div className=" flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p className="text-sm text-gray-600">
+                  Showing {Math.min(2, projects.length)} of {projects.length}{" "}
+                  projects
+                </p>
+                <Link
+                  href="/projects"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl
+                    text-sm font-bold text-white border border-white/10 bg-white/5
+                    hover:bg-white/10 hover:border-white/20
+                    transition-all duration-300 group"
+                >
+                  View all projects
+                  <ArrowUpRight
+                    size={14}
+                    className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  />
+                </Link>
               </div>
             </section>
           </Reveal>
@@ -775,7 +808,7 @@ export default function Home() {
                               </span>
                             ))}
                           </div>
-                          <a
+                          <Link
                             href={education.link}
                             target="_blank"
                             rel="noopener noreferrer"
@@ -785,7 +818,7 @@ export default function Home() {
                             aria-label="View credential"
                           >
                             <Share size={12} />
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -915,7 +948,7 @@ export default function Home() {
                   </p>
 
                   {/* CTA Button */}
-                  <a
+                  <Link
                     href="mailto:favourdomirin@gmail.com"
                     className="mt-1 inline-flex items-center gap-2 px-6 py-2.5 rounded-lg
             bg-blue-800 text-white text-sm font-semibold
@@ -924,7 +957,7 @@ export default function Home() {
                   >
                     <Mail size={14} />
                     Send me an email
-                  </a>
+                  </Link>
                 </div>
               </section>
             </Reveal>
@@ -958,17 +991,17 @@ export default function Home() {
                   <nav className="flex flex-wrap gap-x-8 gap-y-2">
                     {[
                       { label: "Experience", href: "#journey" },
-                      { label: "Projects", href: "#projects" },
+                      { label: "Projects", href: "projects" },
                       { label: "Education", href: "#education" },
                       { label: "Testimonials", href: "#reviews" },
                     ].map((item) => (
-                      <a
+                      <Link
                         key={item.label}
                         href={item.href}
                         className="text-xs text-gray-400 hover:text-white transition-colors duration-200 tracking-wide"
                       >
                         {item.label}
-                      </a>
+                      </Link>
                     ))}
                   </nav>
                 </div>
@@ -988,7 +1021,7 @@ export default function Home() {
                     {socials.map((social) => {
                       const Icon = social.icon;
                       return (
-                        <a
+                        <Link
                           key={social.name}
                           href={social.link}
                           target="_blank"
@@ -1000,7 +1033,7 @@ export default function Home() {
                 transition-all duration-200"
                         >
                           <Icon size={14} />
-                        </a>
+                        </Link>
                       );
                     })}
                   </div>

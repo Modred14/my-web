@@ -1,0 +1,68 @@
+export const projects = [
+  {
+    slug: "scissors",
+    name: "Scissors",
+    tagline: "Short links. Big impact.",
+    stack: [
+      "TypeScript",
+      "Vue.js",
+      "Node.js",
+      "Firebase",
+      "Tailwind CSS",
+      "Express.js",
+      "REST API",
+    ],
+    about:
+      "Scissors is a URL-shortening platform that allows users to generate short, custom URLs and corresponding QR codes.",
+    description: [
+      "Scissors was born out of a simple frustration: long, ugly links that break in emails and look unprofessional. The goal was to build a clean, fast, and reliable alternative.",
+      "The platform lets users shorten any URL, create custom aliases, and generate QR codes on the fly — all with a minimal, distraction-free interface.",
+      "Under the hood, Firebase handles real-time persistence and authentication, while the Express.js API manages redirect logic and analytics tracking.",
+    ],
+    highlights: [
+      "Custom alias generation for branded short links",
+      "On-demand QR code creation for every shortened URL",
+      "Real-time click analytics dashboard",
+      "Firebase-backed persistence with instant read/write",
+      "Fully responsive — works seamlessly on mobile and desktop",
+      "TypeScript throughout for type-safety and maintainability",
+    ],
+    link: "https://app-scissors.netlify.app/",
+    github: "https://github.com/Modred14/Scissors",
+    img: "/scissors.png",
+  },
+  {
+    slug: "valentine-web-generator",
+    name: "Valentine Web Generator",
+    tagline: "Personalised love, delivered digitally.",
+    stack: [
+      "Next.js",
+      "JavaScript",
+      "React",
+      "Firebase",
+      "Node.js",
+      "Cloudinary",
+      "Resend",
+      "Tailwind CSS",
+      "Lucide React",
+    ],
+    about:
+      "Valentine Web Generator is a web platform for generating personalised Valentine pages with music, memories, and heartfelt messages.",
+    description: [
+      "This project started as a fun side experiment and turned into something thousands of people used to surprise their partners on Valentine's Day.",
+      "Users fill out a short form — adding photos, a playlist, and a personal message — and the app generates a beautiful, shareable micro-site in seconds.",
+      "Cloudinary handles image optimisation and storage, Resend powers the email delivery of the generated link, and Firebase stores each unique Valentine page persistently.",
+    ],
+    highlights: [
+      "Dynamic page generation from user input in under a second",
+      "Cloudinary integration for fast, optimised image uploads",
+      "Resend-powered email delivery of shareable Valentine links",
+      "Background music playback tied to the generated page",
+      "Firebase real-time database for persistent page storage",
+      "Mobile-first design with smooth animations and transitions",
+    ],
+    link: "https://hehe-hmm.netlify.app/",
+    github: "https://github.com/Modred14/val-app",
+    img: "/val-app.png",
+  },
+];
