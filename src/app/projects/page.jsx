@@ -3,14 +3,33 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "../header";
 import { projects } from "@/lib/project";
-import { Rocket, Share, Github, ArrowUpRight, Layers, ArrowLeft} from "lucide-react";
+import { Rocket, Share, Github, ArrowUpRight,Mail, Layers,Linkedin, ArrowLeft} from "lucide-react";
 import RevealRight from "../revealfright";
 import Reveal from "../reavel";
 import RevealLeft from "../revealfrleft";
 
+
 export default function ProjectsPage() {
+    const socials = [
+    {
+      link: "https://github.com/Modred14",
+      icon: Github,
+      name: "GitHub",
+    },
+    {
+      link: "mailto:favourdomirin@gmail.com",
+      icon: Mail,
+      name: "Email",
+    },
+    {
+      link: "https://ng.linkedin.com/in/omirin-favour",
+      icon: Linkedin,
+      name: "Linkedin",
+    },
+  ];
+
   return (
-    <div className="min-h-screen bg-[#01050f] text-gray-200 overflow-x-hidden">
+    <div className="min-h-screen bg-[#01050f] text-gray-200 overflow-hidden">
       {/* ── Ambient atmosphere ── */}
       <div className="fixed top-[-15vh] left-[-5vw] w-[700px] h-[700px] bg-blue-700/8 rounded-full blur-[140px] pointer-events-none z-0" />
       <div className="fixed bottom-[-10vh] right-[-10vw] w-[500px] h-[500px] bg-cyan-600/5 rounded-full blur-[120px] pointer-events-none z-0" />
@@ -122,6 +141,84 @@ export default function ProjectsPage() {
           ))}
         </div>
       </div>
+      <footer className="mt-16 -mb-7 border-t border-white/10 ">
+            <Reveal>
+              <div className="max-w-5xl mx-auto px-6 py-12">
+                {/* Top row: Brand + Nav */}
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 mb-10">
+                  {/* Brand */}
+                  <div className="flex items-center gap-3">
+                    <Image
+                      src="/logo.png"
+                      alt="Modred"
+                      width={32}
+                      height={32}
+                      className="w-8 h-8 object-contain"
+                    />
+                    <div>
+                      <p className="font-bold text-sm text-white tracking-widest uppercase">
+                        Modred.dev
+                      </p>
+                      <p className="text-[11px] text-gray-500 mt-0.5">
+                        Favour Omirin · Software Engineer
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Nav */}
+                  <nav className="flex flex-wrap gap-x-8 gap-y-2">
+                    {[
+                      { label: "Experience", href: "experience" },
+                      { label: "Projects", href: "projects" },
+                      { label: "Education", href: "/#education" },
+                      { label: "Testimonials", href: "/#reviews" },
+                    ].map((item) => (
+                      <Link
+                        key={item.label}
+                        href={item.href}
+                        className="text-xs text-gray-400 hover:text-white transition-colors duration-200 tracking-wide"
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </nav>
+                </div>
+
+                {/* Divider */}
+                <div className="h-px bg-white/5 mb-8" />
+
+                {/* Bottom row: Copyright + Socials */}
+                <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+                  <p className="text-xs text-gray-600 order-2 md:order-1">
+                    © {new Date().getFullYear()} Favour Omirin. All rights
+                    reserved.
+                  </p>
+
+                  {/* Socials */}
+                  <div className="flex items-center gap-2 order-1 md:order-2">
+                    {socials.map((social) => {
+                      const Icon = social.icon;
+                      return (
+                        <Link
+                          key={social.name}
+                          href={social.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          title={social.name}
+                          className="w-8 h-8 flex items-center justify-center rounded-md
+                border border-white/10 text-gray-500
+                hover:border-white/25 hover:text-white hover:bg-white/5
+                transition-all duration-200"
+                        >
+                          <Icon size={14} />
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          </footer>
     </div>
   );
 }

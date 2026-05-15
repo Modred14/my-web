@@ -198,22 +198,22 @@ export default function AnalyticsPage() {
           <p className="text-sm text-green-300">
             Enter passcode to continue...
           </p>
-     <div className="relative w-60">
-  <input
-    type="password"
-    value={password}
-    onChange={(e) => setPassword(e.target.value)}
-    placeholder="••••••"
-    onKeyDown={(e) => e.key === "Enter" && checkPass()}
-    className="w-full bg-black border border-green-400 text-green-300 placeholder-green-600 px-3 py-2 pr-16 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
-  />
-  <button
-    onClick={checkPass}
-    className="absolute top-0 right-0 h-full bg-green-500 text-black px-3 rounded-r hover:bg-green-600 transition font-bold"
-  >
-    Enter
-  </button>
-</div>
+          <div className="relative w-60">
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="••••••"
+              onKeyDown={(e) => e.key === "Enter" && checkPass()}
+              className="w-full bg-black border border-green-400 text-green-300 placeholder-green-600 px-3 py-2 pr-16 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+            />
+            <button
+              onClick={checkPass}
+              className="absolute top-0 right-0 h-full bg-green-500 text-black px-3 rounded-r hover:bg-green-600 transition font-bold"
+            >
+              Enter
+            </button>
+          </div>
           <ErrorModal
             isOpen={errorOpen}
             message={message}

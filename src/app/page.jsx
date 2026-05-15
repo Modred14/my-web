@@ -15,8 +15,6 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 import Reveal from "./reavel";
-import PageLoader from "@/components/PageLoader";
-import AnalyticsTracker from "@/components/AnalyticsTracker";
 import Image from "next/image";
 import GradientDivider from "@/components/GradientDivider";
 import RevealLeft from "./revealfrleft";
@@ -25,57 +23,13 @@ import RevealChill from "./revealchill";
 import Header from "./header";
 import Link from "next/link";
 import { projects } from "@/lib/project";
+import { journey } from "@/lib/experience";
 
 export default function Home() {
   const codeFirstYear = 2023;
   const currentYear = new Date().getFullYear();
   const experienceYear = currentYear - codeFirstYear;
   const userPic = "/Favour-Omirin.jpg";
-  const journey = [
-    {
-      workplace: "Techfest 5.0 Hackathon",
-      position: "First Place Winner (Contributor)",
-      duration: "May 2026",
-      impact: [
-        "Won first place at Techfest 5.0 (Cred, Code & Culture) as part of a 5-member team for building Tappay",
-        "Built TapPay, a payment app integrating PayAza API for wallet funding and transactions",
-        "Implemented NFC tap-to-pay, QR scanning, and phone number-based transfers",
-        "My team and I designed and shipped mobile and web versions of the product in 32 hours",
-        "Delivered a working MVP enabling fast and flexible digital payments for real-world use cases",
-      ],
-    },
-    {
-      workplace: "Cowrywise",
-      position: "Campus Ambassador (Obafemi Awolowo University)",
-      duration: "January 2026 – Present",
-      impact: [
-        "Increased Cowrywise adoption among students by onboarding new users and improving campus engagement",
-        "Planned and executed financial literacy campaigns and outreach programs for undergraduates",
-        "Represented Cowrywise at campus events, strengthening brand visibility and student trust",
-        "Built and managed partnerships with student organizations to expand campus reach and engagement",
-        "Collected and analyzed user feedback to inform product improvements and engagement strategy",
-      ],
-    },
-    {
-      workplace: "2Thirty Integrated Services Ltd",
-      position: "Frontend Engineer (Internship)",
-      duration: "January 2024 – June 2024",
-      impact: [
-        "Built and maintained scalable web applications using React, JavaScript, and Tailwind CSS",
-        "Integrated frontend components with backend APIs to deliver seamless full-stack functionality",
-        "Designed responsive, user-focused interfaces optimized for desktop and mobile",
-        "Built reusable UI components and patterns to improve maintainability and development speed",
-        "Converted UI/UX designs into pixel-accurate pages while ensuring cross-browser compatibility and modern web standards",
-      ],
-    },
-
-    // {
-    //   workplace: "",
-    //   position: "",
-    //   duration: "",
-    //   impact: [],
-    // },
-  ];
 
   const languages = [
     // Core Languages
@@ -244,9 +198,7 @@ export default function Home() {
   };
 
   return (
-    <PageLoader>
-      <AnalyticsTracker />
-
+    <div>
       <div className="flex justify-center bg-[#01050f] text-gray-200 text-base relative overflow-hidden">
         {" "}
         <div className="w-full bg-[#01050f]/50 backdrop-blur-2xl fixed z-100">
@@ -400,69 +352,132 @@ export default function Home() {
               </div>
             </div>
           </Reveal>
+
           <Reveal>
-            <section id="journey">
+            <section className="scroll-mt-5" id="journey">
               <div className="pt-14">
-                <div className="flex gap-4 mb-4 items-center">
-                  <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
-                    <Briefcase />
-                  </p>
-                  <p className="text-[28px] font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
-                    Professional Experience
-                  </p>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex gap-4 items-center">
+                    <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
+                      <Briefcase />
+                    </p>
+                    <p className="text-[28px] font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
+                      Professional Experience
+                    </p>
+                  </div>
+
+                  {/* View all — desktop */}
+                  <Link
+                    href="/experience"
+                    className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl
+                      text-xs font-bold tracking-wide text-blue-400/80 border border-blue-400/20
+                      bg-blue-500/5 hover:bg-blue-500/15 hover:border-blue-400/40 hover:text-blue-300
+                      transition-all duration-300 group"
+                  >
+                    Full journey
+                    <ArrowUpRight
+                      size={13}
+                      className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    />
+                  </Link>
                 </div>
                 <GradientDivider />
               </div>
 
               <div className="pt-8 flex flex-col gap-5">
-                {journey.map((journeys, index) => (
-                  <Reveal>
-                    <div
-                      key={index}
-                      className="relative bg-white/5 border border-white/10 rounded-2xl p-6 overflow-hidden"
-                    >
-                      {/* left accent bar */}
-                      <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-blue-400 rounded-l-2xl" />
+                <div className="relative flex flex-col gap-0">
+                  {/* vertical line */}
+                  <div className="absolute hidden sm:block left-[11px] top-2 bottom-2 w-px bg-gradient-to-b from-blue-400/40 via-blue-400/20 to-transparent pointer-events-none" />
 
-                      {/* header */}
-                      <div className="flex flex-wrap justify-between items-start gap-3 mb-4">
-                        <div>
-                          <p className="font-semibold text-[17px] text-white">
-                            {journeys.workplace}
-                          </p>
-                          <p className="text-blue-400 text-sm font-medium mt-0.5">
-                            {journeys.position}
-                          </p>
+                  {journey.slice(0, 2).map((item, index) => (
+                    <RevealChill key={index} delay={index * 80}>
+                      <div className="relative flex gap-6 mb-12">
+                        {/* timeline dot */}
+                        <div className="hidden sm:block relative shrink-0 mt-1.5">
+                          <div className="w-6 h-6 rounded-full bg-[#01050f] border-2 border-blue-400/50 flex items-center justify-center z-10 relative">
+                            <div className="w-2 h-2 rounded-full bg-blue-400" />
+                          </div>
                         </div>
-                        <span className="inline-flex items-center gap-1.5 text-xs text-gray-400 bg-white/5 border border-white/10 rounded-lg px-3 py-1.5 whitespace-nowrap">
-                          <CalendarDays size={12} />
-                          {journeys.duration}
-                        </span>
+
+                        {/* card */}
+                        <div
+                          className="flex-1 bg-white/[0.03] border border-white/8 rounded-2xl p-6 overflow-hidden relative
+                                 hover:border-blue-400/25 hover:bg-white/[0.05] transition-all duration-500 group"
+                        >
+                          {/* left accent bar */}
+                          <div
+                            className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-blue-400 to-blue-600/30 rounded-l-2xl
+                                   opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                          />
+
+                          {/* header */}
+                          <div className="flex flex-wrap justify-between items-start gap-3 mb-4">
+                            <div>
+                              <div className="flex items-center gap-2 mb-0.5">
+                                <Briefcase
+                                  size={13}
+                                  className="text-blue-400/60"
+                                />
+                                <p className="font-bold text-[17px] text-white leading-snug">
+                                  {item.workplace}
+                                </p>
+                              </div>
+                              <p className="text-blue-400 text-sm font-medium mt-0.5 ml-5">
+                                {item.position}
+                              </p>
+                            </div>
+                            <span className="inline-flex items-center gap-1.5 text-xs text-gray-500 bg-white/5 border border-white/10 rounded-lg px-3 py-1.5 whitespace-nowrap">
+                              <CalendarDays size={11} />
+                              {item.duration}
+                            </span>
+                          </div>
+
+                          {/* divider */}
+                          <div className="h-px bg-gradient-to-r from-blue-400/10 via-white/5 to-transparent mb-4" />
+
+                          {/* impact bullets */}
+                          <ul className="flex flex-col gap-2.5">
+                            {item.impact.map((impact, i) => (
+                              <li
+                                key={i}
+                                className="flex gap-3 text-sm text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors duration-300"
+                              >
+                                <span className="mt-[7px] w-1.5 h-1.5 rounded-full bg-blue-400/60 flex-shrink-0" />
+                                {impact}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
                       </div>
+                    </RevealChill>
+                  ))}
+                </div>
+              </div>
 
-                      {/* divider */}
-                      <div className="h-px bg-white/10 mb-4" />
-
-                      {/* impact bullets */}
-                      <ul className="flex flex-col gap-2">
-                        {journeys.impact.map((impact, i) => (
-                          <li
-                            key={i}
-                            className="flex gap-3 text-sm text-gray-300 leading-relaxed"
-                          >
-                            <span className="mt-[7px] w-1.5 h-1.5 rounded-full bg-blue-400 flex-shrink-0" />
-                            {impact}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </Reveal>
-                ))}
+              {/* ── View all — bottom CTA ── */}
+              <div className="pt-8 -mt-12 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p className="text-sm text-gray-600">
+                  Showing {Math.min(2, journey.length)} of {journey.length}{" "}
+                  positions
+                </p>
+                <Link
+                  href="/experience"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl
+                    text-sm font-bold text-white border border-white/10 bg-white/5
+                    hover:bg-white/10 hover:border-white/20
+                    transition-all duration-300 group"
+                >
+                  View full journey
+                  <ArrowUpRight
+                    size={14}
+                    className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  />
+                </Link>
               </div>
             </section>
           </Reveal>
           <Reveal>
-            <section id="projects">
+            <section className="scroll-mt-5" id="projects">
               {/* ── Section header ── */}
               <div className="pt-14">
                 <div className="flex items-center justify-between mb-4">
@@ -658,7 +673,7 @@ export default function Home() {
 
               {/* ── View all — mobile + bottom CTA ── */}
               <div className=" flex flex-col sm:flex-row items-center justify-between gap-4">
-                <p className="text-xs text-gray-600">
+                <p className="text-sm text-gray-600">
                   Showing {Math.min(2, projects.length)} of {projects.length}{" "}
                   projects
                 </p>
@@ -679,7 +694,7 @@ export default function Home() {
             </section>
           </Reveal>
           <Reveal>
-            <section id="technologies">
+            <section className="scroll-mt-5" id="technologies">
               <div className="pt-14">
                 <div className="flex gap-4 mb-4 items-center">
                   <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
@@ -719,7 +734,7 @@ export default function Home() {
             </section>
           </Reveal>
           <Reveal>
-            <section id="education">
+            <section className="scroll-mt-5" id="education">
               <div className="pt-14">
                 <div className="flex items-center gap-4 mb-4">
                   <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
@@ -828,7 +843,7 @@ export default function Home() {
             </section>
           </Reveal>
           <Reveal>
-            <section id="reviews">
+            <section className="scroll-mt-5" id="reviews">
               <div className="pt-14">
                 <div className="flex items-center gap-4 mb-4">
                   <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
@@ -990,7 +1005,7 @@ export default function Home() {
                   {/* Nav */}
                   <nav className="flex flex-wrap gap-x-8 gap-y-2">
                     {[
-                      { label: "Experience", href: "#journey" },
+                      { label: "Experience", href: "experience" },
                       { label: "Projects", href: "projects" },
                       { label: "Education", href: "#education" },
                       { label: "Testimonials", href: "#reviews" },
@@ -1043,6 +1058,6 @@ export default function Home() {
           </footer>
         </div>
       </div>
-    </PageLoader>
+    </div>
   );
 }
