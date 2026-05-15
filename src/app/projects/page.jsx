@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "../header";
 import { projects } from "@/lib/project";
-import { Rocket, Share, Github, ArrowUpRight, Layers } from "lucide-react";
+import { Rocket, Share, Github, ArrowUpRight, Layers, ArrowLeft} from "lucide-react";
 import RevealRight from "../revealfright";
 import Reveal from "../reavel";
 import RevealLeft from "../revealfrleft";
@@ -56,7 +56,7 @@ export default function ProjectsPage() {
 
       <div className="relative z-10">
         {/* ── Page hero ── */}
-        <div className="max-w-6xl mx-auto px-5 sm:px-10 pt-28 pb-16">
+        <div className="max-w-5xl mx-auto px-5 sm:px-10 mt-28 pb-16">
           <div className="flex flex-col gap-4 mb-3">
             <Reveal>
               <div className="flex items-center gap-3">
@@ -96,10 +96,27 @@ export default function ProjectsPage() {
               </span>
             </div>
           </Reveal>
+                  <Reveal>
+            <div className="mt-6">
+              <Link
+                href="/"
+                className="inline-flex items-center gap-2 text-xs font-semibold text-gray-500
+                  border border-white/10 bg-white/[0.03] px-4 py-2 rounded-lg
+                  hover:text-blue-400 hover:border-blue-400/30 hover:bg-blue-500/5
+                  transition-all duration-200 group"
+              >
+                <ArrowLeft
+                  size={13}
+                  className="group-hover:-translate-x-0.5 transition-transform duration-200"
+                />
+                Back to Portfolio
+              </Link>
+            </div>
+          </Reveal>
         </div>
 
         {/* ── Projects ── */}
-        <div className="max-w-6xl mx-auto px-5 sm:px-10 pb-24 flex flex-col gap-0">
+        <div className=" max-w-5xl mx-auto px-5 sm:px-10 pb-24 flex flex-col gap-0">
           {projects.map((project, index) => (
             <ProjectRow key={project.slug} project={project} index={index} />
           ))}
@@ -239,12 +256,12 @@ function ProjectRow({ project, index }) {
             >
               <Rocket size={12} />
               Details
-              <ArrowUpRight
+              {/* <ArrowUpRight
                 size={11}
                 className="opacity-0 hidden -translate-y-0.5 translate-x-0.5
                                   group-hover/btn:opacity-100 group-hover/btn:block group-hover/btn:translate-y-0 group-hover/btn:translate-x-0
                                   transition-all duration-500"
-              />
+              /> */}
             </Link>
 
             <a

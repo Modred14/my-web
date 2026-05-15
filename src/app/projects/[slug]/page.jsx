@@ -407,7 +407,7 @@ export default function ProjectDetail() {
           </Reveal>
 
           {/* ── Footer strip ── */}
-          <footer className="mt-16 -mb-20 border-t border-white/10 ">
+          <footer className="mt-16 -mb-30 border-t border-white/10 ">
             <Reveal>
               <div className="max-w-5xl mx-auto px-6 py-12">
                 {/* Top row: Brand + Nav */}

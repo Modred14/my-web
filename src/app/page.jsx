@@ -269,7 +269,7 @@ export default function Home() {
           />
           <Header />
         </div>
-        <div className="md:max-w-250 sm:px-10 px-5 p-20">
+        <div className="mt-20 max-w-5xl mx-auto px-5 sm:px-10">
           <Reveal>
             <div className="grid place-items-center">
               <div className="flex flex-col lg:gap-10 lg:flex-row lg:items-center w-full">
@@ -503,12 +503,12 @@ export default function Home() {
                       <div
                         className={`group relative flex flex-col ${
                           isEven ? "md:flex-row" : "md:flex-row-reverse"
-                        } gap-0 md:gap-14 pb-7 md:pb-10
+                        } gap-0 md:gap-14 pb-8 md:pb-10
                         border-b border-white/[0.06] last:border-b-0 items-center`}
                       >
                         {/* Ghost number */}
                         <span
-                          className={`absolute top-8 ${
+                          className={`absolute -top-10 ${
                             isEven ? "-left-2" : "-right-2"
                           } text-[110px] z-99 md:text-[140px] font-black leading-none select-none
                           pointer-events-none text-blue-500/[0.1]
@@ -658,7 +658,7 @@ export default function Home() {
 
               {/* ── View all — mobile + bottom CTA ── */}
               <div className=" flex flex-col sm:flex-row items-center justify-between gap-4">
-                <p className="text-sm text-gray-600">
+                <p className="text-xs text-gray-600">
                   Showing {Math.min(2, projects.length)} of {projects.length}{" "}
                   projects
                 </p>
@@ -963,7 +963,7 @@ export default function Home() {
             </Reveal>
           </div>
 
-          <footer className="mt-16 -mb-20 border-t border-white/10 ">
+          <footer className="mt-16 -mb-5 border-t border-white/10 ">
             <Reveal>
               <div className="max-w-5xl mx-auto px-6 py-12">
                 {/* Top row: Brand + Nav */}
