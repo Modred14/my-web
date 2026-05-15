@@ -8,7 +8,7 @@ import Reveal from "../reavel";
 import RevealChill from "../revealchill";
 
 export default function ExperiencePage() {
-     const socials = [
+  const socials = [
     {
       link: "https://github.com/Modred14",
       icon: Github,
@@ -25,42 +25,25 @@ export default function ExperiencePage() {
       name: "Linkedin",
     },
   ];
+
   return (
     <div className="min-h-screen bg-[#01050f] text-gray-200 overflow-hidden">
 
-      {/* ── Atmosphere ── */}
-      <div className="fixed top-[-20vh] left-[-10vw] w-[700px] h-[700px] bg-blue-700/6 rounded-full blur-[140px] pointer-events-none z-0" />
-      <div className="fixed bottom-[-10vh] right-[-10vw] w-[500px] h-[500px] bg-cyan-600/4 rounded-full blur-[120px] pointer-events-none z-0" />
+      {/* ── Atmosphere — reduced blur values for iOS GPU performance ── */}
+      <div className="fixed top-[-20vh] left-[-10vw] w-[600px] h-[600px] bg-blue-700/5 rounded-full blur-[80px] pointer-events-none z-0" />
+      <div className="fixed bottom-[-10vh] right-[-10vw] w-[400px] h-[400px] bg-cyan-600/4 rounded-full blur-[70px] pointer-events-none z-0" />
+
+      {/* Dot grid — single instance, lower opacity, no vignette overlay (saves a composited layer) */}
       <div
-        className="fixed inset-0 pointer-events-none opacity-[0.06] z-0"
+        className="fixed inset-0 pointer-events-none opacity-[0.05] z-0"
         style={{
           backgroundImage: "radial-gradient(circle, rgba(148,163,184,0.7) 1px, transparent 1px)",
           backgroundSize: "28px 28px",
         }}
       />
-      <div
-        className="fixed inset-0 pointer-events-none z-0"
-        style={{
-          background: "radial-gradient(ellipse 90% 90% at 50% 50%, transparent 30%, #01050f 100%)",
-        }}
-      />
 
-      {/* ── Header ── */}
-      <div className="w-full bg-[#01050f]/50 backdrop-blur-2xl fixed z-[100]">
-        <div className="fixed top-[-20vh] left-[-10vw] w-[600px] h-[600px] bg-blue-600/2 rounded-full blur-[120px] pointer-events-none z-0" />
-        <div
-          className="fixed inset-0 pointer-events-none opacity-[0.18] z-0"
-          style={{
-            backgroundImage: "radial-gradient(circle, rgba(148,163,184,0.6) 1px, transparent 1px)",
-            backgroundSize: "32px 32px",
-          }}
-        />
-        <div
-          className="fixed inset-0 pointer-events-none z-0"
-          style={{
-            background: "radial-gradient(ellipse 80% 80% at 50% 50%, transparent 40%, #030712 100%)",
-          }}
-        />
+      {/* ── Header — backdrop-blur reduced to sm; removed duplicate orbs/grids inside header ── */}
+      <div className="w-full bg-[#01050f]/70 backdrop-blur-sm fixed z-[100]">
         <Header />
       </div>
 
@@ -97,7 +80,7 @@ export default function ExperiencePage() {
                 className="inline-flex items-center gap-2 text-xs font-semibold text-gray-500
                   border border-white/10 bg-white/[0.03] px-4 py-2 rounded-lg
                   hover:text-blue-400 hover:border-blue-400/30 hover:bg-blue-500/5
-                  transition-all duration-200 group"
+                  transition-colors duration-200 group"
               >
                 <ArrowLeft size={13} className="group-hover:-translate-x-0.5 transition-transform duration-200" />
                 Back to Portfolio
@@ -122,13 +105,13 @@ export default function ExperiencePage() {
                   </div>
                 </div>
 
-                {/* card */}
+                {/* card — transition-all replaced with specific properties for iOS */}
                 <div className="flex-1 bg-white/[0.03] border border-white/8 rounded-2xl p-6 overflow-hidden relative
-                  hover:border-blue-400/25 hover:bg-white/[0.05] transition-all duration-500 group">
+                  hover:border-blue-400/25 hover:bg-white/[0.05] transition-colors transition-[border-color,background-color] duration-300 group">
 
                   {/* left accent bar */}
                   <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-blue-400 to-blue-600/30 rounded-l-2xl
-                    opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                   {/* header */}
                   <div className="flex flex-wrap justify-between items-start gap-3 mb-4">
@@ -168,85 +151,83 @@ export default function ExperiencePage() {
         </div>
 
         {/* ── Footer strip ── */}
-      
-          <footer className="mt-16 -mb-30 border-t border-white/10 ">
-            <Reveal>
-              <div className="max-w-5xl mx-auto px-6 py-12">
-                {/* Top row: Brand + Nav */}
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 mb-10">
-                  {/* Brand */}
-                  <div className="flex items-center gap-3">
-                    <Image
-                      src="/logo.png"
-                      alt="Modred"
-                      width={32}
-                      height={32}
-                      className="w-8 h-8 object-contain"
-                    />
-                    <div>
-                      <p className="font-bold text-sm text-white tracking-widest uppercase">
-                        Modred.dev
-                      </p>
-                      <p className="text-[11px] text-gray-500 mt-0.5">
-                        Favour Omirin · Software Engineer
-                      </p>
-                    </div>
+        <footer className="mt-16 -mb-30 border-t border-white/10">
+          <Reveal>
+            <div className="max-w-5xl mx-auto px-6 py-12">
+              {/* Top row: Brand + Nav */}
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 mb-10">
+                {/* Brand */}
+                <div className="flex items-center gap-3">
+                  <Image
+                    src="/logo.png"
+                    alt="Modred"
+                    width={32}
+                    height={32}
+                    className="w-8 h-8 object-contain"
+                  />
+                  <div>
+                    <p className="font-bold text-sm text-white tracking-widest uppercase">
+                      Modred.dev
+                    </p>
+                    <p className="text-[11px] text-gray-500 mt-0.5">
+                      Favour Omirin · Software Engineer
+                    </p>
                   </div>
-
-                  {/* Nav */}
-                  <nav className="flex flex-wrap gap-x-8 gap-y-2">
-                    {[
-                      { label: "Experience", href: "experience" },
-                      { label: "Projects", href: "projects" },
-                      { label: "Education", href: "/#education" },
-                      { label: "Testimonials", href: "/#reviews" },
-                    ].map((item) => (
-                      <Link
-                        key={item.label}
-                        href={item.href}
-                        className="text-xs text-gray-400 hover:text-white transition-colors duration-200 tracking-wide"
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
-                  </nav>
                 </div>
 
-                {/* Divider */}
-                <div className="h-px bg-white/5 mb-8" />
+                {/* Nav */}
+                <nav className="flex flex-wrap gap-x-8 gap-y-2">
+                  {[
+                    { label: "Experience", href: "experience" },
+                    { label: "Projects", href: "projects" },
+                    { label: "Education", href: "/#education" },
+                    { label: "Testimonials", href: "/#reviews" },
+                  ].map((item) => (
+                    <Link
+                      key={item.label}
+                      href={item.href}
+                      className="text-xs text-gray-400 hover:text-white transition-colors duration-200 tracking-wide"
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </nav>
+              </div>
 
-                {/* Bottom row: Copyright + Socials */}
-                <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-                  <p className="text-xs text-gray-600 order-2 md:order-1">
-                    © {new Date().getFullYear()} Favour Omirin. All rights
-                    reserved.
-                  </p>
+              {/* Divider */}
+              <div className="h-px bg-white/5 mb-8" />
 
-                  {/* Socials */}
-                  <div className="flex items-center gap-2 order-1 md:order-2">
-                    {socials.map((social) => {
-                      const Icon = social.icon;
-                      return (
-                        <Link
-                          key={social.name}
-                          href={social.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          title={social.name}
-                          className="w-8 h-8 flex items-center justify-center rounded-md
-                border border-white/10 text-gray-500
-                hover:border-white/25 hover:text-white hover:bg-white/5
-                transition-all duration-200"
-                        >
-                          <Icon size={14} />
-                        </Link>
-                      );
-                    })}
-                  </div>
+              {/* Bottom row: Copyright + Socials */}
+              <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+                <p className="text-xs text-gray-600 order-2 md:order-1">
+                  © {new Date().getFullYear()} Favour Omirin. All rights reserved.
+                </p>
+
+                {/* Socials */}
+                <div className="flex items-center gap-2 order-1 md:order-2">
+                  {socials.map((social) => {
+                    const Icon = social.icon;
+                    return (
+                      <Link
+                        key={social.name}
+                        href={social.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title={social.name}
+                        className="w-8 h-8 flex items-center justify-center rounded-md
+                          border border-white/10 text-gray-500
+                          hover:border-white/25 hover:text-white hover:bg-white/5
+                          transition-colors duration-200"
+                      >
+                        <Icon size={14} />
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
-            </Reveal>
-          </footer>
+            </div>
+          </Reveal>
+        </footer>
       </div>
     </div>
   );
