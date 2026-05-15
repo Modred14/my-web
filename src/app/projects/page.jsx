@@ -211,9 +211,9 @@ function ProjectRow({ project, index }) {
       >
         {/* ghost number */}
         <span
-          className={`absolute top-8 ${isEven ? "-left-4 md:-left-8" : "-right-4 md:-right-8"}
-          text-[120px] md:text-[160px] font-black leading-none select-none pointer-events-none
-          text-blue-500/[0.07] group-hover:text-blue-400/[0.12] transition-colors duration-700`}
+          className={`absolute top-9 ${isEven ? "-left-4 md:-left-8" : "-right-4 md:-right-8"}
+          text-[120px] md:text-[160px] z-99 font-black leading-none select-none pointer-events-none
+          text-blue-500/10 group-hover:text-blue-400/11 transition-colors duration-700`}
         >
           {String(index + 1).padStart(2, "0")}
         </span>

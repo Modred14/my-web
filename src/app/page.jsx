@@ -329,7 +329,7 @@ export default function Home() {
                       <div className={`group relative flex flex-col ${isEven ? "md:flex-row" : "md:flex-row-reverse"} gap-0 md:gap-14 pb-8 md:pb-10
                         border-b border-white/[0.06] last:border-b-0 items-center`}>
                         <span className={`absolute -top-10 ${isEven ? "-left-2" : "-right-2"} text-[110px] z-99 md:text-[140px] font-black leading-none select-none
-                          pointer-events-none text-blue-500/[0.1] group-hover:text-blue-400/[0.11] transition-colors duration-700`}>
+                          pointer-events-none text-blue-500/10 group-hover:text-blue-400/11 transition-colors duration-700`}>
                           {String(index + 1).padStart(2, "0")}
                         </span>
 
