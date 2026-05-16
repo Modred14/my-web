@@ -14,6 +14,7 @@ import {
   CalendarDays,
   ArrowUpRight,
 } from "lucide-react";
+import HashScrollHandler from "@/components/Hash";
 import Reveal from "./reavel";
 import Image from "next/image";
 import GradientDivider from "@/components/GradientDivider";
@@ -168,6 +169,7 @@ export default function Home() {
 
   return (
     <div>
+      <HashScrollHandler />
       <div className="flex  justify-center bg-[#01050f] text-gray-200 text-base relative overflow-hidden">
         <div className="w-full bg-[#01050f]/70 backdrop-blur-sm fixed z-100">
           <Header />

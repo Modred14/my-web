@@ -1,7 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 
 import AnalyticsTracker from "@/components/AnalyticsTracker";
-import HashScrollHandler from "@/components/Hash";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -110,7 +109,6 @@ export default function RootLayout({ children }) {
           }}
         />
         <AnalyticsTracker />
-        <HashScrollHandler />
         {children}
       </body>
     </html>
