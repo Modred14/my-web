@@ -7,9 +7,9 @@ import DownloadCVButton from "@/lib/CvGenrator";
 
 const navLinks = [
   // { label: "About", href: "/#about" },
-  { label: "Experience", href: "/#journey" },
-  { label: "Projects", href: "/#projects" },
-  { label: "Education", href: "/#education" },
+  { label: "Experience", href: "#journey" },
+  { label: "Projects", href: "#projects" },
+  { label: "Education", href: "#education" },
 ];
 
 export default function Header() {

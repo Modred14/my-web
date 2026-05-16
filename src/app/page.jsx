@@ -20,7 +20,7 @@ import GradientDivider from "@/components/GradientDivider";
 import RevealLeft from "./revealfrleft";
 import RevealRight from "./revealfright";
 import RevealChill from "./revealchill";
-import Header from "./header";
+import Header from "./header2";
 import Link from "next/link";
 import { projects } from "@/lib/project";
 import { journey } from "@/lib/experience";
@@ -28,7 +28,7 @@ import { journey } from "@/lib/experience";
 export default function Home() {
   const codeFirstYear = 2023;
   const currentYear = new Date().getFullYear();
-  const experienceYear = currentYear - codeFirstYear;
+  const experienceYear = currentYear - codeFirstYear - 1;
   const userPic = "/Favour-Omirin.jpg";
 
   // FIX: getName() called hooks inside a nested function — invalid React, causes
@@ -41,7 +41,11 @@ export default function Home() {
     }, 5000);
     return () => clearInterval(interval);
   }, []);
-
+  useEffect(() => {
+    if (history.scrollRestoration) {
+      history.scrollRestoration = "manual";
+    }
+  }, []);
   const languages = [
     {
       name: "JavaScript",
@@ -164,16 +168,13 @@ export default function Home() {
 
   return (
     <div>
-      <div className="flex justify-center bg-[#01050f] text-gray-200 text-base relative overflow-hidden">
-        {/* ── Header — removed 4 duplicate fixed layers; backdrop-blur-2xl → sm ── */}
+      <div className="flex  justify-center bg-[#01050f] text-gray-200 text-base relative overflow-hidden">
         <div className="w-full bg-[#01050f]/70 backdrop-blur-sm fixed z-100">
           <Header />
         </div>
 
-        {/* ── Atmosphere — single set, reduced blur radii for iOS GPU ── */}
         <div className="fixed top-[-20vh] left-[-10vw] w-[600px] h-[600px] bg-blue-700/5 rounded-full blur-[80px] pointer-events-none z-0" />
         <div className="fixed bottom-[-10vh] right-[-10vw] w-[400px] h-[400px] bg-cyan-500/4 rounded-full blur-[70px] pointer-events-none z-0" />
-        {/* Single dot grid (was duplicated) */}
         <div
           className="fixed inset-0 pointer-events-none opacity-[0.05] z-0"
           style={{
@@ -183,9 +184,9 @@ export default function Home() {
           }}
         />
 
-        <div className="mt-20  max-w-5xl mx-auto px-5 sm:px-10 relative z-10">
+        <div className="mt-20 scroll-mt-24 max-w-5xl mx-auto px-5 sm:px-10 relative z-10">
           <Reveal>
-            <div id="about" className="grid scroll-mt-20 place-items-center">
+            <div className="grid place-items-center">
               <div className="flex flex-col lg:gap-10 lg:flex-row lg:items-center w-full">
                 {/* ── Avatar column ── */}
                 <div className="grid lg:block place-items-center shrink-0">
@@ -272,7 +273,7 @@ export default function Home() {
                       backend systems.
                     </p>
                     <p className="text-sm text-gray-500 leading-relaxed">
-                      I work primarily with the{" "}
+                      I work primarily with{" "}
                       <span className="text-gray-300 font-medium">
                         Next.js, JavaScript and PostgreSQL (Neon)
                       </span>{" "}
@@ -304,7 +305,7 @@ export default function Home() {
 
           {/* ── Experience ── */}
           <Reveal>
-            <section className="scroll-mt-5" id="journey">
+            <section className="scroll-mt-8" id="journey">
               <div className="pt-14">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex gap-4 items-center">
@@ -414,7 +415,7 @@ export default function Home() {
 
           {/* ── Projects ── */}
           <Reveal>
-            <section className="scroll-mt-5" id="projects">
+            <section className="scroll-mt-8" id="projects">
               <div className="pt-14">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex gap-4 items-center">
@@ -600,7 +601,7 @@ export default function Home() {
 
           {/* ── Technologies ── */}
           <Reveal>
-            <section className="scroll-mt-5" id="technologies">
+            <section className="scroll-mt-8" id="technologies">
               <div className="pt-14">
                 <div className="flex gap-4 mb-4 items-center">
                   <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
@@ -639,7 +640,7 @@ export default function Home() {
 
           {/* ── Education ── */}
           <Reveal>
-            <section className="scroll-mt-5" id="education">
+            <section className="scroll-mt-8" id="education">
               <div className="pt-14">
                 <div className="flex items-center gap-4 mb-4">
                   <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
@@ -735,7 +736,7 @@ export default function Home() {
 
           {/* ── Testimonials ── */}
           <Reveal>
-            <section className="scroll-mt-5" id="reviews">
+            <section className="scroll-mt-8" id="reviews">
               <div className="pt-14">
                 <div className="flex items-center gap-4 mb-4">
                   <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
