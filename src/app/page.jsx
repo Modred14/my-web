@@ -13,7 +13,9 @@ import {
   Rocket,
   CalendarDays,
   ArrowUpRight,
+  Download,
 } from "lucide-react";
+import DownloadCVButton from "@/lib/CvGenrator";
 import HashScrollHandler from "@/components/Hash";
 import Reveal from "./reavel";
 import Image from "next/image";
@@ -21,7 +23,7 @@ import GradientDivider from "@/components/GradientDivider";
 import RevealLeft from "./revealfrleft";
 import RevealRight from "./revealfright";
 import RevealChill from "./revealchill";
-import Header from "./header2";
+import Header from "./header";
 import Link from "next/link";
 import { projects } from "@/lib/project";
 import { journey } from "@/lib/experience";
@@ -170,7 +172,7 @@ export default function Home() {
   return (
     <div>
       <HashScrollHandler />
-      <div className="flex  justify-center bg-[#01050f] text-gray-200 text-base relative overflow-hidden">
+      <div className="flex  justify-center bg-[#01050f] text-gray-200 text-base relative">
         <div className="w-full bg-[#01050f]/70 backdrop-blur-sm fixed z-100">
           <Header />
         </div>
@@ -186,7 +188,10 @@ export default function Home() {
           }}
         />
 
-        <div className="mt-20 scroll-mt-24 max-w-5xl mx-auto px-5 sm:px-10 relative z-10">
+        <div
+          className="mt-20 scroll-mt-24 max-w-5xl mx-auto px-5 sm:px-10 
+         z-10"
+        >
           <Reveal>
             <div className="grid place-items-center">
               <div className="flex flex-col lg:gap-10 lg:flex-row lg:items-center w-full">
@@ -299,6 +304,51 @@ export default function Home() {
                         </span>
                       ))}
                     </div>
+
+                    {/* CTA Buttons */}
+                   <div className="flex flex-wrap gap-3 justify-center lg:justify-start mt-1">
+  <Link
+    href="#projects"
+    className="
+      inline-flex items-center gap-2
+      px-5 py-2.5 rounded-lg
+      bg-blue-500/20
+      border border-blue-400/40
+      text-blue-100
+      text-[13px] font-bold font-mono tracking-wide
+      hover:bg-blue-500/30
+      hover:border-blue-300/70
+      hover:text-white
+      shadow-[0_0_20px_rgba(59,130,246,0.12)]
+      transition-all duration-200
+      hover:-translate-y-[1px]
+    "
+  >
+    My Projects
+  </Link>
+
+  <DownloadCVButton
+    href="/Favour-Omirin-CV.pdf"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="
+      inline-flex items-center gap-2
+      px-5 py-2.5 rounded-lg
+      border border-white/10
+      bg-white/[0.03]
+      text-gray-300
+      text-[13px] font-semibold font-mono tracking-wide
+      hover:bg-white/[0.06]
+      hover:border-white/20
+      hover:text-white
+      transition-all duration-200
+      hover:-translate-y-[1px]
+    "
+  >
+    <Download size={12} />
+    Resume
+  </DownloadCVButton>
+</div>
                   </div>
                 </div>
               </div>

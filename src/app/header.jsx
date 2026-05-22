@@ -134,7 +134,7 @@ export default function Header() {
           {/* Right side */}
           <div className="flex items-center gap-3">
             {/* Clock — hidden on small screens */}
-            <span className="hidden sm:block font-mono text-xs text-gray-500 tabular-nums">
+            <span className=" font-mono text-xs text-gray-500 tabular-nums">
               {currentTime}
             </span>
 

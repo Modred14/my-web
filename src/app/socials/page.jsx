@@ -196,7 +196,7 @@ export default function Page() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-gray-100 relative overflow-hidden">
+    <div className="min-h-screen bg-black text-gray-100 relative ">
       {/* ambient background */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -top-40 -left-40 h-[520px] w-[520px] rounded-full bg-white/10 blur-3xl" />

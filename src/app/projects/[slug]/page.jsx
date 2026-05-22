@@ -35,7 +35,7 @@ export default function ProjectDetail() {
   const nextProject = projects[currentIndex + 1] ?? null;
 
   return (
-    <div className="min-h-screen bg-[#01050f] text-gray-200 overflow-hidden">
+    <div className="min-h-screen bg-[#01050f] text-gray-200 -hidden">
 
       {/* ── Atmosphere — reduced blur radii, removed center orb (unnoticeable visually) ── */}
       <div className="fixed top-[-20vh] left-[-10vw] w-[600px] h-[600px] bg-blue-700/5 rounded-full blur-[80px] pointer-events-none z-0" />
