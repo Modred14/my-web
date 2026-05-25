@@ -110,7 +110,7 @@ export default function Header() {
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => {
-              const id = link.href.replace("#", "");
+              const id = link.href.replace("/#", "");
               const isActive = activeSection === id;
               return (
                 <Link
