@@ -43,7 +43,7 @@ export default function Header() {
 
   // Active section tracking — scroll-position based for accuracy
   useEffect(() => {
-    const ids = navLinks.map((l) => l.href.replace("#", "")).filter(Boolean);
+    const ids = navLinks.map((l) => l.href.replace("/#", "")).filter(Boolean);
 
     const observer = new IntersectionObserver(
       (entries) => {
