@@ -94,7 +94,7 @@ function buildCVHTML() {
         </div>
         <div class="entry-date links-col">
           <a href="${p.link}">${p.link.replace(/^https?:\/\//, "")}</a>
-          <a href="https://github.com/Modred14/${p.slug}">github.com/Modred14/${p.slug}</a>
+          <a href="${p.github}">${p.github.replace(/^https?:\/\//, "")}</a>
         </div>
       </div>
       <p class="proj-about">${p.about}</p>
