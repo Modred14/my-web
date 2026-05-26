@@ -27,9 +27,12 @@ export default function ExperiencePage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#01050f] text-gray-200 -hidden">
+    <div className="min-h-screen bg-[#01050f] text-gray-200  overflow-hidden">
 
-      {/* ── Atmosphere — reduced blur values for iOS GPU performance ── */}
+      <div className="w-full bg-[#01050f]/70 backdrop-blur-sm  top-0 fixed z-[100]">
+        <Header />
+      </div>
+  {/* ── Atmosphere — reduced blur values for iOS GPU performance ── */}
       <div className="fixed top-[-20vh] left-[-10vw] w-[600px] h-[600px] bg-blue-700/5 rounded-full blur-[80px] pointer-events-none z-0" />
       <div className="fixed bottom-[-10vh] right-[-10vw] w-[400px] h-[400px] bg-cyan-600/4 rounded-full blur-[70px] pointer-events-none z-0" />
 
@@ -43,10 +46,7 @@ export default function ExperiencePage() {
       />
 
       {/* ── Header — backdrop-blur reduced to sm; removed duplicate orbs/grids inside header ── */}
-      <div className="w-full bg-[#01050f]/70 backdrop-blur-sm fixed z-[100]">
-        <Header />
-      </div>
-
+    
       <div className="relative z-10 max-w-5xl mx-auto px-5 sm:px-10 pt-32 pb-24">
 
         {/* ── Page hero ── */}

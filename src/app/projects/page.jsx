@@ -29,8 +29,10 @@ export default function ProjectsPage() {
   ];
 
   return (
-    <div className="min-h-screen  bg-[#01050f] text-gray-200 -hidden">
-      {/* ── Atmosphere — removed center orb (invisible at /3 opacity), reduced blur radii ── */}
+    <div className="min-h-screen  bg-[#01050f] text-gray-200 overflow-hidden ">
+     <div className="w-full bg-[#01050f]/70 backdrop-blur-sm top-0 fixed z-100">
+        <Header />
+      </div>   {/* ── Atmosphere — removed center orb (invisible at /3 opacity), reduced blur radii ── */}
       <div className="fixed top-[-15vh] left-[-5vw] w-[600px] h-[600px] bg-blue-700/5 rounded-full blur-[80px] pointer-events-none z-0" />
       <div className="fixed bottom-[-10vh] right-[-10vw] w-[400px] h-[400px] bg-cyan-600/4 rounded-full blur-[70px] pointer-events-none z-0" />
 
@@ -45,9 +47,7 @@ export default function ProjectsPage() {
       />
 
       {/* ── Header — removed 4 duplicate fixed layers; backdrop-blur-2xl → sm ── */}
-      <div className="w-full bg-[#01050f]/70 backdrop-blur-sm fixed z-100">
-        <Header />
-      </div>
+    
 
       <div className="relative z-10">
         {/* ── Page hero ── */}
