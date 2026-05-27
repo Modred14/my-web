@@ -17,6 +17,7 @@
     transform: translateY(40px);
   }
 
+  
   60% {
     opacity: 1;
     transform: translateY(-12px);
