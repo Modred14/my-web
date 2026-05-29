@@ -155,7 +155,6 @@ export const projects = [
       "Lucide React",
     ],
     about:
-    
       "Valentine Web Generator is a web platform for generating personalised Valentine pages with music, memories, and heartfelt messages.",
     description: [
       "This project started as a fun side experiment and turned into something thousands of people used to surprise their partners on Valentine's Day.",
