@@ -212,7 +212,7 @@ export default function Header() {
         {/* Drawer links */}
         <nav className="flex flex-col gap-1 px-4 pt-6 flex-1">
           {navLinks.map((link, i) => {
-            const id = link.href.replace("#", "");
+            const id = link.href.replace("/#", "");
             const isActive = activeSection === id;
             return (
               <Link

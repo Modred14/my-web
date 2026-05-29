@@ -86,7 +86,7 @@ export const projects = [
       "Lever API",
     ],
     about:
-      "Nexopra is a WhatsApp bot that delivers curated tech jobs, hackathons, fellowships, and grants directly to users — filtered by their field, region, and preferences using AI.",
+      "Nexopra is a WhatsApp bot that delivers curated tech jobs, hackathons, fellowships, and opportunities directly to users.",
     description: [
       "Most opportunity platforms require you to go looking — opening apps, browsing job boards, checking newsletters. Nexopra flips that. It comes to you, directly on WhatsApp, every single day.",
       "Users onboard in under two minutes by selecting their tech field, region, and preferred delivery time. From that point, Nexopra handles everything — scraping Devpost, YC Jobs, Greenhouse, Lever, and Wellfound on a rolling schedule, then filtering results through Groq-powered AI before they ever reach a user.",

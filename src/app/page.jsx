@@ -467,8 +467,8 @@ export default function Home() {
 
           {/* ── Projects ── */}
           <Reveal>
-            <section className="scroll-mt-8" id="projects">
-              <div className="pt-14">
+            <section className="scroll-mt-8 overflow-x-hidden" id="projects">
+              <div className="pt-14 ">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex gap-4 items-center">
                     <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
