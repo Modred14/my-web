@@ -332,7 +332,6 @@ function buildCVHTML() {
     </div>
     <div class="cv-contact">
       <a href="mailto:${EMAIL}">${EMAIL}</a><br/>
-      ${LOCATION}<br/>
       <a href="${LINKEDIN}">${LINKEDIN_LABEL}</a><br/>
       <a href="https://${PORTFOLIO}">${PORTFOLIO}</a> &nbsp;·&nbsp; <a href="https://${GITHUB}">${GITHUB}</a>
     </div>
