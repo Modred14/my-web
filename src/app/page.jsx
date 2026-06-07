@@ -116,7 +116,7 @@ export default function Home() {
     {
       img: "/avater-client.png",
       name: "Faiq",
-      work: "CFO, Nepo Games",
+      work: "Co-Founder, Nepo Games",
       message:
         '"Working with him was smooth and professional from start to finish. He understood my requirements quickly, communicated clearly, and delivered exactly what was promised on time."',
     },
