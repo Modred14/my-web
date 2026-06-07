@@ -1,5 +1,28 @@
 export const journey = [
   {
+  workplace: "Nepo Games",
+  position: "Co-Founder & CEO",
+  duration: "July 2026 – Present",
+  impact: [
+    "Co-founded Nepo Games, a secure game account marketplace built to eliminate peer-to-peer scams in game account trading",
+    "Designed and architected the full platform solo — from database schema to UI — including an escrow payment system that holds funds until buyers verify account credentials",
+    "Implemented a 30-minute buyer verification window, auto-release logic, and a dispute system for flagging incorrect credentials",
+    "Built an in-app wallet with Paystack integration for deposits and withdrawals, and real-time seller chat for pre-purchase communication",
+    "Leading product direction, technical development, and growth strategy for the platform",
+  ],
+},
+  {
+    workplace: "Faith Standard Schools",
+    position: "Website & Social Media Manager",
+    duration: "May 2026 – Present",
+    impact: [
+      "Managing and regularly updating the school's official website to keep content current and accurate",
+      "Overseeing all social media platforms to grow brand visibility and online presence",
+      "Creating and scheduling content that reflects the school's values and engages the community",
+      "Driving consistent digital activity across channels to strengthen the school's identity online",
+    ],
+  },
+  {
     workplace: "Techfest 5.0 Hackathon",
     position: "First Place Winner (Contributor)",
     duration: "May 2026",
