@@ -5,7 +5,7 @@ export const journey = [
   duration: "July 2026 – Present",
   impact: [
     "Co-founded Nepo Games, a secure game account marketplace built to eliminate peer-to-peer scams",
-    "Designed and architected the full platform solo — from database schema to UI — including an escrow payment system",
+    "Built and architected the full platform solo — from database schema to production — including an escrow payment system",
     "Implemented a 30-minute buyer verification window, auto-release logic, and a dispute system for flagging incorrect credentials",
     "Built an in-app wallet with Paystack integration for deposits and withdrawals, and real-time seller chat for pre-purchase communication",
     "Leading product direction, technical development, and growth strategy for the platform",
