@@ -3,7 +3,6 @@ import { useParams } from "next/navigation";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 import {
   Github,
   ArrowLeft,
@@ -25,8 +24,6 @@ export default function ProjectDetail() {
   const project = projects.find((p) => p.slug === slug);
   if (!project) return notFound();
 
-  const [imgLoaded, setImgLoaded] = useState(false);
-
   const socials = [
     { link: "https://github.com/Modred14", icon: Github, name: "GitHub" },
     { link: "mailto:favourdomirin@gmail.com", icon: Mail, name: "Email" },
@@ -41,20 +38,16 @@ export default function ProjectDetail() {
   const prevProject = projects[currentIndex - 1] ?? null;
   const nextProject = projects[currentIndex + 1] ?? null;
 
-  // Cache the screenshot for 7 days so microlink isn't called on every visit
-  const screenshotUrl = `https://api.microlink.io/?url=${encodeURIComponent(
-    project.link,
-  )}&screenshot=true&meta=false&embed=screenshot.url&ttl=604800`;
-
   return (
-    <div className="min-h-screen bg-[#01050f] text-gray-200 overflow-hidden">
+    <div className="min-h-screen bg-[#01050f] text-gray-200  overflow-hidden">
       <div className="w-full bg-[#01050f]/70 backdrop-blur-sm top-0 fixed z-[100]">
         <Header />
       </div>
-
+      {/* ── Atmosphere — reduced blur radii, removed center orb (unnoticeable visually) ── */}
       <div className="fixed top-[-20vh] left-[-10vw] w-[600px] h-[600px] bg-blue-700/5 rounded-full blur-[80px] pointer-events-none z-0" />
       <div className="fixed bottom-[-10vh] right-[-10vw] w-[400px] h-[400px] bg-cyan-600/4 rounded-full blur-[70px] pointer-events-none z-0" />
 
+      {/* Single dot grid — removed duplicate vignette overlay layer */}
       <div
         className="fixed inset-0 pointer-events-none opacity-[0.05] z-0"
         style={{
@@ -64,41 +57,25 @@ export default function ProjectDetail() {
         }}
       />
 
+      {/* ── Header — removed 3 duplicate fixed layers; backdrop-blur-2xl → sm ── */}
+
       <div className="relative z-10 pt-4">
         <div className="max-w-5xl mx-auto px-6 sm:px-10 mt-10 pb-24">
           {/* ── Hero image ── */}
           <Reveal>
             <div className="relative w-full h-[55vh] rounded-t-4xl min-h-[380px] overflow-hidden">
-              {/* Skeleton shown while image loads */}
-              {!imgLoaded && (
-                <div className="absolute inset-0 z-10 bg-[#080d1a] animate-pulse">
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#01050f] via-[#01050f]/60 to-transparent" />
-                  {/* Fake title lines so layout doesn't jump */}
-                  <div className="absolute bottom-10 left-6 sm:left-10 flex flex-col gap-3">
-                    <div className="h-3 w-24 rounded bg-white/5" />
-                    <div className="h-10 w-64 rounded bg-white/5" />
-                    <div className="h-4 w-40 rounded bg-white/5" />
-                  </div>
-                </div>
-              )}
-
               <Image
-                src={screenshotUrl}
+                src={`https://api.microlink.io/?url=${encodeURIComponent(project.link)}&screenshot=true&meta=false&embed=screenshot.url`}
                 alt={project.name}
                 fill
-                sizes="(max-width: 768px) 100vw, 900px"
-                className={`object-cover object-top scale-[1.02] transition-opacity duration-500 ${
-                  imgLoaded ? "opacity-100" : "opacity-0"
-                }`}
+                className="object-cover object-top scale-[1.02]"
                 priority
-                onLoad={() => setImgLoaded(true)}
               />
-
               <div className="absolute inset-0 bg-gradient-to-t from-[#01050f] via-[#01050f]/60 to-[#01050f]/10" />
               <div className="absolute inset-0 bg-gradient-to-r from-[#01050f]/40 to-transparent" />
 
               {/* back button */}
-              <div className="absolute top-6 left-6 sm:left-10 z-20">
+              <div className="absolute top-6 left-6 sm:left-10">
                 <Link
                   href="/projects"
                   className="inline-flex border-blue-300/50 items-center gap-2 text-xs font-semibold text-gray-400
@@ -118,7 +95,7 @@ export default function ProjectDetail() {
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="absolute top-6 right-6 sm:right-10 z-20 flex items-center gap-1.5
+                className="absolute top-6 right-6 sm:right-10 flex items-center gap-1.5
                   text-[10px] font-bold tracking-wider uppercase
                   bg-[#01050f]/80 backdrop-blur-[4px] border border-blue-300/50
                   text-green-400 px-3 py-2 rounded-lg
@@ -129,7 +106,7 @@ export default function ProjectDetail() {
               </a>
 
               {/* hero text */}
-              <div className="absolute bottom-0 left-0 right-0 px-6 sm:px-10 pb-10 max-w-5xl mx-auto z-20">
+              <div className="absolute bottom-0 left-0 right-0 px-6 sm:px-10 pb-10 max-w-5xl mx-auto">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="h-px w-6 bg-blue-400/60" />
                   <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-blue-400/70">
@@ -148,7 +125,6 @@ export default function ProjectDetail() {
             </div>
           </Reveal>
 
-          {/* ── Rest of page unchanged ── */}
           {/* ── CTA row ── */}
           <Reveal>
             <div className="flex flex-wrap items-center pt-3 justify-between gap-4 pb-10 border-b border-white/[0.07]">
@@ -193,7 +169,9 @@ export default function ProjectDetail() {
           {/* ── Main grid ── */}
           <Reveal>
             <div className="mt-10 grid md:grid-cols-3 gap-10 lg:gap-16">
+              {/* Left — overview + highlights */}
               <div className="md:col-span-2 flex flex-col gap-12">
+                {/* Overview */}
                 <div>
                   <div className="flex items-center gap-2.5 mb-5">
                     <div className="w-6 h-6 rounded-lg bg-blue-500/15 border border-blue-400/25 flex items-center justify-center">
@@ -215,6 +193,7 @@ export default function ProjectDetail() {
                   </div>
                 </div>
 
+                {/* Key Features */}
                 <div>
                   <div className="flex items-center gap-2.5 mb-5">
                     <div className="w-6 h-6 rounded-lg bg-blue-500/15 border border-blue-400/25 flex items-center justify-center">
@@ -242,8 +221,10 @@ export default function ProjectDetail() {
                 </div>
               </div>
 
+              {/* Right — sticky sidebar */}
               <div className="flex flex-col gap-5">
                 <div className="sticky top-28 flex flex-col gap-5">
+                  {/* Tech stack card */}
                   <div
                     className="bg-white/[0.02] border border-white/[0.07] rounded-2xl p-5
                     hover:border-blue-400/20 transition-colors duration-300"
@@ -270,6 +251,7 @@ export default function ProjectDetail() {
                     </div>
                   </div>
 
+                  {/* Quick links card */}
                   <div
                     className="bg-white/[0.02] border border-white/[0.07] rounded-2xl p-5
                     hover:border-blue-400/20 transition-colors duration-300"
