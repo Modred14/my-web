@@ -2,7 +2,7 @@ export const journey = [
   {
   workplace: "Nepo Games",
   position: "Co-Founder & CEO",
-  duration: "July 2026 – Present",
+  duration: "June 2026 – Present",
   impact: [
     "Co-founded Nepo Games, a secure game account marketplace built to eliminate peer-to-peer scams",
     "Built and architected the full platform solo — from database schema to production — including an escrow payment system",
