@@ -427,7 +427,7 @@ export default function Home() {
                           </div>
                           <div className="h-px bg-gradient-to-r from-blue-400/10 via-white/5 to-transparent mb-4" />
                           <ul className="flex flex-col gap-2.5">
-                            {item.impact.map((impact, i) => (
+                            {item.impact.slice(0, 3).map((impact, i) => (
                               <li
                                 key={i}
                                 className="flex gap-3 text-sm text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors duration-300"
