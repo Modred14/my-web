@@ -32,7 +32,7 @@ export const projects = [
       "Transactional emails via Resend for all key payment events",
       "Built solo — full-stack, frontend and backend",
     ],
-    link: "https://nepogames.netlify.app/",
+    link: "https://nepogames.com",
     github: "https://github.com/Modred14/nepo-games",
     img: "/nepo-games.png",
   },
