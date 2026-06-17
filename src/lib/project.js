@@ -21,6 +21,7 @@ export const projects = [
       "If the buyer doesn't respond within 30 minutes of checking the details, the funds are automatically released to the seller. But if there's an issue — wrong credentials, account doesn't match — the buyer can raise a dispute and the transaction is flagged for review.",
       "Beyond the core flow, users get an in-app wallet to fund or withdraw their balance, real-time chat with sellers before committing to a purchase, and an AI-powered contact support system built on Gemini for instant help.",
     ],
+    
     highlights: [
       "Escrow payment system — funds held until buyer confirms account access",
       "30-minute buyer verification window that only starts on login detail view",
