@@ -100,8 +100,8 @@ export default function Page() {
       {
         id: "snapchat",
         name: "Snapchat",
-        handle: "real_modred",
-        link: "https://www.snapchat.com/add/real_modred",
+        handle: "modred.dev",
+        link: "https://www.snapchat.com/add/modred.dev",
         showCount: true,
       },
     ],
