@@ -496,7 +496,7 @@ export default function Home() {
               </div>
 
               <div className="pt-10 flex flex-col gap-0">
-                {projects.slice(0, 2).map((project, index) => {
+                {projects.slice(0, 4).map((project, index) => {
                   const Wrapper = index % 2 === 0 ? RevealLeft : RevealRight;
                   const isEven = index % 2 === 0;
                   return (
@@ -632,7 +632,7 @@ export default function Home() {
 
               <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
                 <p className="text-sm text-gray-600">
-                  Showing {Math.min(2, projects.length)} of {projects.length}{" "}
+                  Showing {Math.min(4, projects.length)} of {projects.length}{" "}
                   projects
                 </p>
                 <Link
