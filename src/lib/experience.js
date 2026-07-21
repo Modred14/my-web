@@ -1,10 +1,10 @@
 export const journey = [
   {
-  workplace: "Nepo Games",
+  workplace: "Nepogames",
   position: "Co-Founder & CEO",
   duration: "June 2026 – Present",
   impact: [
-    "Co-founded Nepo Games, a secure game account marketplace built to eliminate peer-to-peer scams",
+    "Co-founded Nepogames, a secure game account marketplace built to eliminate peer-to-peer scams",
     "Built and architected the full platform solo — from database schema to production — including an escrow payment system",
     "Implemented a 30-minute buyer verification window, auto-release logic, and a dispute system for flagging incorrect credentials",
     "Built an in-app wallet with Paystack integration for deposits and withdrawals, and real-time seller chat for pre-purchase communication",

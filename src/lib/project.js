@@ -1,7 +1,7 @@
 export const projects = [
   {
     slug: "nepo-games",
-    name: "Nepo Games",
+    name: "Nepogames",
     tagline: "Buy and sell game accounts. Safely.",
     stack: [
       "Next.js",
@@ -16,7 +16,7 @@ export const projects = [
     about:
       "A secure game account marketplace that eliminates peer-to-peer scams using escrow payments, in-app seller chat, and a built-in dispute system.",
     description: [
-      "Game account trading is riddled with scams — buyers pay and never receive login details, or receive accounts that don't match the listing. Nepo Games was built to fix that, and I designed and built the entire platform alone, from the database to the UI.",
+      "Game account trading is riddled with scams — buyers pay and never receive login details, or receive accounts that don't match the listing. Nepogames was built to fix that, and I designed and built the entire platform alone, from the database to the UI.",
       "The core protection is escrow: when a buyer pays, the funds are held and not released to the seller until the buyer confirms the login details are correct. The seller is notified to release credentials only after payment is secured. The buyer then gets a 30-minute verification window — the timer doesn't start until they actually open the login details, so no one is rushed unfairly.",
       "If the buyer doesn't respond within 30 minutes of checking the details, the funds are automatically released to the seller. But if there's an issue — wrong credentials, account doesn't match — the buyer can raise a dispute and the transaction is flagged for review.",
       "Beyond the core flow, users get an in-app wallet to fund or withdraw their balance, real-time chat with sellers before committing to a purchase, and an AI-powered contact support system built on Gemini for instant help.",
