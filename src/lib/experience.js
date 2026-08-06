@@ -35,15 +35,15 @@ export const journey = [
     ],
   },
   {
-    workplace: "PDFx",
+    workplace: "Plud",
     position: "Campus Ambassador (Obafemi Awolowo University)",
     duration: " April 2026 – Present",
     impact: [
-      "Drove PDFx adoption among OAU students by onboarding new users to the AI-powered document and PDF toolkit platform",
+      "Drove Plud adoption among OAU students by onboarding new users to the AI-powered document and PDF toolkit platform",
       "Organized and executed document productivity workshops showcasing features like AI chat, quiz generation, and YouTube-to-Doc conversion",
-      "Represented PDFx at campus events, strengthening brand visibility and building trust among students and academic communities",
-      "Built partnerships with student organizations and study groups to expand PDFx's reach across faculties and departments",
-      "Collected and relayed student feedback to the PDFx team to help shape product improvements and campus engagement strategy",
+      "Represented Plud at campus events, strengthening brand visibility and building trust among students and academic communities",
+      "Built partnerships with student organizations and study groups to expand Plud's reach across faculties and departments",
+      "Collected and relayed student feedback to the Plud team to help shape product improvements and campus engagement strategy",
     ],
   },
   {
