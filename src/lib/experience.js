@@ -34,6 +34,7 @@ export const journey = [
       "Delivered a working MVP enabling fast and flexible digital payments for real-world use cases",
     ],
   },
+  
   {
     workplace: "Plud",
     position: "Campus Ambassador (Obafemi Awolowo University)",
