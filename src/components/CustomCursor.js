@@ -97,7 +97,19 @@ export default function CustomCursor() {
     const handleDown = () => setIsPressed(true);
     const handleUp = () => setIsPressed(false);
     const handleLeaveWindow = () => setIsVisible(false);
-    const handleEnterWindow = () => setIsVisible(true);
+    // On re-entry we also need to resync cursorState immediately —
+    // otherwise it stays stuck at whatever it was when the mouse left,
+    // and the very next mousemove flips it instantly with no transition
+    // to play against (looks like a hard snap instead of a fade).
+    const handleEnterWindow = (e) => {
+      setIsVisible(true);
+      const target =
+        e.target ??
+        (typeof document.elementFromPoint === "function"
+          ? document.elementFromPoint(e.clientX, e.clientY)
+          : null);
+      setCursorState(getCursorState(target));
+    };
 
     window.addEventListener("mousemove", handleMove, { passive: true });
     window.addEventListener("mousedown", handleDown);
@@ -174,8 +186,12 @@ export default function CustomCursor() {
             transformOrigin: `${arrowOffsetX}px ${arrowOffsetY}px`,
             filter: "drop-shadow(0 1px 2px rgba(0,0,0,0.5))",
             opacity: isPointer || isText ? 0 : 1,
-            transform: `scale(${isPressed ? 0.85 : 1})`,
+            transform: `scale(${isPressed ? 0.85 : 1}) translateZ(0)`,
             transition: `transform 180ms ${EASE}, opacity 200ms ${EASE}`,
+            // Own compositor layer so this keeps animating smoothly even
+            // when other on-page hover transitions (borders, shadows,
+            // backgrounds) are busy on the main thread.
+            willChange: "transform, opacity",
           }}
         >
           <polygon
@@ -201,8 +217,9 @@ export default function CustomCursor() {
             transformOrigin: `${hoverOffsetX}px ${hoverOffsetY}px`,
             filter: "drop-shadow(0 1px 4px rgba(0,0,0,0.35))",
             opacity: isPointer ? 1 : 0,
-            transform: `scale(${isPointer ? (isPressed ? 0.82 : 1) : 0.6})`,
+            transform: `scale(${isPointer ? (isPressed ? 0.82 : 1) : 0.6}) translateZ(0)`,
             transition: `transform 320ms ${EASE}, opacity 240ms ${EASE}`,
+            willChange: "transform, opacity",
           }}
         >
           {/* faint halo behind the ring — keeps it readable over light/white buttons */}
@@ -244,9 +261,10 @@ export default function CustomCursor() {
           style={{
             filter: "drop-shadow(0 1px 2px rgba(0,0,0,0.5))",
             opacity: isText ? 1 : 0,
-            transform: `scale(${isText ? (isPressed ? 0.85 : 1) : 0.5})`,
+            transform: `scale(${isText ? (isPressed ? 0.85 : 1) : 0.5}) translateZ(0)`,
             transformOrigin: "center",
             transition: `opacity 180ms ${EASE}, transform 200ms ${EASE}`,
+            willChange: "transform, opacity",
           }}
         >
           <line
