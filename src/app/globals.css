@@ -1,3 +1,4 @@
+/* src/app/globals.css */
 @import "tailwindcss";
 
 :root {
@@ -33,6 +34,14 @@
 }
 html {
   scroll-behavior: smooth;
+}
+
+/* Hide the native cursor and use our custom one, only on devices
+   that actually have a real mouse (skips touch/mobile). */
+@media (hover: hover) and (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
 }
 
 * {
