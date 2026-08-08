@@ -7,6 +7,18 @@ export default function sitemap() {
       priority: 1,
     },
     {
+      url: "https://modred.dev/experience",
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: "https://modred.dev/projects",
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
       url: "https://modred.dev/socials",
       lastModified: new Date(),
       changeFrequency: "monthly",
