@@ -526,7 +526,7 @@ export default function Home() {
                             shadow-[0_4px_40px_rgba(0,0,0,0.4)] group-hover:shadow-[0_20px_80px_rgba(96,165,250,0.1)]"
                           >
                             <Image
-                              src={`https://api.microlink.io/?url=${encodeURIComponent(project.link)}&screenshot=true&meta=false&embed=screenshot.url`}
+                              src={`https://api.microlink.io/?url=${encodeURIComponent(project.link)}&screenshot=true&meta=false&embed=screenshot.url&force=true`}
                               alt={project.name}
                               width={900}
                               height={520}
