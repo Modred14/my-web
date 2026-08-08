@@ -228,7 +228,7 @@ function ProjectRow({ project, index }) {
             group-hover:shadow-[0_20px_80px_rgba(96,165,250,0.1)]"
           >
             <Image
-              src={`https://api.microlink.io/?url=${encodeURIComponent(project.link)}&screenshot=true&meta=false&embed=screenshot.url&waitFor=2000&force=true`}
+              src={`https://api.microlink.io/?url=${encodeURIComponent(project.link)}&screenshot=true&meta=false&embed=screenshot.url&waitFor=3000&force=true`}
               alt={project.name}
               width={900}
               height={520}
