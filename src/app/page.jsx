@@ -276,15 +276,21 @@ export default function Home() {
 
                   <div className="flex flex-col gap-3 max-w-xl">
                     <p className="text-base lg:text-lg font-medium text-white/90 leading-relaxed">
-                      {experienceYear}+ years building full-stack web apps and
-                      backend systems.
+                      I build full-stack web apps and backend systems that
+                      people actually use.
                     </p>
                     <p className="text-sm text-gray-500 leading-relaxed">
-                      I work primarily with{" "}
+                      I primarily work with{" "}
+                      <span className="text-gray-300 font-medium">Next.js</span>
+                     <span>, </span>
                       <span className="text-gray-300 font-medium">
-                        Next.js, JavaScript and PostgreSQL (Neon)
+                        JavaScript
                       </span>{" "}
-                      — turning ideas into real products, from full-stack
+                      <span>and </span>
+                      <span className="text-gray-300 font-medium">
+                         PostgreSQL (Neon)
+                      </span>
+                      . I turn ideas into real products, from full-stack
                       platforms to automation tools. I engineer systems that
                       work in the real world, not just in theory.
                     </p>
@@ -306,10 +312,10 @@ export default function Home() {
                     </div>
 
                     {/* CTA Buttons */}
-                   <div className="flex flex-wrap gap-3 justify-center lg:justify-start mt-1">
-  <Link
-    href="#projects"
-    className="
+                    <div className="flex flex-wrap gap-3 justify-center lg:justify-start mt-1">
+                      <Link
+                        href="#projects"
+                        className="
       inline-flex items-center gap-2
       px-5 py-2.5 rounded-lg
       bg-blue-500/20
@@ -323,15 +329,15 @@ export default function Home() {
       transition-all duration-200
       hover:-translate-y-[1px]
     "
-  >
-    My Projects
-  </Link>
+                      >
+                        My Projects
+                      </Link>
 
-  <DownloadCVButton
-    href="/Favour-Omirin-CV.pdf"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="
+                      <DownloadCVButton
+                        href="/Favour-Omirin-CV.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="
       inline-flex items-center gap-2
       px-5 py-2.5 rounded-lg
       border border-white/10
@@ -344,11 +350,11 @@ export default function Home() {
       transition-all duration-200
       hover:-translate-y-[1px]
     "
-  >
-    <Download size={12} />
-    Resume
-  </DownloadCVButton>
-</div>
+                      >
+                        <Download size={12} />
+                        Resume
+                      </DownloadCVButton>
+                    </div>
                   </div>
                 </div>
               </div>
