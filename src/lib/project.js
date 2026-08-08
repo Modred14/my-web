@@ -104,7 +104,7 @@ export const projects = [
       "Full MVP — mobile app and web platform shipped in 32 hours",
       "First place winner at Techfest 5.0 hackathon",
     ],
-    link: "https://tappay.up.railway.app/",
+    link: "https://app-tappay.netlify.app/",
     github: "https://github.com/Missfavis-coder/PayAza/",
     img: "/tappay.png",
   },
