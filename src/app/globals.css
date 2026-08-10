@@ -105,6 +105,7 @@ body {
   background: var(--background);
   color: var(--foreground);
    font-family: 'Geist Mono', monospace; 
+   overflow-x: hidden;
 }
 .loading-dots::after {
   content: "";

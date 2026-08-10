@@ -65,7 +65,7 @@ export default function ProjectDetail() {
           <Reveal>
             <div className="relative w-full h-[55vh] rounded-t-4xl min-h-[380px] overflow-hidden">
               <Image
-                src={`https://api.microlink.io/?url=${encodeURIComponent(project.link)}&screenshot=true&meta=false&embed=screenshot.url&force=true`}
+                src={`https://api.microlink.io/?url=${encodeURIComponent(project.link)}&screenshot=true&meta=false&embed=screenshot.url`}
                 alt={project.name}
                 fill
                 className="object-cover object-top scale-[1.02]"

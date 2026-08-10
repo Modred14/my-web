@@ -254,7 +254,7 @@ export default function ProjectsHorizontalScroll({
               >
                 <div className="relative w-full h-[26svh] sm:h-[250px] md:h-[40%] md:min-h-[210px] lg:h-[44%] shrink-0 overflow-hidden">
                   <Image
-                    src={`https://api.microlink.io/?url=${encodeURIComponent(project.link)}&screenshot=true&meta=false&embed=screenshot.url&force=true`}
+                    src={`https://api.microlink.io/?url=${encodeURIComponent(project.link)}&screenshot=true&meta=false&embed=screenshot.url`}
                     alt={project.name}
                     fill
                     sizes="(max-width: 640px) 86vw, (max-width: 1024px) 68vw, 620px"
