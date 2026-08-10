@@ -41,33 +41,60 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Active section tracking — scroll-position based for accuracy
+  // Active section tracking — scroll-position based for accuracy.
+  // Not IntersectionObserver + threshold: the pinned Projects section is taller
+  // than the viewport (its height drives the horizontal pan), so a ratio like
+  // 0.3 can never be satisfied and it would never activate. Instead we pick the
+  // section whose band contains a probe line just under the fixed header.
   useEffect(() => {
     const ids = navLinks.map((l) => l.href.replace("/#", "")).filter(Boolean);
+    let ticking = false;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          } else {
-            // If this section is leaving, only clear it if it's currently active
-            setActiveSection((prev) => (prev === entry.target.id ? "" : prev));
+    const pick = () => {
+      ticking = false;
+      const probe = window.scrollY + 140; // just below the fixed header
+
+      let current = "";
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        const top = el.getBoundingClientRect().top + window.scrollY;
+        // Sections are in document order, so the last one we pass wins.
+        if (probe >= top) current = id;
+      }
+
+      // Bottom of the page: the last section can be too short to ever reach the
+      // probe line, so make sure it still activates.
+      const atBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 2;
+      if (atBottom) {
+        for (let i = ids.length - 1; i >= 0; i--) {
+          if (document.getElementById(ids[i])) {
+            current = ids[i];
+            break;
           }
-        });
-      },
-      {
-        threshold: 0.3, // section must be 30% visible to activate
-        rootMargin: "0px 0px -20% 0px", // ignore bottom 20% of viewport
-      },
-    );
+        }
+      }
 
-    ids.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
+      setActiveSection((prev) => (prev === current ? prev : current));
+    };
 
-    return () => observer.disconnect();
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(pick);
+      }
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    pick();
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
   // Lock body scroll when sidebar open

@@ -3,19 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "../header";
 import { projects } from "@/lib/project";
-import {
-  Rocket,
-  Share,
-  Github,
-  ArrowUpRight,
-  Mail,
-  Layers,
-  Linkedin,
-  ArrowLeft,
-} from "lucide-react";
-import RevealRight from "../revealfright";
+import { Github, Mail, Linkedin, ArrowLeft } from "lucide-react";
 import Reveal from "../reavel";
-import RevealLeft from "../revealfrleft";
+import ProjectsHorizontalScroll from "@/components/ProjectsHorizontalScroll";
 
 export default function ProjectsPage() {
   const socials = [
@@ -29,7 +19,8 @@ export default function ProjectsPage() {
   ];
 
   return (
-    <div className="min-h-screen  bg-[#01050f] text-gray-200 overflow-hidden ">
+   
+    <div className="min-h-screen bg-[#01050f] text-gray-200">
      <div className="w-full bg-[#01050f]/70 backdrop-blur-sm top-0 fixed z-100">
         <Header />
       </div>   {/* ── Atmosphere — removed center orb (invisible at /3 opacity), reduced blur radii ── */}
@@ -51,7 +42,7 @@ export default function ProjectsPage() {
 
       <div className="relative z-10">
         {/* ── Page hero ── */}
-        <div className="max-w-5xl mx-auto px-5 sm:px-10 mt-28 pb-16">
+        <div className="max-w-5xl mx-auto px-5 sm:px-10 pt-28 ">
           <div className="flex flex-col gap-4 mb-3">
             <Reveal>
               <div className="flex items-center gap-3">
@@ -107,16 +98,14 @@ export default function ProjectsPage() {
           </Reveal>
         </div>
 
-        {/* ── Projects list ── */}
-        <div className="max-w-5xl mx-auto px-5 sm:px-10 pb-24 flex flex-col gap-0">
-          {projects.map((project, index) => (
-            <ProjectRow key={project.slug} project={project} index={index} />
-          ))}
+       
+        <div className="pb-16">
+          <ProjectsHorizontalScroll projects={projects} />
         </div>
       </div>
 
       {/* ── Footer ── */}
-         <footer className="max-w-5xl mx-auto -mb-7 ">
+         <footer className="max-w-5xl mx-auto  ">
             <Reveal>
               <div className="max-w-5xl mx-auto px-6 pb-12">
                 {/* Top row: Brand + Nav */}
@@ -163,7 +152,7 @@ export default function ProjectsPage() {
                 <div className="h-px bg-white/5 mb-8" />
 
                 {/* Bottom row: Copyright + Socials */}
-                <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div className="flex flex-col -mb-6 md:flex-row items-center justify-between gap-4">
                   <p className="text-xs text-gray-600 order-2 md:order-1">
                     © {new Date().getFullYear()} Favour Omirin. All rights
                     reserved.
@@ -195,155 +184,5 @@ export default function ProjectsPage() {
             </Reveal>
           </footer>
     </div>
-  );
-}
-
-function ProjectRow({ project, index }) {
-  const isEven = index % 2 === 0;
-  const Wrapper = isEven ? RevealLeft : RevealRight;
-
-  return (
-    <Wrapper>
-      <div
-        className={`group relative flex flex-col ${isEven ? "md:flex-row" : "md:flex-row-reverse"}
-        gap-0 md:gap-16 items-center py-16 md:py-24
-        border-b border-white/[0.06] last:border-b-0`}
-      >
-        {/* ghost number */}
-        <span
-          className={`absolute top-9 ${isEven ? "-left-4 md:-left-8" : "-right-4 md:-right-8"}
-          text-[120px] md:text-[160px] z-99 font-black leading-none select-none pointer-events-none
-          text-blue-500/10 group-hover:text-blue-400/11 transition-colors duration-700`}
-        >
-          {String(index + 1).padStart(2, "0")}
-        </span>
-
-        {/* ── Image column ── */}
-        <div className="w-full md:w-[52%] shrink-0">
-          {/* FIX: transition-all → specific properties */}
-          <div
-            className="relative overflow-hidden rounded-2xl border border-white/8
-            group-hover:border-blue-400/30 transition-[border-color,box-shadow] duration-500
-            shadow-[0_4px_40px_rgba(0,0,0,0.4)]
-            group-hover:shadow-[0_20px_80px_rgba(96,165,250,0.1)]"
-          >
-            <Image
-              src={`https://api.microlink.io/?url=${encodeURIComponent(project.link)}&screenshot=true&meta=false&embed=screenshot.url&force=true`}
-              alt={project.name}
-              width={900}
-              height={520}
-              className="w-full h-65 sm:h-[380px] object-cover object-top
-                transition-transform duration-[1.2s] ease-out group-hover:scale-[1.04]"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#01050f]/70 via-[#01050f]/10 to-transparent" />
-            {/* FIX: backdrop-blur pinned to tiny value */}
-            <a
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="absolute top-4 right-4 flex items-center gap-1.5
-                text-[10px] font-bold tracking-wider uppercase
-                bg-[#01050f]/80 backdrop-blur-[4px] border border-white/10
-                text-green-400 px-2.5 py-1.5 rounded-lg
-                hover:border-green-400/40 transition-colors duration-200"
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-              Live
-            </a>
-          </div>
-        </div>
-
-        {/* ── Content column ── */}
-        <div className="flex-1 flex flex-col justify-center gap-5 pt-8 md:pt-0">
-          <div className="flex items-center gap-3">
-            <span className="text-[11px] font-bold text-blue-400/50 tracking-[0.15em] uppercase tabular-nums">
-              {String(index + 1).padStart(2, "0")} /
-            </span>
-            <div className="h-px flex-1 max-w-[40px] bg-blue-400/20" />
-            <span className="text-[10px] font-semibold tracking-[0.18em] uppercase text-gray-600">
-              Web App
-            </span>
-          </div>
-
-          <div>
-            <h2 className="text-3xl md:text-4xl font-black text-white leading-tight tracking-tight group-hover:text-blue-50 transition-colors duration-300">
-              {project.name}
-            </h2>
-            {project.tagline && (
-              <p className="text-blue-400/70 text-sm font-medium mt-1 italic">
-                {project.tagline}
-              </p>
-            )}
-          </div>
-
-          <p className="text-gray-400 text-sm leading-relaxed">
-            {project.about}
-          </p>
-
-          <div className="flex flex-col gap-2">
-            <div className="flex items-center gap-1.5">
-              <Layers size={11} className="text-gray-600" />
-              <span className="text-[10px] font-bold tracking-[0.15em] uppercase text-gray-600">
-                Stack
-              </span>
-            </div>
-            <div className="flex flex-wrap gap-1.5">
-              {project.stack.map((s, i) => (
-                <span
-                  key={i}
-                  className="text-[11px] font-medium px-2 py-0.5 rounded-md
-                  text-teal-300/80 bg-teal-400/8 border border-teal-400/15
-                  group-hover:border-teal-400/25 transition-colors duration-300"
-                >
-                  {s}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div className="h-px bg-gradient-to-r from-blue-400/15 via-blue-400/5 to-transparent" />
-
-          {/* FIX: transition-all → transition-colors on all CTAs */}
-          <div className="flex items-center gap-3 flex-wrap">
-            <Link
-              href={`/projects/${project.slug}`}
-              className="group/btn inline-flex items-center gap-2 sm:px-5 sm:py-2.5 px-3 py-1.5 w-fit rounded-xl
-                bg-blue-500/15 border border-blue-400/25 text-blue-300
-                hover:bg-blue-500/25 hover:border-blue-400/50 hover:text-blue-200
-                text-xs font-bold tracking-wide transition-colors duration-300"
-            >
-              <Rocket size={12} />
-              Details
-            </Link>
-
-            <a
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 sm:px-5 sm:py-2.5 px-3 py-1.5 w-fit rounded-xl
-                bg-white/4 border border-white/10 text-gray-300
-                hover:bg-white/8 hover:border-white/20 hover:text-white
-                text-xs font-bold tracking-wide transition-colors duration-300"
-            >
-              <Share size={12} />
-              Live Demo
-            </a>
-
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 sm:px-5 sm:py-2.5 px-3 py-1.5 w-fit rounded-xl
-                bg-white/4 border border-white/10 text-gray-400
-                hover:bg-white/8 hover:border-white/20 hover:text-gray-200
-                text-xs font-bold tracking-wide transition-colors duration-300"
-            >
-              <Github size={12} />
-              Source
-            </a>
-          </div>
-        </div>
-      </div>
-    </Wrapper>
   );
 }
