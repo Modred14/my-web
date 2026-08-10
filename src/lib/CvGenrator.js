@@ -12,7 +12,7 @@ const PORTFOLIO = "modred.dev";
 const GITHUB = "github.com/Modred14";
 
 const SUMMARY =
-  "Full-Stack Software Engineer with 2+ years of experience designing and shipping production-grade web applications. Specialised in building scalable systems end-to-end — from responsive, accessible frontends with React and Next.js to robust backend APIs with Node.js and PostgreSQL. Proven track record of delivering real-world products, winning competitive hackathons, and collaborating effectively within cross-functional teams. Adept at turning complex requirements into clean, maintainable code that works in production, not just in theory.";
+  "Full-Stack Software Engineer that designs and ships production-grade web applications. Specialised in building scalable systems end-to-end — from responsive, accessible frontends with React and Next.js to robust backend APIs with Node.js and PostgreSQL. Proven track record of delivering real-world products, winning competitive hackathons and collaborating effectively within cross-functional teams. Adept at turning complex requirements into clean, maintainable code that works in production.";
 
 const SKILLS = {
   frontend: [
