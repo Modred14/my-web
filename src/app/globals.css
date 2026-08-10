@@ -1,4 +1,4 @@
-/* src/app/globals.css */
+/* src/app/globals.css — file path route comment */
 @import "tailwindcss";
 
 :root {
@@ -34,6 +34,14 @@
 }
 html {
   scroll-behavior: smooth;
+  /* Prevents a page-wide horizontal scrollbar from the full-bleed
+     horizontal-scroll projects section (src/components/ProjectsHorizontalScroll.jsx).
+     Safe for position: sticky since the viewport stays the scroll reference. */
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 /* Hide the native cursor and use our custom one, only on devices
