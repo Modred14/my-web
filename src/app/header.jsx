@@ -42,10 +42,15 @@ export default function Header() {
   }, []);
 
   // Active section tracking — scroll-position based for accuracy.
+  //
   // Not IntersectionObserver + threshold: the pinned Projects section is taller
   // than the viewport (its height drives the horizontal pan), so a ratio like
-  // 0.3 can never be satisfied and it would never activate. Instead we pick the
-  // section whose band contains a probe line just under the fixed header.
+  // 0.3 can never be satisfied and it would never activate.
+  //
+  // A section is active ONLY while the probe line is inside its own bounds.
+  // Nothing is "carried over" once a section is scrolled past, so a gap with no
+  // nav entry (Technologies, Testimonials, the CTA) correctly clears the state
+  // and exactly one item — or none — is ever active.
   useEffect(() => {
     const ids = navLinks.map((l) => l.href.replace("/#", "")).filter(Boolean);
     let ticking = false;
@@ -58,22 +63,13 @@ export default function Header() {
       for (const id of ids) {
         const el = document.getElementById(id);
         if (!el) continue;
-        const top = el.getBoundingClientRect().top + window.scrollY;
-        // Sections are in document order, so the last one we pass wins.
-        if (probe >= top) current = id;
-      }
-
-      // Bottom of the page: the last section can be too short to ever reach the
-      // probe line, so make sure it still activates.
-      const atBottom =
-        window.innerHeight + window.scrollY >=
-        document.documentElement.scrollHeight - 2;
-      if (atBottom) {
-        for (let i = ids.length - 1; i >= 0; i--) {
-          if (document.getElementById(ids[i])) {
-            current = ids[i];
-            break;
-          }
+        const rect = el.getBoundingClientRect();
+        const top = rect.top + window.scrollY;
+        const bottom = top + rect.height;
+        // Strict containment — leaving the band drops the active state at once.
+        if (probe >= top && probe < bottom) {
+          current = id;
+          break;
         }
       }
 
@@ -89,11 +85,15 @@ export default function Header() {
 
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
+    // Sections shift as images/fonts settle and as the pinned scroller measures.
+    const ro = new ResizeObserver(onScroll);
+    ro.observe(document.body);
     pick();
 
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
+      ro.disconnect();
     };
   }, []);
 

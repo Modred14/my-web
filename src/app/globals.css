@@ -35,6 +35,13 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Hide the native cursor everywhere so only CustomCursor.js is visible */
+*,
+*::before,
+*::after {
+  cursor: none !important;
+}
+
 * {
   scrollbar-width: thin;
   scrollbar-color: #2563eb90 transparent;
