@@ -185,11 +185,11 @@ export default function ProjectsHorizontalScroll({
           {/* ── Pinned header row — stays put while the carousel pans.
               Same max-w-5xl + px as the page container, so width, alignment
               and centering are identical to the unpinned markup. ── */}
-          {header && (
+          {/* {header && (
             <div className="relative z-30 shrink-0 w-full max-w-5xl mx-auto px-5 sm:px-10 pt-20 md:pt-16">
               {header}
             </div>
-          )}
+          )} */}
 
           {/* ── Carousel row — the only thing that moves ── */}
           <div
