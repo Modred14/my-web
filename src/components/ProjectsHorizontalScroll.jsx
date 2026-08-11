@@ -159,7 +159,7 @@ export default function ProjectsHorizontalScroll({
     <div
       ref={bleedRef}
       style={{
-      "--bleed-w": "100dvw",
+      "--bleed-w": "90dvw",
         marginLeft: "calc(50% - var(--bleed-w) / 2)",
         width: "var(--bleed-w)",
       }}
