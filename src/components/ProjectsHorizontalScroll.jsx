@@ -165,29 +165,29 @@ export default function ProjectsHorizontalScroll({
       }}
       className="relative"
     >
-      {/* <div
+      <div
         ref={pinRef}
         style={{ "--pin-h": `${projects.length * 90}svh` }}
         className="relative h-[var(--pin-h)]"
-      > */}
-        {/* <div
+      >
+        <div
           ref={stageRef}
           className="sticky top-0 h-[100svh] w-full overflow-hidden
             flex flex-col justify-center bg-transparent"
-        > */}
+        >
         
           {/* <div className="hidden md:block absolute top-[-15%] left-[10%] w-[420px] h-[420px] bg-blue-700/8 rounded-full blur-[100px] pointer-events-none" />
           <div className="hidden md:block absolute bottom-[-15%] right-[10%] w-[360px] h-[360px] bg-cyan-500/6 rounded-full blur-[90px] pointer-events-none" /> */}
 
         
-          {/* {header && (
+          {header && (
             <div className="relative z-30 shrink-0 w-full max-w-5xl mx-auto px-5 sm:px-10 pt-20 md:pt-16">
               {header}
             </div>
-          )} */}
+          )}
 
           {/* ── Carousel row — the only thing that moves ── */}
-          {/* <div
+          <div
             ref={viewportRef}
             className={`relative w-full min-h-0 flex-1 flex items-center overflow-hidden ${
               footer ? "pb-12" : ""
@@ -359,15 +359,15 @@ export default function ProjectsHorizontalScroll({
                 </div>
               ))}
             </div>
-          </div> */}
-{/* 
+          </div>
+
           {footer && (
             <div className="relative z-30 shrink-0 w-full max-w-5xl mx-auto px-5 sm:px-10 pb-5 md:pb-3">
               {footer}
             </div>
-          )} */}
-        {/* </div> */}
-      {/* </div> */}
+          )}
+        </div>
+      </div>
     </div>
   );
 }
