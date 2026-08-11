@@ -111,9 +111,7 @@ body {
   content: "";
   animation: dots 1.5s steps(4, end) infinite;
 }
-html, body {
-  overflow-x: hidden;
-}
+
 @keyframes dots {
   0% { content: ""; }
   25% { content: "."; }
