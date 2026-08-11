@@ -242,10 +242,10 @@ export default function ProjectsHorizontalScroll({
             className="flex items-stretch max-h-full gap-5 px-[7vw] sm:gap-8 md:gap-10 md:px-[8vw]
               will-change-transform"
           >
-            {projects.map((project, index) => (
+            {/* {projects.map((project, index) => (
               <div
                 key={project.slug}
-                className="group relative flex-none
+                className="group relative mt-4 flex-none
                   w-[70vw] sm:w-[68vw] lg:w-[620px]
                   rounded-2xl border border-white/8 bg-[#070d1a] overflow-hidden
                   flex flex-col shadow-[0_4px_40px_rgba(0,0,0,0.4)]
@@ -364,7 +364,7 @@ export default function ProjectsHorizontalScroll({
                   </div>
                 </div>
               </div>
-            ))}
+            ))} */}
           </div>
           </div>
 
