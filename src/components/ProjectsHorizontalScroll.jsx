@@ -246,7 +246,7 @@ export default function ProjectsHorizontalScroll({
               <div
                 key={project.slug}
                 className="group relative flex-none
-                  w-[86vw] sm:w-[68vw] lg:w-[620px]
+                  w-[70vw] sm:w-[68vw] lg:w-[620px]
                   rounded-2xl border border-white/8 bg-[#070d1a] overflow-hidden
                   flex flex-col shadow-[0_4px_40px_rgba(0,0,0,0.4)]
                   hover:border-blue-400/30 transition-[border-color,box-shadow] duration-500
