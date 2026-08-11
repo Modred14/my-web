@@ -230,7 +230,7 @@ export default function ProjectsHorizontalScroll({
               </span>
             </div>
 
-            <div
+            {/* <div
               ref={trackRef}
               className="flex items-stretch max-h-full gap-5 px-[7vw] sm:gap-8 md:gap-10 md:px-[8vw]
               will-change-transform"
@@ -239,7 +239,7 @@ export default function ProjectsHorizontalScroll({
                 <div
                   key={project.slug}
                   className="group relative mt-4 flex-none
-                  w-[70vw] sm:w-[68vw] lg:w-[620px]
+                  w-[86vw] sm:w-[68vw] lg:w-[620px]
                   rounded-2xl border border-white/8 bg-[#070d1a] overflow-hidden
                   flex flex-col shadow-[0_4px_40px_rgba(0,0,0,0.4)]
                   hover:border-blue-400/30 transition-[border-color,box-shadow] duration-500
@@ -358,7 +358,7 @@ export default function ProjectsHorizontalScroll({
                   </div>
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
 
           {footer && (
