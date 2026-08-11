@@ -187,7 +187,7 @@ export default function ProjectsHorizontalScroll({
           )}
 
          
-          {/* <div
+          <div
             ref={viewportRef}
             className={`relative w-full min-h-0 flex-1 flex items-center overflow-hidden ${
               footer ? "pb-12" : ""
@@ -239,7 +239,7 @@ export default function ProjectsHorizontalScroll({
                 <div
                   key={project.slug}
                   className="group relative mt-4 flex-none
-                  w-[86vw] sm:w-[68vw] lg:w-[620px]
+                  w-[70vw] sm:w-[68vw] lg:w-[620px]
                   rounded-2xl border border-white/8 bg-[#070d1a] overflow-hidden
                   flex flex-col shadow-[0_4px_40px_rgba(0,0,0,0.4)]
                   hover:border-blue-400/30 transition-[border-color,box-shadow] duration-500
@@ -359,7 +359,7 @@ export default function ProjectsHorizontalScroll({
                 </div>
               ))}
             </div>
-          </div> */}
+          </div>
 
           {footer && (
             <div className="relative z-30 shrink-0 w-full max-w-5xl mx-auto px-5 sm:px-10 pb-5 md:pb-3">
