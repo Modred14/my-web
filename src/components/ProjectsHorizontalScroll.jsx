@@ -159,9 +159,9 @@ export default function ProjectsHorizontalScroll({
     <div
       ref={bleedRef}
       style={{
-       
+      "--bleed-w": "100%",
         marginLeft: "calc(50% - var(--bleed-w) / 2)",
-       
+        width: "var(--bleed-w)",
       }}
       className="relative"
     >
@@ -186,7 +186,7 @@ export default function ProjectsHorizontalScroll({
             </div>
           )}
 
-          {/* ── Carousel row — the only thing that moves ── */}
+         
           <div
             ref={viewportRef}
             className={`relative w-full min-h-0 flex-1 flex items-center overflow-hidden ${
