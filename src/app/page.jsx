@@ -473,7 +473,7 @@ export default function Home() {
           </Reveal>
 
           {/* ── Projects ── */}
-          <section className="scroll-mt-8" id="projects">
+          {/* <section className="scroll-mt-8" id="projects">
             <ProjectsHorizontalScroll
               projects={projects.slice(0, 4)}
               header={
@@ -525,7 +525,7 @@ export default function Home() {
                 </div>
               }
             />
-          </section>
+          </section> */}
 
           {/* ── Technologies ── */}
           <Reveal>
