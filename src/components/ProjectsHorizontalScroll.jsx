@@ -165,11 +165,11 @@ export default function ProjectsHorizontalScroll({
       }}
       className="relative"
     >
-      <div
+      {/* <div
         ref={pinRef}
         style={{ "--pin-h": `${projects.length * 90}svh` }}
         className="relative h-[var(--pin-h)]"
-      >
+      > */}
         {/* <div
           ref={stageRef}
           className="sticky top-0 h-[100svh] w-full overflow-hidden
@@ -367,7 +367,7 @@ export default function ProjectsHorizontalScroll({
             </div>
           )} */}
         {/* </div> */}
-      </div>
+      {/* </div> */}
     </div>
   );
 }
