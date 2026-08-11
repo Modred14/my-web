@@ -168,7 +168,7 @@ export default function ProjectDetail() {
 
           {/* ── Main grid ── */}
           <Reveal>
-            <div className="mt-10 grid md:grid-cols-3 gap-10 lg:gap-16">
+            <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-16">
               {/* Left — overview + highlights */}
               <div className="md:col-span-2 flex flex-col gap-12">
                 {/* Overview */}
@@ -203,7 +203,7 @@ export default function ProjectDetail() {
                       Key Features
                     </h2>
                   </div>
-                  <ul className="grid sm:grid-cols-2 gap-3">
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {project.highlights.map((item, i) => (
                       <RevealChill key={i} delay={i * 50}>
                         <li
@@ -307,7 +307,7 @@ export default function ProjectDetail() {
                 <p className="text-[11px] font-bold tracking-[0.18em] uppercase text-gray-600 mb-6">
                   More Projects
                 </p>
-                <div className="grid sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {prevProject ? (
                     <Link
                       href={`/projects/${prevProject.slug}`}

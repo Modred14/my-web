@@ -197,8 +197,12 @@ export default function Page() {
 
   return (
     <div className="min-h-screen bg-black text-gray-100 relative ">
-      {/* ambient background */}
-      <div className="pointer-events-none absolute inset-0">
+      {/* ambient background — `fixed`, not `absolute`: these orbs sit at negative
+          offsets (-left-40 / -right-48), and in an absolute layer that pushes the
+          document's scrollable region 192px past the viewport. Fixed boxes are
+          excluded from scrollable overflow, so the glow bleeds off-screen without
+          making the page pannable. */}
+      <div className="pointer-events-none fixed inset-0">
         <div className="absolute -top-40 -left-40 h-[520px] w-[520px] rounded-full bg-white/10 blur-3xl" />
         <div className="absolute -bottom-48 -right-48 h-[620px] w-[620px] rounded-full bg-white/10 blur-3xl" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.10),transparent_55%)]" />
