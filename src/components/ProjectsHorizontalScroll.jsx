@@ -232,10 +232,9 @@ export default function ProjectsHorizontalScroll({
 
             <div
               ref={trackRef}
-              className="flex items-stretch max-h-full gap-5  sm:gap-8 md:gap-10 md:px-[8vw]
-              will-change-transform"
+
             >
-              {projects.map((project, index) => (
+              {/* {projects.map((project, index) => (
                 <div
                   key={project.slug}
                   className="group relative mt-4 flex-none
@@ -357,7 +356,7 @@ export default function ProjectsHorizontalScroll({
                     </div>
                   </div>
                 </div>
-              ))}
+              ))} */}
             </div>
           </div>
 
