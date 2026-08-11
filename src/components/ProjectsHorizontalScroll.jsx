@@ -369,11 +369,11 @@ export default function ProjectsHorizontalScroll({
           </div>
 
           {/* ── Pinned footer row — same container width/centering as the page ── */}
-          {footer && (
+          {/* {footer && (
             <div className="relative z-30 shrink-0 w-full max-w-5xl mx-auto px-5 sm:px-10 pb-5 md:pb-3">
               {footer}
             </div>
-          )}
+          )} */}
         </div>
 
     </div>
