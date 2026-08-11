@@ -231,7 +231,7 @@ export default function ProjectsHorizontalScroll({
             </div>
 
             <div
-            //   ref={trackRef}
+              ref={trackRef}
               className="flex items-stretch max-h-full gap-5 px-[7vw] sm:gap-8 md:gap-10 md:px-[8vw]
               will-change-transform"
             >
