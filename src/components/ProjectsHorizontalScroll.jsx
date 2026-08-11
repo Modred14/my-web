@@ -203,7 +203,7 @@ export default function ProjectsHorizontalScroll({
             <div className="absolute inset-y-0 right-0 w-[5vw] md:w-[6vw] z-10 bg-gradient-to-l from-[#01050f] to-transparent pointer-events-none" />
 
             {/* counter — sits inside the carousel row so the header can't cover it */}
-            <div
+            {/* <div
               className={`absolute right-5 md:right-10 z-20 flex items-center gap-2 text-[11px] font-semibold tracking-widest text-blue-400/70 tabular-nums ${
                 header ? "top-2" : "top-20 md:top-24"
               }`}
@@ -213,7 +213,7 @@ export default function ProjectsHorizontalScroll({
               </span>
               <span className="opacity-40">/</span>
               <span>{String(projects.length).padStart(2, "0")}</span>
-            </div>
+            </div> */}
 
             {/* progress dots + hint */}
             {/* <div
