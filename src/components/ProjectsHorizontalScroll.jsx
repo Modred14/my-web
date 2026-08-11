@@ -170,11 +170,11 @@ export default function ProjectsHorizontalScroll({
         style={{ "--pin-h": `${projects.length * 90}svh` }}
         className="relative h-[var(--pin-h)]"
       >
-        <div
+        {/* <div
           ref={stageRef}
           className="sticky top-0 h-[100svh] w-full overflow-hidden
             flex flex-col justify-center bg-transparent"
-        >
+        > */}
         
           {/* <div className="hidden md:block absolute top-[-15%] left-[10%] w-[420px] h-[420px] bg-blue-700/8 rounded-full blur-[100px] pointer-events-none" />
           <div className="hidden md:block absolute bottom-[-15%] right-[10%] w-[360px] h-[360px] bg-cyan-500/6 rounded-full blur-[90px] pointer-events-none" /> */}
@@ -366,7 +366,7 @@ export default function ProjectsHorizontalScroll({
               {footer}
             </div>
           )} */}
-        </div>
+        {/* </div> */}
       </div>
     </div>
   );
