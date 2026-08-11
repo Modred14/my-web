@@ -473,37 +473,37 @@ export default function Home() {
           </Reveal>
 
           {/* ── Projects ── */}
-          {/* <section className="scroll-mt-8" id="projects">
+          <section className="scroll-mt-8" id="projects">
             <ProjectsHorizontalScroll
               projects={projects.slice(0, 4)}
-              header={
-                <>
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex gap-4 items-center">
-                      <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
-                        <Code />
-                      </p>
-                      <p className="text-[28px] font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
-                        Featured Projects
-                      </p>
-                    </div>
-                    <Link
-                      href="/projects"
-                      className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl
-                        text-xs font-bold tracking-wide text-blue-400/80 border border-blue-400/20
-                        bg-blue-500/5 hover:bg-blue-500/15 hover:border-blue-400/40 hover:text-blue-300
-                        transition-colors duration-300 group"
-                    >
-                      View all projects
-                      <ArrowUpRight
-                        size={13}
-                        className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                      />
-                    </Link>
-                  </div>
-                  <GradientDivider />
-                </>
-              }
+              // header={
+              //   <>
+              //     <div className="flex items-center justify-between mb-4">
+              //       <div className="flex gap-4 items-center">
+              //         <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
+              //           <Code />
+              //         </p>
+              //         <p className="text-[28px] font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
+              //           Featured Projects
+              //         </p>
+              //       </div>
+              //       <Link
+              //         href="/projects"
+              //         className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl
+              //           text-xs font-bold tracking-wide text-blue-400/80 border border-blue-400/20
+              //           bg-blue-500/5 hover:bg-blue-500/15 hover:border-blue-400/40 hover:text-blue-300
+              //           transition-colors duration-300 group"
+              //       >
+              //         View all projects
+              //         <ArrowUpRight
+              //           size={13}
+              //           className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              //         />
+              //       </Link>
+              //     </div>
+              //     <GradientDivider />
+              //   </>
+              // }
               footer={
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
                   <p className="text-sm text-gray-600">
@@ -525,7 +525,7 @@ export default function Home() {
                 </div>
               }
             />
-          </section> */}
+          </section>
 
           {/* ── Technologies ── */}
           <Reveal>
