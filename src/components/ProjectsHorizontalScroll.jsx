@@ -216,7 +216,7 @@ export default function ProjectsHorizontalScroll({
             </div>
 
             {/* progress dots + hint */}
-            <div
+            {/* <div
               className={`absolute left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2.5 md:gap-3 ${
                 footer ? "bottom-2 md:bottom-3" : "bottom-6 md:bottom-9"
               }`}
@@ -235,14 +235,14 @@ export default function ProjectsHorizontalScroll({
                   />
                 ))}
               </span>
-            </div>
+            </div> */}
 
-          <div
+          {/* <div
             ref={trackRef}
             className="flex items-stretch max-h-full gap-5 px-[7vw] sm:gap-8 md:gap-10 md:px-[8vw]
               will-change-transform"
           >
-            {/* {projects.map((project, index) => (
+            {projects.map((project, index) => (
               <div
                 key={project.slug}
                 className="group relative mt-4 flex-none
@@ -364,8 +364,8 @@ export default function ProjectsHorizontalScroll({
                   </div>
                 </div>
               </div>
-            ))} */}
-          </div>
+            ))}
+          </div> */}
           </div>
 
           {/* ── Pinned footer row — same container width/centering as the page ── */}
