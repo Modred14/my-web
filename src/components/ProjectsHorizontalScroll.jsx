@@ -180,11 +180,11 @@ export default function ProjectsHorizontalScroll({
           <div className="hidden md:block absolute bottom-[-15%] right-[10%] w-[360px] h-[360px] bg-cyan-500/6 rounded-full blur-[90px] pointer-events-none" /> */}
 
         
-          {header && (
+          {/* {header && (
             <div className="relative z-30 shrink-0 w-full max-w-5xl mx-auto px-5 sm:px-10 pt-20 md:pt-16">
               {header}
             </div>
-          )}
+          )} */}
 
           {/* ── Carousel row — the only thing that moves ── */}
           {/* <div
@@ -360,12 +360,12 @@ export default function ProjectsHorizontalScroll({
               ))}
             </div>
           </div> */}
-
+{/* 
           {footer && (
             <div className="relative z-30 shrink-0 w-full max-w-5xl mx-auto px-5 sm:px-10 pb-5 md:pb-3">
               {footer}
             </div>
-          )}
+          )} */}
         </div>
       </div>
     </div>
