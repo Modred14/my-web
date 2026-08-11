@@ -173,7 +173,7 @@ export default function ProjectsHorizontalScroll({
         <div
           ref={stageRef}
           className="sticky top-0 h-[100svh] w-full overflow-hidden
-            flex flex-col justify-center bg-transparent"
+          flex flex-col justify-center bg-transparent"
         >
         
           {/* <div className="hidden md:block absolute top-[-15%] left-[10%] w-[420px] h-[420px] bg-blue-700/8 rounded-full blur-[100px] pointer-events-none" />
