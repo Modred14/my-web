@@ -171,7 +171,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="overflow-hidden relative">
+    <div className="overflow-x-hidden relative">
       <HashScrollHandler />
       <div className="flex  justify-center bg-[#01050f] text-gray-200 text-base relative">
         <div className="w-full bg-[#01050f]/70 backdrop-blur-sm fixed z-100">
