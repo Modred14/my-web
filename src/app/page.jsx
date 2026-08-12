@@ -195,15 +195,6 @@ function ProjectsScroller({ projects = [], header = null, footer = null }) {
     <div
       ref={bleedRef}
       style={{
-        // --bleed-w is set on :root by measure() above, in exact fractional
-        // px. It is deliberately NOT declared here: React re-applies this
-        // object on every re-render, so a value declared here would overwrite
-        // the measured one. The `100%` fallback is what renders before the
-        // effect runs -- it collapses margin-left to calc(50% - 50%) = 0 and
-        // width to the parent's width, i.e. no bleed and, more importantly,
-        // no possible overflow. A viewport-unit fallback (100dvw/100vw) cannot
-        // promise that: those resolve against the fractional layout viewport
-        // and include the scrollbar gutter, so either edge can land outside.
         marginLeft: "calc(50% - var(--bleed-w, 100%) / 2)",
         width: "var(--bleed-w, 100%)",
       }}
@@ -867,7 +858,7 @@ export default function Home() {
           </Reveal>
 
           {/* ── Projects ── */}
-          {/* <section className="scroll-mt-8" id="projects">
+          <section className="scroll-mt-8" id="projects">
             <ProjectsScroller
               projects={projects.slice(0, 4)}
               header={
@@ -919,7 +910,7 @@ export default function Home() {
                 </div>
               }
             />
-          </section> */}
+          </section>
 
           {/* ── Technologies ── */}
           <Reveal>
