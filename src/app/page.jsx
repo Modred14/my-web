@@ -661,6 +661,7 @@ export default function Home() {
                   </div>
 
                   <div className="flex flex-col gap-3 max-w-xl">
+                   <div className="px-1">
                     <p className="text-base lg:text-lg font-medium text-white/90 leading-relaxed">
                       I build full-stack web apps and backend systems that
                       people actually use.
@@ -679,7 +680,7 @@ export default function Home() {
                       . I turn ideas into real products, from full-stack
                       platforms to automation tools. I engineer systems that
                       work in the real world, not just in theory.
-                    </p>
+                    </p></div>
                     <div className="flex flex-wrap gap-2 justify-center lg:justify-start pt-1">
                       {[
                         "MERN Stack",
@@ -749,7 +750,7 @@ export default function Home() {
 
           {/* ── Experience ── */}
           <Reveal>
-            <section className="scroll-mt-8" id="journey">
+            <section className="scroll-mt-8 cf" id="journey">
               <div className="pt-14">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex gap-4 items-center">
@@ -914,7 +915,7 @@ export default function Home() {
 
           {/* ── Technologies ── */}
           <Reveal>
-            <section className="scroll-mt-8" id="technologies">
+            <section className="scroll-mt-8 cf" id="technologies">
               <div className="pt-14">
                 <div className="flex gap-4 mb-4 items-center">
                   <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
@@ -953,7 +954,7 @@ export default function Home() {
 
           {/* ── Education ── */}
           <Reveal>
-            <section className="scroll-mt-8" id="education">
+            <section className="scroll-mt-8 cf" id="education">
               <div className="pt-14">
                 <div className="flex items-center gap-4 mb-4">
                   <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
@@ -1053,7 +1054,7 @@ export default function Home() {
 
           {/* ── Testimonials ── */}
           <Reveal>
-            <section className="scroll-mt-8" id="reviews">
+            <section className="scroll-mt-8 cf" id="reviews">
               <div className="pt-14">
                 <div className="flex items-center gap-4 mb-4">
                   <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
@@ -1130,7 +1131,7 @@ export default function Home() {
           {/* ── CTA ── */}
           <div className="pt-14">
             <Reveal>
-              <section className="relative overflow-hidden rounded-2xl border border-white/8 bg-[#0a0a0a]">
+              <section className="cf relative overflow-hidden rounded-2xl border border-white/8 bg-[#0a0a0a]">
                 <div
                   className="absolute inset-0 opacity-[0.03] pointer-events-none"
                   style={{

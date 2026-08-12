@@ -118,3 +118,9 @@ body {
   75% { content: "..."; }
   100% { content: ""; }
 }
+
+
+.cf {
+  padding-left: 5px;
+  padding-right: 5px;
+}
