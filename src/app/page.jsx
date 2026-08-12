@@ -29,7 +29,22 @@ import Link from "next/link";
 import { projects } from "@/lib/project";
 import { journey } from "@/lib/experience";
 
-
+/**
+ * ProjectsScroller
+ * ------------------------------------------------------------------
+ * This used to live in its own file as `ProjectsHorizontalScroll`.
+ * It's inlined here (private, not exported) so it's part of the same
+ * module as the landing page. NOTE: being in its own file was never
+ * the cause of the page-level horizontal overflow -- file boundaries
+ * don't affect layout. The real risk is the "bleed" technique below
+ * (negative margin + measured viewport width breaking the section out
+ * of its centered parent). That's still here, unchanged, because it's
+ * what makes the full-bleed horizontal carousel possible. The actual
+ * overflow safety net has been added at the very bottom of this file,
+ * on the outer page wrapper (`overflow-x-clip`), so even if this
+ * measurement is ever a fraction of a pixel off on some browser, the
+ * page itself can never scroll sideways.
+ */
 function ProjectsScroller({ projects = [], header = null, footer = null }) {
   const bleedRef = useRef(null);
   const pinRef = useRef(null);
@@ -195,8 +210,27 @@ function ProjectsScroller({ projects = [], header = null, footer = null }) {
     <div
       ref={bleedRef}
       style={{
+        // --bleed-w is set on :root by measure() above, in exact fractional
+        // px. It is deliberately NOT declared here: React re-applies this
+        // object on every re-render, so a value declared here would overwrite
+        // the measured one. The `100%` fallback is what renders before the
+        // effect runs -- it collapses margin-left to calc(50% - 50%) = 0 and
+        // width to the parent's width, i.e. no bleed and, more importantly,
+        // no possible overflow. A viewport-unit fallback (100dvw/100vw) cannot
+        // promise that: those resolve against the fractional layout viewport
+        // and include the scrollbar gutter, so either edge can land outside.
         marginLeft: "calc(50% - var(--bleed-w, 100%) / 2)",
         width: "var(--bleed-w, 100%)",
+        // Belt-and-suspenders for the very first paint, before the effect
+        // below has run and set --bleed-w on :root: without this, some
+        // mobile browsers (notably iOS Safari) scan the document on initial
+        // layout, see this box at its 100% fallback width -- which is fine
+        // in isolation -- but combined with maxWidth missing here, any
+        // rounding/timing edge case that briefly makes it wider than the
+        // screen makes Safari zoom the ENTIRE page out to compensate, not
+        // just this section. Capping it at 100vw removes that possibility
+        // entirely, on every render, measured or not.
+        maxWidth: "100vw",
       }}
       className="relative"
     >

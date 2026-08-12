@@ -33,6 +33,16 @@
 }
 html {
   scroll-behavior: smooth;
+  /* FIX (mobile auto-zoom): declared here, on the root element itself, not
+     just on a nested wrapper div. iOS Safari's initial-zoom heuristic scans
+     for the widest box in the document during its first layout pass -- if
+     ANY box, even briefly (e.g. ProjectsScroller's bleed div before its JS
+     measurement runs), is wider than the screen, Safari zooms the WHOLE
+     page out to fit it, not just that section. A clip/overflow rule on a
+     div three levels down doesn't stop that scan; the root elements need to
+     declare it themselves so Safari's heuristic backs off from the start. */
+  overflow-x: hidden;
+  width: 100%;
 }
 
 /* Hide the native cursor everywhere so only CustomCursor.js is visible */
@@ -105,6 +115,11 @@ body {
   background: var(--background);
   color: var(--foreground);
    font-family: 'Geist Mono', monospace;
+  /* FIX (mobile auto-zoom): same reasoning as html above -- both root
+     elements need this, not just one, since browsers vary in which one
+     they measure against. */
+  overflow-x: hidden;
+  width: 100%;
 }
 .loading-dots::after {
   content: "";
