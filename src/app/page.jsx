@@ -29,22 +29,7 @@ import Link from "next/link";
 import { projects } from "@/lib/project";
 import { journey } from "@/lib/experience";
 
-/**
- * ProjectsScroller
- * ------------------------------------------------------------------
- * This used to live in its own file as `ProjectsHorizontalScroll`.
- * It's inlined here (private, not exported) so it's part of the same
- * module as the landing page. NOTE: being in its own file was never
- * the cause of the page-level horizontal overflow -- file boundaries
- * don't affect layout. The real risk is the "bleed" technique below
- * (negative margin + measured viewport width breaking the section out
- * of its centered parent). That's still here, unchanged, because it's
- * what makes the full-bleed horizontal carousel possible. The actual
- * overflow safety net has been added at the very bottom of this file,
- * on the outer page wrapper (`overflow-x-clip`), so even if this
- * measurement is ever a fraction of a pixel off on some browser, the
- * page itself can never scroll sideways.
- */
+
 function ProjectsScroller({ projects = [], header = null, footer = null }) {
   const bleedRef = useRef(null);
   const pinRef = useRef(null);
@@ -882,7 +867,7 @@ export default function Home() {
           </Reveal>
 
           {/* ── Projects ── */}
-          <section className="scroll-mt-8" id="projects">
+          {/* <section className="scroll-mt-8" id="projects">
             <ProjectsScroller
               projects={projects.slice(0, 4)}
               header={
@@ -934,7 +919,7 @@ export default function Home() {
                 </div>
               }
             />
-          </section>
+          </section> */}
 
           {/* ── Technologies ── */}
           <Reveal>
