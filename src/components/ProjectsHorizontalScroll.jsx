@@ -81,13 +81,25 @@ export default function ProjectsHorizontalScroll({
     }
 
     function measure() {
-      // Exact viewport width (excludes the scrollbar). Using raw 100vw here is
-      // what makes full-bleed sections overflow by the scrollbar width and give
-      // the whole page a horizontal wobble.
-      const vw = `${document.documentElement.clientWidth}px`;
-      // Guard the write, otherwise the ResizeObserver below re-triggers itself.
-      if (bleed.style.getPropertyValue("--bleed-w") !== vw) {
-        bleed.style.setProperty("--bleed-w", vw);
+      // Root's border box IS the layout viewport (scrollbar excluded), and
+      // getBoundingClientRect keeps the fraction. `clientWidth` rounds to an
+      // integer, so on any device whose layout viewport is fractional it
+      // reports e.g. 360 for a 359.96875px viewport -- and a bleed box built
+      // from that number ends up ~0.03px too wide, which the engine rounds up
+      // into a full pixel of horizontal scroll. iPhones hit fractional layout
+      // viewports constantly (Display Zoom, larger text, landscape), which is
+      // why the wobble showed up there and not on desktop.
+      const vw = `${document.documentElement.getBoundingClientRect().width}px`;
+      // Written to :root, not to this node's inline style. React owns the
+      // `style` attribute of the element below, and re-renders it on every
+      // carousel index change (setActiveIndex) -- an imperative write there
+      // gets reverted to the declarative fallback on the next pan, and since
+      // measure() doesn't run on scroll the revert is permanent. Nothing
+      // manages <html>'s style attribute, so this write sticks.
+      // Guard it, otherwise the ResizeObserver below can re-trigger itself.
+      const root = document.documentElement;
+      if (root.style.getPropertyValue("--bleed-w") !== vw) {
+        root.style.setProperty("--bleed-w", vw);
       }
 
       // Flexbox scrollWidth drops the track's trailing padding in some engines,
@@ -150,6 +162,9 @@ export default function ProjectsHorizontalScroll({
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", measure);
       window.removeEventListener("orientationchange", measure);
+      // Don't leave a viewport width from a previous route on :root -- the next
+      // mount re-measures, and a stale value would be read for one frame.
+      document.documentElement.style.removeProperty("--bleed-w");
     };
   }, [projects.length]);
 
@@ -159,9 +174,17 @@ export default function ProjectsHorizontalScroll({
     <div
       ref={bleedRef}
       style={{
-      "--bleed-w": "100dvw",
-        marginLeft: "calc(50% - var(--bleed-w) / 2)",
-        width: "var(--bleed-w)",
+        // --bleed-w is set on :root by measure() above, in exact fractional
+        // px. It is deliberately NOT declared here: React re-applies this
+        // object on every re-render, so a value declared here would overwrite
+        // the measured one. The `100%` fallback is what renders before the
+        // effect runs -- it collapses margin-left to calc(50% - 50%) = 0 and
+        // width to the parent's width, i.e. no bleed and, more importantly,
+        // no possible overflow. A viewport-unit fallback (100dvw/100vw) cannot
+        // promise that: those resolve against the fractional layout viewport
+        // and include the scrollbar gutter, so either edge can land outside.
+        marginLeft: "calc(50% - var(--bleed-w, 100%) / 2)",
+        width: "var(--bleed-w, 100%)",
       }}
       className="relative"
     >
