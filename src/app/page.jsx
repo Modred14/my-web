@@ -750,7 +750,7 @@ export default function Home() {
 
           {/* ── Experience ── */}
           <Reveal>
-            <section className="scroll-mt-8 px-2.5" id="journey">
+            <section className="scroll-mt-8 " id="journey">
               <div className="pt-14">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex gap-4 items-center">
@@ -915,7 +915,7 @@ export default function Home() {
 
           {/* ── Technologies ── */}
           <Reveal>
-            <section className="scroll-mt-8 px-2.5" id="technologies">
+            <section className="scroll-mt-8 " id="technologies">
               <div className="pt-14">
                 <div className="flex gap-4 mb-4 items-center">
                   <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
@@ -954,7 +954,7 @@ export default function Home() {
 
           {/* ── Education ── */}
           <Reveal>
-            <section className="scroll-mt-8 px-2.5" id="education">
+            <section className="scroll-mt-8 " id="education">
               <div className="pt-14">
                 <div className="flex items-center gap-4 mb-4">
                   <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
@@ -1054,7 +1054,7 @@ export default function Home() {
 
           {/* ── Testimonials ── */}
           <Reveal>
-            <section className="scroll-mt-8 px-2.5" id="reviews">
+            <section className="scroll-mt-8 " id="reviews">
               <div className="pt-14">
                 <div className="flex items-center gap-4 mb-4">
                   <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
@@ -1131,7 +1131,7 @@ export default function Home() {
           {/* ── CTA ── */}
           <div className="pt-14">
             <Reveal>
-              <section className="px-2.5 relative overflow-hidden rounded-2xl border border-white/8 bg-[#0a0a0a]">
+              <section className=" relative overflow-hidden rounded-2xl border border-white/8 bg-[#0a0a0a]">
                 <div
                   className="absolute inset-0 opacity-[0.03] pointer-events-none"
                   style={{
