@@ -1130,8 +1130,8 @@ export default function Home() {
 
           {/* ── CTA ── */}
           <div className="pt-14">
-            <Reveal>
-              <section className="sm:px-0 px-5 relative overflow-hidden rounded-2xl border border-white/8 bg-[#0a0a0a]">
+            <Reveal className="sm:px-0 px-5">
+              <section className=" relative overflow-hidden rounded-2xl border border-white/8 bg-[#0a0a0a]">
                 <div
                   className="absolute inset-0 opacity-[0.03] pointer-events-none"
                   style={{
