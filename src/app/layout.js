@@ -14,7 +14,10 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
-
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
 export const metadata = {
   metadataBase: new URL("https://modred.dev"),
 
