@@ -12,6 +12,19 @@ export const journey = [
     ],
   },
   {
+    workplace: "2Thirty Integrated Services Ltd",
+    position: "Frontend Engineer (Internship)",
+    duration: "January 2024 – June 2024",
+    impact: [
+      "Built and maintained scalable web applications using React, JavaScript, and Tailwind CSS",
+      "Integrated frontend components with backend APIs to deliver seamless full-stack functionality",
+      "Designed responsive, user-focused interfaces optimized for desktop and mobile",
+      "Built reusable UI components and patterns to improve maintainability and development speed",
+      "Converted UI/UX designs into pixel-accurate pages while ensuring cross-browser compatibility and modern web standards",
+    ],
+  },
+
+  {
     workplace: "Faith Standard Schools",
     position: "Website & Social Media Manager",
     duration: "May 2026 – Present",
@@ -57,18 +70,6 @@ export const journey = [
       "Positioned Cowrywise around student budgets and allowance cycles to make investing feel achievable",
       "Partnered with student organizations to run outreach and literacy campaigns across faculties",
       "Relayed trust concerns and deposit-friction feedback to Cowrywise to inform engagement strategy",
-    ],
-  },
-  {
-    workplace: "2Thirty Integrated Services Ltd",
-    position: "Frontend Engineer (Internship)",
-    duration: "January 2024 – June 2024",
-    impact: [
-      "Built and maintained scalable web applications using React, JavaScript, and Tailwind CSS",
-      "Integrated frontend components with backend APIs to deliver seamless full-stack functionality",
-      "Designed responsive, user-focused interfaces optimized for desktop and mobile",
-      "Built reusable UI components and patterns to improve maintainability and development speed",
-      "Converted UI/UX designs into pixel-accurate pages while ensuring cross-browser compatibility and modern web standards",
     ],
   },
 
