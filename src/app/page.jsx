@@ -17,6 +17,7 @@ import {
   ArrowUpRight,
   Download,
   MoveRight,
+  MoveDown,
 } from "lucide-react";
 import DownloadCVButton from "@/lib/CvGenrator";
 import HashScrollHandler from "@/components/Hash";
@@ -198,7 +199,7 @@ function ProjectsScroller({ projects = [], header = null, footer = null }) {
         inView = entry.isIntersecting;
         if (inView) onScroll();
       },
-      { rootMargin: "300px 0px" },
+      { rootMargin: "0px" },
     );
     io.observe(pin);
 
@@ -284,8 +285,7 @@ function ProjectsScroller({ projects = [], header = null, footer = null }) {
               }`}
             >
               <span className="flex items-center gap-2 text-[10px] font-semibold tracking-[0.18em] uppercase text-gray-600">
-                Scroll
-                <MoveRight size={12} className="text-neutral-400/50" />
+                Scroll Up/Down
               </span>
               <span className="flex items-center gap-1.5">
                 {projects.map((_, i) => (
