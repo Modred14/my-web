@@ -40,6 +40,45 @@ export default function ProjectsHorizontalScroll({
 
     const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
 
+// --- Horizontal input -> vertical scroll, so it drives the same pipeline ---
+function onWheel(e) {
+  if (!inView) return;
+  // Trackpad horizontal swipe reports deltaX. Some trackpads/mice only
+  // emit vertical deltaY and rely on Shift to mean "horizontal".
+  const dx = e.deltaX !== 0 ? e.deltaX : e.shiftKey ? e.deltaY : 0;
+  if (dx === 0) return; // let normal vertical wheel scrolling pass through untouched
+  e.preventDefault();
+  window.scrollBy({ top: dx, left: 0 });
+}
+
+let touchStartX = null;
+let touchStartY = null;
+let touchScrollStart = 0;
+
+function onTouchStart(e) {
+  if (!inView) return;
+  touchStartX = e.touches[0].clientX;
+  touchStartY = e.touches[0].clientY;
+  touchScrollStart = window.scrollY;
+}
+
+function onTouchMove(e) {
+  if (!inView || touchStartX === null) return;
+  const dx = touchStartX - e.touches[0].clientX;
+  const dy = touchStartY - e.touches[0].clientY;
+  // Only hijack the gesture if it's clearly more horizontal than vertical,
+  // so normal vertical page scrolling on the section isn't blocked.
+  if (Math.abs(dx) > Math.abs(dy) + 4) {
+    e.preventDefault();
+    window.scrollTo({ top: touchScrollStart + dx });
+  }
+}
+
+function onTouchEnd() {
+  touchStartX = null;
+  touchStartY = null;
+}
+
     function publishIndex(i) {
       if (i !== lastIndex) {
         lastIndex = i;
@@ -152,7 +191,10 @@ export default function ProjectsHorizontalScroll({
     // driven by svh (stable) and the width guard above makes that a no-op.
     window.addEventListener("resize", measure);
     window.addEventListener("orientationchange", measure);
-
+    window.addEventListener("wheel", onWheel, { passive: false });
+ viewport.addEventListener("touchstart", onTouchStart, { passive: true });
+viewport.addEventListener("touchmove", onTouchMove, { passive: false });
+viewport.addEventListener("touchend", onTouchEnd, { passive: true });
     measure();
 
     return () => {
@@ -162,6 +204,10 @@ export default function ProjectsHorizontalScroll({
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", measure);
       window.removeEventListener("orientationchange", measure);
+        window.removeEventListener("wheel", onWheel);
+  viewport.removeEventListener("touchstart", onTouchStart);
+  viewport.removeEventListener("touchmove", onTouchMove);
+  viewport.removeEventListener("touchend", onTouchEnd);
       // Don't leave a viewport width from a previous route on :root -- the next
       // mount re-measures, and a stale value would be read for one frame.
       document.documentElement.style.removeProperty("--bleed-w");
