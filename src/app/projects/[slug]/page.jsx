@@ -2,6 +2,7 @@
 import { useParams } from "next/navigation";
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import Footer from "@/app/footer";
 import Link from "next/link";
 import {
   Github,
@@ -366,74 +367,7 @@ export default function ProjectDetail() {
           </Reveal>
 
           {/* ── Footer ── */}
-          <footer className="mt-16 -mb-30 border-t border-white/10">
-            <Reveal>
-              <div className="max-w-5xl mx-auto px-6 py-12">
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 mb-10">
-                  <div className="flex items-center gap-3">
-                    <Image
-                      src="/logo.png"
-                      alt="Modred"
-                      width={32}
-                      height={32}
-                      className="w-8 h-8 object-contain"
-                    />
-                    <div>
-                      <p className="font-bold text-sm text-white tracking-widest uppercase">
-                        Modred.dev
-                      </p>
-                      <p className="text-[11px] text-gray-500 mt-0.5">
-                        Favour Omirin · Software Engineer
-                      </p>
-                    </div>
-                  </div>
-                  <nav className="flex flex-wrap gap-x-8 gap-y-2">
-                    {[
-                      { label: "Experience", href: "experience" },
-                      { label: "Projects", href: "projects" },
-                      // { label: "Education", href: "/#education" },
-                      // { label: "Testimonials", href: "/#reviews" },
-                    ].map((item) => (
-                      <Link
-                        key={item.label}
-                        href={`/${item.href}`}
-                        className="text-xs text-gray-400 hover:text-white transition-colors duration-200 tracking-wide"
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
-                  </nav>
-                </div>
-                <div className="h-px bg-white/5 mb-8" />
-                <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-                  <p className="text-xs text-gray-600 order-2 md:order-1">
-                    © {new Date().getFullYear()} Favour Omirin. All rights
-                    reserved.
-                  </p>
-                  <div className="flex items-center gap-2 order-1 md:order-2">
-                    {socials.map((social) => {
-                      const Icon = social.icon;
-                      return (
-                        <Link
-                          key={social.name}
-                          href={social.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          title={social.name}
-                          className="w-8 h-8 flex items-center justify-center rounded-md
-                            border border-white/10 text-gray-500
-                            hover:border-white/25 hover:text-white hover:bg-white/5
-                            transition-colors duration-200"
-                        >
-                          <Icon size={14} />
-                        </Link>
-                      );
-                    })}
-                  </div>
-                </div>
-              </div>
-            </Reveal>
-          </footer>
+         <Footer/>
         </div>
       </div>
     </div>
