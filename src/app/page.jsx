@@ -409,7 +409,7 @@ export default function Home() {
 
   // FIX: getName() called hooks inside a nested function -- invalid React, causes
   // crashes/stale closures on iOS. Moved state + effect to component top level.
-  const names = ["Favour Omirin", "Modred", "Favour"];
+  const names = ["FAVOUR OMIRIN"];
   const [nameIndex, setNameIndex] = useState(0);
   useEffect(() => {
     const interval = setInterval(() => {
@@ -624,7 +624,7 @@ export default function Home() {
 
                   {/* FIX: was calling getName() which illegally used hooks inside a function */}
                   <h1 className="text-[2rem] lg:text-5xl font-extrabold text-white leading-tight">
-                    I'm {names[nameIndex]}
+                    I'm FAVOUR OMIRIN
                   </h1>
 
                   {/* Socials — mobile */}
@@ -1131,7 +1131,7 @@ export default function Home() {
                 <div className="relative px-8 py-14 flex flex-col items-center text-center gap-5">
                   <span className="inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.15em] uppercase text-neutral-400/80">
                     <span className="w-1.5 h-1.5 rounded-full bg-neutral-400 animate-pulse" />
-                    Available for work
+                    Freelance & full-time roles
                   </span>
                   <h2 className="text-2xl lg:text-3xl font-bold text-white leading-snug max-w-md">
                     Got a project in mind?{" "}
