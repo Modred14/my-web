@@ -125,7 +125,7 @@ export const projects = [
       "Railway",
     ],
     about:
-      "First place winner at Techfest 5.0 — a digital payment app with NFC tap-to-pay, QR scanning, and phone number transfers, shipped in 32 hours.",
+      "First place winner at Techfest 5.0 — built by a 5-person team in 32 hours. A digital payment app with NFC tap-to-pay, QR scanning, and phone number transfers.",
     description: [
       "TapPay was built by a 5-person team at Techfest 5.0 (themed Cred, Code & Culture). We shipped both a mobile app and a web analytics dashboard within 32 hours and presented it live at the event — walking away with first place.",
       "My role was frontend: I built the web dashboard and contributed to the app UI using Next.js and TypeScript, while my teammates handled the backend, NFC logic, and PayAza API integration.",
