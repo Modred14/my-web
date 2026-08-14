@@ -6,6 +6,9 @@ import CustomCursor from "@/components/CustomCursor";
 import "./globals.css";
 import { Oswald } from "next/font/google";
 import { Orbitron } from "next/font/google";
+import ScrollProgressBar from "@/components/ScrollProgressBar";
+
+
 
 const orbitron = Orbitron({
   subsets: ["latin"],
@@ -130,6 +133,7 @@ export default function RootLayout({ children }) {
           }}
         />
         <AnalyticsTracker />
+         <ScrollProgressBar />
         <CustomCursor />
         {children}
       </body>
