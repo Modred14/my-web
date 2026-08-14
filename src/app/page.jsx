@@ -46,7 +46,46 @@ function ProjectsScroller({ projects = [], header = null, footer = null }) {
     const viewport = viewportRef.current;
     const track = trackRef.current;
     if (!bleed || !pin || !stage || !viewport || !track) return;
+    const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
 
+    // --- Horizontal input -> vertical scroll, so it drives the same pipeline ---
+    function onWheel(e) {
+      if (!inView) return;
+      // Trackpad horizontal swipe reports deltaX. Some trackpads/mice only
+      // emit vertical deltaY and rely on Shift to mean "horizontal".
+      const dx = e.deltaX !== 0 ? e.deltaX : e.shiftKey ? e.deltaY : 0;
+      if (dx === 0) return; // let normal vertical wheel scrolling pass through untouched
+      e.preventDefault();
+      window.scrollBy({ top: dx, left: 0 });
+    }
+
+    let touchStartX = null;
+    let touchStartY = null;
+    let touchScrollStart = 0;
+
+    function onTouchStart(e) {
+      if (!inView) return;
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+      touchScrollStart = window.scrollY;
+    }
+
+    function onTouchMove(e) {
+      if (!inView || touchStartX === null) return;
+      const dx = touchStartX - e.touches[0].clientX;
+      const dy = touchStartY - e.touches[0].clientY;
+      // Only hijack the gesture if it's clearly more horizontal than vertical,
+      // so normal vertical page scrolling on the section isn't blocked.
+      if (Math.abs(dx) > Math.abs(dy) + 4) {
+        e.preventDefault();
+        window.scrollTo({ top: touchScrollStart + dx });
+      }
+    }
+
+    function onTouchEnd() {
+      touchStartX = null;
+      touchStartY = null;
+    }
     const reduceMQ = window.matchMedia("(prefers-reduced-motion: reduce)");
     // Coarse pointers (phones/tablets) drive the pan with momentum scrolling,
     // which already carries its own easing -- a second layer of lerp on top of
@@ -59,8 +98,6 @@ function ProjectsScroller({ projects = [], header = null, footer = null }) {
     let raf = null;
     let inView = false;
     let lastIndex = -1;
-
-    const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
 
     function publishIndex(i) {
       if (i !== lastIndex) {
@@ -170,10 +207,12 @@ function ProjectsScroller({ projects = [], header = null, footer = null }) {
     ro.observe(track);
 
     window.addEventListener("scroll", onScroll, { passive: true });
-    // On mobile, `resize` also fires when the URL bar shows/hides. Height is
-    // driven by svh (stable) and the width guard above makes that a no-op.
     window.addEventListener("resize", measure);
     window.addEventListener("orientationchange", measure);
+    window.addEventListener("wheel", onWheel, { passive: false });
+    viewport.addEventListener("touchstart", onTouchStart, { passive: true });
+    viewport.addEventListener("touchmove", onTouchMove, { passive: false });
+    viewport.addEventListener("touchend", onTouchEnd, { passive: true });
 
     measure();
 
@@ -184,8 +223,10 @@ function ProjectsScroller({ projects = [], header = null, footer = null }) {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", measure);
       window.removeEventListener("orientationchange", measure);
-      // Don't leave a viewport width from a previous route on :root -- the next
-      // mount re-measures, and a stale value would be read for one frame.
+      window.removeEventListener("wheel", onWheel);
+      viewport.removeEventListener("touchstart", onTouchStart);
+      viewport.removeEventListener("touchmove", onTouchMove);
+      viewport.removeEventListener("touchend", onTouchEnd);
       document.documentElement.style.removeProperty("--bleed-w");
     };
   }, [projects.length]);
@@ -939,7 +980,7 @@ export default function Home() {
             />
           </section>
 
-        {/* ── Technologies ── */}
+          {/* ── Technologies ── */}
           <Reveal>
             <section className=" sm:px-0 px-5" id="technologies">
               <div className="pt-14">
