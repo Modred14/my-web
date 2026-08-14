@@ -223,8 +223,8 @@ function ProjectsScroller({ projects = [], header = null, footer = null }) {
               footer ? "pb-12" : ""
             }`}
           >
-            <div className="absolute inset-y-0 left-0 w-[5vw] md:w-[6vw] z-10 bg-gradient-to-r from-[#0a0a0a] to-transparent pointer-events-none" />
-            <div className="absolute inset-y-0 right-0 w-[5vw] md:w-[6vw] z-10 bg-gradient-to-l from-[#0a0a0a] to-transparent pointer-events-none" />
+            <div className="absolute inset-y-0 left-0 w-[5vw] md:w-[6vw] z-10 bg-gradient-to-r from-[#000000] to-transparent pointer-events-none" />
+            <div className="absolute inset-y-0 right-0 w-[5vw] md:w-[6vw] z-10 bg-gradient-to-l from-[#000000] to-transparent pointer-events-none" />
             <div
               className={`absolute right-5 md:right-10 z-20 flex items-center gap-2 text-[11px] font-semibold tracking-widest text-neutral-400/70 tabular-nums ${
                 header ? "top-2" : "top-20 md:top-24"
