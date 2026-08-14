@@ -4,12 +4,15 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "../header";
 import { projects } from "@/lib/project";
-import { Github, Mail, Linkedin, ArrowLeft } from "lucide-react";
+import { Github, ArrowUp, Mail, Linkedin, ArrowLeft } from "lucide-react";
 import Reveal from "../reavel";
 import ProjectsHorizontalScroll from "@/components/ProjectsHorizontalScroll";
 import Footer from "../footer";
 
 export default function ProjectsPage() {
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
   const socials = [
     { link: "https://github.com/Modred14", icon: Github, name: "GitHub" },
     { link: "mailto:favourdomirin@gmail.com", icon: Mail, name: "Email" },
@@ -21,14 +24,13 @@ export default function ProjectsPage() {
   ];
 
   return (
-   
     <div className="min-h-screen bg-[#000000] text-gray-200">
-     <div className="w-full bg-[#000000]/70 backdrop-blur-sm top-0 fixed z-100">
+      <div className="w-full bg-[#000000]/70 backdrop-blur-sm top-0 fixed z-100">
         <Header />
-      </div>   {/* ── Atmosphere — removed center orb (invisible at /3 opacity), reduced blur radii ── */}
+      </div>{" "}
+      {/* ── Atmosphere — removed center orb (invisible at /3 opacity), reduced blur radii ── */}
       <div className="fixed top-[-15vh] left-[-5vw] w-[600px] h-[600px] bg-neutral-700/5 rounded-full blur-[80px] pointer-events-none z-0" />
       <div className="fixed bottom-[-10vh] right-[-10vw] w-[400px] h-[400px] bg-neutral-600/4 rounded-full blur-[70px] pointer-events-none z-0" />
-
       {/* Single dot grid — removed duplicate vignette overlay */}
       <div
         className="fixed inset-0 pointer-events-none opacity-[0.05] z-0"
@@ -38,10 +40,7 @@ export default function ProjectsPage() {
           backgroundSize: "28px 28px",
         }}
       />
-
       {/* ── Header — removed 4 duplicate fixed layers; backdrop-blur-2xl → sm ── */}
-    
-
       <div className="relative z-10">
         {/* ── Page hero ── */}
         <div className="max-w-5xl mx-auto px-5 sm:px-10 pt-28 ">
@@ -100,13 +99,30 @@ export default function ProjectsPage() {
           </Reveal>
         </div>
 
-       
         <div className="pb-16">
           <ProjectsHorizontalScroll projects={projects} />
         </div>
       </div>
-
-      <Footer/>
+      <div className="max-w-5xl mx-auto px-6 pb-10">
+        <div className="h-px bg-white/5 my-6" />
+        <div className="flex flex-col-reverse sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-gray-600">
+            © {new Date().getFullYear()} Favour Omirin. All rights reserved.
+          </p>
+          <button
+            onClick={scrollToTop}
+            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg
+                border border-white/10 bg-white/[0.02] text-gray-500
+                hover:border-blue-400/40 hover:text-blue-400 hover:bg-white/[0.05]
+                hover:-translate-y-0.5
+                text-[11px] font-semibold tracking-wide uppercase
+                transition-[transform,background-color,border-color,color] duration-200"
+          >
+            Back to top
+            <ArrowUp size={12} />
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

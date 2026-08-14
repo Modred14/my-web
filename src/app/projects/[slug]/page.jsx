@@ -12,6 +12,7 @@ import {
   Zap,
   CheckCircle2,
   ArrowUpRight,
+  ArrowUp,
   Mail,
   Linkedin,
 } from "lucide-react";
@@ -20,11 +21,14 @@ import Header from "@/app/header";
 import RevealChill from "@/app/revealchill";
 import Reveal from "@/app/reavel";
 
+
 export default function ProjectDetail() {
   const { slug } = useParams();
   const project = projects.find((p) => p.slug === slug);
   if (!project) return notFound();
-
+ function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
   const socials = [
     { link: "https://github.com/Modred14", icon: Github, name: "GitHub" },
     { link: "mailto:favourdomirin@gmail.com", icon: Mail, name: "Email" },
@@ -40,15 +44,15 @@ export default function ProjectDetail() {
   const nextProject = projects[currentIndex + 1] ?? null;
 
   return (
-    <div className="min-h-screen bg-[#01050f] text-gray-200  overflow-hidden">
-      <div className="w-full bg-[#01050f]/70 backdrop-blur-sm top-0 fixed z-[100]">
+    <div className="min-h-screen bg-[#000000] text-gray-200  overflow-hidden">
+      <div className="w-full bg-[#000000]/70 backdrop-blur-sm top-0 fixed z-[100]">
         <Header />
       </div>
-      {/* ── Atmosphere — reduced blur radii, removed center orb (unnoticeable visually) ── */}
-      <div className="fixed top-[-20vh] left-[-10vw] w-[600px] h-[600px] bg-blue-700/5 rounded-full blur-[80px] pointer-events-none z-0" />
-      <div className="fixed bottom-[-10vh] right-[-10vw] w-[400px] h-[400px] bg-cyan-600/4 rounded-full blur-[70px] pointer-events-none z-0" />
+      {/* ── Atmosphere ── */}
+      <div className="fixed top-[-20vh] left-[-10vw] w-[600px] h-[600px] bg-neutral-700/5 rounded-full blur-[80px] pointer-events-none z-0" />
+      <div className="fixed bottom-[-10vh] right-[-10vw] w-[400px] h-[400px] bg-neutral-500/4 rounded-full blur-[70px] pointer-events-none z-0" />
 
-      {/* Single dot grid — removed duplicate vignette overlay layer */}
+      {/* Single dot grid */}
       <div
         className="fixed inset-0 pointer-events-none opacity-[0.05] z-0"
         style={{
@@ -58,10 +62,8 @@ export default function ProjectDetail() {
         }}
       />
 
-      {/* ── Header — removed 3 duplicate fixed layers; backdrop-blur-2xl → sm ── */}
-
       <div className="relative z-10 pt-4">
-        <div className="max-w-5xl mx-auto px-6 sm:px-10 mt-10 pb-24">
+        <div className="max-w-5xl mx-auto px-6 sm:px-10 mt-10">
           {/* ── Hero image ── */}
           <Reveal>
             <div className="relative w-full h-[55vh] rounded-t-4xl min-h-[380px] overflow-hidden">
@@ -72,15 +74,15 @@ export default function ProjectDetail() {
                 className="object-cover object-top scale-[1.02]"
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#01050f] via-[#01050f]/60 to-[#01050f]/10" />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#01050f]/40 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#000000] via-[#000000]/60 to-[#000000]/10" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#000000]/40 to-transparent" />
 
               {/* back button */}
               <div className="absolute top-6 left-6 sm:left-10">
                 <Link
                   href="/projects"
-                  className="inline-flex border-blue-300/50 items-center gap-2 text-xs font-semibold text-gray-400
-                    bg-[#01050f]/70 backdrop-blur-[4px] border px-3 py-2 rounded-lg
+                  className="inline-flex border-white/10 items-center gap-2 text-xs font-semibold text-gray-400
+                    bg-[#000000]/70 backdrop-blur-[4px] border px-3 py-2 rounded-lg
                     hover:text-blue-400 hover:border-blue-400/30 transition-colors duration-200 group"
                 >
                   <ArrowLeft
@@ -98,19 +100,19 @@ export default function ProjectDetail() {
                 rel="noopener noreferrer"
                 className="absolute top-6 right-6 sm:right-10 flex items-center gap-1.5
                   text-[10px] font-bold tracking-wider uppercase
-                  bg-[#01050f]/80 backdrop-blur-[4px] border border-blue-300/50
-                  text-green-400 px-3 py-2 rounded-lg
-                  hover:border-green-400/40 transition-colors duration-200"
+                  bg-[#000000]/80 backdrop-blur-[4px] border border-white/10
+                  text-neutral-400 px-3 py-2 rounded-lg
+                  hover:border-blue-400/40 transition-colors duration-200"
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                <span className="w-1.5 h-1.5 rounded-full bg-neutral-400 animate-pulse" />
                 Live
               </a>
 
               {/* hero text */}
               <div className="absolute bottom-0 left-0 right-0 px-6 sm:px-10 pb-10 max-w-5xl mx-auto">
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="h-px w-6 bg-blue-400/60" />
-                  <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-blue-400/70">
+                  <div className="h-px w-6 bg-neutral-400/60" />
+                  <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-neutral-400/70">
                     Featured Project
                   </span>
                 </div>
@@ -118,7 +120,7 @@ export default function ProjectDetail() {
                   {project.name}
                 </h1>
                 {project.tagline && (
-                  <p className="text-blue-300/70 text-base font-medium mt-2 italic">
+                  <p className="text-neutral-400/70 text-base font-medium mt-2 italic">
                     {project.tagline}
                   </p>
                 )}
@@ -135,7 +137,7 @@ export default function ProjectDetail() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 sm:px-5 sm:py-2.5 px-3 py-1.5 w-fit rounded-xl
-                    bg-blue-500/15 border border-blue-400/25 text-blue-300
+                    bg-neutral-500/15 border border-neutral-400/25 text-neutral-300
                     hover:bg-blue-500/25 hover:border-blue-400/50 hover:text-blue-200
                     text-sm font-bold transition-colors duration-300 group"
                 >
@@ -175,14 +177,14 @@ export default function ProjectDetail() {
                 {/* Overview */}
                 <div>
                   <div className="flex items-center gap-2.5 mb-5">
-                    <div className="w-6 h-6 rounded-lg bg-blue-500/15 border border-blue-400/25 flex items-center justify-center">
-                      <Zap size={12} className="text-blue-400" />
+                    <div className="w-6 h-6 rounded-lg bg-neutral-500/15 border border-neutral-400/25 flex items-center justify-center">
+                      <Zap size={12} className="text-neutral-400" />
                     </div>
                     <h2 className="text-[13px] font-bold text-white tracking-wide uppercase">
                       Overview
                     </h2>
                   </div>
-                  <div className="flex flex-col gap-4 pl-1 border-l border-blue-400/10">
+                  <div className="flex flex-col gap-4 pl-1 border-l border-neutral-400/10">
                     {project.description.map((para, i) => (
                       <p
                         key={i}
@@ -197,8 +199,8 @@ export default function ProjectDetail() {
                 {/* Key Features */}
                 <div>
                   <div className="flex items-center gap-2.5 mb-5">
-                    <div className="w-6 h-6 rounded-lg bg-blue-500/15 border border-blue-400/25 flex items-center justify-center">
-                      <CheckCircle2 size={12} className="text-blue-400" />
+                    <div className="w-6 h-6 rounded-lg bg-neutral-500/15 border border-neutral-400/25 flex items-center justify-center">
+                      <CheckCircle2 size={12} className="text-neutral-400" />
                     </div>
                     <h2 className="text-[13px] font-bold text-white tracking-wide uppercase">
                       Key Features
@@ -213,7 +215,7 @@ export default function ProjectDetail() {
                           hover:border-blue-400/20 hover:bg-blue-500/[0.03]
                           transition-colors duration-300"
                         >
-                          <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-400/70 flex-shrink-0" />
+                          <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-neutral-400/70 flex-shrink-0" />
                           {item}
                         </li>
                       </RevealChill>
@@ -231,8 +233,8 @@ export default function ProjectDetail() {
                     hover:border-blue-400/20 transition-colors duration-300"
                   >
                     <div className="flex items-center gap-2 mb-4">
-                      <div className="w-6 h-6 rounded-lg bg-blue-500/15 border border-blue-400/25 flex items-center justify-center">
-                        <Layers size={12} className="text-blue-400" />
+                      <div className="w-6 h-6 rounded-lg bg-neutral-500/15 border border-neutral-400/25 flex items-center justify-center">
+                        <Layers size={12} className="text-neutral-400" />
                       </div>
                       <h2 className="text-[11px] font-bold text-white uppercase tracking-[0.12em]">
                         Tech Stack
@@ -243,8 +245,8 @@ export default function ProjectDetail() {
                         <span
                           key={i}
                           className="text-[11px] font-medium px-2.5 py-1 rounded-md
-                          text-teal-300/80 bg-teal-400/8 border border-teal-400/15
-                          hover:border-teal-400/30 transition-colors duration-200"
+                          text-neutral-300/80 bg-neutral-400/8 border border-neutral-400/15
+                          hover:border-blue-400/25 transition-colors duration-200"
                         >
                           {s}
                         </span>
@@ -367,7 +369,26 @@ export default function ProjectDetail() {
           </Reveal>
 
           {/* ── Footer ── */}
-         <Footer/>
+       <div className="max-w-5xl mx-auto px-6 pb-10">
+        <div className="h-px bg-white/5 my-6" />
+        <div className="flex flex-col-reverse sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-gray-600">
+            © {new Date().getFullYear()} Favour Omirin. All rights reserved.
+          </p>
+          <button
+            onClick={scrollToTop}
+            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg
+                border border-white/10 bg-white/[0.02] text-gray-500
+                hover:border-blue-400/40 hover:text-blue-400 hover:bg-white/[0.05]
+                hover:-translate-y-0.5
+                text-[11px] font-semibold tracking-wide uppercase
+                transition-[transform,background-color,border-color,color] duration-200"
+          >
+            Back to top
+            <ArrowUp size={12} />
+          </button>
+        </div>
+      </div>
         </div>
       </div>
     </div>

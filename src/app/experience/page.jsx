@@ -152,7 +152,7 @@ export default function ExperiencePage() {
           ))}
         </div>
 
-    <Footer/>
+    {/* <Footer/> */}
       </div>
     </div>
   );

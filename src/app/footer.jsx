@@ -1,5 +1,5 @@
 "use client";
-import { Github, Mail, Linkedin } from "lucide-react";
+import { Github, Mail, Linkedin, ArrowUp } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import Reveal from "./reavel";
@@ -13,6 +13,10 @@ const socials = [
     name: "Linkedin",
   },
 ];
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
 
 export default function Footer() {
   return (
@@ -63,9 +67,23 @@ export default function Footer() {
 
           <div className="h-px bg-white/5 my-6" />
 
-          <p className="text-xs text-gray-600 text-center sm:text-left">
-            © {new Date().getFullYear()} Favour Omirin. All rights reserved.
-          </p>
+          <div className="flex flex-col-reverse sm:flex-row items-center justify-between gap-4">
+            <p className="text-xs text-gray-600">
+              © {new Date().getFullYear()} Favour Omirin. All rights reserved.
+            </p>
+            <button
+              onClick={scrollToTop}
+              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg
+                border border-white/10 bg-white/[0.02] text-gray-500
+                hover:border-blue-400/40 hover:text-blue-400 hover:bg-white/[0.05]
+                hover:-translate-y-0.5
+                text-[11px] font-semibold tracking-wide uppercase
+                transition-[transform,background-color,border-color,color] duration-200"
+            >
+              Back to top
+              <ArrowUp size={12} />
+            </button>
+          </div>
         </div>
       </Reveal>
     </footer>
