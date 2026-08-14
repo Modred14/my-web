@@ -293,7 +293,7 @@ function ProjectsScroller({ projects = [], header = null, footer = null }) {
                       rel="noopener noreferrer"
                       className="absolute top-3 right-3 flex items-center gap-1.5
                       text-[10px] font-bold tracking-wider uppercase
-                      bg-[#0a0a0a]/80 backdrop-blur-[4px] border border-white/10
+                      bg-[#000000]/80 backdrop-blur-[4px] border border-white/10
                       text-neutral-400 px-2.5 py-1.5 rounded-lg
                       hover:border-blue-400/40 transition-colors duration-200"
                     >
@@ -546,21 +546,9 @@ export default function Home() {
   return (
     <div className="">
       <HashScrollHandler />
-      {/*
-        FIX (overflow guard): overflow-x-clip added here. This is the real
-        fix for "the horizontal scroller makes the page scroll sideways".
-        The ProjectsScroller section intentionally breaks out of its parent
-        with negative margins (a full-bleed technique) and re-measures the
-        viewport width on every resize. That math is normally exact, but a
-        single fractional-pixel mismatch on some browser/zoom/OS combo is
-        enough to add a sliver of horizontal scroll to the WHOLE page. Clipping
-        it here means that even in that edge case, nothing outside this
-        wrapper can ever be pushed sideways -- the bleed section is still
-        allowed to visually go edge-to-edge, it just can't force the page to
-        scroll.
-      */}
-      <div className="flex justify-center bg-[#0a0a0a] text-gray-200 text-base relative overflow-x-clip">
-        <div className="w-full bg-[#0a0a0a]/70 backdrop-blur-sm fixed z-100">
+    
+      <div className="flex justify-center bg-[#000000] text-gray-200 text-base relative overflow-x-clip">
+        <div className="w-full bg-[#000000]/70 backdrop-blur-sm fixed z-100">
           <Header />
         </div>
 
@@ -786,7 +774,7 @@ export default function Home() {
                     <RevealChill key={index} delay={index * 80}>
                       <div className="relative flex gap-6 mb-12">
                         <div className="hidden sm:block relative shrink-0 mt-1.5">
-                          <div className="w-6 h-6 rounded-full bg-[#0a0a0a] border-2 border-neutral-400/50 flex items-center justify-center z-10 relative">
+                          <div className="w-6 h-6 rounded-full bg-[#000000] border-2 border-neutral-400/50 flex items-center justify-center z-10 relative">
                             <div className="w-2 h-2 rounded-full bg-neutral-400" />
                           </div>
                         </div>
@@ -1125,7 +1113,7 @@ export default function Home() {
           {/* ── CTA ── */}
           <div className="pt-14">
             <Reveal className="sm:px-0 px-5">
-              <section className=" relative overflow-hidden rounded-2xl border border-white/8 bg-[#0a0a0a]">
+              <section className=" relative overflow-hidden rounded-2xl border border-white/8 bg-[#000000]">
                 <div
                   className="absolute inset-0 opacity-[0.03] pointer-events-none"
                   style={{

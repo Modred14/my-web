@@ -113,7 +113,7 @@ export default function Header() {
       <header
         className={`w-full transition-all duration-300 ${
           scrolled
-            ? "bg-[#0a0a0a]/90 backdrop-blur-md  border-white/6 shadow-[0_1px_0_rgba(255,255,255,0.04)]"
+            ? "bg-[#000000]/90 backdrop-blur-md  border-white/6 shadow-[0_1px_0_rgba(255,255,255,0.04)]"
             : "bg-transparent"
         }`}
       >

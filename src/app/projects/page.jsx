@@ -21,8 +21,8 @@ export default function ProjectsPage() {
 
   return (
    
-    <div className="min-h-screen bg-[#0a0a0a] text-gray-200">
-     <div className="w-full bg-[#0a0a0a]/70 backdrop-blur-sm top-0 fixed z-100">
+    <div className="min-h-screen bg-[#000000] text-gray-200">
+     <div className="w-full bg-[#000000]/70 backdrop-blur-sm top-0 fixed z-100">
         <Header />
       </div>   {/* ── Atmosphere — removed center orb (invisible at /3 opacity), reduced blur radii ── */}
       <div className="fixed top-[-15vh] left-[-5vw] w-[600px] h-[600px] bg-neutral-700/5 rounded-full blur-[80px] pointer-events-none z-0" />

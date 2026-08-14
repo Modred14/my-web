@@ -28,9 +28,9 @@ export default function ExperiencePage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-gray-200  overflow-hidden">
+    <div className="min-h-screen bg-[#000000] text-gray-200  overflow-hidden">
 
-      <div className="w-full bg-[#0a0a0a]/70 backdrop-blur-sm  top-0 fixed z-[100]">
+      <div className="w-full bg-[#000000]/70 backdrop-blur-sm  top-0 fixed z-[100]">
         <Header />
       </div>
   {/* ── Atmosphere — reduced blur values for iOS GPU performance ── */}
@@ -101,7 +101,7 @@ export default function ExperiencePage() {
 
                 {/* timeline dot */}
                 <div className="hidden sm:block relative shrink-0 mt-1.5">
-                  <div className="w-6 h-6 rounded-full bg-[#0a0a0a] border-2 border-neutral-400/50 flex items-center justify-center z-10 relative">
+                  <div className="w-6 h-6 rounded-full bg-[#000000] border-2 border-neutral-400/50 flex items-center justify-center z-10 relative">
                     <div className="w-2 h-2 rounded-full bg-neutral-400" />
                   </div>
                 </div>

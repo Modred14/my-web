@@ -286,7 +286,7 @@ export default function ProjectsHorizontalScroll({
                       rel="noopener noreferrer"
                       className="absolute top-3 right-3 flex items-center gap-1.5
                       text-[10px] font-bold tracking-wider uppercase
-                      bg-[#0a0a0a]/80 backdrop-blur-[4px] border border-white/10
+                      bg-[#000000]/80 backdrop-blur-[4px] border border-white/10
                       text-neutral-400 px-2.5 py-1.5 rounded-lg
                       hover:border-blue-400/40 transition-colors duration-200"
                     >
