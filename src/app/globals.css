@@ -5,6 +5,9 @@
   --background: #000000;
   --foreground: #ffffff;
 }
+@theme {
+  --font-oswald: var(--font-oswald);
+}
 
 @theme inline {
   --color-background: var(--background);

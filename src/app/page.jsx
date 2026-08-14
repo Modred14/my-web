@@ -748,7 +748,7 @@ export default function Home() {
                     <p className="border border-neutral-400 text-neutral-400 p-2 rounded-xl bg-neutral-500/20">
                       <Briefcase />
                     </p>
-                    <p className="text-[28px] font-bold bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
+                    <p className="text-[28px] font-bold font-oswald uppercase bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
                       Professional Experience
                     </p>
                   </div>
@@ -766,7 +766,7 @@ export default function Home() {
                     />
                   </Link>
                 </div>
-                <GradientDivider />
+                
               </div>
 
               <div className="pt-8 flex flex-col gap-5">
@@ -860,7 +860,7 @@ export default function Home() {
                       <p className="border border-neutral-400 text-neutral-400 p-2 rounded-xl bg-neutral-500/20">
                         <Code />
                       </p>
-                      <p className="text-[28px] font-bold bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
+                      <p className="text-[28px] font-bold font-oswald uppercase bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
                         Featured Projects
                       </p>
                     </div>
@@ -878,7 +878,7 @@ export default function Home() {
                       />
                     </Link>
                   </div>
-                  <GradientDivider />
+                  
                 </>
               }
               footer={
@@ -912,11 +912,11 @@ export default function Home() {
                   <p className="border border-neutral-400 text-neutral-400 p-2 rounded-xl bg-neutral-500/20">
                     <TerminalSquare />
                   </p>
-                  <p className="text-[28px] font-bold bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
+                  <p className="text-[28px] font-bold font-oswald uppercase bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
                     Technologies
                   </p>
                 </div>
-                <GradientDivider />
+                
               </div>
               <div className="pt-10 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">
                 {languages.map((language, i) => (
@@ -953,11 +953,11 @@ export default function Home() {
                   <p className="border border-neutral-400 text-neutral-400 p-2 rounded-xl bg-neutral-500/20">
                     <School />
                   </p>
-                  <p className="text-[28px] font-bold bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
+                  <p className="text-[28px] font-bold font-oswald uppercase bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
                     Education
                   </p>
                 </div>
-                <GradientDivider />
+                
               </div>
                   <div className="pt-12 grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
                 {educations.map((education, index) => (
@@ -1048,11 +1048,11 @@ export default function Home() {
                   <p className="border border-neutral-400 text-neutral-400 p-2 rounded-xl bg-neutral-500/20">
                     <NotepadText />
                   </p>
-                  <p className="text-[28px] font-bold bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
+                  <p className="text-[28px] font-bold font-oswald uppercase bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
                     Testimonials
                   </p>
                 </div>
-                <GradientDivider />
+                
               </div>
                <div className="pt-12 grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
                 {compliments.map((compliment, index) => (
