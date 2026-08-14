@@ -954,7 +954,7 @@ export default function Home() {
           </Reveal>
 
           {/* ── Education ── */}
-          <Reveal>
+          {/* <Reveal>
             <section className="scroll-mt-8 sm:px-0 px-5" id="education">
               <div className="pt-14">
                 <div className="flex items-center gap-4 mb-4">
@@ -967,15 +967,10 @@ export default function Home() {
                 </div>
                 <GradientDivider />
               </div>
-              {/* grid-cols-1 is load-bearing: without an explicit base track the
-                  single mobile column is `auto`, which floors at the card's
-                  min-content width (the nowrap `truncate` name) and forces the
-                  whole page column wider than the viewport. */}
-              <div className="pt-12 grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+                  <div className="pt-12 grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
                 {educations.map((education, index) => (
                   <RevealChill key={index} delay={index * 50}>
-                    {/* FIX: transition-all → specific properties */}
-                    <div
+                     <div
                       className="group relative h-full flex flex-col rounded-2xl overflow-hidden
                       bg-gradient-to-br from-neutral-950/40 via-slate-900/60 to-neutral-950/20
                       border border-neutral-400/15 hover:border-blue-400/40
@@ -1051,10 +1046,10 @@ export default function Home() {
                 ))}
               </div>
             </section>
-          </Reveal>
+          </Reveal> */}
 
           {/* ── Testimonials ── */}
-          <Reveal>
+          {/* <Reveal>
             <section className="scroll-mt-8 sm:px-0 px-5" id="reviews">
               <div className="pt-14">
                 <div className="flex items-center gap-4 mb-4">
@@ -1067,12 +1062,10 @@ export default function Home() {
                 </div>
                 <GradientDivider />
               </div>
-              {/* grid-cols-1: base track must be minmax(0,1fr), not auto — see Education above */}
-              <div className="pt-12 grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+               <div className="pt-12 grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
                 {compliments.map((compliment, index) => (
                   <RevealChill key={index} delay={index * 50}>
-                    {/* FIX: transition-all → specific properties */}
-                    <div
+                     <div
                       className="group relative h-full flex flex-col rounded-2xl overflow-hidden
                       bg-gradient-to-br from-neutral-950/40 via-slate-900/60 to-neutral-950/20
                       border border-neutral-400/15 hover:border-blue-400/40
@@ -1127,7 +1120,7 @@ export default function Home() {
                 ))}
               </div>
             </section>
-          </Reveal>
+          </Reveal> */}
 
           {/* ── CTA ── */}
           <div className="pt-14">
