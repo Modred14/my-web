@@ -904,7 +904,7 @@ export default function Home() {
 
           {/* ── Technologies ── */}
           <Reveal>
-            <section className="scroll-mt-8 sm:px-0 px-5" id="technologies">
+            <section className=" sm:px-0 px-5" id="technologies">
               <div className="pt-14">
                 <div className="flex gap-4 mb-4 items-center">
                   <p className="border border-neutral-400 text-neutral-400 p-2 rounded-xl bg-neutral-500/20">
