@@ -1,3 +1,4 @@
+// /src/lib/CvGenrator.js
 "use client";
 import { projects } from "@/lib/project";
 import { journey } from "@/lib/experience";
@@ -153,7 +154,7 @@ function buildCVHTML() {
     --ink: #0d1117;
     --muted: #4a5568;
     --rule: #d0d7de;
-    --accent: #0d47a1;
+    --accent: #1f2933;
     --page: 210mm;
   }
 
