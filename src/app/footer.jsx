@@ -20,7 +20,7 @@ function scrollToTop() {
 
 export default function Footer() {
   return (
-    <footer className="mt-16 border-t border-white/10">
+    <footer>
       <Reveal>
         <div className="max-w-5xl mx-auto px-6 pt-10 pb-5">
           <div className="h-px bg-white/5 my-6" />
