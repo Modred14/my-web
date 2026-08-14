@@ -1,4 +1,4 @@
-// src/components/ProjectsHorizontalScroll.jsx
+// /src/components/ProjectsHorizontalScroll.jsx
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
@@ -199,8 +199,8 @@ export default function ProjectsHorizontalScroll({
           flex flex-col justify-center bg-transparent"
         >
         
-          {/* <div className="hidden md:block absolute top-[-15%] left-[10%] w-[420px] h-[420px] bg-blue-700/8 rounded-full blur-[100px] pointer-events-none" />
-          <div className="hidden md:block absolute bottom-[-15%] right-[10%] w-[360px] h-[360px] bg-cyan-500/6 rounded-full blur-[90px] pointer-events-none" /> */}
+          {/* <div className="hidden md:block absolute top-[-15%] left-[10%] w-[420px] h-[420px] bg-neutral-700/8 rounded-full blur-[100px] pointer-events-none" />
+          <div className="hidden md:block absolute bottom-[-15%] right-[10%] w-[360px] h-[360px] bg-neutral-500/6 rounded-full blur-[90px] pointer-events-none" /> */}
 
         
           {header && (
@@ -216,10 +216,10 @@ export default function ProjectsHorizontalScroll({
               footer ? "pb-12" : ""
             }`}
           >
-            <div className="absolute inset-y-0 left-0 w-[5vw] md:w-[6vw] z-10 bg-gradient-to-r from-[#01050f] to-transparent pointer-events-none" />
-            <div className="absolute inset-y-0 right-0 w-[5vw] md:w-[6vw] z-10 bg-gradient-to-l from-[#01050f] to-transparent pointer-events-none" />
+            <div className="absolute inset-y-0 left-0 w-[5vw] md:w-[6vw] z-10 bg-gradient-to-r from-[#0a0a0a] to-transparent pointer-events-none" />
+            <div className="absolute inset-y-0 right-0 w-[5vw] md:w-[6vw] z-10 bg-gradient-to-l from-[#0a0a0a] to-transparent pointer-events-none" />
             <div
-              className={`absolute right-5 md:right-10 z-20 flex items-center gap-2 text-[11px] font-semibold tracking-widest text-blue-400/70 tabular-nums ${
+              className={`absolute right-5 md:right-10 z-20 flex items-center gap-2 text-[11px] font-semibold tracking-widest text-neutral-400/70 tabular-nums ${
                 header ? "top-2" : "top-20 md:top-24"
               }`}
             >
@@ -237,7 +237,7 @@ export default function ProjectsHorizontalScroll({
             >
               <span className="flex items-center gap-2 text-[10px] font-semibold tracking-[0.18em] uppercase text-gray-600">
                 Scroll
-                <MoveRight size={12} className="text-blue-400/50" />
+                <MoveRight size={12} className="text-neutral-400/50" />
               </span>
               <span className="flex items-center gap-1.5">
                 {projects.map((_, i) => (
@@ -245,7 +245,7 @@ export default function ProjectsHorizontalScroll({
                     key={i}
                     className={`h-1.5 rounded-full transition-[width,background-color] duration-300 ${
                       i === activeIndex
-                        ? "w-6 bg-blue-400"
+                        ? "w-6 bg-neutral-400"
                         : "w-1.5 bg-white/15"
                     }`}
                   />
@@ -263,7 +263,7 @@ export default function ProjectsHorizontalScroll({
                   key={project.slug}
                   className="group relative mt-4 flex-none
                   w-[86vw] sm:w-[68vw] lg:w-[620px]
-                  rounded-2xl border border-white/8 bg-[#070d1a] overflow-hidden
+                  rounded-2xl border border-white/8 bg-[#141414] overflow-hidden
                   flex flex-col shadow-[0_4px_40px_rgba(0,0,0,0.4)]
                   hover:border-blue-400/30 transition-[border-color,box-shadow] duration-500
                   hover:shadow-[0_20px_80px_rgba(96,165,250,0.1)]"
@@ -276,8 +276,8 @@ export default function ProjectsHorizontalScroll({
                       sizes="(max-width: 640px) 86vw, (max-width: 1024px) 68vw, 620px"
                       className="object-cover object-top transition-transform duration-[1.2s] ease-out group-hover:scale-[1.04]"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#070d1a]/80 via-[#070d1a]/10 to-transparent" />
-                    <span className="absolute top-3 left-3 text-[70px] sm:text-[100px] font-black leading-none select-none pointer-events-none text-blue-500/10">
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#141414]/80 via-[#141414]/10 to-transparent" />
+                    <span className="absolute top-3 left-3 text-[70px] sm:text-[100px] font-black leading-none select-none pointer-events-none text-neutral-500/10">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                     <a
@@ -286,21 +286,21 @@ export default function ProjectsHorizontalScroll({
                       rel="noopener noreferrer"
                       className="absolute top-3 right-3 flex items-center gap-1.5
                       text-[10px] font-bold tracking-wider uppercase
-                      bg-[#01050f]/80 backdrop-blur-[4px] border border-white/10
-                      text-green-400 px-2.5 py-1.5 rounded-lg
-                      hover:border-green-400/40 transition-colors duration-200"
+                      bg-[#0a0a0a]/80 backdrop-blur-[4px] border border-white/10
+                      text-neutral-400 px-2.5 py-1.5 rounded-lg
+                      hover:border-blue-400/40 transition-colors duration-200"
                     >
-                      <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-neutral-400 animate-pulse" />
                       Live
                     </a>
                   </div>
 
                   <div className="flex-1 min-h-0 flex flex-col gap-2.5 p-4 sm:gap-3 sm:p-7">
                     <div className="flex items-center gap-3">
-                      <span className="text-[11px] font-bold text-blue-400/50 tracking-[0.15em] uppercase tabular-nums">
+                      <span className="text-[11px] font-bold text-neutral-400/50 tracking-[0.15em] uppercase tabular-nums">
                         {String(index + 1).padStart(2, "0")} /
                       </span>
-                      <div className="h-px w-8 bg-blue-400/20" />
+                      <div className="h-px w-8 bg-neutral-400/20" />
                       <span className="text-[10px] font-semibold tracking-[0.18em] uppercase text-gray-600">
                         Web App
                       </span>
@@ -311,7 +311,7 @@ export default function ProjectsHorizontalScroll({
                         {project.name}
                       </h3>
                       {project.tagline && (
-                        <p className="text-blue-400/60 text-[13px] sm:text-sm font-medium mt-1 italic line-clamp-1">
+                        <p className="text-neutral-400/60 text-[13px] sm:text-sm font-medium mt-1 italic line-clamp-1">
                           {project.tagline}
                         </p>
                       )}
@@ -326,21 +326,21 @@ export default function ProjectsHorizontalScroll({
                         <span
                           key={i}
                           className="text-[11px] font-medium px-2 py-0.5 rounded-md
-                          text-teal-300/80 bg-teal-400/8 border border-teal-400/15
-                          group-hover:border-teal-400/25 transition-colors duration-300"
+                          text-neutral-300/80 bg-neutral-400/8 border border-neutral-400/15
+                          group-hover:border-blue-400/25 transition-colors duration-300"
                         >
                           {s}
                         </span>
                       ))}
                     </div>
 
-                    <div className="h-px bg-gradient-to-r from-blue-400/15 via-blue-400/5 to-transparent mt-0.5" />
+                    <div className="h-px bg-gradient-to-r from-neutral-400/15 via-neutral-400/5 to-transparent mt-0.5" />
 
                     <div className="flex items-center gap-2 sm:gap-3 flex-wrap mt-auto pt-0.5">
                       <Link
                         href={`/projects/${project.slug}`}
                         className="group/btn inline-flex items-center gap-2 px-3 py-1.5 w-fit rounded-xl
-                        bg-blue-500/15 border border-blue-400/25 text-blue-300
+                        bg-neutral-500/15 border border-neutral-400/25 text-neutral-300
                         hover:bg-blue-500/25 hover:border-blue-400/50 hover:text-blue-200
                         text-xs font-bold tracking-wide transition-colors duration-300"
                       >

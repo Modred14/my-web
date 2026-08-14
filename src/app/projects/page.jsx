@@ -1,3 +1,4 @@
+// /src/app/projects/page.jsx
 "use client";
 import Image from "next/image";
 import Link from "next/link";
@@ -20,12 +21,12 @@ export default function ProjectsPage() {
 
   return (
    
-    <div className="min-h-screen bg-[#01050f] text-gray-200">
-     <div className="w-full bg-[#01050f]/70 backdrop-blur-sm top-0 fixed z-100">
+    <div className="min-h-screen bg-[#0a0a0a] text-gray-200">
+     <div className="w-full bg-[#0a0a0a]/70 backdrop-blur-sm top-0 fixed z-100">
         <Header />
       </div>   {/* ── Atmosphere — removed center orb (invisible at /3 opacity), reduced blur radii ── */}
-      <div className="fixed top-[-15vh] left-[-5vw] w-[600px] h-[600px] bg-blue-700/5 rounded-full blur-[80px] pointer-events-none z-0" />
-      <div className="fixed bottom-[-10vh] right-[-10vw] w-[400px] h-[400px] bg-cyan-600/4 rounded-full blur-[70px] pointer-events-none z-0" />
+      <div className="fixed top-[-15vh] left-[-5vw] w-[600px] h-[600px] bg-neutral-700/5 rounded-full blur-[80px] pointer-events-none z-0" />
+      <div className="fixed bottom-[-10vh] right-[-10vw] w-[400px] h-[400px] bg-neutral-600/4 rounded-full blur-[70px] pointer-events-none z-0" />
 
       {/* Single dot grid — removed duplicate vignette overlay */}
       <div
@@ -46,8 +47,8 @@ export default function ProjectsPage() {
           <div className="flex flex-col gap-4 mb-3">
             <Reveal>
               <div className="flex items-center gap-3">
-                <div className="h-px w-8 bg-blue-400/60" />
-                <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-blue-400/70">
+                <div className="h-px w-8 bg-neutral-400/60" />
+                <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-neutral-400/70">
                   Portfolio
                 </span>
               </div>
@@ -56,10 +57,10 @@ export default function ProjectsPage() {
               <h1 className="text-5xl sm:text-6xl font-black text-white leading-[1.05] tracking-tight">
                 Featured{" "}
                 <span className="relative inline-block">
-                  <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-500 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-neutral-400 via-neutral-300 to-neutral-500 bg-clip-text text-transparent">
                     Projects
                   </span>
-                  <span className="absolute -bottom-1 left-0 right-0 h-[3px] bg-gradient-to-r from-blue-400/60 to-transparent rounded-full" />
+                  <span className="absolute -bottom-1 left-0 right-0 h-[3px] bg-gradient-to-r from-neutral-400/60 to-transparent rounded-full" />
                 </span>
               </h1>
             </Reveal>

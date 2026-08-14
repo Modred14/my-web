@@ -1,3 +1,4 @@
+// /src/app/header.jsx
 "use client";
 import Image from "next/image";
 import Link from "next/link";
@@ -112,7 +113,7 @@ export default function Header() {
       <header
         className={`w-full transition-all duration-300 ${
           scrolled
-            ? "bg-[#01050f]/90 backdrop-blur-md  border-white/6 shadow-[0_1px_0_rgba(255,255,255,0.04)]"
+            ? "bg-[#0a0a0a]/90 backdrop-blur-md  border-white/6 shadow-[0_1px_0_rgba(255,255,255,0.04)]"
             : "bg-transparent"
         }`}
       >
@@ -120,7 +121,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 shrink-0 group">
             <div className="relative">
-              <div className="absolute inset-0 rounded-full bg-blue-500/20 blur-sm scale-125 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute inset-0 rounded-full bg-neutral-500/20 blur-sm scale-125 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <Image
                 src="/logo.png"
                 alt="Modred Logo"
@@ -145,13 +146,13 @@ export default function Header() {
                   href={link.href}
                   className={`relative px-3.5 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition-colors duration-200 ${
                     isActive
-                      ? "text-blue-400 bg-blue-500/10"
+                      ? "text-white bg-white/10"
                       : "text-gray-400 hover:text-white hover:bg-white/5"
                   }`}
                 >
                   {link.label}
                   {isActive && (
-                    <span className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-3 h-[2px] rounded-full bg-blue-400" />
+                    <span className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-3 h-[2px] rounded-full bg-white" />
                   )}
                 </Link>
               );
@@ -170,8 +171,8 @@ export default function Header() {
               href="/Favour-Omirin-CV.pdf"
               download
               className="hidden md:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg
-                text-xs font-bold tracking-wide text-blue-300
-                border border-blue-400/25 bg-blue-500/10
+                text-xs font-bold tracking-wide text-neutral-300
+                border border-neutral-400/25 bg-neutral-500/10
                 hover:bg-blue-500/20 hover:border-blue-400/50 hover:text-blue-200
                 transition-colors duration-200"
             >
@@ -206,7 +207,7 @@ export default function Header() {
 
       {/* Drawer */}
       <aside
-        className={`fixed top-0 right-0 z-[201] h-svh w-[280px] bg-[#070d1a] border-l border-white/[0.08]
+        className={`fixed top-0 right-0 z-[201] h-svh w-[280px] bg-[#141414] border-l border-white/[0.08]
           flex flex-col transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] md:hidden ${
             sidebarOpen ? "translate-x-0" : "translate-x-full"
           }`}
@@ -250,12 +251,12 @@ export default function Header() {
                 className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold
                   transition-colors duration-200 ${
                     isActive
-                      ? "text-blue-400 bg-blue-500/10 border border-blue-400/20"
+                      ? "text-white bg-white/10 border border-white/15"
                       : "text-gray-400 hover:text-white hover:bg-white/5 border border-transparent"
                   }`}
               >
                 <span
-                  className={`w-1.5 h-1.5 rounded-full shrink-0 ${isActive ? "bg-blue-400" : "bg-white/10"}`}
+                  className={`w-1.5 h-1.5 rounded-full shrink-0 ${isActive ? "bg-white" : "bg-white/10"}`}
                 />
                 {link.label}
               </Link>
@@ -271,8 +272,8 @@ export default function Header() {
             onClick={close}
             className="flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-xl
               text-sm font-bold text-white
-              bg-blue-600 hover:bg-blue-500
-              transition-colors duration-200 shadow-[0_0_20px_rgba(59,130,246,0.25)]"
+              bg-neutral-600 hover:bg-blue-500
+              transition-colors duration-200 shadow-[0_0_20px_rgba(0,0,0,0.35)]"
           >
             <Download size={14} />
             Download Resume

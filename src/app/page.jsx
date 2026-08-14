@@ -1,3 +1,4 @@
+// /src/app/page.jsx
 "use client";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -222,10 +223,10 @@ function ProjectsScroller({ projects = [], header = null, footer = null }) {
               footer ? "pb-12" : ""
             }`}
           >
-            <div className="absolute inset-y-0 left-0 w-[5vw] md:w-[6vw] z-10 bg-gradient-to-r from-[#01050f] to-transparent pointer-events-none" />
-            <div className="absolute inset-y-0 right-0 w-[5vw] md:w-[6vw] z-10 bg-gradient-to-l from-[#01050f] to-transparent pointer-events-none" />
+            <div className="absolute inset-y-0 left-0 w-[5vw] md:w-[6vw] z-10 bg-gradient-to-r from-[#0a0a0a] to-transparent pointer-events-none" />
+            <div className="absolute inset-y-0 right-0 w-[5vw] md:w-[6vw] z-10 bg-gradient-to-l from-[#0a0a0a] to-transparent pointer-events-none" />
             <div
-              className={`absolute right-5 md:right-10 z-20 flex items-center gap-2 text-[11px] font-semibold tracking-widest text-blue-400/70 tabular-nums ${
+              className={`absolute right-5 md:right-10 z-20 flex items-center gap-2 text-[11px] font-semibold tracking-widest text-neutral-400/70 tabular-nums ${
                 header ? "top-2" : "top-20 md:top-24"
               }`}
             >
@@ -243,7 +244,7 @@ function ProjectsScroller({ projects = [], header = null, footer = null }) {
             >
               <span className="flex items-center gap-2 text-[10px] font-semibold tracking-[0.18em] uppercase text-gray-600">
                 Scroll
-                <MoveRight size={12} className="text-blue-400/50" />
+                <MoveRight size={12} className="text-neutral-400/50" />
               </span>
               <span className="flex items-center gap-1.5">
                 {projects.map((_, i) => (
@@ -251,7 +252,7 @@ function ProjectsScroller({ projects = [], header = null, footer = null }) {
                     key={i}
                     className={`h-1.5 rounded-full transition-[width,background-color] duration-300 ${
                       i === activeIndex
-                        ? "w-6 bg-blue-400"
+                        ? "w-6 bg-neutral-400"
                         : "w-1.5 bg-white/15"
                     }`}
                   />
@@ -269,7 +270,7 @@ function ProjectsScroller({ projects = [], header = null, footer = null }) {
                   key={project.slug}
                   className="group relative mt-4 flex-none
                   w-[86vw] sm:w-[68vw] lg:w-[620px]
-                  rounded-2xl border border-white/8 bg-[#070d1a] overflow-hidden
+                  rounded-2xl border border-white/8 bg-[#141414] overflow-hidden
                   flex flex-col shadow-[0_4px_40px_rgba(0,0,0,0.4)]
                   hover:border-blue-400/30 transition-[border-color,box-shadow] duration-500
                   hover:shadow-[0_20px_80px_rgba(96,165,250,0.1)]"
@@ -282,8 +283,8 @@ function ProjectsScroller({ projects = [], header = null, footer = null }) {
                       sizes="(max-width: 640px) 86vw, (max-width: 1024px) 68vw, 620px"
                       className="object-cover object-top transition-transform duration-[1.2s] ease-out group-hover:scale-[1.04]"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#070d1a]/80 via-[#070d1a]/10 to-transparent" />
-                    <span className="absolute top-3 left-3 text-[70px] sm:text-[100px] font-black leading-none select-none pointer-events-none text-blue-500/10">
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#141414]/80 via-[#141414]/10 to-transparent" />
+                    <span className="absolute top-3 left-3 text-[70px] sm:text-[100px] font-black leading-none select-none pointer-events-none text-neutral-500/10">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                     <a
@@ -292,21 +293,21 @@ function ProjectsScroller({ projects = [], header = null, footer = null }) {
                       rel="noopener noreferrer"
                       className="absolute top-3 right-3 flex items-center gap-1.5
                       text-[10px] font-bold tracking-wider uppercase
-                      bg-[#01050f]/80 backdrop-blur-[4px] border border-white/10
-                      text-green-400 px-2.5 py-1.5 rounded-lg
-                      hover:border-green-400/40 transition-colors duration-200"
+                      bg-[#0a0a0a]/80 backdrop-blur-[4px] border border-white/10
+                      text-neutral-400 px-2.5 py-1.5 rounded-lg
+                      hover:border-blue-400/40 transition-colors duration-200"
                     >
-                      <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-neutral-400 animate-pulse" />
                       Live
                     </a>
                   </div>
 
                   <div className="flex-1 min-h-0 flex flex-col gap-2.5 p-4 sm:gap-3 sm:p-7">
                     <div className="flex items-center gap-3">
-                      <span className="text-[11px] font-bold text-blue-400/50 tracking-[0.15em] uppercase tabular-nums">
+                      <span className="text-[11px] font-bold text-neutral-400/50 tracking-[0.15em] uppercase tabular-nums">
                         {String(index + 1).padStart(2, "0")} /
                       </span>
-                      <div className="h-px w-8 bg-blue-400/20" />
+                      <div className="h-px w-8 bg-neutral-400/20" />
                       <span className="text-[10px] font-semibold tracking-[0.18em] uppercase text-gray-600">
                         Web App
                       </span>
@@ -317,7 +318,7 @@ function ProjectsScroller({ projects = [], header = null, footer = null }) {
                         {project.name}
                       </h3>
                       {project.tagline && (
-                        <p className="text-blue-400/60 text-[13px] sm:text-sm font-medium mt-1 italic line-clamp-1">
+                        <p className="text-neutral-400/60 text-[13px] sm:text-sm font-medium mt-1 italic line-clamp-1">
                           {project.tagline}
                         </p>
                       )}
@@ -332,21 +333,21 @@ function ProjectsScroller({ projects = [], header = null, footer = null }) {
                         <span
                           key={i}
                           className="text-[11px] font-medium px-2 py-0.5 rounded-md
-                          text-teal-300/80 bg-teal-400/8 border border-teal-400/15
-                          group-hover:border-teal-400/25 transition-colors duration-300"
+                          text-neutral-300/80 bg-neutral-400/8 border border-neutral-400/15
+                          group-hover:border-blue-400/25 transition-colors duration-300"
                         >
                           {s}
                         </span>
                       ))}
                     </div>
 
-                    <div className="h-px bg-gradient-to-r from-blue-400/15 via-blue-400/5 to-transparent mt-0.5" />
+                    <div className="h-px bg-gradient-to-r from-neutral-400/15 via-neutral-400/5 to-transparent mt-0.5" />
 
                     <div className="flex items-center gap-2 sm:gap-3 flex-wrap mt-auto pt-0.5">
                       <Link
                         href={`/projects/${project.slug}`}
                         className="group/btn inline-flex items-center gap-2 px-3 py-1.5 w-fit rounded-xl
-                        bg-blue-500/15 border border-blue-400/25 text-blue-300
+                        bg-neutral-500/15 border border-neutral-400/25 text-neutral-300
                         hover:bg-blue-500/25 hover:border-blue-400/50 hover:text-blue-200
                         text-xs font-bold tracking-wide transition-colors duration-300"
                       >
@@ -558,13 +559,13 @@ export default function Home() {
         allowed to visually go edge-to-edge, it just can't force the page to
         scroll.
       */}
-      <div className="flex justify-center bg-[#01050f] text-gray-200 text-base relative overflow-x-clip">
-        <div className="w-full bg-[#01050f]/70 backdrop-blur-sm fixed z-100">
+      <div className="flex justify-center bg-[#0a0a0a] text-gray-200 text-base relative overflow-x-clip">
+        <div className="w-full bg-[#0a0a0a]/70 backdrop-blur-sm fixed z-100">
           <Header />
         </div>
 
-        <div className="fixed top-[-20vh] left-[-10vw] w-[600px] h-[600px] bg-blue-700/5 rounded-full blur-[80px] pointer-events-none z-0" />
-        <div className="fixed bottom-[-10vh] right-[-10vw] w-[400px] h-[400px] bg-cyan-500/4 rounded-full blur-[70px] pointer-events-none z-0" />
+        <div className="fixed top-[-20vh] left-[-10vw] w-[600px] h-[600px] bg-neutral-700/5 rounded-full blur-[80px] pointer-events-none z-0" />
+        <div className="fixed bottom-[-10vh] right-[-10vw] w-[400px] h-[400px] bg-neutral-500/4 rounded-full blur-[70px] pointer-events-none z-0" />
         <div
           className="fixed inset-0 pointer-events-none opacity-[0.05] z-0"
           style={{
@@ -585,8 +586,8 @@ export default function Home() {
                 <div className="grid lg:block place-items-center shrink-0">
                   <div className="relative w-fit">
                     <div className="relative w-40 lg:w-56">
-                      <div className="absolute inset-0 rounded-full bg-blue-500/25 blur-2xl scale-102" />
-                      <div className="absolute inset-0 rounded-full ring-2 ring-blue-500/40 shadow-[0_0_25px_rgba(59,130,246,0.5)]" />
+                      <div className="absolute inset-0 rounded-full bg-neutral-500/25 blur-2xl scale-102" />
+                      <div className="absolute inset-0 rounded-full ring-2 ring-white/15 shadow-[0_0_25px_rgba(255,255,255,0.15)]" />
                       <Image
                         src={userPic}
                         alt="Favour Omirin"
@@ -599,9 +600,9 @@ export default function Home() {
                     <span
                       className="absolute -bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap
                       flex items-center gap-1.5 bg-[#0f0f0f] border border-white/10
-                      text-[10px] font-semibold text-green-400 px-2.5 py-1 rounded-full shadow-lg"
+                      text-[10px] font-semibold text-neutral-400 px-2.5 py-1 rounded-full shadow-lg"
                     >
-                      <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-neutral-400 animate-pulse" />
                       Open to work
                     </span>
                   </div>
@@ -630,7 +631,7 @@ export default function Home() {
 
                 {/* ── Content column ── */}
                 <div className="w-full flex flex-col items-center lg:items-start gap-4 text-center lg:text-left pt-6 lg:pt-0">
-                  <span className="inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.12em] uppercase text-blue-400/80 border border-blue-400/20 px-3 py-1 rounded-full bg-blue-500/5">
+                  <span className="inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.12em] uppercase text-neutral-400/80 border border-neutral-400/20 px-3 py-1 rounded-full bg-neutral-500/5">
                     Software Engineer · Full-Stack Developer
                   </span>
 
@@ -705,14 +706,14 @@ export default function Home() {
                         className="
       inline-flex items-center gap-2
       px-5 py-2.5 rounded-lg
-      bg-blue-500/20
-      border border-blue-400/40
-      text-blue-100
+      bg-neutral-500/20
+      border border-neutral-400/40
+      text-neutral-100
       text-[13px] font-bold font-mono tracking-wide
       hover:bg-blue-500/30
       hover:border-blue-300/70
       hover:text-white
-      shadow-[0_0_20px_rgba(59,130,246,0.12)]
+      shadow-[0_0_20px_rgba(0,0,0,0.3)]
       transition-all duration-200
       hover:-translate-y-[1px]
     "
@@ -754,18 +755,18 @@ export default function Home() {
               <div className="pt-14">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex gap-4 items-center">
-                    <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
+                    <p className="border border-neutral-400 text-neutral-400 p-2 rounded-xl bg-neutral-500/20">
                       <Briefcase />
                     </p>
-                    <p className="text-[28px] font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
+                    <p className="text-[28px] font-bold bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
                       Professional Experience
                     </p>
                   </div>
                   <Link
                     href="/experience"
                     className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl
-                      text-xs font-bold tracking-wide text-blue-400/80 border border-blue-400/20
-                      bg-blue-500/5 hover:bg-blue-500/15 hover:border-blue-400/40 hover:text-blue-300
+                      text-xs font-bold tracking-wide text-neutral-400/80 border border-neutral-400/20
+                      bg-neutral-500/5 hover:bg-blue-500/15 hover:border-blue-400/40 hover:text-blue-300
                       transition-colors duration-300 group"
                   >
                     Full journey
@@ -780,13 +781,13 @@ export default function Home() {
 
               <div className="pt-8 flex flex-col gap-5">
                 <div className="relative flex flex-col gap-0">
-                  <div className="absolute hidden sm:block left-[11px] top-2 bottom-2 w-px bg-gradient-to-b from-blue-400/40 via-blue-400/20 to-transparent pointer-events-none" />
+                  <div className="absolute hidden sm:block left-[11px] top-2 bottom-2 w-px bg-gradient-to-b from-neutral-400/40 via-neutral-400/20 to-transparent pointer-events-none" />
                   {journey.slice(0, 2).map((item, index) => (
                     <RevealChill key={index} delay={index * 80}>
                       <div className="relative flex gap-6 mb-12">
                         <div className="hidden sm:block relative shrink-0 mt-1.5">
-                          <div className="w-6 h-6 rounded-full bg-[#01050f] border-2 border-blue-400/50 flex items-center justify-center z-10 relative">
-                            <div className="w-2 h-2 rounded-full bg-blue-400" />
+                          <div className="w-6 h-6 rounded-full bg-[#0a0a0a] border-2 border-neutral-400/50 flex items-center justify-center z-10 relative">
+                            <div className="w-2 h-2 rounded-full bg-neutral-400" />
                           </div>
                         </div>
                         {/* FIX: transition-all → transition-colors */}
@@ -795,7 +796,7 @@ export default function Home() {
                           hover:border-blue-400/25 hover:bg-white/[0.05] transition-colors duration-300 group"
                         >
                           <div
-                            className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-blue-400 to-blue-600/30 rounded-l-2xl
+                            className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-neutral-400 to-neutral-600/30 rounded-l-2xl
                             opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                           />
                           <div className="flex flex-wrap justify-between items-start gap-3 mb-4">
@@ -803,13 +804,13 @@ export default function Home() {
                               <div className="flex items-center gap-2 mb-0.5">
                                 <Briefcase
                                   size={13}
-                                  className="text-blue-400/60"
+                                  className="text-neutral-400/60"
                                 />
                                 <p className="font-bold text-[17px] text-white leading-snug">
                                   {item.workplace}
                                 </p>
                               </div>
-                              <p className="text-blue-400 text-sm font-medium mt-0.5 ml-5">
+                              <p className="text-neutral-400 text-sm font-medium mt-0.5 ml-5">
                                 {item.position}
                               </p>
                             </div>
@@ -818,14 +819,14 @@ export default function Home() {
                               {item.duration}
                             </span>
                           </div>
-                          <div className="h-px bg-gradient-to-r from-blue-400/10 via-white/5 to-transparent mb-4" />
+                          <div className="h-px bg-gradient-to-r from-neutral-400/10 via-white/5 to-transparent mb-4" />
                           <ul className="flex flex-col gap-2.5">
                             {item.impact.slice(0, 3).map((impact, i) => (
                               <li
                                 key={i}
                                 className="flex gap-3 text-sm text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors duration-300"
                               >
-                                <span className="mt-[7px] w-1.5 h-1.5 rounded-full bg-blue-400/60 flex-shrink-0" />
+                                <span className="mt-[7px] w-1.5 h-1.5 rounded-full bg-neutral-400/60 flex-shrink-0" />
                                 {impact}
                               </li>
                             ))}
@@ -866,18 +867,18 @@ export default function Home() {
                 <>
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex gap-4 items-center">
-                      <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
+                      <p className="border border-neutral-400 text-neutral-400 p-2 rounded-xl bg-neutral-500/20">
                         <Code />
                       </p>
-                      <p className="text-[28px] font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
+                      <p className="text-[28px] font-bold bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
                         Featured Projects
                       </p>
                     </div>
                     <Link
                       href="/projects"
                       className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl
-                        text-xs font-bold tracking-wide text-blue-400/80 border border-blue-400/20
-                        bg-blue-500/5 hover:bg-blue-500/15 hover:border-blue-400/40 hover:text-blue-300
+                        text-xs font-bold tracking-wide text-neutral-400/80 border border-neutral-400/20
+                        bg-neutral-500/5 hover:bg-blue-500/15 hover:border-blue-400/40 hover:text-blue-300
                         transition-colors duration-300 group"
                     >
                       View all projects
@@ -918,10 +919,10 @@ export default function Home() {
             <section className="scroll-mt-8 sm:px-0 px-5" id="technologies">
               <div className="pt-14">
                 <div className="flex gap-4 mb-4 items-center">
-                  <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
+                  <p className="border border-neutral-400 text-neutral-400 p-2 rounded-xl bg-neutral-500/20">
                     <TerminalSquare />
                   </p>
-                  <p className="text-[28px] font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
+                  <p className="text-[28px] font-bold bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
                     Technologies
                   </p>
                 </div>
@@ -957,10 +958,10 @@ export default function Home() {
             <section className="scroll-mt-8 sm:px-0 px-5" id="education">
               <div className="pt-14">
                 <div className="flex items-center gap-4 mb-4">
-                  <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
+                  <p className="border border-neutral-400 text-neutral-400 p-2 rounded-xl bg-neutral-500/20">
                     <School />
                   </p>
-                  <p className="text-[28px] font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
+                  <p className="text-[28px] font-bold bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
                     Education
                   </p>
                 </div>
@@ -976,22 +977,22 @@ export default function Home() {
                     {/* FIX: transition-all → specific properties */}
                     <div
                       className="group relative h-full flex flex-col rounded-2xl overflow-hidden
-                      bg-gradient-to-br from-blue-950/40 via-slate-900/60 to-blue-950/20
-                      border border-blue-400/15 hover:border-blue-400/40
+                      bg-gradient-to-br from-neutral-950/40 via-slate-900/60 to-neutral-950/20
+                      border border-neutral-400/15 hover:border-blue-400/40
                       transition-[transform,border-color,box-shadow] duration-500
                       hover:shadow-[0_0_40px_rgba(96,165,250,0.08)] hover:-translate-y-1"
                     >
                       <div
-                        className="h-[2px] w-full bg-gradient-to-r from-transparent via-blue-400/60 to-transparent
+                        className="h-[2px] w-full bg-gradient-to-r from-transparent via-neutral-400/60 to-transparent
                         opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                       />
                       <div
-                        className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.03] to-transparent
+                        className="absolute inset-0 bg-gradient-to-br from-neutral-500/[0.03] to-transparent
                         opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                       />
                       <div className="relative p-6 flex flex-col h-full gap-4">
                         <div className="flex items-start gap-4">
-                          <div className="shrink-0 p-[3px] rounded-xl bg-gradient-to-br from-blue-400/30 to-blue-600/10 border border-blue-400/20">
+                          <div className="shrink-0 p-[3px] rounded-xl bg-gradient-to-br from-neutral-400/30 to-neutral-600/10 border border-neutral-400/20">
                             <Image
                               src={education.img}
                               width={48}
@@ -1004,18 +1005,18 @@ export default function Home() {
                             <p className="text-base font-semibold text-white leading-snug truncate">
                               {education.name}
                             </p>
-                            <p className="text-blue-400 text-sm font-medium mt-0.5 leading-snug">
+                            <p className="text-neutral-400 text-sm font-medium mt-0.5 leading-snug">
                               {education.course}
                             </p>
                             <div className="flex items-center gap-1.5 mt-1.5">
-                              <span className="w-1.5 h-1.5 rounded-full bg-blue-400/50" />
+                              <span className="w-1.5 h-1.5 rounded-full bg-neutral-400/50" />
                               <p className="text-gray-500 text-xs">
                                 {education.duration}
                               </p>
                             </div>
                           </div>
                         </div>
-                        <div className="h-px bg-gradient-to-r from-transparent via-blue-400/10 to-transparent" />
+                        <div className="h-px bg-gradient-to-r from-transparent via-neutral-400/10 to-transparent" />
                         <p className="text-gray-400 text-sm leading-relaxed flex-1">
                           {education.about}
                         </p>
@@ -1025,8 +1026,8 @@ export default function Home() {
                               <span
                                 key={i}
                                 className="text-[11px] font-medium px-2 py-0.5 rounded-md
-                                text-teal-300 bg-teal-400/10 border border-teal-400/20
-                                group-hover:border-teal-400/35 transition-colors duration-300"
+                                text-neutral-300 bg-neutral-400/10 border border-neutral-400/20
+                                group-hover:border-blue-400/35 transition-colors duration-300"
                               >
                                 {skill}
                               </span>
@@ -1036,7 +1037,7 @@ export default function Home() {
                             href={education.link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="shrink-0 p-1.5 rounded-lg border border-blue-400/20 text-blue-400/60
+                            className="shrink-0 p-1.5 rounded-lg border border-neutral-400/20 text-neutral-400/60
                               hover:text-blue-400 hover:border-blue-400/50 hover:bg-blue-400/10
                               transition-colors duration-300"
                             aria-label="View credential"
@@ -1057,10 +1058,10 @@ export default function Home() {
             <section className="scroll-mt-8 sm:px-0 px-5" id="reviews">
               <div className="pt-14">
                 <div className="flex items-center gap-4 mb-4">
-                  <p className="border border-blue-400 text-blue-400 p-2 rounded-xl bg-blue-500/20">
+                  <p className="border border-neutral-400 text-neutral-400 p-2 rounded-xl bg-neutral-500/20">
                     <NotepadText />
                   </p>
-                  <p className="text-[28px] font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
+                  <p className="text-[28px] font-bold bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
                     Testimonials
                   </p>
                 </div>
@@ -1073,21 +1074,21 @@ export default function Home() {
                     {/* FIX: transition-all → specific properties */}
                     <div
                       className="group relative h-full flex flex-col rounded-2xl overflow-hidden
-                      bg-gradient-to-br from-blue-950/40 via-slate-900/60 to-blue-950/20
-                      border border-blue-400/15 hover:border-blue-400/40
+                      bg-gradient-to-br from-neutral-950/40 via-slate-900/60 to-neutral-950/20
+                      border border-neutral-400/15 hover:border-blue-400/40
                       transition-[transform,border-color,box-shadow] duration-500
                       hover:shadow-[0_0_40px_rgba(96,165,250,0.08)] hover:-translate-y-1"
                     >
                       <div
-                        className="h-[2px] w-full bg-gradient-to-r from-transparent via-blue-400/60 to-transparent
+                        className="h-[2px] w-full bg-gradient-to-r from-transparent via-neutral-400/60 to-transparent
                         opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                       />
                       <div
-                        className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.03] to-transparent
+                        className="absolute inset-0 bg-gradient-to-br from-neutral-500/[0.03] to-transparent
                         opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                       />
                       <div className="relative p-6 flex flex-col h-full gap-5">
-                        <div className="text-blue-400/20 group-hover:text-blue-400/35 transition-colors duration-500">
+                        <div className="text-neutral-400/20 group-hover:text-blue-400/35 transition-colors duration-500">
                           <svg
                             width="32"
                             height="32"
@@ -1100,9 +1101,9 @@ export default function Home() {
                         <p className="text-gray-300 text-sm leading-relaxed flex-1 italic">
                           {compliment.message}
                         </p>
-                        <div className="h-px bg-gradient-to-r from-transparent via-blue-400/10 to-transparent" />
+                        <div className="h-px bg-gradient-to-r from-transparent via-neutral-400/10 to-transparent" />
                         <div className="flex items-center gap-3">
-                          <div className="p-[2px] rounded-full bg-gradient-to-br from-blue-400/40 to-blue-600/10 border border-blue-400/20 shrink-0">
+                          <div className="p-[2px] rounded-full bg-gradient-to-br from-neutral-400/40 to-neutral-600/10 border border-neutral-400/20 shrink-0">
                             <Image
                               src={compliment.img}
                               width={40}
@@ -1115,7 +1116,7 @@ export default function Home() {
                             <p className="text-sm font-semibold text-white leading-snug">
                               {compliment.name}
                             </p>
-                            <p className="text-blue-400/70 text-xs mt-0.5">
+                            <p className="text-neutral-400/70 text-xs mt-0.5">
                               {compliment.work}
                             </p>
                           </div>
@@ -1141,15 +1142,15 @@ export default function Home() {
                   }}
                 />
                 {/* FIX: blur-3xl → blur-2xl (less GPU pressure) */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-80 h-40 bg-blue-500/10 rounded-full blur-2xl pointer-events-none" />
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-80 h-40 bg-neutral-500/10 rounded-full blur-2xl pointer-events-none" />
                 <div className="relative px-8 py-14 flex flex-col items-center text-center gap-5">
-                  <span className="inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.15em] uppercase text-blue-400/80">
-                    <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
+                  <span className="inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.15em] uppercase text-neutral-400/80">
+                    <span className="w-1.5 h-1.5 rounded-full bg-neutral-400 animate-pulse" />
                     Available for work
                   </span>
                   <h2 className="text-2xl lg:text-3xl font-bold text-white leading-snug max-w-md">
                     Got a project in mind?{" "}
-                    <span className="text-blue-400">Let's build it.</span>
+                    <span className="text-neutral-400">Let's build it.</span>
                   </h2>
                   <p className="text-sm text-gray-500 max-w-sm leading-relaxed">
                     I'm open to freelance work, full-time roles, and interesting
@@ -1159,10 +1160,10 @@ export default function Home() {
                   <Link
                     href="mailto:favourdomirin@gmail.com"
                     className="mt-1 inline-flex items-center gap-2 px-6 py-2.5 rounded-lg
-                      bg-blue-800 text-white text-sm font-semibold
+                      bg-neutral-800 text-white text-sm font-semibold
                       hover:bg-blue-700 hover:-translate-y-0.5
                       transition-[transform,background-color] duration-200
-                      shadow-[0_0_24px_rgba(59,130,246,0.3)]"
+                      shadow-[0_0_24px_rgba(0,0,0,0.35)]"
                   >
                     <Mail size={14} />
                     Send me an email

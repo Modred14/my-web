@@ -1,3 +1,4 @@
+// /src/app/experience/page.jsx
 "use client";
 import Link from "next/link";
 import Header from "../header";
@@ -27,14 +28,14 @@ export default function ExperiencePage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#01050f] text-gray-200  overflow-hidden">
+    <div className="min-h-screen bg-[#0a0a0a] text-gray-200  overflow-hidden">
 
-      <div className="w-full bg-[#01050f]/70 backdrop-blur-sm  top-0 fixed z-[100]">
+      <div className="w-full bg-[#0a0a0a]/70 backdrop-blur-sm  top-0 fixed z-[100]">
         <Header />
       </div>
   {/* ── Atmosphere — reduced blur values for iOS GPU performance ── */}
-      <div className="fixed top-[-20vh] left-[-10vw] w-[600px] h-[600px] bg-blue-700/5 rounded-full blur-[80px] pointer-events-none z-0" />
-      <div className="fixed bottom-[-10vh] right-[-10vw] w-[400px] h-[400px] bg-cyan-600/4 rounded-full blur-[70px] pointer-events-none z-0" />
+      <div className="fixed top-[-20vh] left-[-10vw] w-[600px] h-[600px] bg-neutral-700/5 rounded-full blur-[80px] pointer-events-none z-0" />
+      <div className="fixed bottom-[-10vh] right-[-10vw] w-[400px] h-[400px] bg-neutral-600/4 rounded-full blur-[70px] pointer-events-none z-0" />
 
       {/* Dot grid — single instance, lower opacity, no vignette overlay (saves a composited layer) */}
       <div
@@ -53,18 +54,18 @@ export default function ExperiencePage() {
         <Reveal>
           <div className="flex flex-col gap-4 mb-12">
             <div className="flex items-center gap-3">
-              <div className="h-px w-8 bg-blue-400/60" />
-              <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-blue-400/70">
+              <div className="h-px w-8 bg-neutral-400/60" />
+              <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-neutral-400/70">
                 Career
               </span>
             </div>
             <h1 className="text-5xl sm:text-6xl font-black text-white leading-[1.05] tracking-tight">
               Tech{" "}
               <span className="relative inline-block">
-                <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-500 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-neutral-400 via-neutral-300 to-neutral-500 bg-clip-text text-transparent">
                   Journey
                 </span>
-                <span className="absolute -bottom-1 left-0 right-0 h-[3px] bg-gradient-to-r from-blue-400/60 to-transparent rounded-full" />
+                <span className="absolute -bottom-1 left-0 right-0 h-[3px] bg-gradient-to-r from-neutral-400/60 to-transparent rounded-full" />
               </span>
             </h1>
             <p className="text-gray-500 text-base max-w-lg leading-relaxed mt-1">
@@ -92,7 +93,7 @@ export default function ExperiencePage() {
         {/* ── Timeline ── */}
         <div className="relative flex flex-col gap-0">
           {/* vertical line */}
-          <div className="absolute hidden sm:block left-[11px] top-2 bottom-2 w-px bg-gradient-to-b from-blue-400/40 via-blue-400/20 to-transparent pointer-events-none" />
+          <div className="absolute hidden sm:block left-[11px] top-2 bottom-2 w-px bg-gradient-to-b from-neutral-400/40 via-neutral-400/20 to-transparent pointer-events-none" />
 
           {journey.map((item, index) => (
             <RevealChill key={index} delay={index * 80}>
@@ -100,8 +101,8 @@ export default function ExperiencePage() {
 
                 {/* timeline dot */}
                 <div className="hidden sm:block relative shrink-0 mt-1.5">
-                  <div className="w-6 h-6 rounded-full bg-[#01050f] border-2 border-blue-400/50 flex items-center justify-center z-10 relative">
-                    <div className="w-2 h-2 rounded-full bg-blue-400" />
+                  <div className="w-6 h-6 rounded-full bg-[#0a0a0a] border-2 border-neutral-400/50 flex items-center justify-center z-10 relative">
+                    <div className="w-2 h-2 rounded-full bg-neutral-400" />
                   </div>
                 </div>
 
@@ -110,19 +111,19 @@ export default function ExperiencePage() {
                   hover:border-blue-400/25 hover:bg-white/[0.05] transition-colors transition-[border-color,background-color] duration-300 group">
 
                   {/* left accent bar */}
-                  <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-blue-400 to-blue-600/30 rounded-l-2xl
+                  <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-neutral-400 to-neutral-600/30 rounded-l-2xl
                     opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                   {/* header */}
                   <div className="flex flex-wrap justify-between items-start gap-3 mb-4">
                     <div>
                       <div className="flex items-center gap-2 mb-0.5">
-                        <Briefcase size={13} className="text-blue-400/60" />
+                        <Briefcase size={13} className="text-neutral-400/60" />
                         <p className="font-bold text-[17px] text-white leading-snug">
                           {item.workplace}
                         </p>
                       </div>
-                      <p className="text-blue-400 text-sm font-medium mt-0.5 ml-5">
+                      <p className="text-neutral-400 text-sm font-medium mt-0.5 ml-5">
                         {item.position}
                       </p>
                     </div>
@@ -133,13 +134,13 @@ export default function ExperiencePage() {
                   </div>
 
                   {/* divider */}
-                  <div className="h-px bg-gradient-to-r from-blue-400/10 via-white/5 to-transparent mb-4" />
+                  <div className="h-px bg-gradient-to-r from-neutral-400/10 via-white/5 to-transparent mb-4" />
 
                   {/* impact bullets */}
                   <ul className="flex flex-col gap-2.5">
                     {item.impact.map((impact, i) => (
                       <li key={i} className="flex gap-3 text-sm text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
-                        <span className="mt-[7px] w-1.5 h-1.5 rounded-full bg-blue-400/60 flex-shrink-0" />
+                        <span className="mt-[7px] w-1.5 h-1.5 rounded-full bg-neutral-400/60 flex-shrink-0" />
                         {impact}
                       </li>
                     ))}
