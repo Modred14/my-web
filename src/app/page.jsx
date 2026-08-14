@@ -478,6 +478,14 @@ export default function Home() {
     },
   ];
 
+  const cards = [
+    "PERN Stack",
+    "7 projects shipped",
+    "3 years building",
+    "JavaScript",
+    "GitHub: Modred14",
+  ];
+
   const compliments = [
     {
       img: "/user.jpg",
@@ -652,10 +660,11 @@ export default function Home() {
                     <div className="px-1">
                       <p className="font-orbitron text-[2.5rem] font-extrabold text-white/90 leading-relaxed">
                         I build full-stack web apps and backend systems that
-                        people actually use.
+                        people actually use
+                        <span className="text-gray-500">.</span>
                       </p>
                       <p className="text-sm text-gray-500 leading-relaxed">
-                        I primarily work with{" "}
+                        I work primarily in{" "}
                         <span className="text-gray-300 font-medium">
                           Next.js
                         </span>
@@ -665,21 +674,15 @@ export default function Home() {
                         </span>{" "}
                         <span>and </span>
                         <span className="text-gray-300 font-medium">
-                          PostgreSQL (Neon)
+                          PostgreSQL (Neon){" "}
                         </span>
-                        . I turn ideas into real products, from full-stack
-                        platforms to automation tools. I engineer systems that
-                        work in the real world, not just in theory.
+                        — turning ideas into real products, from full-stack
+                        platforms to automation tools that solve actual
+                        problems.
                       </p>
                     </div>
                     <div className="flex flex-wrap gap-2 justify-center lg:justify-start pt-1">
-                      {[
-                        "PERN Stack",
-                        "Version Control",
-                        "System Design",
-                        "Automation",
-                        "Production Apps",
-                      ].map((tag) => (
+                      {cards.map((tag) => (
                         <span
                           key={tag}
                           className="text-[11px] font-medium text-gray-400 bg-white/5 border border-white/8 px-3 py-1 rounded-md"
@@ -766,7 +769,6 @@ export default function Home() {
                     />
                   </Link>
                 </div>
-                
               </div>
 
               <div className="pt-8 flex flex-col gap-5">
@@ -878,7 +880,6 @@ export default function Home() {
                       />
                     </Link>
                   </div>
-                  
                 </>
               }
               footer={
@@ -916,7 +917,6 @@ export default function Home() {
                     Technologies
                   </p>
                 </div>
-                
               </div>
               <div className="pt-10 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">
                 {languages.map((language, i) => (
