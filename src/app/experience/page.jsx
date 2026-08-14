@@ -181,8 +181,8 @@ export default function ExperiencePage() {
                   {[
                     { label: "Experience", href: "experience" },
                     { label: "Projects", href: "projects" },
-                    { label: "Education", href: "/#education" },
-                    { label: "Testimonials", href: "/#reviews" },
+                    // { label: "Education", href: "/#education" },
+                    // { label: "Testimonials", href: "/#reviews" },
                   ].map((item) => (
                     <Link
                       key={item.label}
