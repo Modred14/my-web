@@ -658,7 +658,7 @@ export default function Home() {
 
                   <div className="flex flex-col gap-3 w-full">
                     <div className="px-1">
-                      <p className="font-orbitron text-[2.5rem] font-extrabold text-white/90 leading-relaxed">
+                      <p className="font-orbitron text-[2rem] sm:text-[2.5rem] font-extrabold text-white/90 leading-relaxed">
                         I build full-stack web apps and backend systems that
                         people actually use
                         <span className="text-gray-500">.</span>
@@ -751,7 +751,7 @@ export default function Home() {
                     {/* <p className="border border-neutral-400 text-neutral-400 p-2 rounded-xl bg-neutral-500/20">
                       <Briefcase />
                     </p> */}
-                    <p className="text-[2.5rem] font-orbitron font-extrabold uppercase bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
+                    <p className="text-[2rem] sm:text-[2.5rem] font-orbitron font-extrabold uppercase bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
                       Professional Experience
                     </p>
                   </div>
@@ -862,7 +862,7 @@ export default function Home() {
                       {/* <p className="border border-neutral-400 text-neutral-400 p-2 rounded-xl bg-neutral-500/20">
                         <Code />
                       </p> */}
-                      <p className="text-[2.5rem] font-orbitron font-extrabold uppercase bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
+                      <p className="text-[2rem] sm:text-[2.5rem] font-orbitron font-extrabold uppercase bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
                         Featured Projects
                       </p>
                     </div>
@@ -913,7 +913,7 @@ export default function Home() {
                   {/* <p className="border border-neutral-400 text-neutral-400 p-2 rounded-xl bg-neutral-500/20">
                     <TerminalSquare />
                   </p> */}
-                  <p className="text-[2.5rem] font-orbitron font-extrabold uppercase bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
+                  <p className="text-[2rem] sm:text-[2.5rem] font-orbitron font-extrabold uppercase bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
                     Technologies
                   </p>
                 </div>
@@ -953,7 +953,7 @@ export default function Home() {
                   <p className="border border-neutral-400 text-neutral-400 p-2 rounded-xl bg-neutral-500/20">
                     <School />
                   </p>
-                  <p className="text-[2.5rem] font-orbitron font-extrabold uppercase bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
+                  <p className="text-[2rem] sm:text-[2.5rem] font-orbitron font-extrabold uppercase bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
                     Education
                   </p>
                 </div>
@@ -1048,7 +1048,7 @@ export default function Home() {
                   <p className="border border-neutral-400 text-neutral-400 p-2 rounded-xl bg-neutral-500/20">
                     <NotepadText />
                   </p>
-                  <p className="text-[2.5rem]  font-orbitron font-extrabold uppercase bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
+                  <p className="text-[2rem] sm:text-[2.5rem]  font-orbitron font-extrabold uppercase bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
                     Testimonials
                   </p>
                 </div>
