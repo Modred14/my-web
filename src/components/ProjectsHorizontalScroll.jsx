@@ -198,18 +198,15 @@ export default function ProjectsHorizontalScroll({
           className="sticky top-0 h-[100svh] w-full overflow-hidden
           flex flex-col justify-center bg-transparent"
         >
-        
           {/* <div className="hidden md:block absolute top-[-15%] left-[10%] w-[420px] h-[420px] bg-neutral-700/8 rounded-full blur-[100px] pointer-events-none" />
           <div className="hidden md:block absolute bottom-[-15%] right-[10%] w-[360px] h-[360px] bg-neutral-500/6 rounded-full blur-[90px] pointer-events-none" /> */}
 
-        
           {header && (
             <div className="relative z-30 shrink-0 w-full max-w-5xl mx-auto px-5 sm:px-10 pt-20 md:pt-16">
               {header}
             </div>
           )}
 
-         
           <div
             ref={viewportRef}
             className={`relative w-full min-h-0 flex-1 flex items-center overflow-hidden ${
@@ -277,7 +274,7 @@ export default function ProjectsHorizontalScroll({
                       className="object-cover object-top transition-transform duration-[1.2s] ease-out group-hover:scale-[1.04]"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#141414]/80 via-[#141414]/10 to-transparent" />
-                    <span className="absolute top-3 left-3 text-[70px] sm:text-[100px] font-black leading-none select-none pointer-events-none text-neutral-500/10">
+                    <span className="absolute left-3 text-[70px] sm:text-[100px] font-black leading-none select-none pointer-events-none text-neutral-500/40">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                     <a

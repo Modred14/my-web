@@ -283,7 +283,7 @@ function ProjectsScroller({ projects = [], header = null, footer = null }) {
                       className="object-cover object-top transition-transform duration-[1.2s] ease-out group-hover:scale-[1.04]"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#141414]/80 via-[#141414]/10 to-transparent" />
-                    <span className="absolute top-3 left-3 text-[70px] sm:text-[100px] font-black leading-none select-none pointer-events-none text-neutral-500/10">
+                    <span className="absolute left-3 text-[70px] sm:text-[100px] font-black leading-none select-none pointer-events-none text-neutral-500/40">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                     <a
@@ -748,7 +748,7 @@ export default function Home() {
                     {/* <p className="border border-neutral-400 text-neutral-400 p-2 rounded-xl bg-neutral-500/20">
                       <Briefcase />
                     </p> */}
-                    <p className="text-[38px] font-orbitron font-extrabold uppercase bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
+                    <p className="text-[2.5rem] font-orbitron font-extrabold uppercase bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
                       Professional Experience
                     </p>
                   </div>
@@ -860,7 +860,7 @@ export default function Home() {
                       {/* <p className="border border-neutral-400 text-neutral-400 p-2 rounded-xl bg-neutral-500/20">
                         <Code />
                       </p> */}
-                      <p className="text-[38px] font-orbitron font-orbitron font-extrabold uppercase bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
+                      <p className="text-[2.5rem] font-orbitron font-extrabold uppercase bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
                         Featured Projects
                       </p>
                     </div>
@@ -912,7 +912,7 @@ export default function Home() {
                   {/* <p className="border border-neutral-400 text-neutral-400 p-2 rounded-xl bg-neutral-500/20">
                     <TerminalSquare />
                   </p> */}
-                  <p className="text-[38px] font-orbitron font-orbitron font-extrabold uppercase bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
+                  <p className="text-[2.5rem] font-orbitron font-extrabold uppercase bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
                     Technologies
                   </p>
                 </div>
@@ -953,7 +953,7 @@ export default function Home() {
                   <p className="border border-neutral-400 text-neutral-400 p-2 rounded-xl bg-neutral-500/20">
                     <School />
                   </p>
-                  <p className="text-[38px] font-orbitron font-orbitron font-extrabold uppercase bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
+                  <p className="text-[2.5rem] font-orbitron font-extrabold uppercase bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
                     Education
                   </p>
                 </div>
@@ -1048,7 +1048,7 @@ export default function Home() {
                   <p className="border border-neutral-400 text-neutral-400 p-2 rounded-xl bg-neutral-500/20">
                     <NotepadText />
                   </p>
-                  <p className="text-[38px] font-orbitron font-orbitron font-extrabold uppercase bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
+                  <p className="text-[2.5rem]  font-orbitron font-extrabold uppercase bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
                     Testimonials
                   </p>
                 </div>
