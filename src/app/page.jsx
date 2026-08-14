@@ -848,7 +848,7 @@ export default function Home() {
           </Reveal>
 
           {/* ── Projects ── */}
-          <section className="scroll-mt-8" id="projects">
+          <section className="" id="projects">
             <ProjectsScroller
               projects={projects.slice(0, 4)}
               header={
