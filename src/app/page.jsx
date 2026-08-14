@@ -674,7 +674,7 @@ export default function Home() {
                     </div>
                     <div className="flex flex-wrap gap-2 justify-center lg:justify-start pt-1">
                       {[
-                        "MERN Stack",
+                        "PERN Stack",
                         "Version Control",
                         "System Design",
                         "Automation",
@@ -741,7 +741,7 @@ export default function Home() {
 
           {/* ── Experience ── */}
           <Reveal>
-            <section className="scroll-mt-8 sm:px-0 px-5" id="journey">
+            <section className=" sm:px-0 px-5" id="journey">
               <div className="pt-14">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex gap-4 items-center">
@@ -919,28 +919,28 @@ export default function Home() {
                 <GradientDivider />
               </div>
               <div className="pt-10 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">
-               {languages.map((language, i) => (
-  <RevealChill key={i} delay={i * 50}>
-    <div
-      className="group flex flex-col items-center gap-3 p-4 rounded-2xl
+                {languages.map((language, i) => (
+                  <RevealChill key={i} delay={i * 50}>
+                    <div
+                      className="group flex flex-col items-center gap-3 p-4 rounded-2xl
       bg-white/[0.03] border border-white/8
       hover:bg-blue-500/10 hover:border-blue-400/30 hover:-translate-y-1
       transition-[transform,background-color,border-color] duration-300 cursor-default"
-    >
-      <img
-        src={language.img}
-        className="w-8 h-8 object-contain
+                    >
+                      <img
+                        src={language.img}
+                        className="w-8 h-8 object-contain
         brightness-0 invert opacity-70
         group-hover:filter-none group-hover:opacity-100
         transition-[filter,opacity] duration-300"
-        alt={language.name}
-      />
-      <span className="text-[11px] text-center text-gray-400 group-hover:text-gray-200 transition-colors duration-300 leading-tight">
-        {language.name}
-      </span>
-    </div>
-  </RevealChill>
-))}
+                        alt={language.name}
+                      />
+                      <span className="text-[11px] text-center text-gray-400 group-hover:text-gray-200 transition-colors duration-300 leading-tight">
+                        {language.name}
+                      </span>
+                    </div>
+                  </RevealChill>
+                ))}
               </div>
             </section>
           </Reveal>

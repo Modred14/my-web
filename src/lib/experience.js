@@ -1,16 +1,16 @@
 export const journey = [
   {
-  workplace: "Nepogames",
-  position: "Co-Founder & CEO",
-  duration: "June 2026 – Present",
-  impact: [
-    "Co-founded Nepogames, a secure game account marketplace built to eliminate peer-to-peer scams",
-    "Built and architected the full platform solo — from database schema to production — including an escrow payment system",
-    "Implemented a 30-minute buyer verification window, auto-release logic, and a dispute system for flagging incorrect credentials",
-    "Built an in-app wallet with Paystack integration for deposits and withdrawals, and real-time seller chat for pre-purchase communication",
-    "Leading product direction, technical development, and growth strategy for the platform",
-  ],
-},
+    workplace: "Nepogames",
+    position: "Co-Founder",
+    duration: "June 2026 – Present",
+    impact: [
+      "Co-founded Nepogames, a secure game account marketplace built to eliminate peer-to-peer scams",
+      "Built and architected the full platform solo — from database schema to production — including an escrow payment system",
+      "Implemented a 30-minute buyer verification window, auto-release logic, and a dispute system for flagging incorrect credentials",
+      "Built an in-app wallet with Paystack integration for deposits and withdrawals, and real-time seller chat for pre-purchase communication",
+      "Leading product direction, technical development, and growth strategy for the platform",
+    ],
+  },
   {
     workplace: "Faith Standard Schools",
     position: "Website & Social Media Manager",
@@ -34,17 +34,17 @@ export const journey = [
       "Delivered a working MVP enabling fast and flexible digital payments for real-world use cases",
     ],
   },
-  
+
   {
     workplace: "Plud",
     position: "Campus Ambassador (Obafemi Awolowo University)",
-    duration: " April 2026 – Present",
+    duration: "April 2026 – Present",
     impact: [
-      "Drove Plud adoption among OAU students by onboarding new users to the AI-powered document and PDF toolkit platform",
-      "Organized and executed document productivity workshops showcasing features like AI chat, quiz generation, and YouTube-to-Doc conversion",
-      "Represented Plud at campus events, strengthening brand visibility and building trust among students and academic communities",
-      "Built partnerships with student organizations and study groups to expand Plud's reach across faculties and departments",
-      "Collected and relayed student feedback to the Plud team to help shape product improvements and campus engagement strategy",
+      "Onboarded OAU students to Plud, an AI study workspace, demoing quiz generation, flashcards, and PDF-to-podcast conversion",
+      "Ran workshops teaching students to build per-course Knowledge Spaces for citation-backed Q&A and exam prep",
+      "Positioned Plud around campus study habits and revision culture to drive real usage, not just signups",
+      "Partnered with academic student organizations to sustain adoption beyond onboarding",
+      "Relayed recurring feature requests and confusion points to the Plud team to shape the campus rollout",
     ],
   },
   {
@@ -52,11 +52,11 @@ export const journey = [
     position: "Campus Ambassador (Obafemi Awolowo University)",
     duration: "January 2026 – Present",
     impact: [
-      "Increased Cowrywise adoption among students by onboarding new users and improving campus engagement",
-      "Planned and executed financial literacy campaigns and outreach programs for undergraduates",
-      "Represented Cowrywise at campus events, strengthening brand visibility and student trust",
-      "Built and managed partnerships with student organizations to expand campus reach and engagement",
-      "Collected and analyzed user feedback to inform product improvements and engagement strategy",
+      "Onboarded OAU students to Cowrywise, a SEC-licensed savings and investment app, many as first-time savers",
+      "Ran financial literacy sessions on automated savings plans and low-entry mutual fund investing",
+      "Positioned Cowrywise around student budgets and allowance cycles to make investing feel achievable",
+      "Partnered with student organizations to run outreach and literacy campaigns across faculties",
+      "Relayed trust concerns and deposit-friction feedback to Cowrywise to inform engagement strategy",
     ],
   },
   {
