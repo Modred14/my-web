@@ -30,7 +30,6 @@ import Link from "next/link";
 import { projects } from "@/lib/project";
 import { journey } from "@/lib/experience";
 
-
 function ProjectsScroller({ projects = [], header = null, footer = null }) {
   const bleedRef = useRef(null);
   const pinRef = useRef(null);
@@ -546,7 +545,7 @@ export default function Home() {
   return (
     <div className="">
       <HashScrollHandler />
-    
+
       <div className="flex justify-center bg-[#000000] text-gray-200 text-base relative overflow-x-clip">
         <div className="w-full bg-[#000000]/70 backdrop-blur-sm fixed z-100">
           <Header />
@@ -650,26 +649,29 @@ export default function Home() {
                   </div>
 
                   <div className="flex flex-col gap-3 max-w-xl">
-                   <div className="px-1">
-                    <p className="text-base lg:text-lg font-medium text-white/90 leading-relaxed">
-                      I build full-stack web apps and backend systems that
-                      people actually use.
-                    </p>
-                    <p className="text-sm text-gray-500 leading-relaxed">
-                      I primarily work with{" "}
-                      <span className="text-gray-300 font-medium">Next.js</span>
-                     <span>, </span>
-                      <span className="text-gray-300 font-medium">
-                        JavaScript
-                      </span>{" "}
-                      <span>and </span>
-                      <span className="text-gray-300 font-medium">
-                         PostgreSQL (Neon)
-                      </span>
-                      . I turn ideas into real products, from full-stack
-                      platforms to automation tools. I engineer systems that
-                      work in the real world, not just in theory.
-                    </p></div>
+                    <div className="px-1">
+                      <p className="text-base lg:text-lg font-medium text-white/90 leading-relaxed">
+                        I build full-stack web apps and backend systems that
+                        people actually use.
+                      </p>
+                      <p className="text-sm text-gray-500 leading-relaxed">
+                        I primarily work with{" "}
+                        <span className="text-gray-300 font-medium">
+                          Next.js
+                        </span>
+                        <span>, </span>
+                        <span className="text-gray-300 font-medium">
+                          JavaScript
+                        </span>{" "}
+                        <span>and </span>
+                        <span className="text-gray-300 font-medium">
+                          PostgreSQL (Neon)
+                        </span>
+                        . I turn ideas into real products, from full-stack
+                        platforms to automation tools. I engineer systems that
+                        work in the real world, not just in theory.
+                      </p>
+                    </div>
                     <div className="flex flex-wrap gap-2 justify-center lg:justify-start pt-1">
                       {[
                         "MERN Stack",
@@ -919,16 +921,15 @@ export default function Home() {
               <div className="pt-10 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">
                 {languages.map((language, i) => (
                   <RevealChill key={i} delay={i * 50}>
-                    {/* FIX: transition-all → specific properties; hover:-translate-y-1 kept but isolated */}
                     <div
                       className="group flex flex-col items-center gap-3 p-4 rounded-2xl
-                      bg-white/[0.03] border border-white/8
-                      hover:bg-blue-500/10 hover:border-blue-400/30 hover:-translate-y-1
-                      transition-[transform,background-color,border-color] duration-300 cursor-default"
+      bg-white/[0.03] border border-white/8
+      hover:bg-blue-500/10 hover:border-blue-400/30 hover:-translate-y-1
+      transition-[transform,background-color,border-color] duration-300 cursor-default"
                     >
                       <img
                         src={language.img}
-                        className="w-8 h-8 object-contain"
+                        className="w-8 h-8 object-contain brightness-0 invert opacity-60 group-hover:opacity-100 transition-opacity duration-300"
                         alt={language.name}
                       />
                       <span className="text-[11px] text-center text-gray-400 group-hover:text-gray-200 transition-colors duration-300 leading-tight">
