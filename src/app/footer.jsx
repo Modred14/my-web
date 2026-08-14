@@ -22,7 +22,7 @@ export default function Footer() {
   return (
     <footer className="mt-16 border-t border-white/10">
       <Reveal>
-        <div className="max-w-5xl mx-auto px-6 py-10">
+        <div className="max-w-5xl mx-auto px-6 pt-10 pb-5">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-3">
               <Image

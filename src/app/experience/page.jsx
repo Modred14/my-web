@@ -3,13 +3,16 @@
 import Link from "next/link";
 import Header from "../header";
 import { journey } from "@/lib/experience";
-import { Briefcase, CalendarDays, ArrowLeft, Github, Mail, Linkedin } from "lucide-react";
+import { Briefcase, CalendarDays, ArrowUp, ArrowLeft, Github, Mail, Linkedin } from "lucide-react";
 import Image from "next/image";
 import Footer from "@/app/footer";
 import Reveal from "../reavel";
 import RevealChill from "../revealchill";
 
 export default function ExperiencePage() {
+   function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
   const socials = [
     {
       link: "https://github.com/Modred14",
@@ -49,7 +52,7 @@ export default function ExperiencePage() {
 
       {/* ── Header — backdrop-blur reduced to sm; removed duplicate orbs/grids inside header ── */}
     
-      <div className="relative z-10 max-w-5xl mx-auto px-5 sm:px-10 pt-32 pb-24">
+      <div className="relative z-10 max-w-5xl mx-auto px-5 sm:px-10 pt-32">
 
         {/* ── Page hero ── */}
         <Reveal>
@@ -120,7 +123,7 @@ export default function ExperiencePage() {
                     <div>
                       <div className="flex items-center gap-2 mb-0.5">
                         <Briefcase size={13} className="text-neutral-400/60" />
-                        <p className="font-bold text-[17px] text-white leading-snug">
+                        <p className="font-bold text-[22px] text-white leading-snug">
                           {item.workplace}
                         </p>
                       </div>
@@ -152,7 +155,26 @@ export default function ExperiencePage() {
           ))}
         </div>
 
-    {/* <Footer/> */}
+    <div className="max-w-5xl mx-auto px-6 pb-5">
+        <div className="h-px bg-white/5 my-6" />
+        <div className="flex flex-col-reverse sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-gray-600">
+            © {new Date().getFullYear()} Favour Omirin. All rights reserved.
+          </p>
+          <button
+            onClick={scrollToTop}
+            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg
+                border border-white/10 bg-white/[0.02] text-gray-500
+                hover:border-blue-400/40 hover:text-blue-400 hover:bg-white/[0.05]
+                hover:-translate-y-0.5
+                text-[11px] font-semibold tracking-wide uppercase
+                transition-[transform,background-color,border-color,color] duration-200"
+          >
+            Back to top
+            <ArrowUp size={12} />
+          </button>
+        </div>
+      </div>
       </div>
     </div>
   );

@@ -369,7 +369,7 @@ export default function ProjectDetail() {
           </Reveal>
 
           {/* ── Footer ── */}
-       <div className="max-w-5xl mx-auto px-6 pb-10">
+       <div className="max-w-5xl mx-auto px-6 pb-5">
         <div className="h-px bg-white/5 my-6" />
         <div className="flex flex-col-reverse sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-gray-600">
