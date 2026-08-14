@@ -9,7 +9,7 @@ import { Oswald } from "next/font/google";
 const oswald = Oswald({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  variable: "--font-oswald",
+  variable: "--font-oswald-google",
 });
 
 const geistSans = Geist({

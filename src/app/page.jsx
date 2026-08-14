@@ -748,7 +748,7 @@ export default function Home() {
                     <p className="border border-neutral-400 text-neutral-400 p-2 rounded-xl bg-neutral-500/20">
                       <Briefcase />
                     </p>
-                    <p className="text-[28px] font-bold font-oswald uppercase bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
+                    <p className="text-[28px] font-extrabold uppercase bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
                       Professional Experience
                     </p>
                   </div>
@@ -860,7 +860,7 @@ export default function Home() {
                       <p className="border border-neutral-400 text-neutral-400 p-2 rounded-xl bg-neutral-500/20">
                         <Code />
                       </p>
-                      <p className="text-[28px] font-bold font-oswald uppercase bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
+                      <p className="text-[28px] font-extrabold uppercase bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
                         Featured Projects
                       </p>
                     </div>
@@ -912,7 +912,7 @@ export default function Home() {
                   <p className="border border-neutral-400 text-neutral-400 p-2 rounded-xl bg-neutral-500/20">
                     <TerminalSquare />
                   </p>
-                  <p className="text-[28px] font-bold font-oswald uppercase bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
+                  <p className="text-[28px] font-extrabold uppercase bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
                     Technologies
                   </p>
                 </div>
@@ -953,7 +953,7 @@ export default function Home() {
                   <p className="border border-neutral-400 text-neutral-400 p-2 rounded-xl bg-neutral-500/20">
                     <School />
                   </p>
-                  <p className="text-[28px] font-bold font-oswald uppercase bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
+                  <p className="text-[28px] font-extrabold uppercase bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
                     Education
                   </p>
                 </div>
@@ -1048,7 +1048,7 @@ export default function Home() {
                   <p className="border border-neutral-400 text-neutral-400 p-2 rounded-xl bg-neutral-500/20">
                     <NotepadText />
                   </p>
-                  <p className="text-[28px] font-bold font-oswald uppercase bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
+                  <p className="text-[28px] font-extrabold uppercase bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
                     Testimonials
                   </p>
                 </div>
