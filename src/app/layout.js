@@ -5,6 +5,13 @@ import AnalyticsTracker from "@/components/AnalyticsTracker";
 import CustomCursor from "@/components/CustomCursor";
 import "./globals.css";
 import { Oswald } from "next/font/google";
+import { Orbitron } from "next/font/google";
+
+const orbitron = Orbitron({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-orbitron",
+});
 
 const oswald = Oswald({
   subsets: ["latin"],
@@ -61,7 +68,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${oswald.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${oswald.variable} ${orbitron.variable} antialiased`}
       >
         <script
           type="application/ld+json"
