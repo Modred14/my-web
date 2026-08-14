@@ -571,7 +571,7 @@ export default function Home() {
               <div className="flex flex-col lg:gap-10 lg:flex-row lg:items-center w-full">
                 {/* ── Avatar column ── */}
                 <div className="grid lg:block place-items-center shrink-0">
-                  <div className="relative w-fit">
+                  {/* <div className="relative w-fit">
                     <div className="relative w-40 lg:w-56">
                       <div className="absolute inset-0 rounded-full bg-neutral-500/25 blur-2xl scale-102" />
                       <div className="absolute inset-0 rounded-full ring-2 ring-white/15 shadow-[0_0_25px_rgba(255,255,255,0.15)]" />
@@ -592,10 +592,10 @@ export default function Home() {
                       <span className="w-1.5 h-1.5 rounded-full bg-neutral-400 animate-pulse" />
                       Open to work
                     </span>
-                  </div>
+                  </div> */}
 
                   {/* Socials — desktop */}
-                  <div className="hidden lg:flex gap-3 pt-8 -mb-5 justify-center">
+                  {/* <div className="hidden lg:flex gap-3 pt-8 -mb-5 justify-center">
                     {socials.map((social) => {
                       const Icon = social.icon;
                       return (
@@ -613,7 +613,7 @@ export default function Home() {
                         </Link>
                       );
                     })}
-                  </div>
+                  </div> */}
                 </div>
 
                 {/* ── Content column ── */}
@@ -623,12 +623,12 @@ export default function Home() {
                   </span>
 
                   {/* FIX: was calling getName() which illegally used hooks inside a function */}
-                  <h1 className="text-[2rem] lg:text-5xl font-extrabold text-white leading-tight">
+                  {/* <h1 className="text-[2rem] font-orbitron lg:text-5xl font-extrabold text-white leading-tight">
                     I'm FAVOUR OMIRIN
-                  </h1>
+                  </h1> */}
 
                   {/* Socials — mobile */}
-                  <div className="flex lg:hidden gap-3 py-1">
+                  {/* <div className="flex lg:hidden gap-3 py-1">
                     {socials.map((social) => {
                       const Icon = social.icon;
                       return (
@@ -646,11 +646,11 @@ export default function Home() {
                         </Link>
                       );
                     })}
-                  </div>
+                  </div> */}
 
-                  <div className="flex flex-col gap-3 max-w-xl">
+                  <div className="flex flex-col gap-3 w-full">
                     <div className="px-1">
-                      <p className="text-base lg:text-lg font-medium text-white/90 leading-relaxed">
+                      <p className="font-orbitron text-[2.5rem] font-extrabold text-white/90 leading-relaxed">
                         I build full-stack web apps and backend systems that
                         people actually use.
                       </p>
