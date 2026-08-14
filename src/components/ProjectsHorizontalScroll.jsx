@@ -178,7 +178,7 @@ export default function ProjectsHorizontalScroll({
         inView = entry.isIntersecting;
         if (inView) onScroll();
       },
-      { rootMargin: "0px" },
+      { rootMargin: "300px 0px" },
     );
     io.observe(pin);
 
