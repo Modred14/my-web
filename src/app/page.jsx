@@ -270,7 +270,7 @@ function ProjectsScroller({ projects = [], header = null, footer = null }) {
                   key={project.slug}
                   className="group relative mt-4 flex-none
                   w-[86vw] sm:w-[68vw] lg:w-[620px]
-                  rounded-2xl border border-white/8 bg-[#141414] overflow-hidden
+                  rounded-2xl border border-white/8 bg-[#050505] overflow-hidden
                   flex flex-col shadow-[0_4px_40px_rgba(0,0,0,0.4)]
                   hover:border-blue-400/30 transition-[border-color,box-shadow] duration-500
                   hover:shadow-[0_20px_80px_rgba(96,165,250,0.1)]"
