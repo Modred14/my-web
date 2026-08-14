@@ -411,6 +411,39 @@ export default function Home() {
   // crashes/stale closures on iOS. Moved state + effect to component top level.
   const names = ["FAVOUR OMIRIN"];
   const [nameIndex, setNameIndex] = useState(0);
+ const [contactName, setContactName] = useState("");
+  const [contactEmail, setContactEmail] = useState("");
+  const [contactMessage, setContactMessage] = useState("");
+  const [status, setStatus] = useState("idle"); // idle | sending | sent | error
+
+  async function handleContactSubmit(e) {
+    e.preventDefault();
+    if (!contactName.trim() || !contactMessage.trim()) return;
+
+    setStatus("sending");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: contactName,
+          email: contactEmail,
+          message: contactMessage,
+        }),
+      });
+
+      if (!res.ok) throw new Error();
+
+      setStatus("sent");
+      setContactName("");
+      setContactEmail("");
+      setContactMessage("");
+      setTimeout(() => setStatus("idle"), 4000);
+    } catch {
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 4000);
+    }
+  }
   useEffect(() => {
     const interval = setInterval(() => {
       setNameIndex((prev) => (prev + 1) % names.length);
@@ -1115,9 +1148,13 @@ export default function Home() {
           </Reveal> */}
 
           {/* ── CTA ── */}
+          {/* ── CTA ── */}
           <div className="pt-14">
             <Reveal className="sm:px-0 px-5">
-              <section className=" relative overflow-hidden rounded-2xl border border-white/8 bg-white/[0.03]">
+              <section
+                id="contact"
+                className="relative overflow-hidden rounded-2xl border border-white/8 bg-white/[0.03]"
+              >
                 <div
                   className="absolute inset-0 opacity-[0.03] pointer-events-none"
                   style={{
@@ -1126,33 +1163,160 @@ export default function Home() {
                     backgroundSize: "40px 40px",
                   }}
                 />
-                {/* FIX: blur-3xl → blur-2xl (less GPU pressure) */}
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-80 h-40 bg-neutral-500/10 rounded-full blur-2xl pointer-events-none" />
-                <div className="relative px-8 py-14 flex flex-col items-center text-center gap-5">
-                  <span className="inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.15em] uppercase text-neutral-400/80">
-                    <span className="w-1.5 h-1.5 rounded-full bg-neutral-400 animate-pulse" />
-                    Freelance & full-time roles
-                  </span>
-                  <h2 className="text-2xl lg:text-3xl font-bold text-white leading-snug max-w-md">
-                    Got a project in mind?{" "}
-                    <span className="text-neutral-400">Let's build it.</span>
-                  </h2>
-                  <p className="text-sm text-gray-500 max-w-sm leading-relaxed">
-                    I'm open to freelance work, full-time roles, and interesting
-                    collaborations.
-                  </p>
-                  {/* FIX: transition-all → specific properties */}
-                  <Link
-                    href="mailto:favourdomirin@gmail.com"
-                    className="mt-1 inline-flex items-center gap-2 px-6 py-2.5 rounded-lg
-                      bg-neutral-800 text-white text-sm font-semibold
-                      hover:bg-blue-700 hover:-translate-y-0.5
-                      transition-[transform,background-color] duration-200
-                      shadow-[0_0_24px_rgba(0,0,0,0.35)]"
+
+                <div className="relative px-6 py-12 sm:px-10 sm:py-14 grid md:grid-cols-2 gap-10 md:gap-8 items-center">
+                  {/* Left: pitch + direct links */}
+                  <div className="flex flex-col items-center md:items-start text-center md:text-left gap-4">
+                    <span className="inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.15em] uppercase text-neutral-400/80">
+                      <span className="w-1.5 h-1.5 rounded-full bg-neutral-400 animate-pulse" />
+                      Freelance & full-time roles
+                    </span>
+                    <h2 className="text-2xl lg:text-3xl font-bold text-white leading-snug max-w-md">
+                      Got a project in mind?{" "}
+                      <span className="text-neutral-400">Let's build it.</span>
+                    </h2>
+                    <p className="text-sm text-gray-500 max-w-sm leading-relaxed">
+                      I'm open to freelance work, full-time roles, and
+                      interesting collaborations. Reach out directly or drop a
+                      message.
+                    </p>
+
+                    <div className="flex flex-wrap justify-center md:justify-start gap-3 mt-1">
+                      <Link
+                        href="mailto:favourdomirin@gmail.com"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-lg
+                          bg-white/4 border border-white/10 text-gray-300
+                          hover:bg-white/8 hover:border-white/20 hover:text-white
+                          hover:-translate-y-0.5
+                          transition-[transform,background-color,border-color,color] duration-200
+                          text-xs font-semibold tracking-wide"
+                      >
+                        <Mail size={13} />
+                        favourdomirin@gmail.com
+                      </Link>
+                      <Link
+                        href="https://ng.linkedin.com/in/omirin-favour"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-lg
+                          bg-white/4 border border-white/10 text-gray-300
+                          hover:bg-white/8 hover:border-white/20 hover:text-white
+                          hover:-translate-y-0.5
+                          transition-[transform,background-color,border-color,color] duration-200
+                          text-xs font-semibold tracking-wide"
+                      >
+                        <Linkedin size={13} />
+                        LinkedIn
+                      </Link>
+                      <Link
+                        href="https://github.com/Modred14"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-lg
+                          bg-white/4 border border-white/10 text-gray-300
+                          hover:bg-white/8 hover:border-white/20 hover:text-white
+                          hover:-translate-y-0.5
+                          transition-[transform,background-color,border-color,color] duration-200
+                          text-xs font-semibold tracking-wide"
+                      >
+                        <Github size={13} />
+                        GitHub
+                      </Link>
+                    </div>
+                  </div>
+
+                {/* Right: message form */}
+                  <form
+                    onSubmit={handleContactSubmit}
+                    className="relative flex flex-col gap-3 rounded-xl border border-white/8 bg-white/[0.02] p-5 sm:p-6"
                   >
-                    <Mail size={14} />
-                    Send me an email
-                  </Link>
+                    <div className="flex flex-col gap-1.5">
+                      <label className="text-[11px] font-semibold tracking-wide uppercase text-gray-500">
+                        Your name
+                      </label>
+                      <input
+                        type="text"
+                        value={contactName}
+                        onChange={(e) => setContactName(e.target.value)}
+                        placeholder="Jane Doe"
+                        required
+                        disabled={status === "sending"}
+                        className="w-full px-3.5 py-2.5 rounded-lg bg-white/[0.03] border border-white/10
+                          text-sm text-white placeholder:text-gray-600
+                          outline-none focus:border-neutral-400/50 focus:bg-white/[0.05]
+                          transition-colors duration-200 disabled:opacity-50"
+                      />
+                    </div>
+
+                    <div className="flex flex-col gap-1.5">
+                      <label className="text-[11px] font-semibold tracking-wide uppercase text-gray-500">
+                        Your email{" "}
+                        <span className="normal-case text-gray-600 font-normal">
+                          (optional, so I can reply)
+                        </span>
+                      </label>
+                      <input
+                        type="email"
+                        value={contactEmail}
+                        onChange={(e) => setContactEmail(e.target.value)}
+                        placeholder="jane@example.com"
+                        disabled={status === "sending"}
+                        className="w-full px-3.5 py-2.5 rounded-lg bg-white/[0.03] border border-white/10
+                          text-sm text-white placeholder:text-gray-600
+                          outline-none focus:border-neutral-400/50 focus:bg-white/[0.05]
+                          transition-colors duration-200 disabled:opacity-50"
+                      />
+                    </div>
+
+                    <div className="flex flex-col gap-1.5">
+                      <label className="text-[11px] font-semibold tracking-wide uppercase text-gray-500">
+                        Message
+                      </label>
+                      <textarea
+                        value={contactMessage}
+                        onChange={(e) => setContactMessage(e.target.value)}
+                        placeholder="Tell me a bit about your project..."
+                        required
+                        rows={4}
+                        disabled={status === "sending"}
+                        className="w-full px-3.5 py-2.5 rounded-lg bg-white/[0.03] border border-white/10
+                          text-sm text-white placeholder:text-gray-600 resize-none
+                          outline-none focus:border-neutral-400/50 focus:bg-white/[0.05]
+                          transition-colors duration-200 disabled:opacity-50"
+                      />
+                    </div>
+
+                    <button
+                      type="submit"
+                      disabled={status === "sending"}
+                      className="mt-1 inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg
+                        bg-neutral-800 text-white text-sm font-semibold
+                        hover:bg-blue-700/20 hover:-translate-y-0.5
+                        transition-[transform,background-color] duration-300
+                        shadow-[0_0_24px_rgba(0,0,0,0.35)]
+                        disabled:opacity-60 disabled:hover:translate-y-0 disabled:hover:bg-neutral-800"
+                    >
+                      <Mail size={14} />
+                      {status === "sending" ? "Sending..." : "Send message"}
+                    </button>
+
+                    <p
+                      className={`text-center text-[11px] font-medium transition-[opacity,transform] duration-300 ${
+                        status === "sent"
+                          ? "opacity-100 translate-y-0 text-neutral-400/80"
+                          : status === "error"
+                            ? "opacity-100 translate-y-0 text-red-400/80"
+                            : "opacity-0 -translate-y-1 pointer-events-none text-neutral-400/80"
+                      }`}
+                    >
+                      {status === "sent"
+                        ? "Message sent — I'll get back to you soon."
+                        : status === "error"
+                          ? "Couldn't send. Please try again or email me directly."
+                          : ""}
+                    </p>
+                  </form>
                 </div>
               </section>
             </Reveal>
