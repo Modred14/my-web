@@ -270,7 +270,7 @@ function ProjectsScroller({ projects = [], header = null, footer = null }) {
                   key={project.slug}
                   className="group relative mt-4 flex-none
                   w-[86vw] sm:w-[68vw] lg:w-[620px]
-                  rounded-2xl border border-white/8 bg-[#050505] overflow-hidden
+                  rounded-2xl border border-white/8 bg-white/[0.03] overflow-hidden
                   flex flex-col shadow-[0_4px_40px_rgba(0,0,0,0.4)]
                   hover:border-blue-400/30 transition-[border-color,box-shadow] duration-500
                   hover:shadow-[0_20px_80px_rgba(96,165,250,0.1)]"
@@ -1113,7 +1113,7 @@ export default function Home() {
           {/* ── CTA ── */}
           <div className="pt-14">
             <Reveal className="sm:px-0 px-5">
-              <section className=" relative overflow-hidden rounded-2xl border border-white/8 bg-[#000000]">
+              <section className=" relative overflow-hidden rounded-2xl border border-white/8 bg-white/[0.03]">
                 <div
                   className="absolute inset-0 opacity-[0.03] pointer-events-none"
                   style={{
