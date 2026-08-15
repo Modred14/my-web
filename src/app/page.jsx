@@ -743,7 +743,7 @@ export default function Home() {
                         <span className="text-gray-500">.</span>
                       </p>
                       <p className="text-sm text-gray-500 leading-relaxed">
-                        I work primarily in{" "}
+                        I work primarily with{" "}
                         <span className="text-gray-300 font-medium">
                           Next.js
                         </span>
