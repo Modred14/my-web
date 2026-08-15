@@ -446,7 +446,8 @@ function ProjectsScroller({ projects = [], header = null, footer = null }) {
 export default function Home() {
   const codeFirstYear = 2023;
   const currentYear = new Date().getFullYear();
-  const experienceYear = currentYear - codeFirstYear - 1;
+  const experienceYear = currentYear - codeFirstYear; 
+  const projectCount = projects.length;
   const userPic = "/Favour-Omirin.jpg";
 
   // FIX: getName() called hooks inside a nested function -- invalid React, causes
@@ -457,6 +458,9 @@ export default function Home() {
   const [contactEmail, setContactEmail] = useState("");
   const [contactMessage, setContactMessage] = useState("");
   const [status, setStatus] = useState("idle"); // idle | sending | sent | error
+
+
+
 
   async function handleContactSubmit(e) {
     e.preventDefault();
@@ -555,8 +559,8 @@ export default function Home() {
 
   const cards = [
     "PERN Stack",
-    "7 projects shipped",
-    "3 years building",
+    `${projectCount} projects shipped`,
+    `${experienceYear} years building`,
     "JavaScript",
     "GitHub: Modred14",
   ];
