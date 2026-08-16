@@ -742,6 +742,7 @@ export default function Home() {
                         people actually use
                         <span className="text-gray-500">.</span>
                       </p>
+                      
                       <p className="text-sm text-gray-500 leading-relaxed">
                         I work primarily with{" "}
                         <span className="text-gray-300 font-medium">
