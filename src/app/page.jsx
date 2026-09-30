@@ -823,7 +823,7 @@ export default function Home() {
 
           {/* ── Experience ── */}
           <Reveal>
-            <section className=" sm:px-0 px-5" id="journey">
+            <section  id="journey">
               <div className="pt-14">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex gap-4 items-center">
@@ -986,7 +986,7 @@ export default function Home() {
 
           {/* ── Technologies ── */}
           <Reveal>
-            <section className=" sm:px-0 px-5" id="technologies">
+            <section  id="technologies">
               <div className="pt-14">
                 <div className="flex gap-4 mb-4 items-center">
                   <p className="text-[2rem] sm:text-[2.5rem] font-orbitron font-extrabold uppercase bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
