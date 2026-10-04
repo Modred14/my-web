@@ -1196,7 +1196,7 @@ export default function Home() {
           {/* ── CTA ── */}
           {/* ── CTA ── */}
           <div className="pt-14">
-            <Reveal className="sm:px-0 px-5">
+            <Reveal className="">
               <section
                 id="contact"
                 className="relative overflow-hidden rounded-2xl border border-white/8 bg-white/[0.03]"
