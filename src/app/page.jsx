@@ -28,6 +28,7 @@ import RevealLeft from "./revealfrleft";
 import RevealRight from "./revealfright";
 import RevealChill from "./revealchill";
 import Header from "./header";
+import ChatWidget from "@/components/ChatWidget";
 import Link from "next/link";
 import { projects } from "@/lib/project";
 import { journey } from "@/lib/experience";
@@ -632,6 +633,7 @@ export default function Home() {
   return (
     <div className="">
       <HashScrollHandler />
+      <ChatWidget />
 
       <div className="flex justify-center bg-[#000000] text-gray-200 text-base relative overflow-x-clip">
         <div className="w-full bg-[#000000]/70 backdrop-blur-sm fixed z-100">

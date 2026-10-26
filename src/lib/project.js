@@ -1,4 +1,5 @@
 export const projects = [
+  // ───────────── FEATURED ON LANDING PAGE (first four) ─────────────
   {
     slug: "nepo-games",
     name: "Nepogames",
@@ -35,6 +36,47 @@ export const projects = [
     link: "https://nepogames.com",
     github: "https://github.com/Modred14/nepo-games",
     img: "/nepo-games.png",
+  },
+  {
+    slug: "lifeinoau",
+    name: "Life in OAU",
+    tagline: "Live a whole student life on a 3D campus.",
+    stack: [
+      "Next.js",
+      "React",
+      "JavaScript",
+      "Three.js",
+      "Node.js",
+      "PostgreSQL",
+      "Prisma",
+      "Socket.IO",
+      "Web Push",
+      "PWA",
+    ],
+    about:
+      "A multiplayer life-simulation game set on a 3D map of the OAU campus, where players attend lectures, hustle for money, sit exams and build a reputation, all on a server-controlled game clock.",
+    description: [
+      "Life in OAU puts you on a 3D map of campus. You create a character, move into a hostel, and live the student experience: sleeping in your hall, eating at the bukateria, studying in the library, chatting with hallmates, and going out when you can afford it. I designed and built the whole thing alone, from the 3D scene to the database.",
+      "Every building has its own interior and its own activities. Each one costs energy, money or time and changes your stats such as energy, health, happiness, academics and popularity. You walk to the spot and each activity runs for 15 seconds. The server decides what you may do and when, so stats, rewards and limits can't be faked from the client.",
+      "Money and school carry real consequences. Courses track attendance and prep, and exams come up on a schedule. Hustles pay in naira but are rate-limited, and the risky ones can get you caught and put in custody. Every naira movement goes through a ledger. Idempotent actions mean a double-tap or a bad connection never charges or rewards you twice.",
+      "The world is shared and live. Real-time features run over Socket.IO, there are push notifications and an installable PWA, and a server-synced clock keeps countdowns correct even on phones with the wrong time. Players can also compete on leaderboards and earn achievements. Server-side rules are covered by an automated test suite that uses an in-memory database.",
+    ],
+    highlights: [
+      "3D campus built with Three.js: walkable map, building interiors, avatars and wardrobe",
+      "Activity system: every building has its own activities with timers, stat effects, costs and presence checks",
+      "Server-authoritative rules for stats, money and limits, so the client can't cheat",
+      "Naira economy with a ledger, idempotent actions and no double-charging",
+      "Courses, attendance, prep and scheduled exams that affect your academics",
+      "Risk-and-reward hustles with rate limits, a chance of getting caught and a custody system",
+      "Real-time multiplayer with Socket.IO, push notifications and an installable PWA",
+      "Server-synced game clock so countdowns stay correct on any device",
+      "Leaderboards, achievements and an admin console",
+      "Automated test suite for the server rules, run against an in-memory database",
+      "Built solo: 3D, frontend, backend and game design",
+    ],
+    link: "https://lifeinoau.com", // replace with the real live URL
+    github: "https://github.com/Modred14/lifeinoau",
+    img: "/lifeinoau.png", // add a screenshot of the map or an activity card
   },
   {
     slug: "nexopra",
@@ -74,6 +116,42 @@ export const projects = [
     img: "/nexopra.png",
   },
   {
+    slug: "tappay",
+    name: "TapPay",
+    tagline: "Tap. Pay. Done.",
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Lucide React",
+      "PayAza API",
+      "NFC",
+      "Railway",
+    ],
+    about:
+      "First place winner at Techfest 5.0 — built by a 5-person team in 32 hours. A digital payment app with NFC tap-to-pay, QR scanning, and phone number transfers.",
+    description: [
+      "TapPay was built by a 5-person team at Techfest 5.0 (themed Cred, Code & Culture). We shipped both a mobile app and a web analytics dashboard within 32 hours and presented it live at the event — walking away with first place.",
+      "My role was frontend: I built the web dashboard and contributed to the app UI using Next.js and TypeScript, while my teammates handled the backend, NFC logic, and PayAza API integration.",
+      "The standout feature is NFC tap-to-pay: the sender and receiver simply bring the backs of their phones together to initiate a transfer. For devices without NFC, users can pay via QR code scan or by entering the recipient's phone number — so nobody gets left out.",
+      "The web dashboard gives users a real-time view of their spending and balance. It uses live data — no page reload needed. Account funding is handled through the PayAza API, making the full payment loop functional end-to-end.",
+    ],
+    highlights: [
+      "NFC tap-to-pay — bring two phones together to transfer instantly",
+      "QR code payments for devices without NFC support",
+      "Phone number-based transfers as a third payment option",
+      "PayAza API integration for wallet funding and transactions",
+      "Real-time web dashboard — balance and spending reflect instantly",
+      "Full MVP — mobile app and web platform shipped in 32 hours",
+      "First place winner at Techfest 5.0 hackathon",
+    ],
+    link: "https://app-tappay.netlify.app/",
+    github: "https://github.com/Missfavis-coder/PayAza/",
+    img: "/tappay.png",
+  },
+
+  // ───────────── MORE PROJECTS ─────────────
+  {
     slug: "escrowgo",
     name: "EscrowGo",
     tagline: "Escrow, not 'trust me.'",
@@ -110,40 +188,6 @@ export const projects = [
     link: "https://escrow-go.netlify.app",
     github: "https://github.com/Modred14/EscrowGo",
     img: "/escrowgo.png",
-  },
-  {
-    slug: "tappay",
-    name: "TapPay",
-    tagline: "Tap. Pay. Done.",
-    stack: [
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "Lucide React",
-      "PayAza API",
-      "NFC",
-      "Railway",
-    ],
-    about:
-      "First place winner at Techfest 5.0 — built by a 5-person team in 32 hours. A digital payment app with NFC tap-to-pay, QR scanning, and phone number transfers.",
-    description: [
-      "TapPay was built by a 5-person team at Techfest 5.0 (themed Cred, Code & Culture). We shipped both a mobile app and a web analytics dashboard within 32 hours and presented it live at the event — walking away with first place.",
-      "My role was frontend: I built the web dashboard and contributed to the app UI using Next.js and TypeScript, while my teammates handled the backend, NFC logic, and PayAza API integration.",
-      "The standout feature is NFC tap-to-pay: the sender and receiver simply bring the backs of their phones together to initiate a transfer. For devices without NFC, users can pay via QR code scan or by entering the recipient's phone number — so nobody gets left out.",
-      "The web dashboard gives users a real-time view of their spending and balance. It uses live data — no page reload needed. Account funding is handled through the PayAza API, making the full payment loop functional end-to-end.",
-    ],
-    highlights: [
-      "NFC tap-to-pay — bring two phones together to transfer instantly",
-      "QR code payments for devices without NFC support",
-      "Phone number-based transfers as a third payment option",
-      "PayAza API integration for wallet funding and transactions",
-      "Real-time web dashboard — balance and spending reflect instantly",
-      "Full MVP — mobile app and web platform shipped in 32 hours",
-      "First place winner at Techfest 5.0 hackathon",
-    ],
-    link: "https://app-tappay.netlify.app/",
-    github: "https://github.com/Missfavis-coder/PayAza/",
-    img: "/tappay.png",
   },
   {
     slug: "nacos-oau-feedback",

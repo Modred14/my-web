@@ -1,8 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import {
+  addDays,
+  differenceInCalendarDays,
+  format,
+  startOfDay,
+  subDays,
+} from "date-fns";
 import {
   LineChart,
   Line,
@@ -27,150 +34,157 @@ const COLORS = [
   "#FF6699",
 ];
 
+const DAY_KEY = "yyyy-MM-dd";
+const DEFAULT_RANGE_DAYS = 7; // last 7 days, today included
+const MIN_DAYS = 2;
+const MAX_DAYS = 30;
+
+const EMPTY_DATA = {
+  timeZone: "",
+  visitsPerDay: [],
+  devices: [],
+  browsers: [],
+  referrers: [],
+  countries: [],
+  averageSessionDuration: [],
+};
+
+// Server-side days arrive as 'YYYY-MM-DD' strings, so they are compared as
+// strings. Never go through Date/toISOString here: that converts to UTC and
+// shifts days by one for anyone whose time zone isn't UTC.
+function sumByLabel(rows, labelKey, startKey, endKey) {
+  const totals = new Map();
+  for (const row of rows || []) {
+    if (typeof row.day !== "string" || row.day < startKey || row.day > endKey) continue;
+    const label = row[labelKey] || "Unknown";
+    totals.set(label, (totals.get(label) || 0) + (Number(row.count) || 0));
+  }
+  return [...totals]
+    .map(([label, count]) => ({ label, count }))
+    .sort((a, b) => b.count - a.count || a.label.localeCompare(b.label))
+    .slice(0, 10);
+}
+
+function formatDuration(totalSeconds) {
+  const s = Math.max(0, Math.round(totalSeconds));
+  const h = Math.floor(s / 3600);
+  const m = Math.floor((s % 3600) / 60);
+  const sec = s % 60;
+  if (h > 0) return `${h}h ${m}m`;
+  if (m > 0) return `${m}m ${sec}s`;
+  return `${sec}s`;
+}
+
 export default function AnalyticsPage() {
-  const today = new Date();
   const [step, setStep] = useState(1);
   const [message, setMessage] = useState("");
   const [password, setPassword] = useState("");
+  const [checking, setChecking] = useState(false);
   const [errorOpen, setErrorOpen] = useState(false);
   const [errorTrigger, setErrorTrigger] = useState(0);
-  const [startDate, setStartDate] = useState(
-    new Date(today.setDate(today.getDate() - 6)),
-  ); // 7-day default
-  const [endDate, setEndDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(() => startOfDay(new Date()));
+  const [startDate, setStartDate] = useState(() =>
+    subDays(startOfDay(new Date()), DEFAULT_RANGE_DAYS - 1),
+  );
+  const [data, setData] = useState(EMPTY_DATA);
 
-  const [loading, setLoading] = useState(true);
-  const [data, setData] = useState({
-    visitsPerDay: [],
-    devices: [],
-    browsers: [],
-    referrers: [],
-    countries: [],
-    averageSessionDuration: [],
-  });
+  function showError(text) {
+    setMessage(text);
+    setErrorOpen(true);
+    setErrorTrigger((prev) => prev + 1);
+  }
 
-  useEffect(() => {
-    async function fetchAnalytics() {
-      try {
-        const res = await axios.get("/api/analytics");
-        setData(res.data);
-      } catch (err) {
-        console.error(err);
-      } finally {
-        setLoading(false);
+  // The passcode is checked by the server: the data is only returned when the
+  // key is right, so nothing sensitive ships in the page's JavaScript.
+  async function login() {
+    if (checking) return;
+    if (!password) {
+      showError("Enter the passcode");
+      return;
+    }
+
+    setChecking(true);
+    try {
+      const res = await axios.get("/api/analytics", {
+        headers: { "x-analytics-key": encodeURIComponent(password) },
+        validateStatus: () => true,
+      });
+
+      if (res.status === 200) {
+        setData({ ...EMPTY_DATA, ...res.data });
+        setStep(2);
+        return;
       }
+      if (res.status === 401) showError("Invalid passcode");
+      else if (res.status === 429)
+        showError("Too many attempts. Try again later.");
+      else if (res.status === 503)
+        showError(res.data?.error || "Analytics is not configured.");
+      else showError("Couldn't load analytics. Please try again.");
+    } catch {
+      showError("Couldn't reach the server. Please try again.");
+    } finally {
+      setChecking(false);
     }
-    fetchAnalytics();
-  }, []);
+  }
 
-  // --- Filter helpers ---
-  const filterByDate = (arr, key) => {
-    return arr
-      ?.filter((item) => {
-        if (!item[key]) return false; // skip missing or null values
-        const d = new Date(item[key]);
-        if (isNaN(d.getTime())) return false; // skip invalid dates
-        const dateOnly = d.toISOString().split("T")[0];
-        const start = startDate.toISOString().split("T")[0];
-        const end = endDate.toISOString().split("T")[0];
-        return dateOnly >= start && dateOnly <= end;
-      })
-      .sort((a, b) => new Date(a[key]).getTime() - new Date(b[key]).getTime());
-  };
+  const startKey = format(startDate, DAY_KEY);
+  const endKey = format(endDate, DAY_KEY);
 
-  // --- Process analytics ---
-  // --- Generate visits data with 0s for missing dates ---
-  const visitsData = (() => {
-    const dayMap = new Map(
-      data.visitsPerDay?.map((d) => [
-        new Date(d.day).toDateString(),
-        d.visits || 0,
-      ]),
-    );
+  // One entry per day in the range, with 0 for days that have no data.
+  const days = [];
+  for (
+    let d = startDate;
+    differenceInCalendarDays(endDate, d) >= 0;
+    d = addDays(d, 1)
+  ) {
+    days.push(d);
+  }
 
-    const result = [];
-    const curr = new Date(startDate);
-    const end = new Date(endDate);
+  const visitsByDay = new Map(
+    (data.visitsPerDay || []).map((r) => [r.day, Number(r.visits) || 0]),
+  );
+  const visitsData = days.map((d) => ({
+    day: format(d, "EEE, MMM d"),
+    visits: visitsByDay.get(format(d, DAY_KEY)) || 0,
+  }));
+  const hasVisits = visitsData.some((v) => v.visits > 0);
 
-    while (curr <= end) {
-      const dateStr = curr.toDateString();
-      result.push({
-        day: curr.toLocaleDateString("en-US", {
-          weekday: "short",
-          day: "numeric",
-          month: "short",
-        }),
-        visits: dayMap.get(dateStr) || 0,
-      });
-      curr.setDate(curr.getDate() + 1);
-    }
+  const secondsByDay = new Map(
+    (data.averageSessionDuration || []).map((r) => [r.day, Number(r.seconds) || 0]),
+  );
+  const averageSessionData = days.map((d) => {
+    const seconds = secondsByDay.get(format(d, DAY_KEY)) || 0;
+    return {
+      day: format(d, "EEE, MMM d"),
+      minutes: Math.round((seconds / 60) * 100) / 100,
+      timeLabel: formatDuration(seconds),
+    };
+  });
+  const hasDurations = averageSessionData.some((v) => v.minutes > 0);
 
-    return result;
-  })();
+  const referrersData = sumByLabel(data.referrers, "referrer", startKey, endKey);
+  const countriesData = sumByLabel(data.countries, "country", startKey, endKey);
 
-  const checkPass = () => {
-    const passcode = process.env.NEXT_PUBLIC_PASSWORD;
-    if (password === passcode) {
-      setStep(2);
-    } else {
-      setMessage("Invalid passcode");
-      setErrorOpen(true);
-      setErrorTrigger((prev) => prev + 1);
-    }
-  };
-  // Devices
-  const devicesData = data.devices?.length
-    ? data.devices.map((d) => ({
-        device: d.device || "Unknown",
-        count: Number(d.count) || 0,
-      }))
-    : [];
-  const browsersData = data.browsers?.length
-    ? data.browsers.map((b) => ({
-        browser: b.browser || "Unknown",
-        count: Number(b.count) || 0,
-      }))
-    : [];
+  // All-time totals (not limited by the date range).
+  const devicesData = (data.devices || []).map((d) => ({
+    device: d.device || "Unknown",
+    count: Number(d.count) || 0,
+  }));
+  const browsersData = (data.browsers || []).map((b) => ({
+    browser: b.browser || "Unknown",
+    count: Number(b.count) || 0,
+  }));
+  const totalVisits = devicesData.reduce((sum, d) => sum + d.count, 0);
 
-  const referrersData = filterByDate(data.referrers, "day");
-  const countriesData = filterByDate(data.countries, "day");
+  const renderNoRecord = (empty) =>
+    empty ? (
+      <p className="text-gray-400">
+        No analytics available for the selected period.
+      </p>
+    ) : null;
 
-  // --- Generate average session data with 0s for missing dates ---
-  const averageSessionData = (() => {
-    const durationMap = new Map(
-      data.averageSessionDuration?.map((d) => [
-        new Date(d.day).toDateString(),
-        d.seconds || 0,
-      ]),
-    );
-
-    const result = [];
-    const curr = new Date(startDate);
-    const end = new Date(endDate);
-
-    while (curr <= end) {
-      const dateStr = curr.toDateString();
-      const totalSeconds = durationMap.get(dateStr) || 0;
-      const hours = Math.floor(totalSeconds / 3600);
-      const minutes = Math.floor((totalSeconds % 3600) / 60);
-
-      result.push({
-        day: curr.toLocaleDateString("en-US", {
-          weekday: "short",
-          day: "numeric",
-          month: "short",
-        }),
-        duration: parseFloat((hours + minutes / 60).toFixed(2)),
-        timeLabel: `${hours}hrs ${minutes}mins`,
-      });
-
-      curr.setDate(curr.getDate() + 1);
-    }
-
-    return result;
-  })();
-
-  if (loading) {
+  if (checking) {
     return (
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black">
         <div className="flex flex-col items-center gap-4">
@@ -182,13 +196,6 @@ export default function AnalyticsPage() {
       </div>
     );
   }
-
-  const renderNoRecord = (arr) =>
-    !arr || arr.length === 0 ? (
-      <p className="text-gray-400">
-        No analytics available for the selected period.
-      </p>
-    ) : null;
 
   return (
     <div className="min-h-screen bg-black text-white ">
@@ -204,11 +211,12 @@ export default function AnalyticsPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••"
-              onKeyDown={(e) => e.key === "Enter" && checkPass()}
+              autoComplete="current-password"
+              onKeyDown={(e) => e.key === "Enter" && login()}
               className="w-full bg-black border border-green-400 text-green-300 placeholder-green-600 px-3 py-2 pr-16 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
             />
             <button
-              onClick={checkPass}
+              onClick={login}
               className="absolute top-0 right-0 h-full bg-green-500 text-black px-3 rounded-r hover:bg-green-600 transition font-bold"
             >
               Enter
@@ -229,6 +237,11 @@ export default function AnalyticsPage() {
           <h1 className="text-2xl pt-10 sm:text-3xl font-extrabold">
             Website Analytics
           </h1>
+          {data.timeZone && (
+            <p className="text-xs text-gray-500 -mt-6">
+              Days are shown in {data.timeZone} time.
+            </p>
+          )}
           <div className="sm:flex gap-4 text-sm items-center">
             <div className="sm:mb-0 mb-2">
               <label className=" mb-1 text-white">Start Date:</label>
@@ -236,12 +249,10 @@ export default function AnalyticsPage() {
                 selected={startDate}
                 onChange={(date) => {
                   if (!date) return;
-                  const diff =
-                    (endDate.getTime() - date.getTime()) /
-                      (1000 * 60 * 60 * 24) +
-                    1;
-                  if (diff < 2 || diff > 30) return;
-                  setStartDate(date);
+                  const picked = startOfDay(date);
+                  const span = differenceInCalendarDays(endDate, picked) + 1;
+                  if (span < MIN_DAYS || span > MAX_DAYS) return;
+                  setStartDate(picked);
                 }}
                 selectsStart
                 startDate={startDate}
@@ -258,12 +269,15 @@ export default function AnalyticsPage() {
                 selected={endDate}
                 onChange={(date) => {
                   if (!date) return;
-                  const diff =
-                    (date.getTime() - startDate.getTime()) /
-                      (1000 * 60 * 60 * 24) +
-                    1;
-                  if (diff < 2 || diff > 30 || date > new Date()) return;
-                  setEndDate(date);
+                  const picked = startOfDay(date);
+                  const span = differenceInCalendarDays(picked, startDate) + 1;
+                  if (
+                    span < MIN_DAYS ||
+                    span > MAX_DAYS ||
+                    picked > startOfDay(new Date())
+                  )
+                    return;
+                  setEndDate(picked);
                 }}
                 selectsEnd
                 startDate={startDate}
@@ -279,12 +293,12 @@ export default function AnalyticsPage() {
           {/* Visits Over Time */}
           <div className="bg-gray-950 p-4 sm:p-6 rounded-xl shadow">
             <h2 className="text-lg sm:text-xl mb-4">Visits Over Time</h2>
-            {renderNoRecord(visitsData) || (
+            {renderNoRecord(!hasVisits) || (
               <div className="w-full h-60">
                 <ResponsiveContainer width="100%" height="100%">
                   <LineChart data={visitsData}>
                     <XAxis dataKey="day" />
-                    <YAxis />
+                    <YAxis allowDecimals={false} />
                     <Tooltip />
                     <Line
                       type="monotone"
@@ -298,46 +312,38 @@ export default function AnalyticsPage() {
             )}
           </div>
 
-          {/* Device & Browser PieCharts */}
-
           {/* Referrers & Countries */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-gray-950 p-4 sm:p-6 rounded-xl shadow">
               <h2 className="text-lg sm:text-xl mb-4">Top Referrers</h2>
-              {renderNoRecord(referrersData) || (
+              {renderNoRecord(referrersData.length === 0) || (
                 <ul className="space-y-2 text-sm sm:text-base">
-                  {referrersData
-                    .sort((a, b) => b.count - a.count)
-                    .slice(0, 10)
-                    .map((ref, idx) => (
-                      <li
-                        key={idx}
-                        className="flex justify-between border-b border-gray-700 pb-1"
-                      >
-                        <span>{ref.referrer || "Unknown"}</span>
-                        <span className="text-gray-400">{ref.count || 0}</span>
-                      </li>
-                    ))}
+                  {referrersData.map((ref) => (
+                    <li
+                      key={ref.label}
+                      className="flex justify-between border-b border-gray-700 pb-1"
+                    >
+                      <span>{ref.label}</span>
+                      <span className="text-gray-400">{ref.count}</span>
+                    </li>
+                  ))}
                 </ul>
               )}
             </div>
 
             <div className="bg-gray-950 p-4 sm:p-6 rounded-xl shadow">
               <h2 className="text-lg sm:text-xl mb-4">Top Countries</h2>
-              {renderNoRecord(countriesData) || (
+              {renderNoRecord(countriesData.length === 0) || (
                 <ul className="space-y-2 text-sm sm:text-base">
-                  {countriesData
-                    .sort((a, b) => b.count - a.count)
-                    .slice(0, 10)
-                    .map((c, idx) => (
-                      <li
-                        key={idx}
-                        className="flex justify-between border-b border-gray-700 pb-1"
-                      >
-                        <span>{c.country || "Unknown"}</span>
-                        <span className="text-gray-400">{c.count || 0}</span>
-                      </li>
-                    ))}
+                  {countriesData.map((c) => (
+                    <li
+                      key={c.label}
+                      className="flex justify-between border-b border-gray-700 pb-1"
+                    >
+                      <span>{c.label}</span>
+                      <span className="text-gray-400">{c.count}</span>
+                    </li>
+                  ))}
                 </ul>
               )}
             </div>
@@ -348,18 +354,18 @@ export default function AnalyticsPage() {
             <h2 className="text-lg sm:text-xl mb-4">
               Average Session Duration (Per Day)
             </h2>
-            {renderNoRecord(averageSessionData) || (
+            {renderNoRecord(!hasDurations) || (
               <div className="w-full h-60">
                 <ResponsiveContainer width="100%" height="100%">
                   <LineChart data={averageSessionData}>
                     <XAxis dataKey="day" />
-                    <YAxis />
+                    <YAxis unit=" min" />
                     <Tooltip
                       formatter={(_, name, props) => props.payload.timeLabel}
                     />
                     <Line
                       type="monotone"
-                      dataKey="duration"
+                      dataKey="minutes"
                       stroke="#FF8042"
                       strokeWidth={2}
                       dot={{ r: 4 }}
@@ -373,13 +379,13 @@ export default function AnalyticsPage() {
             All-Time Totals (Not Limited by Date Range)
           </p>
           <p className="text-base sm:text-lg font-bold -mt-5">
-            Total Visits ({devicesData.reduce((sum, d) => sum + d.count, 0)})
+            Total Visits ({totalVisits})
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-gray-950 p-4 sm:p-6 rounded-xl shadow">
               <h2 className="text-lg sm:text-xl mb-4">Device Breakdown </h2>
-              {renderNoRecord(devicesData) || (
+              {renderNoRecord(devicesData.length === 0) || (
                 <ResponsiveContainer width="100%" height={240}>
                   <PieChart>
                     <Pie
@@ -405,7 +411,7 @@ export default function AnalyticsPage() {
 
             <div className="bg-gray-950 p-4 sm:p-6 rounded-xl shadow">
               <h2 className="text-lg sm:text-xl mb-4">Browser Breakdown</h2>
-              {renderNoRecord(browsersData) || (
+              {renderNoRecord(browsersData.length === 0) || (
                 <ResponsiveContainer width="100%" height={240}>
                   <PieChart>
                     <Pie
