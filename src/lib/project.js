@@ -39,7 +39,7 @@ export const projects = [
   },
   {
     slug: "lifeinoau",
-    name: "Life in OAU",
+    name: "Lifeinoau",
     tagline: "Live a whole student life on a 3D campus.",
     stack: [
       "Next.js",
@@ -56,7 +56,7 @@ export const projects = [
     about:
       "A multiplayer life-simulation game set on a 3D map of the OAU campus, where players attend lectures, hustle for money, sit exams and build a reputation, all on a server-controlled game clock.",
     description: [
-      "Life in OAU puts you on a 3D map of campus. You create a character, move into a hostel, and live the student experience: sleeping in your hall, eating at the bukateria, studying in the library, chatting with hallmates, and going out when you can afford it. I designed and built the whole thing alone, from the 3D scene to the database.",
+      "Lifeinoau puts you on a 3D map of campus. You create a character, move into a hostel, and live the student experience: sleeping in your hall, eating at the bukateria, studying in the library, chatting with hallmates, and going out when you can afford it. I designed and built the whole thing alone, from the 3D scene to the database.",
       "Every building has its own interior and its own activities. Each one costs energy, money or time and changes your stats such as energy, health, happiness, academics and popularity. You walk to the spot and each activity runs for 15 seconds. The server decides what you may do and when, so stats, rewards and limits can't be faked from the client.",
       "Money and school carry real consequences. Courses track attendance and prep, and exams come up on a schedule. Hustles pay in naira but are rate-limited, and the risky ones can get you caught and put in custody. Every naira movement goes through a ledger. Idempotent actions mean a double-tap or a bad connection never charges or rewards you twice.",
       "The world is shared and live. Real-time features run over Socket.IO, there are push notifications and an installable PWA, and a server-synced clock keeps countdowns correct even on phones with the wrong time. Players can also compete on leaderboards and earn achievements. Server-side rules are covered by an automated test suite that uses an in-memory database.",
